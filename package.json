@@ -1,6 +1,7 @@
 {
   "name": "react-bootstrap-data-grid-docs",
-  "version": "0.1.0",
+  "description": "Documentation site for React Bootstrap Data Grid",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,10 +9,32 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "keywords": [
+    "react",
+    "bootstrap",
+    "data",
+    "grid",
+    "table",
+    "datagrid"
+  ],
+  "homepage": "https://react-bootstrap-data-grid.vercel.app",
+  "bugs": {
+    "url": "https://github.com/absreim/react-bootstrap-data-grid-docs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/absreim/react-bootstrap-data-grid-docs.git"
+  },
+  "license": "MIT",
+  "author": "Brook Li",
   "dependencies": {
-    "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "next": "^16.1.6",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "@absreim/react-bootstrap-data-grid": "^1.4.0",
+    "bootstrap": "^5.3.8",
+    "highlight.js": "^11.11.1",
+    "react-bootstrap": "^2"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -20,6 +43,9 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
-    "typescript": "^5"
+    "eslint-config-prettier": "^10.1.8",
+    "typescript": "^5",
+    "sass": "^1.97.2",
+    "prettier": "^3.7.4"
   }
 }
