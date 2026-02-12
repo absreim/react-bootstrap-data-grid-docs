@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useState } from "react";
-import { SelectMode } from "@/grid";
+import { SelectMode } from "@absreim/react-bootstrap-data-grid";
 import SelectModeSelector from "@/app/selection/SelectModeSelector";
 import SampleSingleSelectGrid from "@/app/selection/SampleSingleSelectGrid";
 

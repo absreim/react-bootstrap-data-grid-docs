@@ -1,6 +1,6 @@
 import Form from "react-bootstrap/Form";
 import { ChangeEventHandler, FC } from "react";
-import { SelectMode } from "@/grid";
+import { SelectMode } from "@absreim/react-bootstrap-data-grid";
 
 export interface SelectModeSelectorProps {
   mode: SelectMode;

@@ -29,15 +29,16 @@
   "license": "MIT",
   "author": "Brook Li",
   "dependencies": {
-    "next": "^16.1.6",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
     "@absreim/react-bootstrap-data-grid": "^1.4.0",
     "bootstrap": "^5.3.8",
     "highlight.js": "^11.11.1",
-    "react-bootstrap": "^2"
+    "next": "^16.1.6",
+    "react": "^19.2.3",
+    "react-bootstrap": "^2",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -45,8 +46,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "eslint-config-prettier": "^10.1.8",
-    "typescript": "^5",
+    "prettier": "^3.7.4",
     "sass": "^1.97.2",
-    "prettier": "^3.7.4"
+    "typescript": "^5"
   }
 }
