@@ -2,7 +2,12 @@ const code = `
 "use client";
 
 import { FC, useMemo, useState } from "react";
-import Grid, { ColDef, RowDef, SelectMode, SingleSelectModel } from "@/grid";
+import Grid, {
+  ColDef,
+  RowDef,
+  SelectMode,
+  SingleSelectModel,
+} from "@absreim/react-bootstrap-data-grid";
 
 export interface SampleSingleSelectGridProps {
   mode: SelectMode;
@@ -54,13 +59,16 @@ const rows: RowDef[] = [
 
 const SampleSingleSelectGrid: FC<SampleSingleSelectGridProps> = ({ mode }) => {
   const [selected, setSelected] = useState<number | null>(null);
-  const selectModel: SingleSelectModel = useMemo(() => ({
-    mode,
-    type: "single",
-    selected,
-    setSelected,
-    groupName: "single selection example grid (BG3 cantrips)"
-  }), [mode, selected]);
+  const selectModel: SingleSelectModel = useMemo(
+    () => ({
+      mode,
+      type: "single",
+      selected,
+      setSelected,
+      groupName: "single selection example grid (BG3 cantrips)",
+    }),
+    [mode, selected],
+  );
 
   return <Grid rows={rows} cols={cols} selectModel={selectModel} />;
 };

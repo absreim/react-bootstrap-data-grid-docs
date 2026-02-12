@@ -1,4 +1,5 @@
 import { test, expect, Page } from "@playwright/test";
+import { sectionNames } from "./shared";
 
 const testNavLinkAndHeading: (
   page: Page,
@@ -24,16 +25,6 @@ test("desktop links work", async ({ page }) => {
     name: "Introduction",
   });
   await expect(introHeading).toBeVisible();
-
-  const sectionNames = [
-    "Pagination",
-    "Sorting",
-    "Filtering",
-    "Selection",
-    "Editing",
-    "Styling",
-    "Introduction",
-  ];
 
   for (const sectionName of sectionNames) {
     await testNavLinkAndHeading(page, sectionName);

@@ -1,7 +1,12 @@
 const code = `
 "use client";
 
-import Grid, { ColDef, RowDef, StyleModel, TableStyleModel } from "@/grid";
+import Grid, {
+  ColDef,
+  RowDef,
+  StyleModel,
+  TableStyleModel,
+} from "@absreim/react-bootstrap-data-grid";
 import { FC, useMemo } from "react";
 
 const cols: ColDef[] = [

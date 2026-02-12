@@ -2,7 +2,11 @@ const code = `
 "use client";
 
 import { FC, useMemo, useState } from "react";
-import Grid, { ColDef, MultiSelectModel, RowDef } from "@/grid";
+import Grid, {
+  ColDef,
+  MultiSelectModel,
+  RowDef,
+} from "@absreim/react-bootstrap-data-grid";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 
