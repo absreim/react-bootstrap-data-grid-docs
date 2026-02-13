@@ -115,6 +115,16 @@ export default function Home() {
         </li>
       </ul>
       <h1>Change Log</h1>
+      <h2>1.4.1</h2>
+      <p>February 13, 2026</p>
+      <p>
+        Add exports for two utility functions, <code>dateToInputStr</code> and{" "}
+        <code>dateToDatetimeInputStr</code>. These functions take in JavaScript{" "}
+        <code>Date</code> objects and output strings used for the{" "}
+        <code>value</code> field of <code>date</code> and{" "}
+        <code>datetime-local</code> HTML <code>input</code> elements,
+        respectively.
+      </p>
       <h2>1.4.0</h2>
       <p>February 9, 2026</p>
       <p>
