@@ -10,18 +10,10 @@ const codeText = `
 // Layout & components
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
-@import "~bootstrap/scss/containers";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
-@import "~bootstrap/scss/nav";
-@import "~bootstrap/scss/navbar";
 @import "~bootstrap/scss/pagination";
-@import "~bootstrap/scss/close";
-@import "~bootstrap/scss/offcanvas";
-
-// Helpers
-@import "~bootstrap/scss/helpers";
 
 // Utilities
 @import "~bootstrap/scss/utilities/api";
