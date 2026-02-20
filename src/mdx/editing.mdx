@@ -1,4 +1,42 @@
-const code = `
+import TypeSpecTable from "@/shared/TypeSpecTable";
+import {editModel} from "@/shared/typeSpecs";
+import SampleEditableGridContainer from "@/assets/editing/SampleEditableGridContainer";
+
+# Editing
+
+React Bootstrap Data Grid provides an opinionated interface to edit entire rows of cells at a time.
+
+When enabled, controls to start editing, cancel editing, save changes, and delete rows are provided in special Edit Controls table column.
+
+When the user starts editing a row by pushing the Edit button, the contents of the cells for that row turn into form inputs.
+
+Editing is enabled by passing an `editModel` prop to the `Grid` component. One can additionally enable deletion by passing an optional `getDeleteCallback` member inside the `editModel`.
+
+It is the responsibility of the parent component that contains the `Grid` to provide callback functions that actually act upon user interactions with the UI to edit or delete a row. In addition, it is the responsibility of the parent component to provide some kind of safeguard against accidental deletions (such as a confirmation dialog.)
+
+Since null values are not supported by React Bootstrap Data Grid for now, for a row to be updated successfully, there should be a valid value for `number`, `date`, and `datetime` fields. For these three column types, the `Grid` will invoke a form validation error (using the form validation feature of the browser) when trying to use a blank string to update a field of one of these types.
+
+However, since a blank string (`""`) is a valid string, the `Grid` will accept blank strings as input for `string` columns.
+
+## Type Definitions
+
+### EditModel
+
+Omitting this prop from the `Grid` component disables the editing feature.
+
+<TypeSpecTable rows={editModel} />
+
+### UpdateCallbackGenerator
+
+This type is that of the function passed into EditModel for generating a callback function on a per-index basis. The defintion is  `{"(origIndex: number) => (rowDef: RowDef) => void"}`.
+
+See the example below to see how this property is typically implemented.
+
+## Example
+
+### Code
+
+```tsx
 "use client";
 
 import Grid, {
@@ -126,6 +164,8 @@ const SampleEditableGridContainer: FC = () => {
 };
 
 export default SampleEditableGridContainer;
-`;
+```
 
-export default code;
+### Live Demo
+
+<SampleEditableGridContainer />

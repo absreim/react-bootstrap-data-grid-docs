@@ -1,4 +1,38 @@
-const code = `
+import TypeSpecTable from "@/shared/TypeSpecTable";
+import { tableSortModel, sortColDef } from "@/shared/typeSpecs";
+import SampleSortedGrid from "@/assets/sorting/SampleSortedGrid";
+
+# Sorting
+
+React Bootstrap Data Grid implements simple sorting of data, one column at a time, in ascending or descending order. The user can change the column being sorted and the sort order by clicking on a column header.
+
+When a user clicks on a column header, the sort order changes between _ascending_, _descending_, and _none_. When the sort order is _none_, the rows in the table will appear in original order of the array in which data was passed to the Grid component.
+
+Note that sorting is done on the original data, before pagination and before formatting functions are applied. In particular, note that numbers will be sorted by the value of the number rather than lexicographically. Similarly, dates and datetimes will be sorted by the number of milliseconds after the epoch time as opposed to any time of string representation of the Date object.
+
+Like other features of React Bootstrap Data Grid, state storage and updates for the sorting feature is done in a fully controlled manner. That is, the state and updater function are defined in a parent component and passed down to the Grid component.
+
+To allow a user to sort a Grid by a particular column, set the `sortable` property to `true` in the column definition (`ColDef`) for the column.
+
+In addition, setting the `sortModel` property on the `Grid` component is required to enable sorting.
+
+## Type Definitions
+
+See below for specifications for the `sortModel` property and related types.
+
+### TableSortModel
+
+<TypeSpecTable rows={tableSortModel} />
+
+### SortColDef
+
+<TypeSpecTable rows={sortColDef} />
+
+## Example
+
+### Code
+
+```tsx
 "use client";
 
 import Grid, {
@@ -136,6 +170,8 @@ const SampleSortedGrid: FC = () => {
 };
 
 export default SampleSortedGrid;
-`;
+```
 
-export default code;
+### Live Demo
+
+<SampleSortedGrid />
