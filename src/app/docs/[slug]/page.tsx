@@ -1,12 +1,23 @@
+import { TocItem } from "rehype-mdx-toc";
+import { FC } from "react";
+import Toc from "@/app/docs/[slug]/Toc";
+
 export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const { default: Post, toc } = await import(`@/content/${slug}.mdx`);
+  const { default: Post, toc }: { default: FC; toc: TocItem[] } = await import(
+    `@/content/${slug}.mdx`
+  );
 
-  return <div><code>{String(toc)}</code><Post /></div>;
+  return (
+    <div>
+      <Toc tocItems={toc} />
+      <Post />
+    </div>
+  );
 }
 
 export function generateStaticParams() {

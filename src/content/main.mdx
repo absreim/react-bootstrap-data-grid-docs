@@ -1,14 +1,14 @@
 import BasicSampleGrid from "../app/BasicSampleGrid";
 
+# Introduction
+
 Welcome to the documentation for React Boostrap Data Grid!
 
 Inspired by [react-bootstrap-table2](https://react-bootstrap-table.github.io/react-bootstrap-table2/)  and [MUI X Data Grid](https://mui.com/x/react-data-grid/), React Bootstrap Data Grid aims to fill the specific niche of a data grid UI component for the combination of Bootstrap and React.
 
-Getting Started
-===============
+## Getting Started
 
-NPM Package Installation
-------------------------
+### NPM Package Installation
 
 React Bootstrap Data Grid is published as an npm package with the name `@absreim/react-bootstrap-data-grid`.
 
@@ -18,8 +18,7 @@ For example:
 
 `npm install @absreim/react-bootstrap-data-grid`
 
-Dependency on Bootstrap
------------------------
+### Dependency on Bootstrap
 
 React Bootstrap Data Grid is designed to work with CSS styles from Bootstrap version 5 or later. If you project does not already include Bootstrap, install it according to the installation instructions in the official documentation. More specifically, since React Bootstrap Data Grid is designed to work with projects using a package manager like NPM, you will most likely want to follow the [installation instructions for installing Bootstrap using a package manager](https://getbootstrap.com/docs/5.3/getting-started/download/#package-managers) .
 
@@ -46,35 +45,33 @@ If you are only including Bootstrap partially in your project, note that React B
 @import "~bootstrap/scss/utilities/api";
 ```
 
-Styles Specific to React Bootstrap Data Grid
---------------------------------------------
+### Styles Specific to React Bootstrap Data Grid
 
 React Bootstrap Data Grid contains styles of its own that are distributed as an SCSS file and CSS file. Depending on whether your project is using SCSS or CSS, add in the appropriate import. The following code examples are for NextJS. Only one of the following three options is needed.
 
-### Import the SCSS file in another SCSS file
+#### Import the SCSS file in another SCSS file
 
 ```scss
 @import "@absreim/react-bootstrap-data-grid/style";
 ```
 
-### Import the SCSS file in a TSX file
+#### Import the SCSS file in a TSX file
 
 ```tsx
 import "@absreim/react-bootstrap-data-grid/style.scss";
 ```
 
-### Import the CSS file in a TSX file
+#### Import the CSS file in a TSX file
 
 ```tsx
 import "@absreim/react-bootstrap-data-grid/style.css";
 ```
 
-Using the Component in Your Project
------------------------------------
+### Using the Component in Your Project
 
 Once the React Bootstrap Data Grid and Bootstrap are both installed, define rows and columns for a grid according to the following example:
 
-### Code
+#### Code
 
 ```tsx
 "use client";
@@ -145,30 +142,26 @@ const BasicSampleGrid: FC = () => {
 export default BasicSampleGrid;
 ```
 
-### Live Demo
+#### Live Demo
 
 <BasicSampleGrid />
 
-Further information
-===================
+## Further information
 
 *   See the source code in the project's [GitHub repo](https://github.com/absreim/react-bootstrap-data-grid) .
 *   The project is under active development. See the [development roadmap](https://github.com/users/absreim/projects/2/views/1) .
 *   See the [page for the published NPM package](https://www.npmjs.com/package/@absreim/react-bootstrap-data-grid)  in case you are curious about download statistics.
 *   If you have a question, concern, or suggestion, feel free to create a GitHub issue on the repo's [issue page](https://github.com/absreim/react-bootstrap-data-grid/issues) .
 
-Change Log
-==========
+## Change Log
 
-1.4.1
------
+### 1.4.1
 
 February 13, 2026
 
 Add exports for two utility functions, `dateToInputStr` and `dateToDatetimeInputStr`. These functions take in JavaScript `Date` objects and output strings used for the `value` field of `date` and `datetime-local` HTML `input` elements, respectively.
 
-1.4.0
------
+### 1.4.0
 
 February 9, 2026
 
@@ -176,15 +169,13 @@ This release adds a feature that allows the developer to specify CSS classes for
 
 This release also contains various relatively minor bug fixes.
 
-1.3.0
------
+### 1.3.0
 
 January 28, 2026
 
 This release adds a feature that allows a user to edit the contents of rows.
 
-1.2.2
------
+### 1.2.2
 
 January 19, 2026
 
@@ -194,57 +185,49 @@ This release contains bug fixes, documentation updates, and other enhancements.
 *   Styles specific to React Bootstrap Data Grid were not being distributed with the NPM package. They are now included, and documentation has been updated to give examples on how to import them.
 *   Adjusted class names for styles specific to React Bootstrap Data Grid to have a "rbdg" prefix to distinguish them from class names from other sources.
 
-1.2.1
------
+### 1.2.1
 
 January 16, 2026
 
 Selection feature no longer in experimental state due to it now having an automated test suite. Fixed a bug involving accessibility for the selection feature.
 
-1.2.0
------
+### 1.2.0
 
 January 14, 2026
 
 Added Selection feature, but in an experimental state.
 
-1.1.4
------
+### 1.1.4
 
 December 29, 2025
 
 Changed behavior of pagination feature when selecting a new page size that would make the existing index out-of-bounds. The index will be set to the maximum available for the page size.
 
-1.1.3
------
+### 1.1.3
 
 December 23, 2025
 
 Fixed bug with datetime filter functionality involving timezones and updated documentation to explain how filtering works with timezones.
 
-1.1.2
------
+### 1.1.2
 
 December 20, 2025
 
 Fixed bug that prevented filtering from working at all.
 
-1.1.1
------
+### 1.1.1
 
 December 20, 2025
 
 Change React keys of rows to be based on original ordering in order to improve rendering performance when using pagination and sorting.
 
-1.1.0
------
+### 1.1.0
 
 December 18, 2025
 
 Added filtering feature.
 
-1.0.0
------
+### 1.0.0
 
 December 17, 2025
 
@@ -254,8 +237,7 @@ Bumped peer dependency of package to React 19. **This change may break projects 
 
 Migrated tests to Playwright due to limitations introduced by more recent versions of React Testing Library.
 
-0.1.4
------
+### 0.1.4
 
 May 9, 2024
 
@@ -263,22 +245,19 @@ Added sorting feature.
 
 Added syntax highlighting to code blocks in documentation.
 
-0.1.3
------
+### 0.1.3
 
 Apr. 18, 2024
 
 Added pagination feature.
 
-0.1.2
------
+### 0.1.2
 
 Mar. 14, 2024
 
 Added automated tests and a build script to generate files meant for publishing as an NPM package.
 
-0.1.0
------
+### 0.1.0
 
 Feb. 27, 2024
 
