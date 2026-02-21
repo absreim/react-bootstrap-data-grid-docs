@@ -11,7 +11,13 @@ const Toc: FC<TocProps> = ({ tocItems }) => {
   const nodes = getSecondThirdHeadingLinks(tocItems);
 
   return (
-    <NestedNavLinkList nodes={nodes} />
+    <>
+      <header className="fs-5 ps-2">
+        On this page
+      </header>
+      <hr />
+      <NestedNavLinkList nodes={nodes} />
+    </>
   );
 }
 

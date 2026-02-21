@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // --- Bootstrap imports ---
 
 // Configuration
@@ -39,7 +41,6 @@
 
   ul {
     list-style: none;
-    font-size: 1rem;
-    padding-left: 1rem;
+    padding-left: map.get($spacers, 2)
   }
 }
