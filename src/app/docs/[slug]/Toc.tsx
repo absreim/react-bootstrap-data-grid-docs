@@ -12,7 +12,7 @@ const Toc: FC<TocProps> = ({ tocItems }) => {
 
   return (
     <NestedNavLinkList nodes={nodes} />
-  )
+  );
 }
 
 export default Toc;

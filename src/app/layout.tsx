@@ -16,13 +16,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <AppBar />
-        <div className="container d-flex flex-row gap-2">
-          <div className="d-none d-lg-block">
-            <ContentsNavbar />
+      <body className="vh-100">
+        <div className="d-flex flex-column h-100">
+          <AppBar />
+          <div className="container d-flex flex-row gap-2 flex-grow-1" style={{minHeight: "0"}}>
+            <div className="d-none d-lg-block">
+              <ContentsNavbar />
+            </div>
+            <main className="h-100">{children}</main>
           </div>
-          <main>{children}</main>
         </div>
       </body>
     </html>

@@ -1,6 +1,7 @@
 import { TocItem } from "rehype-mdx-toc";
 import { FC } from "react";
 import Toc from "@/app/docs/[slug]/Toc";
+import Stack from "react-bootstrap/Stack";
 
 export default async function Page({
   params,
@@ -13,10 +14,14 @@ export default async function Page({
   );
 
   return (
-    <div>
-      <Toc tocItems={toc} />
-      <Post />
-    </div>
+    <Stack className="align-items-start h-100" direction="horizontal" gap={2}>
+      <div className="overflow-y-auto h-100">
+        <Post />
+      </div>
+      <nav className="d-none d-lg-block rbdg-docs-toc overflow-y-auto h-100">
+        <Toc tocItems={toc} />
+      </nav>
+    </Stack>
   );
 }
 

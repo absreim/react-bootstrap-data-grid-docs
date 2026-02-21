@@ -31,3 +31,15 @@
 
 @import "highlight.js/scss/default";
 @import "@absreim/react-bootstrap-data-grid/style";
+
+// Styles specific to this project
+
+.rbdg-docs-toc {
+  min-width: 10rem;
+
+  ul {
+    list-style: none;
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+}
