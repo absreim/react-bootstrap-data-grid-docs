@@ -12,10 +12,10 @@ const Toc: FC<TocProps> = ({ tocItems }) => {
 
   return (
     <>
-      <header className="fs-5 ps-2">
+      <header className="fs-6 ps-3">
         On this page
       </header>
-      <hr />
+      <hr className="my-2" />
       <NestedNavLinkList nodes={nodes} />
     </>
   );

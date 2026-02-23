@@ -38,9 +38,9 @@
 
 .rbdg-docs-toc {
   min-width: 10rem;
+  font-size: 0.9rem;
 
   ul {
-    list-style: none;
-    padding-left: map.get($spacers, 2)
+    padding-left: map.get($spacers, 3)
   }
 }
