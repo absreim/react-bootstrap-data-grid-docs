@@ -10,8 +10,7 @@ const Sorting: FC = () => {
     <>
       <h1>Sorting</h1>
       <p>
-        React Bootstrap Data Grid impleme
-        nts simple sorting of data, one column
+        React Bootstrap Data Grid implements simple sorting of data, one column
         at a time, in ascending or descending order. The user can change the
         column being sorted and the sort order by clicking on a column header.
       </p>
