@@ -2,6 +2,10 @@ import { TocItem } from "rehype-mdx-toc";
 import { FC } from "react";
 import Toc from "@/app/docs/[slug]/Toc";
 import Stack from "react-bootstrap/Stack";
+import fs from "node:fs/promises";
+import path from "node:path";
+
+const CONTENT_DIR = path.join(process.cwd(), "src", "content");
 
 export default async function Page({
   params,
@@ -25,8 +29,14 @@ export default async function Page({
   );
 }
 
-export function generateStaticParams() {
-  return [{ slug: "main" }];
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+  const entries = await fs.readdir(CONTENT_DIR, { withFileTypes: true });
+
+  return entries
+    .filter((e) => e.isFile() && e.name.endsWith(".mdx"))
+    .map((e) => ({
+      slug: e.name.replace(/\.mdx$/, ""),
+    }));
 }
 
 export const dynamicParams = false;
