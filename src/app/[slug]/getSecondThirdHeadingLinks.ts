@@ -1,5 +1,5 @@
 import { TocItem } from "rehype-mdx-toc";
-import { NestedNavLinkNode } from "@/app/docs/[slug]/types";
+import { NestedNavLinkNode } from "@/app/[slug]/types";
 
 const getSecondThirdHeadingLinks: (
   tocItems: TocItem[],

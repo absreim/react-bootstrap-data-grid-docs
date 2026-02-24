@@ -2,8 +2,8 @@
 
 import { FC, useState } from "react";
 import { SelectMode } from "@absreim/react-bootstrap-data-grid";
-import SelectModeSelector from "@/app/selection/SelectModeSelector";
-import SampleSingleSelectGrid from "@/app/selection/SampleSingleSelectGrid";
+import SelectModeSelector from "@/assets/selection/SelectModeSelector";
+import SampleSingleSelectGrid from "@/assets/selection/SampleSingleSelectGrid";
 
 const SampleSingleSelectGridContainer: FC = () => {
   const [mode, setMode] = useState<SelectMode>("both");

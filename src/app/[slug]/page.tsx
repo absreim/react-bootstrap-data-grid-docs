@@ -1,11 +1,11 @@
 import { TocItem } from "rehype-mdx-toc";
 import { FC } from "react";
-import Toc from "@/app/docs/[slug]/Toc";
+import Toc from "@/app/[slug]/Toc";
 import Stack from "react-bootstrap/Stack";
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const CONTENT_DIR = path.join(process.cwd(), "src", "content");
+const CONTENT_DIR = path.join(process.cwd(), "src", "mdx");
 
 export default async function Page({
   params,
@@ -14,7 +14,7 @@ export default async function Page({
 }) {
   const { slug } = await params;
   const { default: Post, toc }: { default: FC; toc: TocItem[] } = await import(
-    `@/content/${slug}.mdx`
+    `@/mdx/${slug}.mdx`
   );
 
   return (
