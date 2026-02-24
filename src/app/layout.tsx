@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./style.scss";
 import AppBar from "./AppBar";
 import ContentsNavbar from "@/app/ContentsNavbar";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "React Bootstrap Data Grid Documentation",
@@ -26,6 +27,7 @@ export default function RootLayout({
             <main className="h-100">{children}</main>
           </div>
         </div>
+        <Analytics />
       </body>
     </html>
   );
