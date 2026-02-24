@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { TocItem } from "rehype-mdx-toc";
-import getSecondThirdHeadingLinks from "@/app/[slug]/getSecondThirdHeadingLinks";
-import NestedNavLinkList from "@/app/[slug]/NestedNavLinkList";
+import getSecondThirdHeadingLinks from "@/app/getSecondThirdHeadingLinks";
+import NestedNavLinkList from "@/app/NestedNavLinkList";
 
 interface TocProps {
   tocItems: TocItem[]

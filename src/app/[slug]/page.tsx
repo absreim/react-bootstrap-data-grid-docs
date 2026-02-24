@@ -1,9 +1,6 @@
-import { TocItem } from "rehype-mdx-toc";
-import { FC } from "react";
-import Toc from "@/app/[slug]/Toc";
-import Stack from "react-bootstrap/Stack";
 import fs from "node:fs/promises";
 import path from "node:path";
+import DocContents from "@/app/DocContents";
 
 const CONTENT_DIR = path.join(process.cwd(), "src", "mdx");
 
@@ -13,22 +10,16 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const { default: Post, toc }: { default: FC; toc: TocItem[] } = await import(
-    `@/mdx/${slug}.mdx`
-  );
 
   return (
-    <Stack className="align-items-start h-100" direction="horizontal" gap={2}>
-      <div className="overflow-y-auto h-100 px-2">
-        <Post />
-      </div>
-      <nav className="d-none d-xl-block rbdg-docs-toc overflow-y-auto h-100">
-        <Toc tocItems={toc} />
-      </nav>
-    </Stack>
+    <DocContents slug={slug} />
   );
 }
 
+// Filter out "main" document to avoid confusion since it is tied to index URL.
+// Not too important, but it does prevent people from stumbling upon the page,
+// in which case the navlink highlighting will not work since it is tied to the
+// base "/" path.
 export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   const entries = await fs.readdir(CONTENT_DIR, { withFileTypes: true });
 
@@ -36,7 +27,8 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
     .filter((e) => e.isFile() && e.name.endsWith(".mdx"))
     .map((e) => ({
       slug: e.name.replace(/\.mdx$/, ""),
-    }));
+    }))
+    .filter(({ slug }) => slug !== "main");
 }
 
 export const dynamicParams = false;

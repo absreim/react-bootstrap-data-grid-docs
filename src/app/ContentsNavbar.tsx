@@ -12,7 +12,7 @@ interface LinkDefinition {
 const linkDefs: LinkDefinition[] = [
   {
     name: "Introduction",
-    path: "/main",
+    path: "/",
   },
   {
     name: "Pagination",
