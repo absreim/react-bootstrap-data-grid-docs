@@ -9,7 +9,7 @@ const NestedNavLinkList: FC<NestedNavLinkListProps> = ({ nodes }) => {
   return (
     <ul>
       {nodes.map((node) => (
-        <li key={node.value}>
+        <li key={node.value} className="rbdg-docs-toc-li">
           <a href={node.href} aria-hidden={true}>
             {node.value}
           </a>

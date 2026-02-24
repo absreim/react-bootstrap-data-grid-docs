@@ -1,0 +1,435 @@
+import TypeSpecTable from "../shared/TypeSpecTable";
+import {additionalComponentsStyleModel, styleModel, tableStyleModel} from "../app/styling/typeSpecs";
+import SampleStyledInputsGrid from "../app/styling/SampleStyledInputsGrid";
+import SampleStyledGrid from "../app/styling/SampleStyledGrid";
+
+# Styling
+
+## Methods
+
+There are three primary ways of applying custom styles to the components of React Bootstrap Data Grid:
+
+### Bootstrap Variable Overrides
+
+Because React Bootstrap Data Grid makes heavy use of Bootstrap CSS classes and variables, it should also obey [customization of Bootstrap via variable overrides](https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults). For example, setting a new `primary` theme color with an SCSS variable will cause buttons of the `primary` variant in React Bootstrap Data Grid to be the new color as well. Additionally, setting the `$table-cell-vertical-align` variable can be used to adjust the vertical alignment of table cells from the default of `top`.
+
+### Specific Members of Props in React Bootstrap Data Grid
+
+A small number of options that are set via properties of component props are implemented via CSS classes. Currently, the only properties of this type are the `pageSelectorJustifyContent` and `componentSize` properties of the `GridPaginationState` interface. These properties set the component size and flexbox justify content settings of the [Bootstrap pagination component](https://getbootstrap.com/docs/5.3/components/pagination/), respectively.
+
+### Injection of Custom Classes via the StyleModel Prop
+
+The `StyleModel` prop contains a fairly extensive of list of properties that correspond to HTML elements in various parts of React Bootstrap Data Grid. These properties either contain arrays of strings that are CSS classes or functions that return an array of such strings.
+
+## Type Definitions
+
+### StyleModel
+
+A prop of this type is optionally passed to the `Grid` component to enable injection of custom CSS classes.
+
+<TypeSpecTable rows={styleModel}/>
+
+### TableStyleModel
+
+Properties of this type are used to inject custom CSS classes into the main table of the `Grid` component.
+
+When more than one of a certain kind of element exists, a function is used to specify different classes based on the index of the element. Certain parameters are common to many different properties:
+
+<dl>
+    <dt>
+        <code>origIndex</code> and <code>origRowIndex</code>
+    </dt>
+    <dd>
+        Refers to the index of a row as it is passed into the{" "}
+        <code>rows</code> prop of the <code>Grid</code> component.
+    </dd>
+    <dt>
+        <code>displayIndex</code>
+    </dt>
+    <dd>
+        Refers to the index of the row as it is displayed in the table, after
+        sorting, pagination, and filtering are applied.
+    </dd>
+    <dt>
+        <code>colIndex</code>
+    </dt>
+    <dd>
+        Refers to the index of a column as it corresponds to the{" "}
+        <code>cols</code> prop passed into the <code>Grid</code> component.
+    </dd>
+</dl>
+
+<TypeSpecTable rows={tableStyleModel}/>
+
+### FilterInputTableStyleModel
+
+Properties of this type are used to inject custom CSS classes into the filter options table of the `Grid` component.
+
+Like the `TableStyleModel` type, for certain kinds of elements there are more than one of that kind and function parameters are used to specify classes differently for different elements.
+
+<dl>
+    <dt>
+        <code>index</code>
+    </dt>
+    <dd>
+        Zero-based index that refers to the row of filter options as it
+        appears in the UI. The order in which the rows appear is the same as
+        the order corresponding columns in the <code>cols</code> prop to the{" "}
+        <code>Grid</code> component, except that only filterable rows are
+        included.
+    </dd>
+    <dt>
+        <code>colIndex</code>
+    </dt>
+    <dd>
+        Zero-based index that refers to the columns of the filter options
+        table. The columns are fixed regardless of the contents of options
+        passed to the <code>Grid</code> and are as follows:
+        <ol start={0}>
+            <li>Enabled - contains checkbox controls to enable or disable filtering on a column</li>
+            <li>Column - contains the name of the column</li>
+            <li>Type - contains a string indicating the type of the column (e.g. String or Date)</li>
+            <li>Operator - contains a selection input to choose operator used to apply filtering</li>
+            <li>Value - contains inputs to adjust the values to filter on</li>
+        </ol>
+    </dd>
+</dl>
+
+### AdditionalComponentsStyleModel
+
+<TypeSpecTable rows={additionalComponentsStyleModel} />
+
+## Examples
+
+### Colors and Alignment Example
+
+#### Code
+
+```tsx
+"use client";
+
+import Grid, {
+  ColDef,
+  RowDef,
+  StyleModel,
+  TableStyleModel,
+} from "@absreim/react-bootstrap-data-grid";
+import { FC, useMemo } from "react";
+
+const cols: ColDef[] = [
+  {
+    type: "string",
+    name: "variant",
+    label: "Variant",
+  },
+  {
+    type: "string",
+    name: "color",
+    label: "Color",
+  },
+  {
+    type: "string",
+    name: "alignment",
+    label: "Alignment",
+  },
+  {
+    type: "string",
+    name: "placeholderText",
+    label: "Placeholder Text",
+  },
+];
+
+type PartialRow = Record<"variant" | "alignment", string>;
+const partialRows: PartialRow[] = [
+  {
+    variant: "primary",
+    alignment: "baseline",
+  },
+  {
+    variant: "secondary",
+    alignment: "top",
+  },
+  {
+    variant: "success",
+    alignment: "middle",
+  },
+  {
+    variant: "danger",
+    alignment: "bottom",
+  },
+  {
+    variant: "warning",
+    alignment: "text-top",
+  },
+  {
+    variant: "info",
+    alignment: "text-bottom",
+  },
+  {
+    variant: "light",
+    alignment: "baseline",
+  },
+  {
+    variant: "dark",
+    alignment: "top",
+  },
+];
+
+const placeholderText =
+  "This is placeholder text intended to take up space in order to demonstrate " +
+  "the effects of vertical alignment. If cell being vertically aligned is the " +
+  "tallest column for a row, then vertical alignment will have no effect. " +
+  "There should be enough text here to demonstrate the effect even at the " +
+  "largest breakpoint.";
+
+const getComputedTableColors: (variants: string[]) => string[] = (variants) => {
+  const table: HTMLTableElement = document.createElement("table");
+  table.className = "table";
+  table.style.position = "absolute";
+  table.style.visibility = "hidden";
+
+  const tbody = table.createTBody();
+
+  variants.forEach((variant) => {
+    const tr: HTMLTableRowElement = document.createElement("tr");
+    tr.className = `table-${variant}`;
+
+    const td: HTMLTableCellElement = document.createElement("td");
+
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+  });
+
+  document.body.appendChild(table);
+
+  const colors = Array.from(tbody.children).map((tr) => {
+    const td = tr.firstElementChild!;
+    return getComputedStyle(td).backgroundColor;
+  });
+
+  table.remove();
+  return colors;
+};
+
+const getRows: (partialRows: PartialRow[], colors: string[]) => RowDef[] = (
+  partialRows,
+  colors,
+) =>
+  partialRows.map((_, index) => ({
+    variant: partialRows[index].variant,
+    color: colors[index],
+    alignment: partialRows[index].alignment,
+    placeholderText: placeholderText,
+  }));
+
+const tableStyleModel: TableStyleModel = {
+  caption: ["caption-top"],
+  table: ["table-bordered", "border-primary"],
+  tbodyTr: (origIndex) => [`table-${partialRows[origIndex].variant}`],
+  tbodyTd: (origRowIndex, _, colIndex) =>
+    colIndex === 2 ? [`align-${partialRows[origRowIndex].alignment}`] : [],
+};
+
+const styleModel: StyleModel = {
+  mainTableStyleModel: tableStyleModel,
+};
+
+const caption: string =
+  "Table demonstrating various ways of customizing " +
+  "styling with classes built into Bootstrap";
+
+const SampleStyledGrid: FC = () => {
+  const rows = useMemo(() => {
+    const variants = partialRows.map(({ variant }) => variant);
+    const colors = getComputedTableColors(variants);
+    return getRows(partialRows, colors);
+  }, []);
+
+  return (
+    <Grid rows={rows} cols={cols} styleModel={styleModel} caption={caption} />
+  );
+};
+
+export default SampleStyledGrid;
+```
+
+#### Live Demo
+
+<SampleStyledGrid />
+
+### Inputs and Display Order Example
+
+#### Code
+
+```tsx
+import Grid, {
+  ColDef,
+  EditableTableFilterState,
+  EditModel,
+  FilterModel,
+  RowDef,
+  StyleModel,
+  UpdateCallbackGenerator,
+} from "@absreim/react-bootstrap-data-grid";
+import { FC, MouseEventHandler, useCallback, useMemo, useState } from "react";
+
+const cols: ColDef[] = [
+  {
+    type: "string",
+    name: "name",
+    label: "Name",
+  },
+  {
+    type: "number",
+    name: "timesAttended",
+    label: "Times Attended",
+  },
+  {
+    type: "date",
+    name: "recruitmentDate",
+    label: "Recruitment Date",
+  },
+];
+
+const initRows: RowDef[] = [
+  {
+    name: "Commander Shepard",
+    timesAttended: 100,
+    recruitmentDate: new Date("2183-01-01"),
+  },
+  {
+    name: "Kaidan Alenko",
+    timesAttended: 25,
+    recruitmentDate: new Date("2183-01-02"),
+  },
+  {
+    name: "Ashley Williams",
+    timesAttended: 20,
+    recruitmentDate: new Date("2183-01-10"),
+  },
+  {
+    name: "Garrus Vakarian",
+    timesAttended: 15,
+    recruitmentDate: new Date("2183-02-01"),
+  },
+  {
+    name: "Tali'Zorah nar Rayya",
+    timesAttended: 12,
+    recruitmentDate: new Date("2183-03-15"),
+  },
+  {
+    name: "Urdnot Wrex",
+    timesAttended: 10,
+    recruitmentDate: new Date("2183-03-20"),
+  },
+  {
+    name: "Liara T'soni",
+    timesAttended: 8,
+    recruitmentDate: new Date("2183-06-21"),
+  },
+];
+
+const caption = "Normandy SR-1 Insiders";
+
+const styleModel: StyleModel = {
+  mainTableStyleModel: {
+    table: ["table-striped"],
+    tbodyTdInput: () => ["form-control-sm"],
+    editDeleteButton: () => ["btn-danger"],
+    editSaveButton: () => ["btn-success"],
+    editCancelButton: () => ["btn-warning"],
+  },
+  additionalComponentsStyleModel: {
+    topLevelDiv: ["vstack flex-column-reverse border"],
+    filterInputsDiv: [
+      "vstack flex-column-reverse align-items-start border m-2 p-2 gap-2",
+    ],
+    tableAndPaginationDiv: ["vstack flex-column-reverse border m-2 p-2"],
+    filterUiToggleButton: ["btn-info"],
+  },
+  filterInputTableStyleModel: {
+    table: ["table-striped-columns"],
+    startDateInput: () => ["form-control-sm"],
+    endDateInput: () => ["form-control-sm"],
+    submitButton: ["btn-success"],
+  },
+};
+
+const SampleStyledInputsGrid: FC = () => {
+  const [rows, setRows] = useState<RowDef[]>(initRows);
+  const [tableFilterState, setTableFilterState] =
+    useState<EditableTableFilterState>({
+      name: {
+        type: "string",
+        scheme: "contains",
+        searchString: "",
+        enabled: false,
+      },
+      timesAttended: {
+        type: "number",
+        scheme: "greaterOrEqual",
+        numValue: null,
+        enabled: false,
+      },
+      recruitmentDate: {
+        type: "date",
+        scheme: "between",
+        startDate: null,
+        endDate: null,
+        enabled: false,
+      },
+    });
+
+  const filterModel: FilterModel = useMemo(
+    () => ({
+      tableFilterState,
+      setTableFilterState,
+    }),
+    [tableFilterState],
+  );
+
+  const getUpdateCallback: UpdateCallbackGenerator = useCallback(
+    (origIndex) => (rowDef) => {
+      setRows((rows) => {
+        const newRows = rows.slice();
+        newRows[origIndex] = rowDef;
+        return newRows;
+      });
+    },
+    [],
+  );
+  const getDeleteCallback: (origIndex: number) => () => void = useCallback(
+    (origIndex) => () => {
+      setRows((rows) => rows.toSpliced(origIndex, 1));
+    },
+    [],
+  );
+
+  const editModel: EditModel = { getUpdateCallback, getDeleteCallback };
+  const handleReset: MouseEventHandler<HTMLButtonElement> = () => {
+    setRows(initRows);
+  };
+
+  return (
+    <div className="vstack gap-2 align-items-start border p-2">
+      <Grid
+        rows={rows}
+        cols={cols}
+        caption={caption}
+        filterModel={filterModel}
+        editModel={editModel}
+        styleModel={styleModel}
+      />
+      <button className="btn btn-secondary btn-sm" onClick={handleReset}>
+        Reset Rows
+      </button>
+    </div>
+  );
+};
+
+export default SampleStyledInputsGrid;
+```
+
+#### Live Demo
+
+<SampleStyledInputsGrid />
