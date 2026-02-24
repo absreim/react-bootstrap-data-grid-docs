@@ -37,10 +37,14 @@
 // Styles specific to this project
 
 .rbdg-docs-toc {
-  min-width: 10rem;
+  min-width: 13rem;
   font-size: 0.9rem;
 
   ul {
     padding-left: map.get($spacers, 3)
   }
+}
+
+.rbdg-docs-main {
+  min-height: 0;
 }

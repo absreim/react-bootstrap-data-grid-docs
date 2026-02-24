@@ -1,0 +1,337 @@
+import TypeSpecTable from "../shared/TypeSpecTable";
+import {multiSelectMode, singleSelectMode} from "../shared/typeSpecs";
+import ExternalInteractionExample from "../app/selection/ExternalInteractionExample";
+import SampleMultiSelectGridContainer from "../app/selection/SampleMultiSelectGridContainer";
+import SampleSingleSelectGridContainer from "../app/selection/SampleSingleSelectGridContainer";
+
+# Selection
+
+React Bootstrap Data Grid provides functionality for the user to select and deselect rows in a `Grid` component.
+
+A `Grid` can be configured to allow or disallow selection. If allowed, it can be configured to either allow selection of one row at a time or multiple rows at a time.
+
+In addition, after configuring whether to allow single or multiple selection, it can be configured to allow selection by clicking on a row, by clicking on a radio or checkbox (single and multiple selection, respectively) for each row, or both.
+
+If radio or checkbox selection is enabled (including the "both" option), the header cell for the column that contains radio or checkbox selection inputs will be clickable. Clicking on it will deselect any existing selected rows if there is currently one or more rows selected. If no rows are selected, clicking on the header cell selects all rows if multiple selection is enabled. If single selection is enabled while no existing row is selected, clicking on the header cell does nothing.
+
+## Type Definitions
+
+### SelectModel
+
+Objects of type `SelectModel` are used to enable selection for a `Grid`, specify the mode (single vs multi), type (row, column, or both), and contain the state that keeps track of what rows are selected. Selected rows are tracked by original index of each row inside the array that is passed into `Grid`.
+
+A `SelectModel` is one of two interfaces, `SingleSelectModel` and `MultiSelectModel`, for single selection and multiple selection modes, respectively.
+
+### MultiSelectModel
+
+<TypeSpecTable rows={multiSelectMode}/>
+
+### SingleSelectModel
+
+<TypeSpecTable rows={singleSelectMode}/>
+
+### SelectMode
+
+A union of values that indicate the mode of selection.
+
+<dl>
+    <dt>row</dt>
+    <dd>
+        Selection can only be done by clicking on the row. Selected rows are
+        highlighted and when the mouse hovers over a row, the row is also
+        highlighted (in a color different from that of selected rows.)
+    </dd>
+    <dt>column</dt>
+    <dd>
+        Selection can only be done by clicking on inputs elements in a
+        dedicated column. Choosing this mode also enables a header cell that
+        offers to select all or deselect all rows (exact functionality depends
+        on the selection type, single or multi).
+    </dd>
+    <dt>both</dt>
+    <dd>
+        If this mode is chosen, functionality from both <code>row</code> and
+        <code>column</code> modes will be active at the same time.
+    </dd>
+</dl>
+
+## Examples
+
+### External Interaction
+
+To have your app act on selected elements, simply read the row indices from the state that is passed down in your parent component and do something with it.
+
+#### Code
+
+```tsx
+"use client";
+
+import { FC, useMemo, useState } from "react";
+import Grid, {
+  ColDef,
+  MultiSelectModel,
+  RowDef,
+} from "@absreim/react-bootstrap-data-grid";
+import Button from "react-bootstrap/Button";
+import Stack from "react-bootstrap/Stack";
+
+const cols: ColDef[] = [
+  {
+    type: "number",
+    name: "number",
+    label: "Number",
+  },
+];
+
+const origRows: RowDef[] = [
+  {
+    number: 1,
+  },
+  {
+    number: 2,
+  },
+  {
+    number: 3,
+  },
+  {
+    number: 4,
+  },
+  {
+    number: 5,
+  },
+];
+
+const ExternalInteractionExample: FC = () => {
+  const [rows, setRows] = useState<RowDef[]>(origRows);
+  const [selected, setSelected] = useState<number[]>([]);
+  const selectModel: MultiSelectModel = useMemo(
+    () => ({
+      mode: "both",
+      type: "multi",
+      selected,
+      setSelected,
+    }),
+    [selected],
+  );
+
+  const deleteSelectedRows = () => {
+    setRows(rows.filter((_, index) => !selected.includes(index)));
+    setSelected([]);
+  };
+
+  const resetRows = () => {
+    setRows(origRows.slice());
+  };
+
+  return (
+    <Stack gap={2}>
+      <Grid rows={rows} cols={cols} selectModel={selectModel} />
+      <Stack direction="horizontal" gap={2} className="justify-content-end">
+        <Button
+          onClick={resetRows}
+          disabled={rows.length === origRows.length}
+          variant="secondary"
+        >
+          Reset
+        </Button>
+        <Button
+          onClick={deleteSelectedRows}
+          disabled={selected.length === 0}
+          variant="primary"
+        >
+          Delete Selected
+        </Button>
+      </Stack>
+    </Stack>
+  );
+};
+
+export default ExternalInteractionExample;
+```
+
+#### Live Demo
+
+<ExternalInteractionExample />
+
+### Multiple Selection Mode
+
+#### Code
+
+```tsx
+"use client";
+
+import Grid, {
+  ColDef,
+  MultiSelectModel,
+  RowDef,
+  SelectMode,
+} from "@absreim/react-bootstrap-data-grid";
+import { FC, useMemo, useState } from "react";
+
+export interface SampleMultiSelectGridProps {
+  mode: SelectMode;
+}
+
+const cols: ColDef[] = [
+  {
+    name: "name",
+    type: "string",
+    label: "Name",
+  },
+  {
+    name: "damage",
+    type: "number",
+    label: "Average Damage",
+  },
+  {
+    name: "weight",
+    type: "number",
+    label: "Weight (lb)",
+  },
+  {
+    name: "price",
+    type: "number",
+    label: "Price",
+  },
+];
+
+const rows: RowDef[] = [
+  {
+    name: "Short Bow",
+    damage: 3.5,
+    weight: 1.8,
+    price: 16,
+  },
+  {
+    name: "Long Bow",
+    damage: 4.5,
+    weight: 2.2,
+    price: 50,
+  },
+  {
+    name: "Light Crossbow",
+    damage: 4.5,
+    weight: 4.5,
+    price: 30,
+  },
+  {
+    name: "Heavy Crossbow",
+    damage: 5.5,
+    weight: 16.2,
+    price: 65,
+  },
+  {
+    name: "Hand Crossbow",
+    damage: 3.5,
+    weight: 1.8,
+    price: 50,
+  },
+];
+
+const SampleMultiSelectGrid: FC<SampleMultiSelectGridProps> = ({ mode }) => {
+  const [selected, setSelected] = useState<number[]>([]);
+  const selectModel: MultiSelectModel = useMemo(
+    () => ({
+      mode,
+      type: "multi",
+      selected,
+      setSelected,
+    }),
+    [mode, selected],
+  );
+
+  return <Grid rows={rows} cols={cols} selectModel={selectModel} />;
+};
+
+export default SampleMultiSelectGrid;
+```
+
+#### Live Demo
+
+<SampleMultiSelectGridContainer />
+
+### Single Selection Mode
+
+#### Code
+
+```tsx
+"use client";
+
+import { FC, useMemo, useState } from "react";
+import Grid, {
+  ColDef,
+  RowDef,
+  SelectMode,
+  SingleSelectModel,
+} from "@absreim/react-bootstrap-data-grid";
+
+export interface SampleSingleSelectGridProps {
+  mode: SelectMode;
+}
+
+const cols: ColDef[] = [
+  {
+    name: "name",
+    type: "string",
+    label: "Name",
+  },
+  {
+    name: "school",
+    type: "string",
+    label: "School",
+  },
+];
+
+const rows: RowDef[] = [
+  {
+    name: "Acid Splash",
+    school: "Conjuration",
+  },
+  {
+    name: "Blade Ward",
+    school: "Abjuration",
+  },
+  {
+    name: "Bone Chill",
+    school: "Necromancy",
+  },
+  {
+    name: "Fire Bolt",
+    school: "Evocation",
+  },
+  {
+    name: "Minor Illusion",
+    school: "Illusion",
+  },
+  {
+    name: "Friends",
+    school: "Enchantment",
+  },
+  {
+    name: "Ray of Frost",
+    school: "Evocation",
+  },
+];
+
+const SampleSingleSelectGrid: FC<SampleSingleSelectGridProps> = ({ mode }) => {
+  const [selected, setSelected] = useState<number | null>(null);
+  const selectModel: SingleSelectModel = useMemo(
+    () => ({
+      mode,
+      type: "single",
+      selected,
+      setSelected,
+      groupName: "single selection example grid (BG3 cantrips)",
+    }),
+    [mode, selected],
+  );
+
+  return <Grid rows={rows} cols={cols} selectModel={selectModel} />;
+};
+
+export default SampleSingleSelectGrid;
+```
+
+#### Live Demo
+
+<SampleSingleSelectGridContainer />

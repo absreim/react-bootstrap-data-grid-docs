@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className="vh-100">
         <div className="d-flex flex-column h-100">
           <AppBar />
-          <div className="container d-flex flex-row gap-2 flex-grow-1" style={{minHeight: "0"}}>
+          <div className="container d-flex flex-row gap-2 flex-grow-1 rbdg-docs-main">
             <div className="d-none d-lg-block">
               <ContentsNavbar />
             </div>

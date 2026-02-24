@@ -19,10 +19,10 @@ export default async function Page({
 
   return (
     <Stack className="align-items-start h-100" direction="horizontal" gap={2}>
-      <div className="overflow-y-auto h-100">
+      <div className="overflow-y-auto h-100 px-2">
         <Post />
       </div>
-      <nav className="d-none d-lg-block rbdg-docs-toc overflow-y-auto h-100">
+      <nav className="d-none d-xl-block rbdg-docs-toc overflow-y-auto h-100">
         <Toc tocItems={toc} />
       </nav>
     </Stack>
