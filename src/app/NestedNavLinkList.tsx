@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { NestedNavLinkNode } from "@/app/[slug]/types";
+import { NestedNavLinkNode } from "@/app/types";
 
 export interface NestedNavLinkListProps {
   nodes: NestedNavLinkNode[];

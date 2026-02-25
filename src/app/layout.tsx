@@ -3,6 +3,8 @@ import "./style.scss";
 import AppBar from "./AppBar";
 import ContentsNavbar from "@/app/ContentsNavbar";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "React Bootstrap Data Grid Documentation",
@@ -10,14 +12,28 @@ export const metadata: Metadata = {
     "Technical documentation for the react-bootstrap-data-grid project",
 };
 
+// While it is possible to use cookies to have the server set the data-bs-theme
+// attribute on the <html> element to get rid of the hydration warning, there
+// is currently no "auto" mode for that attribute.
+//
+// For Bootstrap, the "auto" mode must be implemented via JavaScript. It is
+// theoretically possible (I think) to modify Bootstrap's CSS to obey an "auto"
+// mode value by having Bootstrap use media queries when such a value exists,
+// but doing so would probably take an extensive amount of effort.
+//
+// For those reasons, I decided to suppress hydration warnings on the <html>
+// element for now to facilitate the implementation of the dark mode feature
+// for this site.
+
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="vh-100">
+        <Script src="/dark-mode.js" strategy="beforeInteractive" />
         <div className="d-flex flex-column h-100">
           <AppBar />
           <div className="container d-flex flex-row gap-2 flex-grow-1 rbdg-docs-main">
