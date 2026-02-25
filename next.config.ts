@@ -17,7 +17,12 @@ const withMDX = createMDX({
     rehypePlugins: [
       "rehype-slug",
       "rehype-mdx-toc",
-      ["rehype-pretty-code", { theme: "github-light-default" }],
+      [
+        "rehype-pretty-code",
+        {
+          theme: { light: "github-light-default", dark: "github-dark-default" },
+        },
+      ],
     ],
   },
 });
