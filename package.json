@@ -1,7 +1,7 @@
 {
   "name": "react-bootstrap-data-grid-docs",
   "description": "Documentation site for React Bootstrap Data Grid",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -31,7 +31,7 @@
   "license": "MIT",
   "author": "Brook Li",
   "dependencies": {
-    "@absreim/react-bootstrap-data-grid": "1.4.1",
+    "@absreim/react-bootstrap-data-grid": "^1.4.2",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.1.6",
