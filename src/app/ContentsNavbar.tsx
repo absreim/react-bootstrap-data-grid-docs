@@ -3,6 +3,7 @@
 import { FC } from "react";
 import { usePathname } from "next/navigation";
 import Nav from "react-bootstrap/Nav";
+import Link from "next/link";
 
 interface LinkDefinition {
   name: string;
@@ -47,7 +48,7 @@ const ContentsNavbar: FC = () => {
     <Nav variant="underline" activeKey={pathname} className="flex-column">
       {linkDefs.map(({ name, path }, index) => (
         <Nav.Item key={index}>
-          <Nav.Link href={path}>{name}</Nav.Link>
+          <Nav.Link as={Link} href={path}>{name}</Nav.Link>
         </Nav.Item>
       ))}
     </Nav>

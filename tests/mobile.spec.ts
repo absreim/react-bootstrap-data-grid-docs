@@ -1,25 +1,32 @@
 import { test, expect, Page } from "@playwright/test";
+import { sectionNames } from "./shared";
 
 test.use({
   viewport: { width: 375, height: 667 }, // iPhone SE
-})
+});
 
 const testNavLinkAndHeading: (
   page: Page,
   sectionName: string,
 ) => Promise<void> = async (page, sectionName) => {
   const navbar = page.getByRole("navigation");
-  const menuToggleButton = navbar.getByRole("button", { name: "Contents" });
+  let menuToggleButton = navbar.getByRole("button", { name: "Articles" });
   await menuToggleButton.click();
 
   const dialog = page.getByRole("dialog");
   const link = dialog.getByRole("link", { name: sectionName });
   await link.click();
+  const dialogCloseButton = dialog.getByRole("button", { name: "Close" });
+  await dialogCloseButton.click();
+
   const heading = page.getByRole("heading", {
     level: 1,
     name: sectionName,
   });
   await expect(heading).toBeVisible();
+
+  menuToggleButton = navbar.getByRole("button", { name: "Articles" });
+  await expect(menuToggleButton).toBeVisible();
 };
 
 test("off-canvas links work", async ({ page }) => {
@@ -31,7 +38,7 @@ test("off-canvas links work", async ({ page }) => {
   });
   await expect(introHeading).toBeVisible();
 
-  await testNavLinkAndHeading(page, "Pagination");
-  // TODO: fix the test for other links. There appears to be flakiness due to
-  // the use of react-bootstrap's Offcanvas component.
+  for (const section of sectionNames) {
+    await testNavLinkAndHeading(page, section);
+  }
 });

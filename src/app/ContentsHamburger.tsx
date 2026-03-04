@@ -17,7 +17,7 @@ const ContentsHamburger: FC = () => {
         variant="primary"
         onClick={handleShow}
         className="d-lg-none me-2"
-        aria-label="Contents"
+        aria-label="Articles"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ const ContentsHamburger: FC = () => {
       </Button>
       <Offcanvas show={show} onHide={handleClose} responsive="lg">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Table of Contents</Offcanvas.Title>
+          <Offcanvas.Title>Articles</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="d-lg-none">
           <ContentsNavbar />
