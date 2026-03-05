@@ -34,7 +34,7 @@
 
 @import "@absreim/react-bootstrap-data-grid/style";
 
-// Styles specific to this project
+// --- Styles specific to this project ---
 
 .rbdg-docs-toc {
   min-width: 12rem;
@@ -54,7 +54,7 @@
   min-height: 0;
 }
 
-// Shiki themes
+// --- Shiki themes ---
 
 code[data-theme*=" "],
 code[data-theme*=" "] span {
@@ -62,10 +62,39 @@ code[data-theme*=" "] span {
   background-color: var(--shiki-light-bg);
 }
 
-html[data-bs-theme="dark"] {
+@mixin shiki-dark-theme {
   code[data-theme*=" "],
   code[data-theme*=" "] span {
     color: var(--shiki-dark);
     background-color: var(--shiki-dark-bg);
+  }
+}
+
+:root[data-bs-theme="dark"] {
+  @include shiki-dark-theme;
+}
+
+// --- Additional rules ---
+
+// Workaround to prevent FOUC (flashing) when color mode is set to "auto" and the system setting is set to prefer dark
+// mode. This is essentially a reimplementation of the dark mode rules for Bootstrap in order to get around Bootstrap
+// not innately supporting a mix of system and attribute-based dark mode settings.
+//
+// This is just partial implementation for the rules that are currently in use. When making changes to this project, be
+// sure to test the behavior and add rules as needed. Testing can be done by setting the system preferred color theme
+// to "dark" and refreshing the page. One can also edit the "data-bs-theme" attribute on the <html> element to "auto"
+// in the browser to observe the styling for a longer period of time.
+@media (prefers-color-scheme: dark) {
+  :root[data-bs-theme="auto"] {
+    @include shiki-dark-theme;
+    --bs-body-color: #{$body-color-dark};
+    --bs-body-bg: #{$body-bg-dark};
+    --bs-link-color: #{$link-color-dark};
+    --bs-code-color: #{$code-color-dark};
+    --bs-link-color-rgb: #{to-rgb($link-color-dark)};
+    --bs-navbar-brand-color: #{$navbar-dark-brand-color};
+    --bs-emphasis-color: #{$body-emphasis-color-dark};
+    --bs-emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
+    --bs-border-color: #{$border-color-dark};
   }
 }
