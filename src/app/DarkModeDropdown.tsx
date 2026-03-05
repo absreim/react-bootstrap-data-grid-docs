@@ -36,6 +36,7 @@ const DarkModeDropdown: FC = () => {
   const getItemClickHandler: (theme: string) => () => void = (theme) => () => {
     setTheme(theme);
     localStorage.setItem("theme", theme);
+    document.cookie = `theme=${theme}; path=/; max-age=31536000`;
     (window as (Window & typeof globalThis & { syncTheme: () => void })).syncTheme();
   };
 
