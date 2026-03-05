@@ -71,6 +71,7 @@ import Grid, {
   ColDef,
   MultiSelectModel,
   RowDef,
+  RowId,
 } from "@absreim/react-bootstrap-data-grid";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
@@ -83,27 +84,42 @@ const cols: ColDef[] = [
   },
 ];
 
-const origRows: RowDef[] = [
+const origRows: RowDef<{ number: number }>[] = [
   {
-    number: 1,
+    id: 0,
+    data: {
+      number: 1,
+    },
   },
   {
-    number: 2,
+    id: 1,
+    data: {
+      number: 2,
+    },
   },
   {
-    number: 3,
+    id: 2,
+    data: {
+      number: 3,
+    },
   },
   {
-    number: 4,
+    id: 3,
+    data: {
+      number: 4,
+    },
   },
   {
-    number: 5,
+    id: 4,
+    data: {
+      number: 5,
+    },
   },
 ];
 
 const ExternalInteractionExample: FC = () => {
   const [rows, setRows] = useState<RowDef[]>(origRows);
-  const [selected, setSelected] = useState<number[]>([]);
+  const [selected, setSelected] = useState<RowId[]>([]);
   const selectModel: MultiSelectModel = useMemo(
     () => ({
       mode: "both",
@@ -164,6 +180,7 @@ import Grid, {
   ColDef,
   MultiSelectModel,
   RowDef,
+  RowId,
   SelectMode,
 } from "@absreim/react-bootstrap-data-grid";
 import { FC, useMemo, useState } from "react";
@@ -195,41 +212,63 @@ const cols: ColDef[] = [
   },
 ];
 
-const rows: RowDef[] = [
+interface Data {
+  name: string;
+  damage: number;
+  weight: number;
+  price: number;
+}
+
+const rows: RowDef<Data>[] = [
   {
-    name: "Short Bow",
-    damage: 3.5,
-    weight: 1.8,
-    price: 16,
+    id: 0,
+    data: {
+      name: "Short Bow",
+      damage: 3.5,
+      weight: 1.8,
+      price: 16,
+    },
   },
   {
-    name: "Long Bow",
-    damage: 4.5,
-    weight: 2.2,
-    price: 50,
+    id: 1,
+    data: {
+      name: "Long Bow",
+      damage: 4.5,
+      weight: 2.2,
+      price: 50,
+    },
   },
   {
-    name: "Light Crossbow",
-    damage: 4.5,
-    weight: 4.5,
-    price: 30,
+    id: 2,
+    data: {
+      name: "Light Crossbow",
+      damage: 4.5,
+      weight: 4.5,
+      price: 30,
+    },
   },
   {
-    name: "Heavy Crossbow",
-    damage: 5.5,
-    weight: 16.2,
-    price: 65,
+    id: 3,
+    data: {
+      name: "Heavy Crossbow",
+      damage: 5.5,
+      weight: 16.2,
+      price: 65,
+    },
   },
   {
-    name: "Hand Crossbow",
-    damage: 3.5,
-    weight: 1.8,
-    price: 50,
+    id: 4,
+    data: {
+      name: "Hand Crossbow",
+      damage: 3.5,
+      weight: 1.8,
+      price: 50,
+    },
   },
 ];
 
 const SampleMultiSelectGrid: FC<SampleMultiSelectGridProps> = ({ mode }) => {
-  const [selected, setSelected] = useState<number[]>([]);
+  const [selected, setSelected] = useState<RowId[]>([]);
   const selectModel: MultiSelectModel = useMemo(
     () => ({
       mode,
@@ -261,6 +300,7 @@ import { FC, useMemo, useState } from "react";
 import Grid, {
   ColDef,
   RowDef,
+  RowId,
   SelectMode,
   SingleSelectModel,
 } from "@absreim/react-bootstrap-data-grid";
@@ -282,39 +322,65 @@ const cols: ColDef[] = [
   },
 ];
 
-const rows: RowDef[] = [
+interface Data {
+  name: string;
+  school: string;
+}
+
+const rows: RowDef<Data>[] = [
   {
-    name: "Acid Splash",
-    school: "Conjuration",
+    id: 0,
+    data: {
+      name: "Acid Splash",
+      school: "Conjuration",
+    },
   },
   {
-    name: "Blade Ward",
-    school: "Abjuration",
+    id: 1,
+    data: {
+      name: "Blade Ward",
+      school: "Abjuration",
+    },
   },
   {
-    name: "Bone Chill",
-    school: "Necromancy",
+    id: 2,
+    data: {
+      name: "Bone Chill",
+      school: "Necromancy",
+    },
   },
   {
-    name: "Fire Bolt",
-    school: "Evocation",
+    id: 3,
+    data: {
+      name: "Fire Bolt",
+      school: "Evocation",
+    },
   },
   {
-    name: "Minor Illusion",
-    school: "Illusion",
+    id: 4,
+    data: {
+      name: "Minor Illusion",
+      school: "Illusion",
+    },
   },
   {
-    name: "Friends",
-    school: "Enchantment",
+    id: 5,
+    data: {
+      name: "Friends",
+      school: "Enchantment",
+    },
   },
   {
-    name: "Ray of Frost",
-    school: "Evocation",
+    id: 6,
+    data: {
+      name: "Ray of Frost",
+      school: "Evocation",
+    },
   },
 ];
 
 const SampleSingleSelectGrid: FC<SampleSingleSelectGridProps> = ({ mode }) => {
-  const [selected, setSelected] = useState<number | null>(null);
+  const [selected, setSelected] = useState<RowId | null>(null);
   const selectModel: SingleSelectModel = useMemo(
     () => ({
       mode,
