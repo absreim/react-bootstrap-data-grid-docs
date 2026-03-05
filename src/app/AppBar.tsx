@@ -1,13 +1,12 @@
-"use client"
+"use client";
 
 import { FC } from "react";
 import ContentsHamburger from "@/app/ContentsHamburger";
 import dynamic from "next/dynamic";
 
-const DarkModeDropdown  = dynamic(
-  () => import("@/app/DarkModeDropdown"),
-  { ssr: false },
-);
+const DarkModeDropdown = dynamic(() => import("@/app/DarkModeDropdown"), {
+  ssr: false,
+});
 
 const AppBar: FC = () => {
   return (

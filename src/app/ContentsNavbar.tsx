@@ -39,6 +39,14 @@ const linkDefs: LinkDefinition[] = [
     name: "Styling",
     path: "/styling",
   },
+  {
+    name: "Versions",
+    path: "/versions",
+  },
+  {
+    name: "Migrate",
+    path: "/migrate",
+  },
 ];
 
 const ContentsNavbar: FC = () => {
@@ -48,7 +56,9 @@ const ContentsNavbar: FC = () => {
     <Nav variant="underline" activeKey={pathname} className="flex-column">
       {linkDefs.map(({ name, path }, index) => (
         <Nav.Item key={index}>
-          <Nav.Link as={Link} href={path}>{name}</Nav.Link>
+          <Nav.Link as={Link} href={path}>
+            {name}
+          </Nav.Link>
         </Nav.Item>
       ))}
     </Nav>

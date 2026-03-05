@@ -165,7 +165,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "tbodyTr",
-    typeDefinition: "(origIndex: number, displayIndex: number) => string[]",
+    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
     isRequired: false,
     description: (
       <>
@@ -201,7 +201,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "editColTd",
-    typeDefinition: "(origIndex: number, displayIndex: number) => string[]",
+    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
     isRequired: false,
     description: (
       <>
@@ -223,7 +223,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "selectColTd",
-    typeDefinition: "(origIndex: number, displayIndex: number) => string[]",
+    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
     isRequired: false,
     description: (
       <>
@@ -234,7 +234,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "selectInput",
-    typeDefinition: "(origIndex: number, displayIndex: number) => string[]",
+    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
     isRequired: false,
     description: (
       <>
@@ -245,7 +245,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "editStartButton",
-    typeDefinition: "(origIndex: number, displayIndex: number) => string[]",
+    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
     isRequired: false,
     description: (
       <>
@@ -259,7 +259,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "editDeleteButton",
-    typeDefinition: "(origIndex: number, displayIndex: number) => string[]",
+    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
     isRequired: false,
     description: (
       <>
@@ -273,7 +273,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "editSaveButton",
-    typeDefinition: "(origIndex: number, displayIndex: number) => string[]",
+    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
     isRequired: false,
     description: (
       <>
@@ -287,7 +287,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "editCancelButton",
-    typeDefinition: "(origIndex: number, displayIndex: number) => string[]",
+    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
     isRequired: false,
     description: (
       <>
@@ -331,7 +331,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "rowSelectColTd",
-    typeDefinition: "(origIndex: number, displayIndex: number) => string[]",
+    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
     isRequired: false,
     description: (
       <>
@@ -342,7 +342,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "rowSelectInput",
-    typeDefinition: "(origIndex: number, displayIndex: number) => string[]",
+    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
     isRequired: false,
     description: (
       <>

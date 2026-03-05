@@ -5,5 +5,7 @@ export const sectionNames = [
   "Selection",
   "Editing",
   "Styling",
+  "Versions",
+  "Migrate",
   "Introduction",
 ];

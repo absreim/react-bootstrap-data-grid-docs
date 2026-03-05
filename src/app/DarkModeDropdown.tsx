@@ -37,12 +37,16 @@ const DarkModeDropdown: FC = () => {
     setTheme(theme);
     localStorage.setItem("theme", theme);
     document.cookie = `theme=${theme}; path=/; max-age=31536000`;
-    (window as (Window & typeof globalThis & { syncTheme: () => void })).syncTheme();
+    (
+      window as Window & typeof globalThis & { syncTheme: () => void }
+    ).syncTheme();
   };
 
   return (
     <Dropdown>
-      <Dropdown.Toggle aria-label={`Toggle Theme (${theme})`}>{getThemeIcon(theme)}</Dropdown.Toggle>
+      <Dropdown.Toggle aria-label={`Toggle Theme (${theme})`}>
+        {getThemeIcon(theme)}
+      </Dropdown.Toggle>
       <Dropdown.Menu>
         {menuOptions.map(([icon, label, value]) => (
           <Dropdown.Item key={value} onClick={getItemClickHandler(value)}>

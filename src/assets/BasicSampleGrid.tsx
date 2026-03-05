@@ -21,41 +21,62 @@ const cols: ColDef[] = [
   },
 ];
 
-const rows: RowDef[] = [
+const rows: RowDef<{ name: string; race: string; class: string }>[] = [
   {
-    name: "The Dark Urge",
-    race: "Dragonborn",
-    class: "Sorcerer",
+    id: 0,
+    data: {
+      name: "The Dark Urge",
+      race: "Dragonborn",
+      class: "Sorcerer",
+    },
   },
   {
-    name: "Lae'zel",
-    race: "Githyanki",
-    class: "Fighter",
+    id: 1,
+    data: {
+      name: "Lae'zel",
+      race: "Githyanki",
+      class: "Fighter",
+    },
   },
   {
-    name: "Shadowheart",
-    race: "Half-elf",
-    class: "Cleric",
+    id: 2,
+    data: {
+      name: "Shadowheart",
+      race: "Half-elf",
+      class: "Cleric",
+    },
   },
   {
-    name: "Astarion",
-    race: "Elf",
-    class: "Rogue",
+    id: 3,
+    data: {
+      name: "Astarion",
+      race: "Elf",
+      class: "Rogue",
+    },
   },
   {
-    name: "Gale",
-    race: "Human",
-    class: "Wizard",
+    id: 4,
+    data: {
+      name: "Gale",
+      race: "Human",
+      class: "Wizard",
+    },
   },
   {
-    name: "Wyll",
-    race: "Human",
-    class: "Warlock",
+    id: 5,
+    data: {
+      name: "Wyll",
+      race: "Human",
+      class: "Warlock",
+    },
   },
   {
-    name: "Karlach",
-    race: "Tiefling",
-    class: "Barbarian",
+    id: 6,
+    data: {
+      name: "Karlach",
+      race: "Tiefling",
+      class: "Barbarian",
+    },
   },
 ];
 

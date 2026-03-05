@@ -31,7 +31,7 @@
   "license": "MIT",
   "author": "Brook Li",
   "dependencies": {
-    "@absreim/react-bootstrap-data-grid": "^1.4.2",
+    "@absreim/react-bootstrap-data-grid": "^2.0.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.1.6",

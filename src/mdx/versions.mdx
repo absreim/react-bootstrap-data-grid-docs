@@ -1,0 +1,132 @@
+# Versions
+
+This project strives to follow the [semver](https://semver.org/) system for versioning. In particular, this means that
+breaking changes should increment the major version number, backwards-compatible new feature additions should increment
+the minor version number, and backwards-compatible bug fixes should increment the patch version number.
+
+## Change Log
+
+### 2.0.0
+
+March 6, 2026
+
+- Changed typing of row definitions (`RowDef`) to have a mandatory stable `id` field. Previously, the index of the
+  original array was used as the ID.
+- Changed the default formatting functions for _number_, _date_, and _datetime_ types to improve performance.
+
+### 1.4.2
+
+March 1, 2026
+
+- Changed the select all/deselect all UI control to use checkboxes rather than SVG icons.
+- The select all UI control is now disabled in cases where the table has zero rows.
+- Changed the edit control buttons to use Bootstrap icons rather than text labels.
+- Other minor changes, such as removing styles that are no longer needed.
+
+### 1.4.1
+
+February 13, 2026
+
+Add exports for two utility functions, `dateToInputStr` and `dateToDatetimeInputStr`. These functions take in JavaScript `Date` objects and output strings used for the `value` field of `date` and `datetime-local` HTML `input` elements, respectively.
+
+### 1.4.0
+
+February 9, 2026
+
+This release adds a feature that allows the developer to specify CSS classes for various components of the Grid. Details can be found under the _Styling_ section of the documentation.
+
+This release also contains various relatively minor bug fixes.
+
+### 1.3.0
+
+January 28, 2026
+
+This release adds a feature that allows a user to edit the contents of rows.
+
+### 1.2.2
+
+January 19, 2026
+
+This release contains bug fixes, documentation updates, and other enhancements.
+
+- Fixed an issue where the distributed NPM package was not working NextJS due to the output preserving JSX syntax.
+- Styles specific to React Bootstrap Data Grid were not being distributed with the NPM package. They are now included, and documentation has been updated to give examples on how to import them.
+- Adjusted class names for styles specific to React Bootstrap Data Grid to have a "rbdg" prefix to distinguish them from class names from other sources.
+
+### 1.2.1
+
+January 16, 2026
+
+Selection feature no longer in experimental state due to it now having an automated test suite. Fixed a bug involving accessibility for the selection feature.
+
+### 1.2.0
+
+January 14, 2026
+
+Added Selection feature, but in an experimental state.
+
+### 1.1.4
+
+December 29, 2025
+
+Changed behavior of pagination feature when selecting a new page size that would make the existing index out-of-bounds. The index will be set to the maximum available for the page size.
+
+### 1.1.3
+
+December 23, 2025
+
+Fixed bug with datetime filter functionality involving timezones and updated documentation to explain how filtering works with timezones.
+
+### 1.1.2
+
+December 20, 2025
+
+Fixed bug that prevented filtering from working at all.
+
+### 1.1.1
+
+December 20, 2025
+
+Change React keys of rows to be based on original ordering in order to improve rendering performance when using pagination and sorting.
+
+### 1.1.0
+
+December 18, 2025
+
+Added filtering feature.
+
+### 1.0.0
+
+December 17, 2025
+
+Added _aria-colindex_ and _aria-rowindex_ attributes to improve accessibility and facilitate testing.
+
+Bumped peer dependency of package to React 19. **This change may break projects still using React 18.**
+
+Migrated tests to Playwright due to limitations introduced by more recent versions of React Testing Library.
+
+### 0.1.4
+
+May 9, 2024
+
+Added sorting feature.
+
+Added syntax highlighting to code blocks in documentation.
+
+### 0.1.3
+
+Apr. 18, 2024
+
+Added pagination feature.
+
+### 0.1.2
+
+Mar. 14, 2024
+
+Added automated tests and a build script to generate files meant for publishing as an NPM package.
+
+### 0.1.0
+
+Feb. 27, 2024
+
+Initial release with baseline row definition, column definition, and data display functionality.

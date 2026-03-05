@@ -10,9 +10,7 @@ const NestedNavLinkList: FC<NestedNavLinkListProps> = ({ nodes }) => {
     <ul>
       {nodes.map((node) => (
         <li key={node.value} className="rbdg-docs-toc-li">
-          <a href={node.href}>
-            {node.value}
-          </a>
+          <a href={node.href}>{node.value}</a>
           {node.children.length > 0 && (
             <NestedNavLinkList nodes={node.children} />
           )}

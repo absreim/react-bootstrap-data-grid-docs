@@ -1,0 +1,334 @@
+import FormattersV1 from "@/assets/migrate/formattersV1";
+import FormattersV2 from "@/assets/migrate/formattersV2";
+
+# Migrate
+
+Version 2 contains breaking changes over version 1. Use the following guide to migrate from version 1 to 2.
+
+## RowDef Type Change
+
+Previously, the type that defines the contents of a single row, `RowDef` consisted of an object containing each of the
+fields defined in the column definions (an array of `ColDef`). Consider the following example:
+
+```tsx
+const cols: ColDef[] = [
+  {
+    type: "string",
+    name: "strCol",
+    label: "String Column",
+  },
+  {
+    type: "number",
+    name: "numCol",
+    label: "Number Column",
+  },
+  {
+    type: "date",
+    name: "dateCol",
+    label: "Date Column",
+  },
+  {
+    type: "datetime",
+    name: "datetimeCol",
+    label: "Datetime Column",
+  },
+];
+
+const rows: RowDef[] = [
+  {
+    strCol: "String value",
+    numCol: 1,
+    dateCol: new Date(),
+    datetimeCol: new Date(),
+  },
+  // additional rows
+];
+```
+
+In version 2, the `ColDef`s will remain the same, but the `RowDef`s will need to have an explicit `id` defined, the `id`
+can be a `number` or `string` and must be unique among all of the rows in the array of `RowDef`s passed to the `rows`
+prop of the `Grid` component.
+
+In documentation, the type of `id` is often referred to by the type `RowId`, which is `number | string`.
+
+The `id` will be used as a `key` prop for components that render the rows in the `Grid`. See the [relevant React
+documentation](https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key) on selecting `key`s to get
+more insight on selecting a proper `key`.
+
+Besides potential performance improvements from reducing the frequency of mounting and unmounting components
+representing rows, this design change is important to avoid race conditions when editing or deleting rows.
+
+The above example can be adapted for version 2 of React Bootstrap Data Grid as follows:
+
+```tsx
+const rows: RowDef[] = [
+  {
+    id: 0,
+    data: {
+      strCol: "String value",
+      numCol: 1,
+      dateCol: new Date(),
+      datetimeCol: new Date(),
+    },
+  },
+  // additional rows
+];
+```
+
+One can also specify a generic type for the `data` field of `RowDef` to have a code editor and/or TypeScript aid in
+typechecking:
+
+```tsx
+interface TestRowData {
+  strCol: string;
+  numCol: number;
+  dateCol: Date;
+  datetimeCol: Date;
+}
+
+const rows: RowDef<TestRowData>[] = [
+  {
+    id: 0,
+    data: {
+      strCol: "String value",
+      numCol: 1,
+      dateCol: new Date(),
+      datetimeCol: new Date(),
+    },
+  },
+  // additional rows
+];
+```
+
+Note that it is the responsibility of the developer to specify this generic type in a way that lines up with the column
+definitions. If `RowDef`s are not compatible with the `ColDef`s, the editor may give no indication of this fact, and the
+developer may not find out until they actually run the code and encounter `Error`s from the `Grid` component.
+
+### Editing Feature Changes
+
+The callback generator functions passed to the `editModel` are now based on `id` rather than the index of the original
+array. One can adapt existing callback generator functions to work with version 2 by searching for rows by `id`.
+
+Consider the following example that works with version 1:
+
+```tsx
+const EditingTestHarness: FC = () => {
+  const [rows, setRows] = useState<RowDef[]>(initRows.slice());
+  const getUpdateCallback: UpdateCallbackGenerator =
+    (origIndex) => (rowDef) => {
+      const newRows = rows.slice();
+      newRows[origIndex] = rowDef;
+      setRows(newRows);
+    };
+  const getDeleteCallback: (origIndex: number) => () => void =
+    (origIndex) => () => {
+      setRows(rows.toSpliced(origIndex, 1));
+    };
+
+  return (
+    <Grid
+      rows={rows}
+      cols={cols}
+      editModel={{ getUpdateCallback, getDeleteCallback }}
+    />
+  );
+};
+```
+
+It can be adapted to work with version 2 follows:
+
+```tsx
+const EditingTestHarness: FC = () => {
+  const [rows, setRows] = useState<RowDef[]>(initRows.slice());
+  const getUpdateCallback: UpdateCallbackGenerator = (id) => (rowData) => {
+    const newRows = rows.slice();
+    const index = rows.findIndex((row) => row.id === id);
+    if (index === undefined) {
+      return;
+    }
+
+    newRows[index] = {
+      id,
+      data: rowData,
+    };
+    setRows(newRows);
+  };
+  const getDeleteCallback: (id: RowId) => () => void = (id) => () => {
+    const index = rows.findIndex((row) => row.id === id);
+    if (index === undefined) {
+      return;
+    }
+
+    setRows(rows.toSpliced(index, 1));
+  };
+
+  return (
+    <Grid
+      rows={rows}
+      cols={cols}
+      editModel={{ getUpdateCallback, getDeleteCallback }}
+    />
+  );
+};
+```
+
+While this new design results in more code in the callback generator functions, it can prevent race conditions that
+result in editing or deleting the wrong row, assuming that `id`s are stable.
+
+### Styling Feature Changes
+
+Several members of the `TableStyleModel` are callback functions that now refer to rows by `id` rather than the original
+index. Consider the code sample involving color variants in the [Styling](/styling) section of this documentation. The
+original version of the code affected by changes in version 2 is as follows:
+
+```tsx
+const getRows: (partialRows: PartialRow[], colors: string[]) => RowDef[] = (
+  partialRows,
+  colors,
+) =>
+  partialRows.map((_, index) => ({
+    variant: partialRows[index].variant,
+    color: colors[index],
+    alignment: partialRows[index].alignment,
+    placeholderText: placeholderText,
+  }));
+
+const tableStyleModel: TableStyleModel = {
+  caption: ["caption-top"],
+  table: ["table-bordered", "border-primary"],
+  tbodyTr: (origIndex) => [`table-${partialRows[origIndex].variant}`],
+  tbodyTd: (origRowIndex, _, colIndex) =>
+    colIndex === 2 ? [`align-${partialRows[origRowIndex].alignment}`] : [],
+};
+```
+
+The example has since been adapted to work with string ids that are the names of the variants (e.g. `primary`, `info`,
+etc.).
+
+```tsx
+interface Data {
+  variant: string;
+  color: string;
+  alignment: string;
+  placeholderText: string;
+}
+
+const getRows: (
+  partialRows: PartialRow[],
+  colors: string[],
+) => RowDef<Data>[] = (partialRows, colors) =>
+  partialRows.map((_, index) => ({
+    id: partialRows[index].variant,
+    data: {
+      variant: partialRows[index].variant,
+      color: colors[index],
+      alignment: partialRows[index].alignment,
+      placeholderText: placeholderText,
+    },
+  }));
+
+const variantToAlignment = new Map(
+  partialRows.map(({ variant, alignment }) => [variant, alignment]),
+);
+
+const tableStyleModel: TableStyleModel = {
+  caption: ["caption-top"],
+  table: ["table-bordered", "border-primary"],
+  tbodyTr: (id) => [`table-${id}`],
+  tbodyTd: (id, _, colIndex) =>
+    colIndex === 2 ? [`align-${variantToAlignment.get(id as string)}}`] : [],
+};
+```
+
+### Selection Feature Changes
+
+Both the `SingleSelectModel` and `MultiSelectModel` now refer to rows by id rather than by index. You can refer to the
+external interaction example in the [Selection](/selection) section of this documentation for example of how to adapt
+to existing `SelectModel`s to version 2.
+
+The affected sections of code were implemented as follows in version 1:
+
+```tsx
+const ExternalInteractionExample: FC = () => {
+  const [rows, setRows] = useState<RowDef[]>(origRows);
+  const [selected, setSelected] = useState<number[]>([]);
+  const selectModel: MultiSelectModel = useMemo(
+    () => ({
+      mode: "both",
+      type: "multi",
+      selected,
+      setSelected,
+    }),
+    [selected],
+  );
+
+  const deleteSelectedRows = () => {
+    setRows(rows.filter((_, index) => !selected.includes(index)));
+    setSelected([]);
+  };
+```
+
+For version 2, code was adapted to refer to `RowId` rather than `number`:
+
+```tsx
+const ExternalInteractionExample: FC = () => {
+  const [rows, setRows] = useState<RowDef[]>(origRows);
+  const [selected, setSelected] = useState<RowId[]>([]);
+  const selectModel: MultiSelectModel = useMemo(
+    () => ({
+      mode: "both",
+      type: "multi",
+      selected,
+      setSelected,
+    }),
+    [selected],
+  );
+
+  const deleteSelectedRows = () => {
+    setRows(rows.filter(({ id }) => !selected.includes(id)));
+    setSelected([]);
+  };
+```
+
+## Column Formatter Changes
+
+If one does not specify the `formatter` property of a `ColDef` object of type `date`, `datetime`, or `number`, the
+`Grid` uses default formatters as follows:
+
+<FormattersV1 />
+<hr />
+They have now been changed to the following for version 2:
+
+<FormattersV2 />
+<hr />
+Where `dateToInputStr` and `dateToDatetimeInputStr` are utility functions that are a part of this project that output
+strings used by `date` and `datetime-local` `<input>` elements, respectively.
+
+This change was made for performance considerations in case of `number` and `datetime`. For `date`, the change was made
+due to the output of the previous default formatter being very long.
+
+To continue using the original behavior of version 1 in version 2, simply add formatter functions to the respective
+`ColDefs`:
+
+```tsx
+const cols: ColDef[] = [
+    {
+        type: "number",
+        name: "numCol",
+        label: "Number Column",
+        formatter: (num: number) => num.toLocaleString()
+    },
+    {
+        type: "date",
+        name: "dateCol",
+        label: "Date Column",
+        formatter: (date: Date) => date.toDateString()
+    },
+    {
+        type: "datetime",
+        name: "datetimeCol",
+        label: "Datetime Column",
+        formatter: (datetime: Date) => datetime.toLocaleString()
+    }
+];
+```

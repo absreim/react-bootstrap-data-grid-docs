@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Grid, {
   ColDef,
@@ -6,6 +6,7 @@ import Grid, {
   EditModel,
   FilterModel,
   RowDef,
+  RowId,
   StyleModel,
   UpdateCallbackGenerator,
 } from "@absreim/react-bootstrap-data-grid";
@@ -29,41 +30,68 @@ const cols: ColDef[] = [
   },
 ];
 
-const initRows: RowDef[] = [
+interface Data {
+  name: string;
+  timesAttended: number;
+  recruitmentDate: Date;
+}
+
+const initRows: RowDef<Data>[] = [
   {
-    name: "Commander Shepard",
-    timesAttended: 100,
-    recruitmentDate: new Date("2183-01-01"),
+    id: 0,
+    data: {
+      name: "Commander Shepard",
+      timesAttended: 100,
+      recruitmentDate: new Date("2183-01-01"),
+    },
   },
   {
-    name: "Kaidan Alenko",
-    timesAttended: 25,
-    recruitmentDate: new Date("2183-01-02"),
+    id: 1,
+    data: {
+      name: "Kaidan Alenko",
+      timesAttended: 25,
+      recruitmentDate: new Date("2183-01-02"),
+    },
   },
   {
-    name: "Ashley Williams",
-    timesAttended: 20,
-    recruitmentDate: new Date("2183-01-10"),
+    id: 2,
+    data: {
+      name: "Ashley Williams",
+      timesAttended: 20,
+      recruitmentDate: new Date("2183-01-10"),
+    },
   },
   {
-    name: "Garrus Vakarian",
-    timesAttended: 15,
-    recruitmentDate: new Date("2183-02-01"),
+    id: 3,
+    data: {
+      name: "Garrus Vakarian",
+      timesAttended: 15,
+      recruitmentDate: new Date("2183-02-01"),
+    },
   },
   {
-    name: "Tali'Zorah nar Rayya",
-    timesAttended: 12,
-    recruitmentDate: new Date("2183-03-15"),
+    id: 4,
+    data: {
+      name: "Tali'Zorah nar Rayya",
+      timesAttended: 12,
+      recruitmentDate: new Date("2183-03-15"),
+    },
   },
   {
-    name: "Urdnot Wrex",
-    timesAttended: 10,
-    recruitmentDate: new Date("2183-03-20"),
+    id: 5,
+    data: {
+      name: "Urdnot Wrex",
+      timesAttended: 10,
+      recruitmentDate: new Date("2183-03-20"),
+    },
   },
   {
-    name: "Liara T'soni",
-    timesAttended: 8,
-    recruitmentDate: new Date("2183-06-21"),
+    id: 6,
+    data: {
+      name: "Liara T'soni",
+      timesAttended: 8,
+      recruitmentDate: new Date("2183-06-21"),
+    },
   },
 ];
 
@@ -127,20 +155,31 @@ const SampleStyledInputsGrid: FC = () => {
   );
 
   const getUpdateCallback: UpdateCallbackGenerator = useCallback(
-    (origIndex) => (rowDef) => {
-      setRows((rows) => {
-        const newRows = rows.slice();
-        newRows[origIndex] = rowDef;
-        return newRows;
-      });
+    (id) => (rowData) => {
+      const newRows = rows.slice();
+      const index = rows.findIndex((row) => row.id === id);
+      if (index === undefined) {
+        return;
+      }
+
+      newRows[index] = {
+        id,
+        data: rowData,
+      };
+      setRows(newRows);
     },
-    [],
+    [rows],
   );
-  const getDeleteCallback: (origIndex: number) => () => void = useCallback(
-    (origIndex) => () => {
-      setRows((rows) => rows.toSpliced(origIndex, 1));
+  const getDeleteCallback: (id: RowId) => () => void = useCallback(
+    (id) => () => {
+      const index = rows.findIndex((row) => row.id === id);
+      if (index === undefined) {
+        return;
+      }
+
+      setRows(rows.toSpliced(index, 1));
     },
-    [],
+    [rows],
   );
 
   const editModel: EditModel = { getUpdateCallback, getDeleteCallback };

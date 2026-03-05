@@ -4,6 +4,7 @@ import { FC, useMemo, useState } from "react";
 import Grid, {
   ColDef,
   RowDef,
+  RowId,
   SelectMode,
   SingleSelectModel,
 } from "@absreim/react-bootstrap-data-grid";
@@ -25,39 +26,65 @@ const cols: ColDef[] = [
   },
 ];
 
-const rows: RowDef[] = [
+interface Data {
+  name: string;
+  school: string;
+}
+
+const rows: RowDef<Data>[] = [
   {
-    name: "Acid Splash",
-    school: "Conjuration",
+    id: 0,
+    data: {
+      name: "Acid Splash",
+      school: "Conjuration",
+    },
   },
   {
-    name: "Blade Ward",
-    school: "Abjuration",
+    id: 1,
+    data: {
+      name: "Blade Ward",
+      school: "Abjuration",
+    },
   },
   {
-    name: "Bone Chill",
-    school: "Necromancy",
+    id: 2,
+    data: {
+      name: "Bone Chill",
+      school: "Necromancy",
+    },
   },
   {
-    name: "Fire Bolt",
-    school: "Evocation",
+    id: 3,
+    data: {
+      name: "Fire Bolt",
+      school: "Evocation",
+    },
   },
   {
-    name: "Minor Illusion",
-    school: "Illusion",
+    id: 4,
+    data: {
+      name: "Minor Illusion",
+      school: "Illusion",
+    },
   },
   {
-    name: "Friends",
-    school: "Enchantment",
+    id: 5,
+    data: {
+      name: "Friends",
+      school: "Enchantment",
+    },
   },
   {
-    name: "Ray of Frost",
-    school: "Evocation",
+    id: 6,
+    data: {
+      name: "Ray of Frost",
+      school: "Evocation",
+    },
   },
 ];
 
 const SampleSingleSelectGrid: FC<SampleSingleSelectGridProps> = ({ mode }) => {
-  const [selected, setSelected] = useState<number | null>(null);
+  const [selected, setSelected] = useState<RowId | null>(null);
   const selectModel: SingleSelectModel = useMemo(
     () => ({
       mode,

@@ -31,7 +31,7 @@ const getSecondThirdHeadingLinks: (
           href: "",
           value: "",
           children: [],
-        }
+        };
       }
 
       nodes[twoIndex].children[threeIndex] = {

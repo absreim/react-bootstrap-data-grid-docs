@@ -11,9 +11,7 @@ export default async function Page({
 }) {
   const { slug } = await params;
 
-  return (
-    <DocContents slug={slug} />
-  );
+  return <DocContents slug={slug} />;
 }
 
 // Filter out "main" document to avoid confusion since it is tied to index URL.
