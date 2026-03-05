@@ -5,6 +5,7 @@ import Grid, {
   ColDef,
   MultiSelectModel,
   RowDef,
+  RowId,
 } from "@absreim/react-bootstrap-data-grid";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
@@ -17,27 +18,42 @@ const cols: ColDef[] = [
   },
 ];
 
-const origRows: RowDef[] = [
+const origRows: RowDef<{ number: number }>[] = [
   {
-    number: 1,
+    id: 0,
+    data: {
+      number: 1,
+    },
   },
   {
-    number: 2,
+    id: 1,
+    data: {
+      number: 2,
+    },
   },
   {
-    number: 3,
+    id: 2,
+    data: {
+      number: 3,
+    },
   },
   {
-    number: 4,
+    id: 3,
+    data: {
+      number: 4,
+    },
   },
   {
-    number: 5,
+    id: 4,
+    data: {
+      number: 5,
+    },
   },
 ];
 
 const ExternalInteractionExample: FC = () => {
   const [rows, setRows] = useState<RowDef[]>(origRows);
-  const [selected, setSelected] = useState<number[]>([]);
+  const [selected, setSelected] = useState<RowId[]>([]);
   const selectModel: MultiSelectModel = useMemo(
     () => ({
       mode: "both",

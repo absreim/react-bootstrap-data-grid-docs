@@ -103,23 +103,37 @@ const getComputedTableColors: (variants: string[]) => string[] = (variants) => {
   return colors;
 };
 
-const getRows: (partialRows: PartialRow[], colors: string[]) => RowDef[] = (
-  partialRows,
-  colors,
-) =>
+interface Data {
+  variant: string;
+  color: string;
+  alignment: string;
+  placeholderText: string;
+}
+
+const getRows: (
+  partialRows: PartialRow[],
+  colors: string[],
+) => RowDef<Data>[] = (partialRows, colors) =>
   partialRows.map((_, index) => ({
-    variant: partialRows[index].variant,
-    color: colors[index],
-    alignment: partialRows[index].alignment,
-    placeholderText: placeholderText,
+    id: partialRows[index].variant,
+    data: {
+      variant: partialRows[index].variant,
+      color: colors[index],
+      alignment: partialRows[index].alignment,
+      placeholderText: placeholderText,
+    },
   }));
+
+const variantToAlignment = new Map(
+  partialRows.map(({ variant, alignment }) => [variant, alignment]),
+);
 
 const tableStyleModel: TableStyleModel = {
   caption: ["caption-top"],
   table: ["table-bordered", "border-primary"],
-  tbodyTr: (origIndex) => [`table-${partialRows[origIndex].variant}`],
-  tbodyTd: (origRowIndex, _, colIndex) =>
-    colIndex === 2 ? [`align-${partialRows[origRowIndex].alignment}`] : [],
+  tbodyTr: (id) => [`table-${id}`],
+  tbodyTd: (id, _, colIndex) =>
+    colIndex === 2 ? [`align-${variantToAlignment.get(id as string)}}`] : [],
 };
 
 const styleModel: StyleModel = {
