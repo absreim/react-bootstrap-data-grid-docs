@@ -22,7 +22,12 @@ export default async function RootLayout({
   const theme = cookieStore.get("theme")?.value ?? "auto";
 
   return (
-    <html lang="en" data-bs-theme={theme} suppressHydrationWarning>
+    <html
+      lang="en"
+      data-bs-theme={theme}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body className="vh-100">
         <Script src="/dark-mode.js" strategy="beforeInteractive" />
         <div className="d-flex flex-column h-100">

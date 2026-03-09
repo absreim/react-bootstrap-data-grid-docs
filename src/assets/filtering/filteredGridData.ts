@@ -1,14 +1,9 @@
-"use client";
-
-import Grid, {
+import {
   ColDef,
-  EditableTableFilterState,
-  FilterModel,
   RowDef,
 } from "@absreim/react-bootstrap-data-grid";
-import { FC, useState } from "react";
 
-const cols: ColDef[] = [
+export const cols: ColDef[] = [
   {
     type: "number",
     name: "number",
@@ -32,7 +27,7 @@ interface Data {
   date: Date;
 }
 
-const rows: RowDef<Data>[] = [
+export const rows: RowDef<Data>[] = [
   {
     id: 0,
     data: {
@@ -98,33 +93,3 @@ const rows: RowDef<Data>[] = [
     },
   },
 ];
-
-const SampleFilteredGrid: FC = () => {
-  const [tableFilterState, setTableFilterState] =
-    useState<EditableTableFilterState>({
-      number: {
-        type: "number",
-        scheme: "lessOrEqual",
-        numValue: 4,
-        enabled: true,
-      },
-      version: {
-        type: "string",
-        scheme: "startsWith",
-        searchString: "4.1.1.3",
-        enabled: true,
-      },
-      date: {
-        type: "date",
-        scheme: "startFrom",
-        startDate: new Date("2023-08-15"),
-        enabled: true,
-      },
-    });
-
-  const filterModel: FilterModel = { tableFilterState, setTableFilterState };
-
-  return <Grid rows={rows} cols={cols} filterModel={filterModel} />;
-};
-
-export default SampleFilteredGrid;

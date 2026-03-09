@@ -1,13 +1,6 @@
-"use client";
+import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid";
 
-import Grid, {
-  ColDef,
-  GridPaginationState,
-  RowDef,
-} from "@absreim/react-bootstrap-data-grid";
-import { FC, useState } from "react";
-
-const cols: ColDef[] = [
+export const cols: ColDef[] = [
   {
     type: "string",
     name: "name",
@@ -31,7 +24,7 @@ interface Data {
   weight: string;
 }
 
-const rows: RowDef<Data>[] = [
+export const rows: RowDef<Data>[] = [
   {
     id: 0,
     data: {
@@ -129,22 +122,3 @@ const rows: RowDef<Data>[] = [
     },
   },
 ];
-
-const SamplePaginatedGrid: FC = () => {
-  const [pageSizeIndex, setPageSizeIndex] = useState(0);
-  const [pageNum, setPageNum] = useState(1);
-
-  const paginationState: GridPaginationState = {
-    pageSizeOptions: [5, 10, 15],
-    pageSizeIndex: pageSizeIndex,
-    setPageSizeIndex: (pageSizeIndex) => setPageSizeIndex(pageSizeIndex),
-    currentPage: pageNum,
-    setCurrentPage: (pageNum) => setPageNum(pageNum),
-    maxPageButtons: 5,
-    componentSize: "large",
-  };
-
-  return <Grid rows={rows} cols={cols} pagination={paginationState} />;
-};
-
-export default SamplePaginatedGrid;

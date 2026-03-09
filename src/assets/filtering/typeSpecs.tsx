@@ -1,41 +1,18 @@
 import { SpecTableRow } from "@/shared/TypeSpecTable";
 
-export const tableSortModel: SpecTableRow[] = [
+export const controlledFilterModel: SpecTableRow[] = [
   {
-    propertyName: "sortColDef",
-    typeDefinition: "SortColDef | null",
-    isRequired: true,
-    description: "The current setting for sorting for the Grid",
-  },
-  {
-    propertyName: "setSortColDef",
-    typeDefinition: "(sortColDef: SortColDef | null) => void",
-    isRequired: true,
+    propertyName: "type",
+    typeDefinition: "'controlled'",
+    isRequired: false,
     description: (
       <p>
-        Callback function to set the state of <code>sortColDef</code> in
-        response to user input
+        Discriminator field to distinguish between this type and{" "}
+        <code>UncontrolledFilterModel</code>. This property is optional for the
+        sake of backwards compatibility.
       </p>
     ),
   },
-];
-
-export const sortColDef: SpecTableRow[] = [
-  {
-    propertyName: "name",
-    typeDefinition: "string",
-    isRequired: true,
-    description: "The name of the column to sort",
-  },
-  {
-    propertyName: "order",
-    typeDefinition: '"asc" | "desc"',
-    isRequired: true,
-    description: "The sort order, ascending or descending",
-  },
-];
-
-export const filterModel: SpecTableRow[] = [
   {
     propertyName: "tableFilterState",
     typeDefinition: "EditableTableFilterState",
@@ -48,6 +25,63 @@ export const filterModel: SpecTableRow[] = [
     typeDefinition: "(state: EditableTableFilterState) => void",
     isRequired: true,
     description: "Function to set a new tableFilterState",
+  },
+  {
+    propertyName: "filterTableCaption",
+    typeDefinition: "string",
+    isRequired: false,
+    description: (
+      <p>
+        String to set as the contents of the <code>caption</code> element of
+        table containing filter options. If this property is not set, the filter
+        options table will not have a caption.
+      </p>
+    ),
+  },
+];
+
+export const uncontrolledFilterModel: SpecTableRow[] = [
+  {
+    propertyName: "type",
+    typeDefinition: "'uncontrolled'",
+    isRequired: false,
+    description: (
+      <p>
+        Discriminator field to distinguish between this type and{" "}
+        <code>ControlledFilterModel</code>.
+      </p>
+    ),
+  },
+  {
+    propertyName: "tableFilterState",
+    typeDefinition: "EditableTableFilterState",
+    isRequired: false,
+    description: (
+      <>
+        <p>The starting state of the grid with regards to filtering.</p>
+        <p>
+          Note that this value is only read once, at the moment that the{" "}
+          <code>Grid</code> component is mounted.
+        </p>
+        <p>
+          If this property is not defined, the grid will create a blank filter
+          state that includes each column in the gird. All form values will be
+          blank and filtering will be initially disabled on every column.
+        </p>
+      </>
+    ),
+  },
+  {
+    propertyName: "filterTableCaption",
+    typeDefinition: "string",
+    isRequired: false,
+    description: (
+      <p>
+        String to set as the contents of the <code>caption</code> element of
+        table containing filter options. If this property is not set, the filter
+        options table will not have a caption.
+      </p>
+    ),
   },
 ];
 
