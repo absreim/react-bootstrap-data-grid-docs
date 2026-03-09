@@ -1,13 +1,13 @@
 import TypeSpecTable from "@/shared/TypeSpecTable";
 import {controlledFilterModel, uncontrolledFilterModel} from "../assets/filtering/typeSpecs";
-import SampleControlledFilteredGrid from "../assets/filtering/SampleControlledFilteredGrid";
+import ControlledFilteredGrid from "../assets/filtering/ControlledFilteredGrid";
 import {
     abstractDateFilterState, abstractFilterState,
     betweenDatesFilterState,
     endDateFilterState, numberFilterState,
     startDateFilterState, stringFilterState
 } from "../assets/filtering/typeSpecs";
-import SampleUncontrolledFilteredGrid from "../assets/filtering/SampleUncontrolledFilteredGrid";
+import UncontrolledFilteredGrid from "../assets/filtering/UncontrolledFilteredGrid";
 
 # Filtering
 
@@ -174,7 +174,7 @@ Note that for now, there is no difference in filter behavior between date and da
 
 Both examples use the sample data from the following file:
 
-##### sampleFilteredGridData.ts
+##### filteredGridData.ts
 
 ```ts
 import {
@@ -278,7 +278,7 @@ export const rows: RowDef<Data>[] = [
 
 #### Code
 
-##### SampleControlledFilteredGrid.tsx
+##### ControlledFilteredGrid.tsx
 
 ```tsx
 "use client";
@@ -323,7 +323,7 @@ export default SampleControlledFilteredGrid;
 
 #### Live Demo
 
-<SampleControlledFilteredGrid/>
+<ControlledFilteredGrid/>
 
 ### Uncontrolled
 
@@ -332,7 +332,7 @@ state. This state has no filters initially applied, but the user can use UI to m
 
 #### Code
 
-##### SampleUncontrolledFilteredGrid.tsx
+##### UncontrolledFilteredGrid.tsx
 
 ```tsx
 "use client";
@@ -357,4 +357,4 @@ export default SampleUncontrolledFilteredGrid;
 
 #### Live Demo
 
-<SampleUncontrolledFilteredGrid />
+<UncontrolledFilteredGrid />

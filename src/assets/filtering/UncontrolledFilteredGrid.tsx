@@ -4,9 +4,9 @@ import Grid, {
   UncontrolledFilterModel,
 } from "@absreim/react-bootstrap-data-grid";
 import { FC } from "react";
-import { cols, rows } from "@/assets/filtering/sampleFilteredGridData";
+import { cols, rows } from "@/assets/filtering/filteredGridData";
 
-const SampleUncontrolledFilteredGrid: FC = () => {
+const UncontrolledFilteredGrid: FC = () => {
   const filterModel: UncontrolledFilterModel = {
     type: "uncontrolled",
     filterTableCaption: "Uncontrolled filter mode example",
@@ -15,4 +15,4 @@ const SampleUncontrolledFilteredGrid: FC = () => {
   return <Grid rows={rows} cols={cols} filterModel={filterModel} />;
 };
 
-export default SampleUncontrolledFilteredGrid;
+export default UncontrolledFilteredGrid;

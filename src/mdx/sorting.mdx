@@ -1,7 +1,7 @@
 import TypeSpecTable from "@/shared/TypeSpecTable";
-import SampleControlledSortedGrid from "../assets/sorting/SampleControlledSortedGrid";
+import ControlledSortedGrid from "../assets/sorting/ControlledSortedGrid";
 import {sortColDef, controlledTableSortModel, uncontrolledTableSortModel} from "../assets/sorting/typeSpecs";
-import SampleUncontrolledSortedGrid from "../assets/sorting/SampleUncontrolledSortedGrid";
+import UncontrolledSortedGrid from "../assets/sorting/UncontrolledSortedGrid";
 
 # Sorting
 
@@ -56,7 +56,7 @@ control the overall configuration of the grid with regards to sorting.
 
 Both examples use the sample data from the following file:
 
-##### sampleSortedGridData.ts
+##### sortedGridData.ts
 
 ```ts
 import {
@@ -222,7 +222,7 @@ export const rows: RowDef<Data>[] = [
 
 #### Code
 
-##### SampleControlledSortedGrid.tsx
+##### ControlledSortedGrid.tsx
 
 ```tsx
 "use client";
@@ -253,7 +253,7 @@ export default SampleControlledSortedGrid;
 
 #### Live Demo
 
-<SampleControlledSortedGrid/>
+<ControlledSortedGrid/>
 
 ### Uncontrolled
 
@@ -262,7 +262,7 @@ parent component loses access to the sorting state of the `Grid`.
 
 #### Code
 
-##### SampleUncontrolledSortedGrid.tsx
+##### UncontrolledSortedGrid.tsx
 
 ```tsx
 "use client";
@@ -288,4 +288,4 @@ export default SampleUncontrolledSortedGrid;
 
 #### Live Demo
 
-<SampleUncontrolledSortedGrid/>
+<UncontrolledSortedGrid/>

@@ -5,9 +5,9 @@ import Grid, {
   FilterModel,
 } from "@absreim/react-bootstrap-data-grid";
 import { FC, useState } from "react";
-import { cols, rows } from "@/assets/filtering/sampleFilteredGridData";
+import { cols, rows } from "@/assets/filtering/filteredGridData";
 
-const SampleControlledFilteredGrid: FC = () => {
+const ControlledFilteredGrid: FC = () => {
   const [tableFilterState, setTableFilterState] =
     useState<EditableTableFilterState>({
       number: {
@@ -35,4 +35,4 @@ const SampleControlledFilteredGrid: FC = () => {
   return <Grid rows={rows} cols={cols} filterModel={filterModel} />;
 };
 
-export default SampleControlledFilteredGrid;
+export default ControlledFilteredGrid;
