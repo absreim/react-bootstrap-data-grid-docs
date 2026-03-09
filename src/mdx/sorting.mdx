@@ -1,6 +1,7 @@
 import TypeSpecTable from "@/shared/TypeSpecTable";
-import { tableSortModel, sortColDef } from "@/shared/typeSpecs";
-import SampleSortedGrid from "@/assets/sorting/SampleSortedGrid";
+import SampleControlledSortedGrid from "../assets/sorting/SampleControlledSortedGrid";
+import {sortColDef, controlledTableSortModel, uncontrolledTableSortModel} from "../assets/sorting/typeSpecs";
+import SampleUncontrolledSortedGrid from "../assets/sorting/SampleUncontrolledSortedGrid";
 
 # Sorting
 
@@ -10,11 +11,25 @@ When a user clicks on a column header, the sort order changes between _ascending
 
 Note that sorting is done on the original data, before pagination and before formatting functions are applied. In particular, note that numbers will be sorted by the value of the number rather than lexicographically. Similarly, dates and datetimes will be sorted by the number of milliseconds after the epoch time as opposed to any time of string representation of the Date object.
 
-Like other features of React Bootstrap Data Grid, state storage and updates for the sorting feature is done in a fully controlled manner. That is, the state and updater function are defined in a parent component and passed down to the Grid component.
+## How to Enable
 
 To allow a user to sort a Grid by a particular column, set the `sortable` property to `true` in the column definition (`ColDef`) for the column.
 
 In addition, setting the `sortModel` property on the `Grid` component is required to enable sorting.
+
+## Controlled vs Uncontrolled
+
+The sorting feature of React Bootstrap Data Grid is available in _controlled_ and _uncontrolled_ modes. Using
+_controlled_ mode allows for the state to be read and written to externally, but requires more code to set up compared
+to _uncontrolled_ mode.
+
+In _controlled_ mode, the variable representing the current state and the setter function for that variable are passed
+down from the parent component to the `Grid` component via the `sortModel` prop. Pass a prop of type
+`ControlledTableSortModel` to enable controlled mode.
+
+In _uncontrolled_ mode the `Grid` component itself contains the state with regards to sorting. When using this mode,
+one passes the starting state to the `Grid` component. This starting state is read only once when the `Grid` component
+mounts. Pass a prop of type `UncontrolledTableSortModel` to enable uncontrolled mode.
 
 ## Type Definitions
 
@@ -22,28 +37,34 @@ See below for specifications for the `sortModel` property and related types.
 
 ### TableSortModel
 
-<TypeSpecTable rows={tableSortModel} />
+Union type that includes `ControlledTableSortModel` and `UncontrolledTableSortModel`. Passed to the `Grid` component to
+control the overall configuration of the grid with regards to sorting.
+
+### ControlledTableSortModel
+
+<TypeSpecTable rows={controlledTableSortModel}/>
+
+### UncontrolledTableSortModel
+
+<TypeSpecTable rows={uncontrolledTableSortModel}/>
 
 ### SortColDef
 
-<TypeSpecTable rows={sortColDef} />
+<TypeSpecTable rows={sortColDef}/>
 
-## Example
+## Examples
 
-### Code
+Both examples use the sample data from the following file:
 
-```tsx
-"use client";
+##### sampleSortedGridData.ts
 
-import Grid, {
+```ts
+import {
   ColDef,
   RowDef,
-  SortColDef,
-  TableSortModel,
 } from "@absreim/react-bootstrap-data-grid";
-import { FC, useState } from "react";
 
-const cols: ColDef[] = [
+export const cols: ColDef[] = [
   {
     name: "name",
     type: "string",
@@ -83,7 +104,7 @@ interface Data {
   price: number;
 }
 
-const rows: RowDef<Data>[] = [
+export const rows: RowDef<Data>[] = [
   {
     id: "flail",
     data: {
@@ -195,8 +216,25 @@ const rows: RowDef<Data>[] = [
     },
   },
 ];
+```
 
-const SampleSortedGrid: FC = () => {
+### Controlled
+
+#### Code
+
+##### SampleControlledSortedGrid.tsx
+
+```tsx
+"use client";
+
+import Grid, {
+  SortColDef,
+  TableSortModel,
+} from "@absreim/react-bootstrap-data-grid";
+import { rows, cols } from "./sampleSortedGridData";
+import { FC, useState } from "react";
+
+const SampleControlledSortedGrid: FC = () => {
   const [sortColDef, setSortColDef] = useState<SortColDef | null>({
     name: "name",
     order: "asc",
@@ -210,9 +248,44 @@ const SampleSortedGrid: FC = () => {
   return <Grid rows={rows} cols={cols} sortModel={tableSortModel} />;
 };
 
-export default SampleSortedGrid;
+export default SampleControlledSortedGrid;
 ```
 
-### Live Demo
+#### Live Demo
 
-<SampleSortedGrid />
+<SampleControlledSortedGrid/>
+
+### Uncontrolled
+
+The same functionality as the controlled example above can be implemented in uncontrolled mode, though in doing so the
+parent component loses access to the sorting state of the `Grid`.
+
+#### Code
+
+##### SampleUncontrolledSortedGrid.tsx
+
+```tsx
+"use client";
+
+import Grid, { TableSortModel } from "@absreim/react-bootstrap-data-grid";
+import { rows, cols } from "./sampleSortedGridData";
+import { FC } from "react";
+
+const SampleUncontrolledSortedGrid: FC = () => {
+  const tableSortModel: TableSortModel = {
+    type: "uncontrolled",
+    initialSortColDef: {
+      name: "name",
+      order: "asc",
+    },
+  };
+
+  return <Grid rows={rows} cols={cols} sortModel={tableSortModel} />;
+};
+
+export default SampleUncontrolledSortedGrid;
+```
+
+#### Live Demo
+
+<SampleUncontrolledSortedGrid/>

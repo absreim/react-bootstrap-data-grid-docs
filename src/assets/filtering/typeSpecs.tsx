@@ -1,40 +1,5 @@
 import { SpecTableRow } from "@/shared/TypeSpecTable";
 
-export const tableSortModel: SpecTableRow[] = [
-  {
-    propertyName: "sortColDef",
-    typeDefinition: "SortColDef | null",
-    isRequired: true,
-    description: "The current setting for sorting for the Grid",
-  },
-  {
-    propertyName: "setSortColDef",
-    typeDefinition: "(sortColDef: SortColDef | null) => void",
-    isRequired: true,
-    description: (
-      <p>
-        Callback function to set the state of <code>sortColDef</code> in
-        response to user input
-      </p>
-    ),
-  },
-];
-
-export const sortColDef: SpecTableRow[] = [
-  {
-    propertyName: "name",
-    typeDefinition: "string",
-    isRequired: true,
-    description: "The name of the column to sort",
-  },
-  {
-    propertyName: "order",
-    typeDefinition: '"asc" | "desc"',
-    isRequired: true,
-    description: "The sort order, ascending or descending",
-  },
-];
-
 export const filterModel: SpecTableRow[] = [
   {
     propertyName: "tableFilterState",
@@ -50,7 +15,6 @@ export const filterModel: SpecTableRow[] = [
     description: "Function to set a new tableFilterState",
   },
 ];
-
 export const abstractFilterState: SpecTableRow[] = [
   {
     propertyName: "enabled",
@@ -60,7 +24,6 @@ export const abstractFilterState: SpecTableRow[] = [
       "Flag representing whether this column's filter should be applied",
   },
 ];
-
 export const stringFilterState: SpecTableRow[] = [
   {
     propertyName: "type",
@@ -83,7 +46,6 @@ export const stringFilterState: SpecTableRow[] = [
     description: "The search string with which to apply the filter",
   },
 ];
-
 export const numberFilterState: SpecTableRow[] = [
   {
     propertyName: "type",
@@ -107,7 +69,6 @@ export const numberFilterState: SpecTableRow[] = [
       "The number with which to apply the filter. A null value represents an empty number input value.",
   },
 ];
-
 export const abstractDateFilterState: SpecTableRow[] = [
   {
     propertyName: "type",
@@ -123,7 +84,6 @@ export const abstractDateFilterState: SpecTableRow[] = [
     description: "The kind of date/datetime filter to apply",
   },
 ];
-
 export const startDateFilterState: SpecTableRow[] = [
   {
     propertyName: "scheme",
@@ -140,7 +100,6 @@ export const startDateFilterState: SpecTableRow[] = [
       "The starting date or datetime for the filter to apply. A null value represents an empty date input value.",
   },
 ];
-
 export const endDateFilterState: SpecTableRow[] = [
   {
     propertyName: "scheme",
@@ -157,7 +116,6 @@ export const endDateFilterState: SpecTableRow[] = [
       "The ending date or datetime for the filter to apply. A null value represents an empty date input value.",
   },
 ];
-
 export const betweenDatesFilterState: SpecTableRow[] = [
   {
     propertyName: "scheme",

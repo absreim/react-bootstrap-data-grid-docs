@@ -1,14 +1,9 @@
-"use client";
-
-import Grid, {
+import {
   ColDef,
   RowDef,
-  SortColDef,
-  TableSortModel,
 } from "@absreim/react-bootstrap-data-grid";
-import { FC, useState } from "react";
 
-const cols: ColDef[] = [
+export const cols: ColDef[] = [
   {
     name: "name",
     type: "string",
@@ -48,7 +43,7 @@ interface Data {
   price: number;
 }
 
-const rows: RowDef<Data>[] = [
+export const rows: RowDef<Data>[] = [
   {
     id: "flail",
     data: {
@@ -160,19 +155,3 @@ const rows: RowDef<Data>[] = [
     },
   },
 ];
-
-const SampleSortedGrid: FC = () => {
-  const [sortColDef, setSortColDef] = useState<SortColDef | null>({
-    name: "name",
-    order: "asc",
-  });
-
-  const tableSortModel: TableSortModel = {
-    sortColDef,
-    setSortColDef,
-  };
-
-  return <Grid rows={rows} cols={cols} sortModel={tableSortModel} />;
-};
-
-export default SampleSortedGrid;
