@@ -6,6 +6,19 @@ the minor version number, and backwards-compatible bug fixes should increment th
 
 ## Change Log
 
+### 2.1.0
+
+March 10, 2026
+
+Added _uncontrolled_ modes for [pagination](/pagination), [sorting](/sorting), and [filtering](/filtering) features.
+Compared to _controlled_ mode, which was
+previously the only mode available, _uncontrolled_ mode causes the `Grid` component rather than the parent component
+to keep track of states, such as page number or the column currently being sorted.
+
+The main advantage of _uncontrolled_ mode is easier (i.e. less code to) setup before using such features. The main
+disadvantage is the parent component losing access to the relevant states, which makes certain advanced behaviors
+difficult or impossible to implement.
+
 ### 2.0.0
 
 March 6, 2026
