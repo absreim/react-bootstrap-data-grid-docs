@@ -6,6 +6,18 @@ the minor version number, and backwards-compatible bug fixes should increment th
 
 ## Change Log
 
+### 2.2.0
+
+March 16, 2026
+
+Added a toolbar component that contains buttons for accessing the filtering interface and a [newly implemented interface
+for exporting data](/export) in JSON and CSV formats. This toolbar is _opt out by default_ for the sake of backwards compatibility.
+
+Note that **the toolbar is only supported for Bootstrap version 5.3**. I recommend upgrading Bootstrap to 5.3 in
+your project before enabling the toolbar.
+
+The toolbar can be enabled by passing a `true` value to the `useToolbar` prop on the `Grid` component.
+
 ### 2.1.0
 
 March 10, 2026
@@ -24,7 +36,7 @@ difficult or impossible to implement.
 March 6, 2026
 
 - Changed typing of row definitions (`RowDef`) to have a mandatory stable `id` field. Previously, the index of the
-  original array was used as the ID.
+original array was used as the ID.
 - Changed the default formatting functions for _number_, _date_, and _datetime_ types to improve performance.
 
 ### 1.4.2

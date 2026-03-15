@@ -1,0 +1,290 @@
+import SampleExportGrid from "../assets/export/SampleExportGrid";
+
+# Export
+
+React Bootstrap Data Grid supports exporting of data in a grid in JSON and CSV formats. For a user to use the export
+feature, use of the toolbar must be enabled by passing `true` into `useToolbar` prop of the `Grid` component.
+
+## Options
+
+### Row Scope
+
+Depending on the features enabled in the grid, the user can choose between three sets of rows to export:
+
+<dl>
+    <dt>All rows</dt>
+    <dd>All rows in the grid as they are passed into <code>Grid</code> component via the <code>rows</code> prop.</dd>
+    <dt>Filtered rows</dt>
+    <dd>The subset of rows remaining after filters are applied. This option is only available if filtering is
+        enabled on the grid.</dd>
+    <dt>Current page rows</dt>
+    <dd>The subset of rows remaining after filters are applied and only in the current page. This option is only
+        available if pagination is enabled on the grid.</dd>
+</dl>
+
+### Formatting
+
+The user may choose whether to apply formatters defined in `cols` prop to the `Grid` component when exporting. If no
+formatters are defined in the `cols` prop, the option to apply formatters will be disabled in the UI.
+
+If no formatters are defined for `date` and `datetime` columns, or if the user chooses not to apply formatters, the
+default formatters for these column types will be used. In particular, the default formatters will output the same
+format as the date and datetime strings used in the corresponding
+[date](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date) and
+[datetime-local](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local) input
+elements, respectively. For `date`, the format is `yyyy-mm-dd` while for `datetime` the format is `YYYY-MM-DDTHH:mm`.
+
+For number columns with no formatters defined, or if the user chooses not to apply formatters, for JSON exports the
+data for that column will remain a number without conversion to a string.
+
+### File Types
+
+The user may choose between _JSON_ or _CSV_ file formats when exporting.
+
+For _JSON_ exports, the structure is similar to that of the `RowDef` interface for each row. The `id` field is included
+while the data fields are either strings or numbers. Dates are converted to strings as described in the
+[previous section](#formatting).
+
+For _CSV_ exports, the structure is flattened so that the `id` field and other fields are on the same level. If there is
+a column with the name `id`, it will replace the `id` field of `RowDef` in the CSV export. Numbers are converted to
+string in a manner equivalent to
+[Number.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString).
+
+## Example
+
+### Code
+
+```tsx
+"use client";
+
+import Grid, {
+  ColDef,
+  FilterModel,
+  GridPaginationState,
+  RowDef,
+  UncontrolledFilterModel,
+} from "@absreim/react-bootstrap-data-grid";
+import { FC, useMemo, useState } from "react";
+import Form from "react-bootstrap/Form";
+import Stack from "react-bootstrap/Stack";
+
+interface VersionInfo {
+  version: number;
+  releaseDate: Date;
+}
+
+const versionFormatter: (version: number) => string = (version: number) => {
+  const hundredth = Math.floor(version / 100);
+  const tens = Math.floor((version - hundredth * 100) / 10);
+  const ones = version - hundredth * 100 - tens * 10;
+  return `${hundredth}.${tens}.${ones}`;
+};
+
+const cols: ColDef[] = [
+  {
+    type: "number",
+    name: "version",
+    label: "Version Number",
+    formatter: versionFormatter,
+  },
+  {
+    type: "date",
+    name: "releaseDate",
+    label: "Release Date",
+    formatter: (d: Date) => d.toDateString(),
+  },
+];
+
+const rows: RowDef<VersionInfo>[] = [
+  {
+    id: 220,
+    data: {
+      version: 220,
+      releaseDate: new Date("2026-03-16"),
+    },
+  },
+  {
+    id: 210,
+    data: {
+      version: 210,
+      releaseDate: new Date("2026-03-10"),
+    },
+  },
+  {
+    id: 200,
+    data: {
+      version: 200,
+      releaseDate: new Date("2026-03-06"),
+    },
+  },
+  {
+    id: 142,
+    data: {
+      version: 142,
+      releaseDate: new Date("2026-03-01"),
+    },
+  },
+  {
+    id: 141,
+    data: {
+      version: 141,
+      releaseDate: new Date("2026-02-13"),
+    },
+  },
+  {
+    id: 140,
+    data: {
+      version: 140,
+      releaseDate: new Date("2026-02-09"),
+    },
+  },
+  {
+    id: 130,
+    data: {
+      version: 130,
+      releaseDate: new Date("2026-01-28"),
+    },
+  },
+  {
+    id: 122,
+    data: {
+      version: 122,
+      releaseDate: new Date("2026-01-19"),
+    },
+  },
+  {
+    id: 121,
+    data: {
+      version: 121,
+      releaseDate: new Date("2026-01-16"),
+    },
+  },
+  {
+    id: 120,
+    data: {
+      version: 120,
+      releaseDate: new Date("2026-01-14"),
+    },
+  },
+  {
+    id: 114,
+    data: {
+      version: 114,
+      releaseDate: new Date("2025-12-29"),
+    },
+  },
+  {
+    id: 113,
+    data: {
+      version: 113,
+      releaseDate: new Date("2025-12-23"),
+    },
+  },
+  {
+    id: 112,
+    data: {
+      version: 112,
+      releaseDate: new Date("2025-12-20"),
+    },
+  },
+];
+
+const SampleExportGrid: FC = () => {
+  const [enableFilter, setEnableFilter] = useState(true);
+  const [enablePagination, setEnablePagination] = useState(true);
+  const [enableFormatters, setEnableFormatters] = useState(true);
+
+  const modifiedCols: ColDef[] = useMemo(() => {
+    if (enableFormatters) {
+      return cols;
+    }
+
+    return cols.map((col) => ({
+      ...col,
+      formatter: undefined,
+    }));
+  }, [enableFormatters]);
+
+  const paginationModel: GridPaginationState | undefined = useMemo(() => {
+    if (!enablePagination) {
+      return undefined;
+    }
+
+    return {
+      type: "uncontrolled",
+      pageSizeOptions: [5, 10],
+    };
+  }, [enablePagination]);
+
+  const filterModel: FilterModel | undefined = useMemo(() => {
+    if (!enableFilter) {
+      return undefined;
+    }
+
+    return {
+      type: "uncontrolled",
+      tableFilterState: {
+        version: {
+          type: "number",
+          scheme: "lessThan",
+          numValue: 200,
+          enabled: true,
+        },
+        releaseDate: {
+          type:"date",
+          scheme: "startFrom",
+          startDate: null,
+          enabled: false
+        }
+      },
+    } as UncontrolledFilterModel;
+  }, [enableFilter]);
+
+  return (
+    <Stack className="gap-2">
+      <Form>
+        <Form.Check
+          onChange={({ target }) => {
+            setEnableFilter(target.checked);
+          }}
+          checked={enableFilter}
+          type="switch"
+          id="toggle-filter"
+          label="Enable Filtering"
+        />
+        <Form.Check
+          onChange={({ target }) => {
+            setEnablePagination(target.checked);
+          }}
+          checked={enablePagination}
+          type="switch"
+          id="toggle-pagination"
+          label="Enable Pagination"
+        />
+        <Form.Check
+          onChange={({ target }) => {
+            setEnableFormatters(target.checked);
+          }}
+          checked={enableFormatters}
+          type="switch"
+          id="toggle-formatters"
+          label="Enable Formatters"
+        />
+      </Form>
+      <Grid
+        rows={rows}
+        cols={modifiedCols}
+        pagination={paginationModel}
+        filterModel={filterModel}
+        useToolbar={true}
+      />
+    </Stack>
+  );
+};
+
+export default SampleExportGrid;
+```
+
+### Live Demo
+
+<SampleExportGrid />

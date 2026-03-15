@@ -40,6 +40,10 @@ const linkDefs: LinkDefinition[] = [
     path: "/styling",
   },
   {
+    name: "Export",
+    path: "/export",
+  },
+  {
     name: "Versions",
     path: "/versions",
   },
