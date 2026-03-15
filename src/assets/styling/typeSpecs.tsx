@@ -59,6 +59,20 @@ export const additionalComponentsStyleModel: SpecTableRow[] = [
       </>
     ),
   },
+  {
+    propertyName: "paginationUiDiv",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <>
+        <p>
+          CSS classes for the <i>div</i> that contains the page selector and
+          page size selector UI components. Useful for changing the alignment
+          and/or orientation of the two components.
+        </p>
+      </>
+    ),
+  },
 ];
 
 export const styleModel: SpecTableRow[] = [
@@ -524,6 +538,140 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
         applied automatically, but will not be applied if an array of length at
         least 1 is passed for property.
       </>
+    ),
+  },
+];
+
+export const toolbarStyleModel: SpecTableRow[] = [
+  {
+    propertyName: "activeButton",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <p>
+        CSS classes for the button on the toolbar that is currently selected. By
+        default contains <code>btn</code>, <code>btn-outline-secondary</code>{" "}
+        and <code>active</code>.
+      </p>
+    ),
+  },
+  {
+    propertyName: "inactiveButton",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <p>
+        CSS classes for buttons on the toolbar that are not selected. By default
+        contains <code>btn</code>, <code>btn-outline-secondary</code>..
+      </p>
+    ),
+  },
+  {
+    propertyName: "toolbar",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <p>
+        CSS classes for the <i>div</i> that contains buttons to toggle the
+        visibility of interfaces like filtering and export and has the ARIA role{" "}
+        <code>toolbar</code>. By default, the <i>div</i> has the classes
+        <code>hstack</code>, <code>gap-2</code>,{" "}
+        <code>justify-content-start</code>, and <code>px-2</code>.
+      </p>
+    ),
+  },
+  {
+    propertyName: "interfaceContainer",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <>
+        <p>
+          CSS classes for the <i>div</i> that contains the toolbar UI
+          interfaces, such as those for filtering and export settings.
+        </p>
+        <p>
+          By default, the <i>div</i> contains the following classes:{" "}
+          <code>position-absolute</code>, <code>z-1</code>, <code>bg-body</code>
+          ,<code>border</code>, <code>shadow</code>, <code>p-2</code>. Among
+          other purposes, these default classes are meant to give the look of a
+          dropdown menu-like container overlaying the rest of the grid.
+        </p>
+      </>
+    ),
+  },
+];
+
+export const exportFormStyleModel: SpecTableRow[] = [
+  {
+    propertyName: "legend",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <p>
+        CSS classes for the <i>legend</i> elements in the export form. Useful
+        for adjusting the appearance of the text.
+      </p>
+    ),
+  },
+  {
+    propertyName: "radioContainer",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <p>
+        CSS classes for the <i>divs</i> containing radio <i>inputs</i> and{" "}
+        <i>labels</i>. As prescribed in{" "}
+        <a href="https://getbootstrap.com/docs/5.3/forms/checks-radios">
+          Bootstrap&apos;s documentation on checks and radios
+        </a>
+        , this div by default has the <code>form-check</code> class and the
+        layout of radio inputs can be further customized by adding additional
+        classes according to the documentation.
+      </p>
+    ),
+  },
+  {
+    propertyName: "radioInput",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <p>
+        CSS classes for the <i>input</i> radio controls of the export form.
+        Following{" "}
+        <a href="https://getbootstrap.com/docs/5.3/forms/checks-radios">
+          Bootstrap&apos;s documentation
+        </a>
+        , these elements have the <code>form-check-input</code> class by
+        default.
+      </p>
+    ),
+  },
+  {
+    propertyName: "radioLabel",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <p>
+        CSS classes for the <i>labels</i> of the radio controls of the export
+        form. Following{" "}
+        <a href="https://getbootstrap.com/docs/5.3/forms/checks-radios">
+          Bootstrap&apos;s documentation
+        </a>
+        , these elements have the <code>form-check-label</code> class by
+        default.
+      </p>
+    ),
+  },
+  {
+    propertyName: "submitButton",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <p>
+        CSS classes for the submit button of the export form. Contains the
+        classes <code>btn</code> and <code>btn-secondary</code> by default.
+      </p>
     ),
   },
 ];

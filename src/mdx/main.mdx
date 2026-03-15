@@ -8,6 +8,14 @@ Inspired by [react-bootstrap-table2](https://react-bootstrap-table.github.io/rea
 
 ## Getting Started
 
+### Supported Frameworks
+
+This project has been tested with [Vite](https://vite.dev/) and [Next.js](https://nextjs.org/) and those frameworks are
+officially supported by this project.
+
+Unfortunately, there are known showstopping issues with use of this project with [Astro](https://astro.build/) that do
+not seem particularly easy to solve. Thus, Astro is not currently supported.
+
 ### NPM Package Installation
 
 React Bootstrap Data Grid is published as an npm package with the name `@absreim/react-bootstrap-data-grid`.
@@ -20,9 +28,21 @@ For example:
 
 ### Dependency on Bootstrap
 
-React Bootstrap Data Grid is designed to work with CSS styles from Bootstrap version 5 or later. If you project does not already include Bootstrap, install it according to the installation instructions in the official documentation. More specifically, since React Bootstrap Data Grid is designed to work with projects using a package manager like NPM, you will most likely want to follow the [installation instructions for installing Bootstrap using a package manager](https://getbootstrap.com/docs/5.3/getting-started/download/#package-managers).
+React Bootstrap Data Grid is designed to work with CSS styles from Bootstrap version 5 and up, with version 5.3
+recommended. If you project does not already include Bootstrap, install it according to the installation instructions in
+the official documentation. More specifically, since React Bootstrap Data Grid is designed to work with projects using a
+package manager like NPM, you will most likely want to follow the
+[installation instructions for installing Bootstrap using a package manager](https://getbootstrap.com/docs/5.3/getting-started/download/#package-managers).
 
-If you are only including Bootstrap partially in your project, note that React Bootstrap Data Grid currently depends on the following Sass imports among [the list of Sass imports](https://getbootstrap.com/docs/5.3/customize/optimize/).
+A way to quickly get started with Bootstrap is to import all of Bootstrap's exports. For example, if your project uses
+SCSS, you can import Bootstrap as follows in one of your SCSS files:
+
+```scss
+@import "~bootstrap/scss/bootstrap";
+```
+
+If you are only including Bootstrap partially in your project in order to optimize bundle size, note that React
+Bootstrap Data Grid currently depends on the following Sass imports among [the list of Sass imports](https://getbootstrap.com/docs/5.3/customize/optimize/).
 
 ```scss
 // Configuration
@@ -168,7 +188,7 @@ export default BasicSampleGrid;
 
 #### Live Demo
 
-<BasicSampleGrid />
+<BasicSampleGrid/>
 
 ## Further information
 
@@ -176,4 +196,5 @@ export default BasicSampleGrid;
 - The project is under active development. See the [development roadmap](https://github.com/users/absreim/projects/2/views/1).
 - See the [page for the published NPM package](https://www.npmjs.com/package/@absreim/react-bootstrap-data-grid) in case you are curious about download statistics.
 - If you have a question, concern, or suggestion, feel free to create a GitHub issue on the repo's [issue page](https://github.com/absreim/react-bootstrap-data-grid/issues).
-- If you see anything wrong with this documentation site, want to make a change it, or are just curious, see [this documentation site's GitHub repo](https://github.com/absreim/react-bootstrap-data-grid-docs).
+- If you see anything wrong with this documentation site, want to make a change it, or are just curious, see
+[this documentation site's GitHub repo](https://github.com/absreim/react-bootstrap-data-grid-docs).

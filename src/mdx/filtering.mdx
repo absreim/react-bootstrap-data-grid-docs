@@ -15,8 +15,18 @@ React Bootstrap Data Grid provides an interface to filter rows by specifying var
 
 Supplying the `filterModel` prop will enable filtering for the Grid, while omitting it will disable filtering.
 
-To control which columns are filterable and which are not, simply omit columns from the `filterModel` if you do not
-want the user to filter on them.
+Currently, it is not possible to configure the grid to prevent the user from filtering on certain columns. You can
+set the initial state of the filter to disable filtering on some or all columns, but the user can re-enable them via the
+UI.
+
+## Accessing the Interface
+
+By default, for the sake of backwards compatibility, the filtering interface can be accessed by clicking a toggle button
+above the grid.
+
+In a future release, the button for accessing the filtering interface will be moved to a toolbar that contains more
+compact toggle buttons for accessing filtering and other interfaces. To opt-in into this behavior now, pass a
+`useToolbar` prop with a `true` value to the `Grid` component.
 
 ## Controlled vs Uncontrolled
 
@@ -48,7 +58,8 @@ will generate an empty starting state with no filters initially applied.
 
 ### EditableTableFilterState
 
-`EditableTableFilterState` contains the state of the filtering UI for an entire `Grid` and has the type defintion `Record`.
+`EditableTableFilterState` contains the state of the filtering UI for an entire `Grid` and has the type definition
+`Record<string, FilterState>`, where the key is the `name` property of the `ColDef` for the column.
 
 ### FilterState
 
