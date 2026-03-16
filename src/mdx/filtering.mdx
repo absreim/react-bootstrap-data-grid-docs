@@ -41,6 +41,19 @@ _Uncontrolled_ mode causes the `Grid` component itself to keep track of the stat
 available to parent component. The parent component may specify a starting state. If it does not, the `Grid` component
 will generate an empty starting state with no filters initially applied.
 
+## Filtering and Formatter Functions
+
+Note that, as of now, filtering can only be on the original, unformatted data for each column, and there is no easy way
+for users to see the underlying unformatted data if formatters are applied.
+
+This issue may be addressed in the future by adding the functionality to let users filter on formatted strings and/or
+letting users see unformatted values.
+
+In the meantime, it is recommended that if you intend to use both filtering and formatters in the same grid, provide
+guidance as to how one can filter on the original data. For example, you may have a formatter on a number column to
+display commas to separate groups of 3 digits. In that case, you may wish display a note to your users that when
+entering a number to filter on that column, the number displayed in the input will not have commas.
+
 ## Type Definitions
 
 ### FilterModel

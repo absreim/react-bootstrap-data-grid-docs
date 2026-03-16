@@ -80,8 +80,8 @@ const rows: RowDef<{ name: string; race: string; class: string }>[] = [
   },
 ];
 
-const BasicSampleGrid: FC = () => {
+const IntroGrid: FC = () => {
   return <Grid rows={rows} cols={cols} />;
 };
 
-export default BasicSampleGrid;
+export default IntroGrid;

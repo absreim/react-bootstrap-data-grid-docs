@@ -16,6 +16,10 @@ const linkDefs: LinkDefinition[] = [
     path: "/",
   },
   {
+    name: "Basic Usage",
+    path: "/basic-usage",
+  },
+  {
     name: "Pagination",
     path: "/pagination",
   },
