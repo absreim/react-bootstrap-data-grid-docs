@@ -1,0 +1,45 @@
+# Basic Usage
+
+Almost all the functionality offered by React Bootstrap Data Grid can be accessed by importing and rendering the `Grid`
+component.
+
+The only required props for the `Grid` component are those that describe the _rows_ and _columns_ to be displayed by the
+grid. Additional features of the grid are enabled by passing optional props.
+
+## Column Definition
+
+Columns are defined using the `ColDef` interface. To render a `Grid` component, an array of `ColDef` objects, one for
+each column in grid, are passed in via the `cols` prop.
+
+### Data Types
+
+React Bootstrap Data Grid currently supports 4 data types: `string`, `number`, `date`, and `datetime`. The `string` and
+`number` types correspond to the types of the same name in JavaScript.
+
+The `date` and `datetime` types are both backed by the `Date` type in JavaScript. The difference between `date` and
+`datetime` lies with the behavior of React Boostrap Data Grid with regard to each type. Notably, the default way that
+each type is displayed differ, as do the input elements for filtering on and editing data of each type.
+
+### Formatting
+
+A formatter function that takes in a value of the corresponding type for a column (`string`, `number`, or `Date`) and
+returns a string may be optionally specified for each `ColDef`. When specified, this function will be used when
+displaying data for that column in the grid.
+
+When not specified, the default displayed string for each column is as follows:
+
+<dl>
+    <dt>string</dt>
+    <dd>The string will be displayed as it is with no changes.</dd>
+    <dt>number</dt>
+    <dd>The number will be converted to a string via the <a
+        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString">Number.prototype.toString
+        function</a>.</dd>
+    <dt>date</dt>
+    <dd>The date will be displayed in the format <code>yyyy-mm-dd</code>, which is the format used for <a
+        href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date">date inputs</a>.</dd>
+    <dt>datetime</dt>
+    <dd>The datetime will be displayed in the format <code>YYYY-MM-DDTHH:mm</code>, which is the format used for <a
+        href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local">datetime-local
+        inputs</a>.</dd>
+</dl>
