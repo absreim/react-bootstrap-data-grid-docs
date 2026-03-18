@@ -13,19 +13,19 @@ import SampleStyledGrid from "@/assets/styling/SampleStyledGridWrapper";
 
 ## Methods
 
-There are three primary ways of applying custom styles to the components of React Bootstrap Data Grid:
+There are three primary ways of applying custom styles to the components of react-bootstrap-data-grid:
 
 ### Bootstrap Variable Overrides
 
-Because React Bootstrap Data Grid makes heavy use of Bootstrap CSS classes and variables, it should also obey [customization of Bootstrap via variable overrides](https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults). For example, setting a new `primary` theme color with an SCSS variable will cause buttons of the `primary` variant in React Bootstrap Data Grid to be the new color as well. Additionally, setting the `$table-cell-vertical-align` variable can be used to adjust the vertical alignment of table cells from the default of `top`.
+Because react-bootstrap-data-grid makes heavy use of Bootstrap CSS classes and variables, it should also obey [customization of Bootstrap via variable overrides](https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults). For example, setting a new `primary` theme color with an SCSS variable will cause buttons of the `primary` variant in react-bootstrap-data-grid to be the new color as well. Additionally, setting the `$table-cell-vertical-align` variable can be used to adjust the vertical alignment of table cells from the default of `top`.
 
-### Specific Members of Props in React Bootstrap Data Grid
+### Specific Members of Props in react-bootstrap-data-grid
 
 A small number of options that are set via properties of component props are implemented via CSS classes. Currently, the only properties of this type are the `pageSelectorJustifyContent` and `componentSize` properties of the `GridPaginationState` interface. These properties set the component size and flexbox justify content settings of the [Bootstrap pagination component](https://getbootstrap.com/docs/5.3/components/pagination/), respectively.
 
 ### Injection of Custom Classes via the StyleModel Prop
 
-The `StyleModel` prop contains a fairly extensive of list of properties that correspond to HTML elements in various parts of React Bootstrap Data Grid. These properties either contain arrays of strings that are CSS classes or functions that return an array of such strings.
+The `StyleModel` prop contains a fairly extensive of list of properties that correspond to HTML elements in various parts of react-bootstrap-data-grid. These properties either contain arrays of strings that are CSS classes or functions that return an array of such strings.
 
 ## Type Definitions
 

@@ -4,7 +4,7 @@ import { colDef, rowDef } from "../assets/basic/typeSpecs";
 
 # Basic Usage
 
-Almost all the functionality offered by React Bootstrap Data Grid can be accessed by importing and rendering the `Grid`
+Almost all the functionality offered by react-bootstrap-data-grid can be accessed by importing and rendering the `Grid`
 component.
 
 The only required props for the `Grid` component are those that describe the _rows_ and _columns_ to be displayed by the
@@ -17,7 +17,7 @@ each column in grid, are passed in via the `cols` prop.
 
 ### Data Types
 
-React Bootstrap Data Grid currently supports 4 data types: `string`, `number`, `date`, and `datetime`. The `string` and
+react-bootstrap-data-grid currently supports 4 data types: `string`, `number`, `date`, and `datetime`. The `string` and
 `number` types correspond to the types of the same name in JavaScript.
 
 The `date` and `datetime` types are both backed by the `Date` type in JavaScript. The difference between `date` and
@@ -63,7 +63,7 @@ When not specified, the default displayed string for each column is as follows:
   </dd>
 </dl>
 
-Note that the default formatters for `date` and `datetime` types are exposed in the React Bootstrap Data Grid NPM
+Note that the default formatters for `date` and `datetime` types are exposed in the react-bootstrap-data-grid NPM
 package as `dateToInputStr` and `dateToDatetimeInputStr` and may be imported for use in your project.
 
 ### Example
@@ -178,7 +178,7 @@ const rows: RowDef<CpuInfo>[] = [
 
 ## Grid Component
 
-The `Grid` component is the default export of the React Bootstrap Data Grid NPM package. Import and render this
+The `Grid` component is the default export of the react-bootstrap-data-grid NPM package. Import and render this
 component to use the grid.
 
 The only required props to the `Grid` component are the `rows` and `cols` props, containing arrays of `RowDef` and
@@ -229,7 +229,7 @@ declared as `RowDef<Data extends ValidRowData = ValidRowData>`.
 
 ### ColDataTypeStrings
 
-A string union that represents the data types supported by React Bootstrap Data Grid. The definition is
+A string union that represents the data types supported by react-bootstrap-data-grid. The definition is
 `"string" | "number" | "date" | "datetime"`.
 
 ### RowId

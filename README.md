@@ -1,4 +1,4 @@
-This repo contains the documentation site for React Bootstrap Data Grid. The main repo for that contains the code of the
+This repo contains the documentation site for react-bootstrap-data-grid. The main repo for that contains the code of the
 grid component is at https://github.com/absreim/react-bootstrap-data-grid.
 
 # Getting Started

@@ -8,7 +8,7 @@ import { ReactNode } from "react";
 import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
-  title: "React Bootstrap Data Grid Documentation",
+  title: "react-bootstrap-data-grid Documentation",
   description:
     "Technical documentation for the react-bootstrap-data-grid project",
 };

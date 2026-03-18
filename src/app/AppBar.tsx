@@ -14,7 +14,7 @@ const AppBar: FC = () => {
       <div className="container d-flex flex-row justify-content-between">
         <div className="d-flex flex-row justify-content-start">
           <ContentsHamburger />
-          <span className="navbar-brand">React Bootstrap Data Grid</span>
+          <span className="navbar-brand">react-bootstrap-data-grid</span>
         </div>
         <div>
           <DarkModeDropdown />
