@@ -12,14 +12,22 @@ feature, use of the toolbar must be enabled by passing `true` into `useToolbar` 
 Depending on the features enabled in the grid, the user can choose between three sets of rows to export:
 
 <dl>
-    <dt>All rows</dt>
-    <dd>All rows in the grid as they are passed into <code>Grid</code> component via the <code>rows</code> prop.</dd>
-    <dt>Filtered rows</dt>
-    <dd>The subset of rows remaining after filters are applied. This option is only available if filtering is
-        enabled on the grid.</dd>
-    <dt>Current page rows</dt>
-    <dd>The subset of rows remaining after filters are applied and only in the current page. This option is only
-        available if pagination is enabled on the grid.</dd>
+  <dt>All rows</dt>
+  <dd>
+    All rows in the grid as they are passed into <code>Grid</code> component via
+    the <code>rows</code> prop.
+  </dd>
+  <dt>Filtered rows</dt>
+  <dd>
+    The subset of rows remaining after filters are applied. This option is only
+    available if filtering is enabled on the grid.
+  </dd>
+  <dt>Current page rows</dt>
+  <dd>
+    The subset of rows remaining after filters are applied and only in the
+    current page. This option is only available if pagination is enabled on the
+    grid.
+  </dd>
 </dl>
 
 ### Formatting
@@ -231,11 +239,11 @@ const SampleExportGrid: FC = () => {
           enabled: true,
         },
         releaseDate: {
-          type:"date",
+          type: "date",
           scheme: "startFrom",
           startDate: null,
-          enabled: false
-        }
+          enabled: false,
+        },
       },
     } as UncontrolledFilterModel;
   }, [enableFilter]);

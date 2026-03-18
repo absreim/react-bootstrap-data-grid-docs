@@ -1,8 +1,8 @@
 import TypeSpecTable from "@/shared/TypeSpecTable";
 import {
-    controlledPaginationModel,
-    paginationModelSharedFields,
-    uncontrolledPaginationModel
+  controlledPaginationModel,
+  paginationModelSharedFields,
+  uncontrolledPaginationModel,
 } from "@/assets/pagination/typeSpecs";
 import ControlledPaginatedGrid from "../assets/pagination/ControlledPaginatedGrid";
 import UncontrolledPaginatedGrid from "../assets/pagination/UncontrolledPaginatedGrid";
@@ -34,14 +34,14 @@ It is a discriminated union between `ControlledPaginationModel` and `Uncontrolle
 controlled and uncontrolled pagination modes for a grid, respectively, when passed as the `pagination` prop.
 
 <div className="alert alert-info" role="alert">
-    This name is legacy name
-    that is preserved to maintain backwards compatibility. It will be renamed to
-    `PaginationModel` in a future release to be more in line with more recent naming conventions.
+  This name is legacy name that is preserved to maintain backwards
+  compatibility. It will be renamed to `PaginationModel` in a future release to
+  be more in line with more recent naming conventions.
 </div>
 
 `ControlledPaginationModel` and `UncontrolledPaginationModel` share the following fields:
 
-<TypeSpecTable rows={paginationModelSharedFields}/>
+<TypeSpecTable rows={paginationModelSharedFields} />
 
 ### ControlledPaginationModel
 
@@ -49,7 +49,7 @@ The member of the discriminated union `GridPaginationState` that enables control
 addition to the properties in the table below, `ControlledPaginationModel` also includes the properties common with
 `UncontrolledPaginationModel`. Those common properties can be found in the `GridPaginationState` section.
 
-<TypeSpecTable rows={controlledPaginationModel}/>
+<TypeSpecTable rows={controlledPaginationModel} />
 
 ### UncontrolledPaginationModel
 
@@ -57,7 +57,7 @@ The member of the discriminated union `GridPaginationState` that enables uncontr
 addition to the properties in the table below, `ControlledPaginationModel` also includes the properties common with
 `UncontrolledPaginationModel`. Those common properties can be found in the `GridPaginationState` section.
 
-<TypeSpecTable rows={uncontrolledPaginationModel}/>
+<TypeSpecTable rows={uncontrolledPaginationModel} />
 
 ## Examples
 
@@ -201,9 +201,7 @@ export const rows: RowDef<Data>[] = [
 ```tsx
 "use client";
 
-import Grid, {
-  GridPaginationState,
-} from "@absreim/react-bootstrap-data-grid";
+import Grid, { GridPaginationState } from "@absreim/react-bootstrap-data-grid";
 import { FC, useState } from "react";
 import { cols, rows } from "@/assets/pagination/paginatedGridData";
 
@@ -229,7 +227,7 @@ export default ControlledPaginatedGrid;
 
 #### Live Demo
 
-<ControlledPaginatedGrid/>
+<ControlledPaginatedGrid />
 
 ### Uncontrolled
 

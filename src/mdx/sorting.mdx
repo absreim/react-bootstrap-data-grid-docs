@@ -1,6 +1,10 @@
 import TypeSpecTable from "@/shared/TypeSpecTable";
 import ControlledSortedGrid from "../assets/sorting/ControlledSortedGrid";
-import {sortColDef, controlledTableSortModel, uncontrolledTableSortModel} from "../assets/sorting/typeSpecs";
+import {
+  sortColDef,
+  controlledTableSortModel,
+  uncontrolledTableSortModel,
+} from "../assets/sorting/typeSpecs";
 import UncontrolledSortedGrid from "../assets/sorting/UncontrolledSortedGrid";
 
 # Sorting
@@ -42,15 +46,15 @@ control the overall configuration of the grid with regards to sorting.
 
 ### ControlledTableSortModel
 
-<TypeSpecTable rows={controlledTableSortModel}/>
+<TypeSpecTable rows={controlledTableSortModel} />
 
 ### UncontrolledTableSortModel
 
-<TypeSpecTable rows={uncontrolledTableSortModel}/>
+<TypeSpecTable rows={uncontrolledTableSortModel} />
 
 ### SortColDef
 
-<TypeSpecTable rows={sortColDef}/>
+<TypeSpecTable rows={sortColDef} />
 
 ## Examples
 
@@ -59,10 +63,7 @@ Both examples use the sample data from the following file:
 ##### sortedGridData.ts
 
 ```ts
-import {
-  ColDef,
-  RowDef,
-} from "@absreim/react-bootstrap-data-grid";
+import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid";
 
 export const cols: ColDef[] = [
   {
@@ -253,7 +254,7 @@ export default SampleControlledSortedGrid;
 
 #### Live Demo
 
-<ControlledSortedGrid/>
+<ControlledSortedGrid />
 
 ### Uncontrolled
 
@@ -288,4 +289,4 @@ export default SampleUncontrolledSortedGrid;
 
 #### Live Demo
 
-<UncontrolledSortedGrid/>
+<UncontrolledSortedGrid />

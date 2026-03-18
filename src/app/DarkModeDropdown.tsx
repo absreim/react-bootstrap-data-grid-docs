@@ -44,7 +44,10 @@ const DarkModeDropdown: FC = () => {
 
   return (
     <Dropdown title="Choose color theme">
-      <Dropdown.Toggle variant="outline-secondary" aria-label={`Toggle Theme (${theme})`}>
+      <Dropdown.Toggle
+        variant="outline-secondary"
+        aria-label={`Toggle Theme (${theme})`}
+      >
         {getThemeIcon(theme)}
       </Dropdown.Toggle>
       <Dropdown.Menu>

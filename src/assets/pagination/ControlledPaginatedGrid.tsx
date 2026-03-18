@@ -1,8 +1,6 @@
 "use client";
 
-import Grid, {
-  GridPaginationState,
-} from "@absreim/react-bootstrap-data-grid";
+import Grid, { GridPaginationState } from "@absreim/react-bootstrap-data-grid";
 import { FC, useState } from "react";
 import { cols, rows } from "@/assets/pagination/paginatedGridData";
 

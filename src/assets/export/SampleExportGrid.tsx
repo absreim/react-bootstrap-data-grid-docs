@@ -174,11 +174,11 @@ const SampleExportGrid: FC = () => {
           enabled: true,
         },
         releaseDate: {
-          type:"date",
+          type: "date",
           scheme: "startFrom",
           startDate: null,
-          enabled: false
-        }
+          enabled: false,
+        },
       },
     } as UncontrolledFilterModel;
   }, [enableFilter]);

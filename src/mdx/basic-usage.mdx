@@ -1,4 +1,6 @@
 import SampleBasicGrid from "@/assets/basic/SampleBasicGrid";
+import TypeSpecTable from "../shared/TypeSpecTable";
+import { colDef, rowDef } from "../assets/basic/typeSpecs";
 
 # Basic Usage
 
@@ -31,19 +33,34 @@ displaying data for that column in the grid.
 When not specified, the default displayed string for each column is as follows:
 
 <dl>
-    <dt>string</dt>
-    <dd>The string will be displayed as it is with no changes.</dd>
-    <dt>number</dt>
-    <dd>The number will be converted to a string via the <a
-        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString">Number.prototype.toString
-        function</a>.</dd>
-    <dt>date</dt>
-    <dd>The date will be displayed in the format <code>yyyy-mm-dd</code>, which is the format used for <a
-        href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date">date inputs</a>.</dd>
-    <dt>datetime</dt>
-    <dd>The datetime will be displayed in the format <code>YYYY-MM-DDTHH:mm</code>, which is the format used for <a
-        href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local">datetime-local
-        inputs</a>.</dd>
+  <dt>string</dt>
+  <dd>The string will be displayed as it is with no changes.</dd>
+  <dt>number</dt>
+  <dd>
+    The number will be converted to a string via the{" "}
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString">
+      Number.prototype.toString function
+    </a>
+    .
+  </dd>
+  <dt>date</dt>
+  <dd>
+    The date will be displayed in the format <code>yyyy-mm-dd</code>, which is
+    the format used for{" "}
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date">
+      date inputs
+    </a>
+    .
+  </dd>
+  <dt>datetime</dt>
+  <dd>
+    The datetime will be displayed in the format <code>YYYY-MM-DDTHH:mm</code>,
+    which is the format used for{" "}
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local">
+      datetime-local inputs
+    </a>
+    .
+  </dd>
 </dl>
 
 Note that the default formatters for `date` and `datetime` types are exposed in the React Bootstrap Data Grid NPM
@@ -187,3 +204,46 @@ export default SampleBasicGrid;
 This below grid is a live demo of the sample code used throughout this section of the documentation.
 
 <SampleBasicGrid />
+
+## Type Definitions
+
+### ColDef
+
+An object that defines a single column for a grid.
+
+This type has an optional generic parameter `ValueType` that can be
+used to specify of the type of the input of the formatter function. In practice, this parameter is rarely explicitly
+specified since it is common to define a set of columns in an array of `ColDef` with different data types. In this case,
+it is usually not convenient to define this generic type.
+
+<TypeSpecTable rows={colDef} />
+
+### RowDef
+
+An object that defines a single row for a grid.
+
+This type has an options generic parameter `Data` that can be used to define the type of `data` property. `RowDef` is
+declared as `RowDef<Data extends ValidRowData = ValidRowData>`.
+
+<TypeSpecTable rows={rowDef} />
+
+### ColDataTypeStrings
+
+A string union that represents the data types supported by React Bootstrap Data Grid. The definition is
+`"string" | "number" | "date" | "datetime"`.
+
+### RowId
+
+A union between `string` and `number` types, which are the types valid for use as an `id` field for the type `RowDef`:
+`string | number`.
+
+### ValidRowData
+
+A type that represents the most general possibilities for the `data` property of `RowDef`. It is defined by
+`Record<string, any>`.
+
+### RowData
+
+A type that represents the `data` property of `RowDef`. It takes in the generic parameter `Data` and is used to
+constrain the possible types of `Data` to be a subtype of `ValidRowData`. The definition of `RowData` is
+`RowData<Data extends ValidRowData = ValidRowData> = Data`.

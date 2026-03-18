@@ -312,23 +312,23 @@ To continue using the original behavior of version 1 in version 2, simply add fo
 
 ```tsx
 const cols: ColDef[] = [
-    {
-        type: "number",
-        name: "numCol",
-        label: "Number Column",
-        formatter: (num: number) => num.toLocaleString()
-    },
-    {
-        type: "date",
-        name: "dateCol",
-        label: "Date Column",
-        formatter: (date: Date) => date.toDateString()
-    },
-    {
-        type: "datetime",
-        name: "datetimeCol",
-        label: "Datetime Column",
-        formatter: (datetime: Date) => datetime.toLocaleString()
-    }
+  {
+    type: "number",
+    name: "numCol",
+    label: "Number Column",
+    formatter: (num: number) => num.toLocaleString(),
+  },
+  {
+    type: "date",
+    name: "dateCol",
+    label: "Date Column",
+    formatter: (date: Date) => date.toDateString(),
+  },
+  {
+    type: "datetime",
+    name: "datetimeCol",
+    label: "Datetime Column",
+    formatter: (datetime: Date) => datetime.toLocaleString(),
+  },
 ];
 ```

@@ -161,8 +161,8 @@ export const controlledPaginationModel: SpecTableRow[] = [
         </p>
         <p>
           To avoid this out-of-bounds issue, the parent component may be
-          programmed to be aware of changes to the number of rows and adjust
-          the page number accordingly.
+          programmed to be aware of changes to the number of rows and adjust the
+          page number accordingly.
         </p>
       </>
     ),
