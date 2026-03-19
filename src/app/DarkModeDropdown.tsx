@@ -43,9 +43,10 @@ const DarkModeDropdown: FC = () => {
   };
 
   return (
-    <Dropdown title="Choose color theme">
+    <Dropdown title="Choose color theme" as="li" className="nav-item">
       <Dropdown.Toggle
-        variant="outline-secondary"
+        variant="link"
+        className="nav-link"
         aria-label={`Toggle Theme (${theme})`}
       >
         {getThemeIcon(theme)}
