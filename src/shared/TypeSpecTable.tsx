@@ -14,32 +14,34 @@ interface Props {
 
 const TypeSpecTable: FC<Props> = ({ caption, rows }) => {
   return (
-    <table className="table">
-      {caption && <caption>{caption}</caption>}
-      <thead>
-        <tr>
-          <th>Property name</th>
-          <th>Type definition</th>
-          <th>Required/Optional</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map(
-          (
-            { propertyName, typeDefinition, isRequired, description },
-            index,
-          ) => (
-            <tr key={index}>
-              <td>{propertyName}</td>
-              <td>{typeDefinition}</td>
-              <td>{isRequired ? "Required" : "Optional"}</td>
-              <td>{description}</td>
-            </tr>
-          ),
-        )}
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="table">
+        {caption && <caption>{caption}</caption>}
+        <thead>
+          <tr>
+            <th>Property name</th>
+            <th>Type definition</th>
+            <th>Required/Optional</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(
+            (
+              { propertyName, typeDefinition, isRequired, description },
+              index,
+            ) => (
+              <tr key={index}>
+                <td>{propertyName}</td>
+                <td>{typeDefinition}</td>
+                <td>{isRequired ? "Required" : "Optional"}</td>
+                <td>{description}</td>
+              </tr>
+            ),
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

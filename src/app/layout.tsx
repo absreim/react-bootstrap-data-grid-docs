@@ -36,7 +36,7 @@ export default async function RootLayout({
             <div className="d-none d-lg-block">
               <ContentsNavbar />
             </div>
-            <main className="h-100">{children}</main>
+            <main className="h-100 w-100">{children}</main>
           </div>
         </div>
         <Analytics />

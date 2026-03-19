@@ -14,7 +14,7 @@ const ContentsHamburger: FC = () => {
   return (
     <>
       <Button
-        variant="primary"
+        variant="secondary"
         onClick={handleShow}
         className="d-lg-none me-2"
         aria-label="Articles"

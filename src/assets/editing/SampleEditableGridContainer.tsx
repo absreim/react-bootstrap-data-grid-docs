@@ -172,6 +172,11 @@ const SampleEditableGridContainer: FC = () => {
       cols={cols}
       editModel={{ getUpdateCallback, getDeleteCallback }}
       caption={"Plan out your party for your BG3 adventure"}
+      styleModel={{additionalComponentsStyleModel: {
+        tableAndPaginationDiv: ["table-responsive"]
+        }
+      }
+      }
     />
   );
 };
