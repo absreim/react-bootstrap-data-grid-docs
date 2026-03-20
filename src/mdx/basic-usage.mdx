@@ -1,6 +1,6 @@
 import SampleBasicGrid from "@/assets/basic/SampleBasicGrid";
 import TypeSpecTable from "../shared/TypeSpecTable";
-import { colDef, rowDef } from "../assets/basic/typeSpecs";
+import { colDef, rowDef, gridProps } from "../assets/basic/typeSpecs";
 
 # Basic Usage
 
@@ -37,29 +37,17 @@ When not specified, the default displayed string for each column is as follows:
   <dd>The string will be displayed as it is with no changes.</dd>
   <dt>number</dt>
   <dd>
-    The number will be converted to a string via the{" "}
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString">
-      Number.prototype.toString function
-    </a>
-    .
+    The number will be converted to a string via the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString">Number.prototype.toString function</a>.
   </dd>
   <dt>date</dt>
   <dd>
     The date will be displayed in the format <code>yyyy-mm-dd</code>, which is
-    the format used for{" "}
-    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date">
-      date inputs
-    </a>
-    .
+    the format used for{" "}<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date">date inputs</a>.
   </dd>
   <dt>datetime</dt>
   <dd>
     The datetime will be displayed in the format <code>YYYY-MM-DDTHH:mm</code>,
-    which is the format used for{" "}
-    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local">
-      datetime-local inputs
-    </a>
-    .
+    which is the format used for <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local">datetime-local inputs</a>.
   </dd>
 </dl>
 
@@ -247,3 +235,9 @@ A type that represents the most general possibilities for the `data` property of
 A type that represents the `data` property of `RowDef`. It takes in the generic parameter `Data` and is used to
 constrain the possible types of `Data` to be a subtype of `ValidRowData`. The definition of `RowData` is
 `RowData<Data extends ValidRowData = ValidRowData> = Data`.
+
+### GridProps
+
+This interface contains the props for the `Grid`, the highest level component of react-bootstrap-data-grid.
+
+<TypeSpecTable rows={gridProps} />

@@ -6,6 +6,22 @@ the minor version number, and backwards-compatible bug fixes should increment th
 
 ## Change Log
 
+### 2.3.0
+
+March 20, 2026
+
+Added support for [responsive tables](https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables).
+
+To make the main table responsive, pass a `true` value for the `responsive` to the `Grid` component. Note that doing so
+will render an additional `div` around the main `table`, which may break existing functionality that relies on this
+`div` not existing.
+
+To make the filter options table responsive, use the `table-responsive` CSS class on the `form` element that encloses
+filter options table's `table` element. A new property of `form` has been added to the
+[FilterInputTableStyleModel](http://localhost:3000/styling#filterinputtablestylemodel) type to customize the CSS for
+this element. See the [Inputs and Display Order Example](http://localhost:3000/styling#inputs-and-display-order-example)
+for a full example of making filter options table responsive.
+
 ### 2.2.0
 
 March 16, 2026

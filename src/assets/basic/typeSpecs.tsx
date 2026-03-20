@@ -1,4 +1,5 @@
 import { SpecTableRow } from "@/shared/TypeSpecTable";
+import Link from "next/link";
 
 export const colDef: SpecTableRow[] = [
   {
@@ -83,6 +84,142 @@ export const rowDef: SpecTableRow[] = [
           column definitions in the <code>cols</code> prop. If the values in
           this property do not line up with the column definitions, one is
           likely to experience a runtime error.
+        </p>
+      </>
+    ),
+  },
+];
+
+export const gridProps: SpecTableRow[] = [
+  {
+    propertyName: "rows",
+    typeDefinition: "RowDef[]",
+    isRequired: true,
+    description:
+      "An array of objects containing the rows for the grid." +
+      "Post-processing such as filtering, pagination, and formatting will be " +
+      "applied to these objects.",
+  },
+  {
+    propertyName: "cols",
+    typeDefinition: "ColDef[]",
+    isRequired: true,
+    description:
+      "An array of objects containing the column definitions for " +
+      "the grid.",
+  },
+  {
+    propertyName: "pagination",
+    typeDefinition: "GridPaginationState",
+    isRequired: false,
+    description: (
+      <p>
+        Used to enable <Link href="/pagination">pagination</Link> for the grid.
+      </p>
+    ),
+  },
+  {
+    propertyName: "sortModel",
+    typeDefinition: "TableSortModel",
+    isRequired: false,
+    description: (
+      <p>
+        Enables <Link href="/sorting">sorting</Link> for the grid.
+      </p>
+    ),
+  },
+  {
+    propertyName: "filterModel",
+    typeDefinition: "FilterModel",
+    isRequired: false,
+    description: (
+      <p>
+        Enables <Link href="/filtering">filtering</Link> for the grid.
+      </p>
+    ),
+  },
+  {
+    propertyName: "selectModel",
+    typeDefinition: "SelectModel",
+    isRequired: false,
+    description: (
+      <p>
+        Enables <Link href="/selection">selection</Link> for the grid.
+      </p>
+    ),
+  },
+  {
+    propertyName: "editModel",
+    typeDefinition: "EditModel",
+    isRequired: false,
+    description: (
+      <p>
+        Enables <Link href="/editing">editing</Link> for the grid.
+      </p>
+    ),
+  },
+  {
+    propertyName: "caption",
+    typeDefinition: "string",
+    isRequired: false,
+    description: (
+      <p>
+        If provided, displays a caption for the table with the string provided.
+      </p>
+    ),
+  },
+  {
+    propertyName: "styleModel",
+    typeDefinition: "StyleModel",
+    isRequired: false,
+    description: (
+      <p>
+        Allows for customizing CSS classes on various elements of the grid. See
+        the <Link href="/styling">styling</Link> section of the documentation
+        for details.
+      </p>
+    ),
+  },
+  {
+    propertyName: "useToolbar",
+    typeDefinition: "boolean",
+    isRequired: false,
+    description: (
+      <>
+        <p>
+          If set to <code>true</code>, displays a toolbar that the user can use
+          to <Link href="/export">export</Link> data from the grid.
+        </p>
+        <p>
+          Additionally, if set to <code>true</code> and filtering is enabled for
+          the grid, the filtering interface will only be accessible from the
+          toolbar. The default button for accessing the filtering interface will
+          no longer be rendered.
+        </p>
+      </>
+    ),
+  },
+  {
+    propertyName: "responsive",
+    typeDefinition: "boolean",
+    isRequired: false,
+    description: (
+      <>
+        <p>
+          If set to <code>true</code>, makes the table responsive at all
+          breakpoints by inserting a containing <code>div</code> and using
+          Bootstrap&apos;s{" "}
+          <Link href="https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables">
+            table-responsive
+          </Link>{" "}
+          CSS class.
+        </p>
+        <p>
+          Responsive tables are set to scroll horizontally when the containing
+          element is not wide enough to fit the table&apos;s contents. If a
+          table is not responsive, when horizontal space is tight, the browser
+          may more aggressively try to shrink the width of each column and/or
+          overflow content past the table&apos;s horizontal boundaries.
         </p>
       </>
     ),

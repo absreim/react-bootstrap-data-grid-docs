@@ -118,6 +118,7 @@ const styleModel: StyleModel = {
     startDateInput: () => ["form-control-sm"],
     endDateInput: () => ["form-control-sm"],
     submitButton: ["btn-success"],
+    form: ["table-responsive", "w-100"]
   },
 };
 
@@ -196,6 +197,7 @@ const SampleStyledInputsGrid: FC = () => {
         filterModel={filterModel}
         editModel={editModel}
         styleModel={styleModel}
+        responsive={true}
       />
       <button className="btn btn-secondary btn-sm" onClick={handleReset}>
         Reset Rows

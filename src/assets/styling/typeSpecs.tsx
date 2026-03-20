@@ -1,4 +1,5 @@
 import { SpecTableRow } from "@/shared/TypeSpecTable";
+import Link from "next/link";
 
 export const additionalComponentsStyleModel: SpecTableRow[] = [
   {
@@ -537,6 +538,34 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
         changes to the filter criteria. The <code>btn-secondary</code> class is
         applied automatically, but will not be applied if an array of length at
         least 1 is passed for property.
+      </>
+    ),
+  },
+  {
+    propertyName: "form",
+    typeDefinition: "string[]",
+    isRequired: false,
+    description: (
+      <>
+        <p>
+          Specifies CSS classes for the <i>form</i> element that encloses the
+          filter options table.
+        </p>
+        <p>
+          Supplying the{" "}
+          <Link href="https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables">
+            table-responsive
+          </Link>{" "}
+          Bootstrap utility class may be used to make the table responsive. Note
+          that this responsive behavior only works if the <i>form</i> element
+          itself has constrained with. If, for example, the <i>form</i> element
+          is the child of a flex container with <code>align-items: start;</code>
+          , one can constrain the width of the <i>form</i> with the{" "}
+          <Link href="https://getbootstrap.com/docs/5.3/utilities/sizing/#relative-to-the-parent">
+            w-100
+          </Link>{" "}
+          utility class.
+        </p>
       </>
     ),
   },
