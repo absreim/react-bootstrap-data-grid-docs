@@ -8,16 +8,17 @@ import { LinkDefinition } from "@/app/types";
 
 interface ContentsNavbarProps {
   linkDefs: LinkDefinition[];
+  onClick?: () => void;
 }
 
-const ContentsNavbar: FC<ContentsNavbarProps> = ({ linkDefs }) => {
+const ContentsNavbar: FC<ContentsNavbarProps> = ({ linkDefs, onClick }) => {
   const pathname = usePathname();
 
   return (
     <Nav variant="underline" activeKey={pathname} className="flex-column">
       {linkDefs.map(({ name, path }, index) => (
         <Nav.Item key={index}>
-          <Nav.Link as={Link} href={path}>
+          <Nav.Link as={Link} href={path} onClick={onClick}>
             {name}
           </Nav.Link>
         </Nav.Item>

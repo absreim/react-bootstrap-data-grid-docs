@@ -56,6 +56,12 @@
   min-width: 0;
 }
 
+@include media-breakpoint-up(lg) {
+  .overflow-lg-y-auto {
+    overflow-y: auto;
+  }
+}
+
 // --- Shiki themes ---
 
 code[data-theme*=" "],

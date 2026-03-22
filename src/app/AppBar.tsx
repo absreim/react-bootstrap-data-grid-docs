@@ -5,37 +5,21 @@ import ContentsHamburger from "@/app/ContentsHamburger";
 import dynamic from "next/dynamic";
 import NavlinkSeparator from "@/shared/NavLInkSeparator/NavlinkSeparator";
 import { LinkDefinition } from "@/app/types";
-import Nav from "react-bootstrap/Nav";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import Navbar from "react-bootstrap/Navbar";
+import SiteSectionsNav from "@/app/SiteSectionsNav";
 
 const DarkModeDropdown = dynamic(() => import("@/app/DarkModeDropdown"), {
   ssr: false,
 });
 
 const AppBar: FC<{ linkDefs: LinkDefinition[] }> = ({ linkDefs }) => {
-  const pathname = usePathname();
-  const activeKey = pathname.startsWith("/docs") ? "docs" : "home";
-
   return (
     <Navbar bg="primary" variant="light" data-bs-theme="dark">
       <div className="container d-flex flex-row justify-content-between">
         <div className="d-flex flex-row justify-content-start">
           <ContentsHamburger linkDefs={linkDefs} />
           <span className="navbar-brand">react-bootstrap-data-grid</span>
-          <Nav activeKey={activeKey}>
-            <Nav.Item>
-              <Nav.Link as={Link} href="/" eventKey="home">
-                Home
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link as={Link} href="/docs/introduction" eventKey="docs">
-                Docs
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
+          <SiteSectionsNav navClasses="d-none d-sm-flex" />
         </div>
         <ul className="navbar-nav flex-row gap-2">
           <li className="nav-item">

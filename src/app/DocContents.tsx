@@ -10,7 +10,7 @@ export default async function DocContents({ slug }: { slug: string }) {
 
   return (
     <Stack className="align-items-start h-100" direction="horizontal" gap={2}>
-      <div className="overflow-y-auto h-100 px-2">
+      <div className="overflow-lg-y-auto h-100 w-100 px-2">
         <Post />
       </div>
       <nav className="d-none d-xl-block rbdg-docs-toc overflow-y-auto h-100">
