@@ -10,55 +10,58 @@ interface LinkDefinition {
   path: string;
 }
 
-const linkDefs: LinkDefinition[] = [
-  {
-    name: "Introduction",
-    path: "/",
-  },
-  {
-    name: "Basic Usage",
-    path: "/basic-usage",
-  },
-  {
-    name: "Pagination",
-    path: "/pagination",
-  },
-  {
-    name: "Sorting",
-    path: "/sorting",
-  },
-  {
-    name: "Filtering",
-    path: "/filtering",
-  },
-  {
-    name: "Selection",
-    path: "/selection",
-  },
-  {
-    name: "Editing",
-    path: "/editing",
-  },
-  {
-    name: "Styling",
-    path: "/styling",
-  },
-  {
-    name: "Export",
-    path: "/export",
-  },
-  {
-    name: "Versions",
-    path: "/versions",
-  },
-  {
-    name: "Migrate",
-    path: "/migrate",
-  },
-];
+interface ContentsNavbarProps {
+  base: string;
+}
 
-const ContentsNavbar: FC = () => {
+const ContentsNavbar: FC<ContentsNavbarProps> = ({base}) => {
   const pathname = usePathname();
+  const linkDefs: LinkDefinition[] = [
+    {
+      name: "Introduction",
+      path: `${base}/`,
+    },
+    {
+      name: "Basic Usage",
+      path: `${base}/basic-usage`,
+    },
+    {
+      name: "Pagination",
+      path: `${base}/pagination`,
+    },
+    {
+      name: "Sorting",
+      path: `${base}/sorting`,
+    },
+    {
+      name: "Filtering",
+      path: `${base}/filtering`,
+    },
+    {
+      name: "Selection",
+      path: `${base}/selection`,
+    },
+    {
+      name: "Editing",
+      path: `${base}/editing`,
+    },
+    {
+      name: "Styling",
+      path: `${base}/styling`,
+    },
+    {
+      name: "Export",
+      path: `${base}/export`,
+    },
+    {
+      name: "Versions",
+      path: `${base}/versions`,
+    },
+    {
+      name: "Migrate",
+      path: `${base}/migrate`,
+    },
+  ];
 
   return (
     <Nav variant="underline" activeKey={pathname} className="flex-column">

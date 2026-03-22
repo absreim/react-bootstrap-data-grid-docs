@@ -114,7 +114,7 @@ export const gridProps: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        Used to enable <Link href="/pagination">pagination</Link> for the grid.
+        Used to enable <Link href="/docs/pagination">pagination</Link> for the grid.
       </p>
     ),
   },
@@ -124,7 +124,7 @@ export const gridProps: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        Enables <Link href="/sorting">sorting</Link> for the grid.
+        Enables <Link href="/docs/sorting">sorting</Link> for the grid.
       </p>
     ),
   },
@@ -134,7 +134,7 @@ export const gridProps: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        Enables <Link href="/filtering">filtering</Link> for the grid.
+        Enables <Link href="/docs/filtering">filtering</Link> for the grid.
       </p>
     ),
   },
@@ -144,7 +144,7 @@ export const gridProps: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        Enables <Link href="/selection">selection</Link> for the grid.
+        Enables <Link href="/docs/selection">selection</Link> for the grid.
       </p>
     ),
   },
@@ -154,7 +154,7 @@ export const gridProps: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        Enables <Link href="/editing">editing</Link> for the grid.
+        Enables <Link href="/docs/editing">editing</Link> for the grid.
       </p>
     ),
   },
@@ -175,7 +175,7 @@ export const gridProps: SpecTableRow[] = [
     description: (
       <p>
         Allows for customizing CSS classes on various elements of the grid. See
-        the <Link href="/styling">styling</Link> section of the documentation
+        the <Link href="/docs/styling">styling</Link> section of the documentation
         for details.
       </p>
     ),
@@ -188,7 +188,7 @@ export const gridProps: SpecTableRow[] = [
       <>
         <p>
           If set to <code>true</code>, displays a toolbar that the user can use
-          to <Link href="/export">export</Link> data from the grid.
+          to <Link href="/docs/export">export</Link> data from the grid.
         </p>
         <p>
           Additionally, if set to <code>true</code> and filtering is enabled for

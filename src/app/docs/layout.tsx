@@ -13,7 +13,7 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <>
       <div className="d-none d-lg-block">
-        <ContentsNavbar />
+        <ContentsNavbar base={"/docs"} />
       </div>
       <main className="h-100 w-100">{children}</main>
     </>

@@ -18,8 +18,8 @@ will render an additional `div` around the main `table`, which may break existin
 
 To make the filter options table responsive, use the `table-responsive` CSS class on the `form` element that encloses
 filter options table's `table` element. A new property of `form` has been added to the
-[FilterInputTableStyleModel](http://localhost:3000/styling#filterinputtablestylemodel) type to customize the CSS for
-this element. See the [Inputs and Display Order Example](http://localhost:3000/styling#inputs-and-display-order-example)
+[FilterInputTableStyleModel](http://localhost:3000/docs/styling#filterinputtablestylemodel) type to customize the CSS for
+this element. See the [Inputs and Display Order Example](http://localhost:3000/docs/styling#inputs-and-display-order-example)
 for a full example of making filter options table responsive.
 
 ### 2.2.0
@@ -27,7 +27,7 @@ for a full example of making filter options table responsive.
 March 16, 2026
 
 Added a toolbar component that contains buttons for accessing the filtering interface and a [newly implemented interface
-for exporting data](/export) in JSON and CSV formats. This toolbar is _opt out by default_ for the sake of backwards compatibility.
+for exporting data](/docs/export) in JSON and CSV formats. This toolbar is _opt out by default_ for the sake of backwards compatibility.
 
 Note that **the toolbar is only supported for Bootstrap version 5.3**. I recommend upgrading Bootstrap to 5.3 in
 your project before enabling the toolbar.
@@ -38,7 +38,7 @@ The toolbar can be enabled by passing a `true` value to the `useToolbar` prop on
 
 March 10, 2026
 
-Added _uncontrolled_ modes for [pagination](/pagination), [sorting](/sorting), and [filtering](/filtering) features.
+Added _uncontrolled_ modes for [pagination](/docs/pagination), [sorting](/docs/sorting), and [filtering](/docs/filtering) features.
 Compared to _controlled_ mode, which was
 previously the only mode available, _uncontrolled_ mode causes the `Grid` component rather than the parent component
 to keep track of states, such as page number or the column currently being sorted.
