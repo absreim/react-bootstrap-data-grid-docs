@@ -26,7 +26,6 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
     .map((e) => ({
       slug: e.name.replace(/\.mdx$/, ""),
     }))
-    .filter(({ slug }) => slug !== "main");
 }
 
 export const dynamicParams = false;

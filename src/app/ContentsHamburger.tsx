@@ -4,8 +4,11 @@ import { FC, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import ContentsNavbar from "@/app/ContentsNavbar";
+import { LinkDefinition } from "@/app/types";
 
-const ContentsHamburger: FC = () => {
+const ContentsHamburger: FC<{ linkDefs: LinkDefinition[] }> = ({
+  linkDefs,
+}) => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
@@ -37,7 +40,7 @@ const ContentsHamburger: FC = () => {
           <Offcanvas.Title>Articles</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="d-lg-none">
-          <ContentsNavbar />
+          <ContentsNavbar linkDefs={linkDefs} />
         </Offcanvas.Body>
       </Offcanvas>
     </>

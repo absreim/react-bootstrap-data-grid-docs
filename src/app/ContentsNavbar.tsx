@@ -4,64 +4,14 @@ import { FC } from "react";
 import { usePathname } from "next/navigation";
 import Nav from "react-bootstrap/Nav";
 import Link from "next/link";
-
-interface LinkDefinition {
-  name: string;
-  path: string;
-}
+import { LinkDefinition } from "@/app/types";
 
 interface ContentsNavbarProps {
-  base: string;
+  linkDefs: LinkDefinition[];
 }
 
-const ContentsNavbar: FC<ContentsNavbarProps> = ({base}) => {
+const ContentsNavbar: FC<ContentsNavbarProps> = ({ linkDefs }) => {
   const pathname = usePathname();
-  const linkDefs: LinkDefinition[] = [
-    {
-      name: "Introduction",
-      path: `${base}/`,
-    },
-    {
-      name: "Basic Usage",
-      path: `${base}/basic-usage`,
-    },
-    {
-      name: "Pagination",
-      path: `${base}/pagination`,
-    },
-    {
-      name: "Sorting",
-      path: `${base}/sorting`,
-    },
-    {
-      name: "Filtering",
-      path: `${base}/filtering`,
-    },
-    {
-      name: "Selection",
-      path: `${base}/selection`,
-    },
-    {
-      name: "Editing",
-      path: `${base}/editing`,
-    },
-    {
-      name: "Styling",
-      path: `${base}/styling`,
-    },
-    {
-      name: "Export",
-      path: `${base}/export`,
-    },
-    {
-      name: "Versions",
-      path: `${base}/versions`,
-    },
-    {
-      name: "Migrate",
-      path: `${base}/migrate`,
-    },
-  ];
 
   return (
     <Nav variant="underline" activeKey={pathname} className="flex-column">

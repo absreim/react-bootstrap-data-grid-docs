@@ -10,7 +10,7 @@ const Page: FC = () => (
       React and Bootstrap
     </p>
     <Stack direction="horizontal" gap={2} className="justify-content-center">
-      <Link href="docs" className="btn btn-primary">Read the docs</Link>
+      <Link href="docs/introduction" className="btn btn-primary">Read the docs</Link>
     </Stack>
   </div>
 );
