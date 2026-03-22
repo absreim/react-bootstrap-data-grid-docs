@@ -4,7 +4,6 @@ import AppBar from "./AppBar";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import { ReactNode } from "react";
-import { cookies } from "next/headers";
 import getDocLinkDefs from "@/lib/getDocLinkDefs";
 
 export const metadata: Metadata = {
@@ -13,22 +12,41 @@ export const metadata: Metadata = {
     "Home page for the react-bootstrap-data-grid project",
 };
 
+const darkModeInitScript = `
+  let currentTheme = "auto";
+  const storedTheme = localStorage.getItem("theme");
+  if (["dark", "light"].includes(storedTheme)) {
+    currentTheme = storedTheme;
+  }
+
+  if (currentTheme === "auto") {
+    document.documentElement.setAttribute(
+      "data-bs-theme",
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light",
+    );
+  } else {
+    document.documentElement.setAttribute("data-bs-theme", currentTheme);
+  }
+`;
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const theme = cookieStore.get("theme")?.value ?? "auto";
   const linkDefs = getDocLinkDefs();
 
   return (
     <html
       lang="en"
-      data-bs-theme={theme}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: darkModeInitScript }}></script>
+      </head>
       <body className="vh-100">
         <Script src="/dark-mode.js" strategy="beforeInteractive" />
         <div className="d-flex flex-column h-100">
