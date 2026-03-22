@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import "./style.scss";
 import AppBar from "./AppBar";
-import ContentsNavbar from "@/app/ContentsNavbar";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import { ReactNode } from "react";
 import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
-  title: "react-bootstrap-data-grid Documentation",
+  title: "react-bootstrap-data-grid Home Page",
   description:
-    "Technical documentation for the react-bootstrap-data-grid project",
+    "Home page for the react-bootstrap-data-grid project",
 };
 
 export default async function RootLayout({
@@ -33,10 +32,7 @@ export default async function RootLayout({
         <div className="d-flex flex-column h-100">
           <AppBar />
           <div className="container d-flex flex-row gap-2 flex-grow-1 rbdg-docs-main">
-            <div className="d-none d-lg-block">
-              <ContentsNavbar />
-            </div>
-            <main className="h-100 w-100">{children}</main>
+            {children}
           </div>
         </div>
         <Analytics />
