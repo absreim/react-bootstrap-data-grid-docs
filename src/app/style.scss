@@ -98,5 +98,6 @@ code[data-theme*=" "] span {
     --bs-emphasis-color: #{$body-emphasis-color-dark};
     --bs-emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
     --bs-border-color: #{$border-color-dark};
+    color-scheme: dark;
   }
 }

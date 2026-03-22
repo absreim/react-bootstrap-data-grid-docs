@@ -20,7 +20,7 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies();
   const theme = cookieStore.get("theme")?.value ?? "auto";
-  const linkDefs = await getDocLinkDefs();
+  const linkDefs = getDocLinkDefs();
 
   return (
     <html
@@ -33,7 +33,7 @@ export default async function RootLayout({
         <Script src="/dark-mode.js" strategy="beforeInteractive" />
         <div className="d-flex flex-column h-100">
           <AppBar linkDefs={linkDefs} />
-          <div className="container d-flex flex-row gap-2 flex-grow-1 rbdg-docs-main">
+          <div className="container d-flex flex-row gap-2 flex-grow-1 rbdg-docs-main pt-2">
             {children}
           </div>
         </div>

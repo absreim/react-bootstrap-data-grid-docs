@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 };
 
 
-const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
-  const linkDefs = await getDocLinkDefs();
+const Layout: FC<{ children: ReactNode }> = ({ children }) => {
+  const linkDefs = getDocLinkDefs();
 
   return (
     <>
-      <div className="d-none d-lg-block">
+      <div className="d-none d-lg-block overflow-y-auto pe-3">
         <ContentsNavbar linkDefs={linkDefs} />
       </div>
       <main className="h-100 w-100">{children}</main>

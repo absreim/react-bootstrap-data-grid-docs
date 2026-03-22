@@ -30,7 +30,7 @@ const testNavLinkAndHeading: (
 };
 
 test("off-canvas links work", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/docs/introduction");
 
   const introHeading = page.getByRole("heading", {
     level: 1,
