@@ -14,10 +14,6 @@ export default async function Page({
   return <DocContents slug={slug} />;
 }
 
-// Filter out "main" document to avoid confusion since it is tied to index URL.
-// Not too important, but it does prevent people from stumbling upon the page,
-// in which case the navlink highlighting will not work since it is tied to the
-// base "/" path.
 export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   const entries = await fs.readdir(CONTENT_DIR, { withFileTypes: true });
 
@@ -26,7 +22,6 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
     .map((e) => ({
       slug: e.name.replace(/\.mdx$/, ""),
     }))
-    .filter(({ slug }) => slug !== "main");
 }
 
 export const dynamicParams = false;

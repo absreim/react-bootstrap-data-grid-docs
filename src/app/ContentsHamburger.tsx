@@ -4,8 +4,12 @@ import { FC, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import ContentsNavbar from "@/app/ContentsNavbar";
+import { LinkDefinition } from "@/app/types";
+import SiteSectionsNav from "@/app/SiteSectionsNav";
 
-const ContentsHamburger: FC = () => {
+const ContentsHamburger: FC<{ linkDefs: LinkDefinition[] }> = ({
+  linkDefs,
+}) => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
@@ -34,10 +38,14 @@ const ContentsHamburger: FC = () => {
       </Button>
       <Offcanvas show={show} onHide={handleClose} responsive="lg">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Articles</Offcanvas.Title>
+          <Offcanvas.Title>react-bootstrap-data-grid</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="d-lg-none">
-          <ContentsNavbar />
+          <h2 className="mb-1 fs-4">Doc Articles</h2>
+          <ContentsNavbar linkDefs={linkDefs} onClick={handleClose} />
+          <hr />
+          <h2 className="mb-1 fs-4">Site Sections</h2>
+          <SiteSectionsNav variant="underline" onClick={handleClose} />
         </Offcanvas.Body>
       </Offcanvas>
     </>

@@ -4,18 +4,22 @@ import { FC } from "react";
 import ContentsHamburger from "@/app/ContentsHamburger";
 import dynamic from "next/dynamic";
 import NavlinkSeparator from "@/shared/NavLInkSeparator/NavlinkSeparator";
+import { LinkDefinition } from "@/app/types";
+import Navbar from "react-bootstrap/Navbar";
+import SiteSectionsNav from "@/app/SiteSectionsNav";
 
 const DarkModeDropdown = dynamic(() => import("@/app/DarkModeDropdown"), {
   ssr: false,
 });
 
-const AppBar: FC = () => {
+const AppBar: FC<{ linkDefs: LinkDefinition[] }> = ({ linkDefs }) => {
   return (
-    <nav className="navbar">
+    <Navbar bg="primary" variant="light" data-bs-theme="dark">
       <div className="container d-flex flex-row justify-content-between">
         <div className="d-flex flex-row justify-content-start">
-          <ContentsHamburger />
+          <ContentsHamburger linkDefs={linkDefs} />
           <span className="navbar-brand">react-bootstrap-data-grid</span>
+          <SiteSectionsNav navClasses="d-none d-sm-flex" />
         </div>
         <ul className="navbar-nav flex-row gap-2">
           <li className="nav-item">
@@ -40,7 +44,7 @@ const AppBar: FC = () => {
           <DarkModeDropdown />
         </ul>
       </div>
-    </nav>
+    </Navbar>
   );
 };
 
