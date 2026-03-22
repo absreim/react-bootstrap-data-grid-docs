@@ -16,8 +16,6 @@ const testNavLinkAndHeading: (
   const dialog = page.getByRole("dialog");
   const link = dialog.getByRole("link", { name: sectionName });
   await link.click();
-  const dialogCloseButton = dialog.getByRole("button", { name: "Close" });
-  await dialogCloseButton.click();
 
   const heading = page.getByRole("heading", {
     level: 1,
