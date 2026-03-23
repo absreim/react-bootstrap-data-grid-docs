@@ -62,6 +62,39 @@
   }
 }
 
+// --- Logo ---
+
+:root, [data-bs-theme="light"] {
+  .logo-grid {
+    color: #087ea4; // React logo color
+  }
+
+  .logo-letter {
+    color: var(--bs-primary);
+  }
+}
+
+[data-bs-theme="dark"] {
+  .logo-grid {
+    color: var(--bs-body-color);
+  }
+
+  .logo-letter {
+    color: var(--bs-body-color);
+  }
+}
+
+.navbar-logo {
+  /* Set a fixed height that fits the navbar */
+  height: 2rem;
+  width: auto;
+}
+
+.hero-logo {
+  height: 15rem;
+  width: auto;
+}
+
 // --- Shiki themes ---
 
 code[data-theme*=" "],

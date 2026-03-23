@@ -7,6 +7,7 @@ import NavlinkSeparator from "@/shared/NavLInkSeparator/NavlinkSeparator";
 import { LinkDefinition } from "@/app/types";
 import Navbar from "react-bootstrap/Navbar";
 import SiteSectionsNav from "@/app/SiteSectionsNav";
+import Logo from "@/assets/Logo";
 
 const DarkModeDropdown = dynamic(() => import("@/app/DarkModeDropdown"), {
   ssr: false,
@@ -14,11 +15,14 @@ const DarkModeDropdown = dynamic(() => import("@/app/DarkModeDropdown"), {
 
 const AppBar: FC<{ linkDefs: LinkDefinition[] }> = ({ linkDefs }) => {
   return (
-    <Navbar bg="primary" variant="light" data-bs-theme="dark">
+    <Navbar bg="primary" data-bs-theme="dark">
       <div className="container d-flex flex-row justify-content-between">
         <div className="d-flex flex-row justify-content-start">
           <ContentsHamburger linkDefs={linkDefs} />
-          <span className="navbar-brand">react-bootstrap-data-grid</span>
+          <span className="navbar-brand">
+            <Logo className="navbar-logo me-2 align-middle" />
+            react-bootstrap-data-grid
+          </span>
           <SiteSectionsNav navClasses="d-none d-sm-flex" />
         </div>
         <ul className="navbar-nav flex-row gap-2">

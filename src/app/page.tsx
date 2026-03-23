@@ -1,9 +1,11 @@
 import { FC } from "react";
 import Stack from "react-bootstrap/Stack";
 import Link from "next/link";
+import Logo from "@/assets/Logo";
 
 const Page: FC = () => (
   <div className="text-center w-100">
+    <Logo className="hero-logo" />
     <h1>react-bootstrap-data-grid</h1>
     <p>
       Data grid UI component that seamlessly integrates into web apps built with

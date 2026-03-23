@@ -36,14 +36,18 @@ const DarkModeDropdown: FC = () => {
   const getItemClickHandler: (theme: string) => () => void = (theme) => () => {
     setTheme(theme);
     localStorage.setItem("theme", theme);
-    document.cookie = `theme=${theme}; path=/; max-age=31536000`;
     (
       window as Window & typeof globalThis & { syncTheme: () => void }
     ).syncTheme();
   };
 
   return (
-    <Dropdown title="Choose color theme" as="li" className="nav-item">
+    <Dropdown
+      title="Choose color theme"
+      as="li"
+      className="nav-item"
+      align="end"
+    >
       <Dropdown.Toggle
         variant="link"
         className="nav-link"
@@ -53,7 +57,11 @@ const DarkModeDropdown: FC = () => {
       </Dropdown.Toggle>
       <Dropdown.Menu>
         {menuOptions.map(([icon, label, value]) => (
-          <Dropdown.Item key={value} onClick={getItemClickHandler(value)}>
+          <Dropdown.Item
+            key={value}
+            onClick={getItemClickHandler(value)}
+            active={theme === value}
+          >
             {icon} {label}
           </Dropdown.Item>
         ))}
