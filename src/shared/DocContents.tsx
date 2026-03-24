@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { TocItem } from "rehype-mdx-toc";
 import Stack from "react-bootstrap/Stack";
-import Toc from "@/app/Toc";
+import Toc from "@/shared/Toc";
 
 export default async function DocContents({ slug }: { slug: string }) {
   const { default: Post, toc }: { default: FC; toc: TocItem[] } = await import(

@@ -23,7 +23,7 @@ const AppBar: FC<{ linkDefs: LinkDefinition[] }> = ({ linkDefs }) => {
             <Logo className="navbar-logo me-2 align-middle" />
             react-bootstrap-data-grid
           </span>
-          <SiteSectionsNav navClasses="d-none d-sm-flex" />
+          <SiteSectionsNav navClasses="d-none d-md-flex" />
         </div>
         <ul className="navbar-nav flex-row gap-2">
           <li className="nav-item">
