@@ -1,17 +1,20 @@
 import { FC, ReactNode } from "react";
-import getDocLinkDefs from "@/lib/getDocLinkDefs";
 import ContentsNavbar from "@/app/ContentsNavbar";
+import { LinkDefinition } from "@/app/types";
 
-const DocContentsLayout: FC<{ children: ReactNode }> = ({ children }) => {
-  const linkDefs = getDocLinkDefs();
+interface DocContentsLayoutProps {
+  children: ReactNode;
+  linkDefs: LinkDefinition[]
+}
 
+const DocContentsLayout: FC<DocContentsLayoutProps> = ({ children, linkDefs }) => {
   return (
-    <>
+    <div className="d-flex flex-row gap-2 flex-grow-1 rbdg-docs-main">
       <div className="d-none d-lg-block overflow-y-auto pe-3">
         <ContentsNavbar linkDefs={linkDefs} />
       </div>
       <main className="h-100 w-100">{children}</main>
-    </>
+    </div>
   );
 }
 

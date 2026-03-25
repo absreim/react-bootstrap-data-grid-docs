@@ -1,21 +1,24 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { TocItem } from "rehype-mdx-toc";
 import Stack from "react-bootstrap/Stack";
 import Toc from "@/shared/Toc";
 
-export default async function DocContents({ slug }: { slug: string }) {
-  const { default: Post, toc }: { default: FC; toc: TocItem[] } = await import(
-    `@/mdx/${slug}.mdx`
-  );
+interface DocContentsProps {
+  main: ReactNode;
+  tocItems: TocItem[];
+}
 
+const DocContents: FC<DocContentsProps> = ({ main, tocItems }) => {
   return (
     <Stack className="align-items-start h-100" direction="horizontal" gap={2}>
       <div className="overflow-lg-y-auto h-100 w-100 px-2">
-        <Post />
+        {main}
       </div>
       <nav className="d-none d-xl-block rbdg-docs-toc overflow-y-auto h-100">
-        <Toc tocItems={toc} />
+        <Toc tocItems={tocItems} />
       </nav>
     </Stack>
   );
 }
+
+export default DocContents;

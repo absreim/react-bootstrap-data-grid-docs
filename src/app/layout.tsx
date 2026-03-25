@@ -4,7 +4,7 @@ import AppBar from "./AppBar";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import { ReactNode } from "react";
-import getDocLinkDefs from "@/lib/getDocLinkDefs";
+import { getDocLinkDefs } from "@/lib/getLinkDefs";
 
 export const metadata: Metadata = {
   title: "react-bootstrap-data-grid Home Page",
@@ -51,7 +51,7 @@ export default async function RootLayout({
         <Script src="/dark-mode.js" strategy="beforeInteractive" />
         <div className="d-flex flex-column h-100">
           <AppBar linkDefs={linkDefs} />
-          <div className="container d-flex flex-row gap-2 flex-grow-1 rbdg-docs-main pt-2">
+          <div className="container pt-2">
             {children}
           </div>
         </div>

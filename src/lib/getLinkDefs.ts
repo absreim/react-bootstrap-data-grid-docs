@@ -3,8 +3,10 @@ import path from "path";
 import { cache } from "react";
 import { LinkDefinition } from "@/app/types";
 
-const CONTENT_PATH = path.join(process.cwd(), "src", "mdx");
-const BASE_PATH = "/docs";
+const DOCS_DIR = path.join(process.cwd(), "src", "mdx", "docs");
+const DOCS_URL_BASE = "/docs";
+const BLOG_DIR = path.join(process.cwd(), "src", "mdx", "blog");
+const BLOG_URL_BASE = "/blog";
 
 type AugmentedLinkDefinition = LinkDefinition & { order: number };
 
@@ -34,22 +36,24 @@ function readMDXFile(filePath: string) {
   return parseFrontmatter(rawContent);
 }
 
-function getMDXData(dir: string): AugmentedLinkDefinition[] {
-  const mdxFiles = getMDXFiles(dir);
+function getMDXData(contentDir: string, urlBasePath: string): AugmentedLinkDefinition[] {
+  const mdxFiles = getMDXFiles(contentDir);
   return mdxFiles.map((file) => {
-    const dict = readMDXFile(path.join(dir, file));
+    const dict = readMDXFile(path.join(contentDir, file));
     const slug = path.basename(file, path.extname(file));
 
     return {
       order: Number(dict.order),
       name: dict.navLabel || slug,
-      path: `${BASE_PATH}/${slug}`,
+      path: `${urlBasePath}/${slug}`,
     };
   });
 }
 
-const getDocLinkDefs = cache((): LinkDefinition[] =>
-  getMDXData(CONTENT_PATH).sort((a, b) => a.order - b.order),
+export const getDocLinkDefs = cache((): LinkDefinition[] =>
+  getMDXData(DOCS_DIR, DOCS_URL_BASE).sort((a, b) => a.order - b.order),
 );
 
-export default getDocLinkDefs;
+export const getBlogLinkDefs = cache((): LinkDefinition[] =>
+  getMDXData(BLOG_DIR, BLOG_URL_BASE).sort((a, b) => a.order - b.order),
+);

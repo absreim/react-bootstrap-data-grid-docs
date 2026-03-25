@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { FC, ReactNode } from "react";
 import DocContentsLayout from "@/shared/DocContentsLayout";
-import { getDocLinkDefs } from "@/lib/getLinkDefs";
+import { getBlogLinkDefs } from "@/lib/getLinkDefs";
 
 export const metadata: Metadata = {
-  title: "react-bootstrap-data-grid Documentation",
+  title: "react-bootstrap-data-grid Blog",
   description:
-    "Technical documentation for the react-bootstrap-data-grid project",
+    "Blog for the react-bootstrap-data-grid project",
 };
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
-  const linkDefs = getDocLinkDefs();
+  const linkDefs = getBlogLinkDefs();
 
   return <DocContentsLayout linkDefs={linkDefs}>{children}</DocContentsLayout>;
 };
