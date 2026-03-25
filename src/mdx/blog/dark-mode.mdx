@@ -3,6 +3,51 @@ navLabel: Dark Mode
 order: 0
 ---
 
-# Dark Mode and Next.js
+# Dark Mode with Next.js and Bootstrap
 
-TODO: fill in this article
+These days, one may commonly see three color settings offered by modern websites: a _light_ color mode, a _dark_ color
+mode, and a _"sync to system"_-type setting that obeys the setting of the underlying OS.
+As long as the design system being used provides a convenient way to toggle between light and dark color modes via
+JavaScript, implementing all three settings is relatively easy for traditional Single Page Applications (SPA).
+
+It turns out that implementing such features is significantly more challenging when not working with a traditional SPA,
+such as when building an app with Next.js and a mix of server and client components.
+
+After a fair amount of effort, I believe I developed a solution that
+works fairly well, even if there are a few aspects of the that are less than ideal. This article will detail some key
+findings that I came across during my efforts.
+
+## Single Page Applications
+
+Let's begin by elaborating with what might be the simplest context in which to implement all three color settings: SPAs.
+
+For a Single Page App, an obvious approach involves introducing an app-wide setting that keeps track of the color theme
+currently being used. For an React app, this app-wide setting is often implemented with a
+[context provider](https://react.dev/reference/react/createContext#provider).
+
+### MUI Example
+
+The [relevant part of MUI's documentation](https://mui.com/material-ui/customization/dark-mode/#toggling-color-mode)
+provides a great explanation on exactly how to implement all three settings with the features that MUI offers. MUI
+uses what they call a `ThemeProvider` to keep track of color modes at a high level, which is analogous to the _app-wide
+setting approach_ I just described for SPAs.
+
+### Vite and Bootstrap SPA Example
+
+
+
+## Non-SPA Next.js
+
+In the case of Next.js there is a relatively easy way to implement all three color mode settings (light, dark, and
+system). That way is to simply give up on using [server components](https://react.dev/reference/rsc/server-components)
+and wrap the entire app in a [client component](https://react.dev/reference/rsc/use-client). This makes the entire app
+behave like an SPA.
+
+I thought that this was not a satisfying answer and sought out to see how difficult it would be to implement these color
+modes while preserving use of server components.
+
+## Additional Context
+
+Note that this effort of implementing dark mode with Bootstrap and Next.js came out of waiting to enhance this
+documentation site. So far, when comes to supporting color modes, not too much thought needed to be put into writing
+the code for the _react-bootstrap-data-grid_ component itself.
