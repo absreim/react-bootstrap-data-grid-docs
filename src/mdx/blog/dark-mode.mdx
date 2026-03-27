@@ -5,49 +5,86 @@ order: 0
 
 # Dark Mode with Next.js and Bootstrap
 
+## Introduction
+
 These days, one may commonly see three color settings offered by modern websites: a _light_ color mode, a _dark_ color
 mode, and a _"sync to system"_-type setting that obeys the setting of the underlying OS.
-As long as the design system being used provides a convenient way to toggle between light and dark color modes via
-JavaScript, implementing all three settings is relatively easy for traditional Single Page Applications (SPA).
 
-It turns out that implementing such features is significantly more challenging when not working with a traditional SPA,
-such as when building an app with Next.js and a mix of server and client components.
+One might classify React apps into two major categories these days:
 
-After a fair amount of effort, I believe I developed a solution that
-works fairly well, even if there are a few aspects of the that are less than ideal. This article will detail some key
-findings that I came across during my efforts.
+- Single Page Applications (SPAs) without Server-Side Rendering (SSR) with a framework like [Vite](https://vite.dev/)
+- [Next.js](https://nextjs.org/) apps with a mixture of server and client components
 
-## Single Page Applications
+Between these two, SPAs are almost certainly easier to think about. It turns out, however, that even for a traditional
+SPA, implementing a toggleable dark mode may end up being surprisingly challenging.
 
-Let's begin by elaborating with what might be the simplest context in which to implement all three color settings: SPAs.
+## What to Expect from This Article
 
-For a Single Page App, an obvious approach involves introducing an app-wide setting that keeps track of the color theme
-currently being used. For an React app, this app-wide setting is often implemented with a
-[context provider](https://react.dev/reference/react/createContext#provider).
+This article will start off by describing a three-setting dark mode solution for a Vite SPA before moving onto the more
+challenging task of implementing a solution that works with Next.js, SSR, and a mixture of server and client components.
 
-### MUI Example
+Note that both MUI ([relevant documentation](https://mui.com/material-ui/customization/dark-mode/#toggling-color-mode))
+and the popular [next-themes](https://github.com/pacocoursey/next-themes) project offer a three-setting solution
+for Next.js. MUI's solution is exclusively for MUI while next-themes can work for multiple design systems that depend on
+an attribute set at the root `html` element, including Bootstrap.
 
-The [relevant part of MUI's documentation](https://mui.com/material-ui/customization/dark-mode/#toggling-color-mode)
-provides a great explanation on exactly how to implement all three settings with the features that MUI offers. MUI
-uses what they call a `ThemeProvider` to keep track of color modes at a high level, which is analogous to the _app-wide
-setting approach_ I just described for SPAs.
+The solution presented in this article mainly meant for educational purposes and does not claim to be better than either
+MUI's or next-theme's. However, this article does discuss an alernative solution not employed be either of them: the
+use of cookies as a way of avoiding hydration warnings and
+[dark mode flash](https://mui.com/material-ui/customization/dark-mode/#dark-mode-flicker).
 
-### Vite and Bootstrap SPA Example
+## Vite SPA
 
+### Fully-controlled Implementation Attempt
 
+When in `data` mode, Bootstrap's dark mode is activated by setting the `data-bs-theme` attribute to `dark`. (See the
+[relevant documentation](https://getbootstrap.com/docs/5.3/customize/color-modes/#building-with-sass) for more details.)
+Therefore, an ideal solution to keep to React's paradigm of controlled components would be to implement conditional
+rendering of this `data-bs-theme` attribute.
 
-## Non-SPA Next.js
+This approach is already questionable due to the root of a Vite SPA being a `div` inside the `body` tag. More on
+that later. Let's continue with implementing this approach in the meantime for the sake of learning.
 
-In the case of Next.js there is a relatively easy way to implement all three color mode settings (light, dark, and
-system). That way is to simply give up on using [server components](https://react.dev/reference/rsc/server-components)
-and wrap the entire app in a [client component](https://react.dev/reference/rsc/use-client). This makes the entire app
-behave like an SPA.
+#### Reading the System Preference
 
-I thought that this was not a satisfying answer and sought out to see how difficult it would be to implement these color
-modes while preserving use of server components.
+To implement the "system preference" option in addition to light and dark modes, the React app will need to be aware of
+the current preference as well as changes to it.
 
-## Additional Context
+Browser JavaScript can determine this preference by calling the
+[Window.matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) function on the
+[prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme)
+media feature. To listen for changes to the resulting
+[MediaQueryList](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList), one can create an event listener for
+the [change event](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/change_event).
 
-Note that this effort of implementing dark mode with Bootstrap and Next.js came out of waiting to enhance this
-documentation site. So far, when comes to supporting color modes, not too much thought needed to be put into writing
-the code for the _react-bootstrap-data-grid_ component itself.
+React provides the [useSyncExternalStore](https://react.dev/reference/react/useSyncExternalStore) hook to subscribe to
+event listeners and update components with new values in response to events. (Using `useState` and `useEffect` instead
+is
+[subject to race conditions](https://www.epicreact.dev/use-sync-external-store-demystified-for-practical-react-development-w5ac0#:~:text=1.%20%22Why%20not%20just%20use%20useEffect%20%2B%20useState%3F%22)
+.)
+
+A hook that performs that media query and keeps a React component up to date on changes to the to query result may be
+implemented as follows:
+
+```tsx
+import { useSyncExternalStore } from "react";
+
+const darkModeQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+
+export default function useSystemDarkPref() {
+  return useSyncExternalStore(subscribe, getSnapshot);
+}
+
+function getSnapshot() {
+  return darkModeQueryList.matches;
+}
+
+function subscribe(
+  callback: (this: MediaQueryList, ev: MediaQueryListEvent) => void,
+) {
+  darkModeQueryList.addEventListener("change", callback);
+  return () => {
+    darkModeQueryList.removeEventListener("change", callback);
+  };
+}
+```
