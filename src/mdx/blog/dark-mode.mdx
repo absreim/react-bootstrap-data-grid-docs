@@ -35,15 +35,16 @@ use of cookies as a way of avoiding hydration warnings and
 
 ## Vite SPA
 
-### Fully Controlled Implementation Attempt
+### Controlled Implementation Attempt
 
 When in `data` mode, Bootstrap's dark mode is activated by setting the `data-bs-theme` attribute to `dark`. (See the
 [relevant documentation](https://getbootstrap.com/docs/5.3/customize/color-modes/#building-with-sass) for more details.)
 Therefore, an ideal solution to keep to React's paradigm of controlled components would be to implement conditional
 rendering of this `data-bs-theme` attribute.
 
-This approach is already questionable due to the root of a Vite SPA being a `div` inside the `body` tag. More on
-that later. Let's continue with implementing this approach in the meantime for the sake of learning.
+This approach is already questionable due to the root of a Vite SPA being a `div` inside the `body` tag. There will be
+more on that later. In the meantime, let's continue with implementing this approach in the meantime for the sake of
+learning.
 
 #### Reading the System Preference
 
@@ -142,8 +143,8 @@ export const setThemeOptionName = (name: ThemeOptionName) => {
 
 #### Computing the Effective Setting
 
-The result of the media query and the user's setting can be combined to actually compute the effective setting. Below is
-a hook for doing so:
+The result of the media query and the user's setting can be combined to compute the actual value of the `data-bs-theme`
+attribute. Below is a hook for doing so:
 
 ##### useEffectiveTheme.ts
 
@@ -224,6 +225,149 @@ export default App;
 ##### Screenshot
 
 Dark mode works, but only for the portion of the site under the `main` tag. Notably, the background of the root `html`
-is not set to dark mode:
+is not set to dark mode. In the screenshot below, note the area with the light background despite the app being set to
+dark mode.
 
 ![Screenshot of controlled Vite sample app showing dark mode being only partially applied](/vite-controlled-dark.png)
+
+#### Source Code
+
+The source code of this example can be found in a [GitHub repo](https://github.com/absreim/bs-spa-dark-mode-sample).
+
+### Uncontrolled Implementation
+
+As demonstrated in the [Controlled Implementation Attempt](#controlled-implementation-attempt), controlling the Boostrap
+theme via the `data-bs-theme` attribute on an element that is a child of the root `html` element is usually less than
+ideal. There may be a visual clash from there being two regions in the app: one in dark mode and one in light mode.
+
+To make the dark mode setting work for the entire site, we will need to set the `data-bs-theme` attribute on the root
+`html` element. Since the `html` is not being rendered by React, we will need to use an uncontrolled implementation.
+Such an implementation can be done by using the
+[DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) to access the root element and set the
+`data-bs-theme` attribute on it directly. This uncontrolled implementation is in contrast the controlled implementation
+where a state and conditional rendering was used to set the attribute.
+
+#### Separate Initialization Script
+
+The roles of [useSystemDarkPref.ts](#usesystemdarkprefts) and [useEffectiveTheme.ts](#useeffectivethemets) will be
+assumed by a separate script that runs before React renders. In addition to subscribing to the
+`prefers-color-scheme: dark` media query and computing the effective theme, the script also:
+
+- exposes a function to set the theme based on what is in local storage
+- runs the function to set the initial `data-bs-theme` attribute when the app first loads
+
+The exposed function will later be called by the color mode selector UI component to actuate changes to the color mode.
+
+##### dark-mode.js
+
+```js
+"use strict";
+
+const syncTheme = () => {
+  let currentTheme = "auto";
+  const storedTheme = localStorage.getItem("theme");
+  if (["dark", "light"].includes(storedTheme)) {
+    currentTheme = storedTheme;
+  }
+
+  if (currentTheme === "auto") {
+    document.documentElement.setAttribute(
+      "data-bs-theme",
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light",
+    );
+  } else {
+    document.documentElement.setAttribute("data-bs-theme", currentTheme);
+  }
+};
+
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", syncTheme);
+
+syncTheme();
+
+window.syncTheme = syncTheme;
+```
+
+This script was derived from the
+[dark mode JavaScript example](https://getbootstrap.com/docs/5.3/customize/color-modes/#javascript) on the official
+Bootstrap documentation. Look at the example if you want additional insight into the reasoning behind the script.
+
+#### React Component Changes
+
+With this uncontrolled implementation, much of the logic has been extracted out of React components and hooks and into
+the [separate initialization script](#separate-initialization-script). However, it is still necessary for the React
+component for setting the color mode to:
+
+- read and display the currently selected mode
+- update the selected mode by writing a value to local storage
+- call the function exposed by the initialization script to sync up the `data-bs-theme` attribute with the setting in
+local storage
+
+##### App.tsx
+
+```tsx
+// imports...
+
+function App() {
+  const [themeOptionName, setThemeOptionName] = useState(
+    getInitThemeOptionName(),
+  );
+
+  return (
+    <main>
+      <Card>
+        <Card.Body>
+          <Card.Title>Card Title</Card.Title>
+          <Card.Text>
+            The text and background of this card should change in response to
+            color mode settings
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <ButtonGroup>
+        {Object.keys(themeOptionLabels).map((name) => (
+          <ToggleButton
+            key={name}
+            id={`radio-${name}`}
+            type="radio"
+            value={name}
+            name="theme-selector"
+            checked={themeOptionName === name}
+            onChange={() => {
+              setThemeOptionName(name as ThemeOptionName);
+              setLsThemeOptionName(name as ThemeOptionName);
+              (
+                window as Window & typeof globalThis & { syncTheme: () => void }
+              ).syncTheme();
+            }}
+            variant="outline-primary"
+          >
+            {themeOptionLabels[name as ThemeOptionName]}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
+    </main>
+  );
+}
+
+export default App;
+```
+
+##### Screenshot
+
+With this uncontrolled implementation in place, the `data-bs-theme` property is set on the root `html` element, causing
+the background of the entire app to obey the dark mode setting.
+
+![Screenshot of fully functional dark mode in Vite app](/vite-uncontrolled-dark.png)
+
+#### Source Code
+
+The source code of this example can be found in a
+[side branch of a GitHub repo](https://github.com/absreim/bs-spa-dark-mode-sample/tree/uncontrolled).
+
+## Next.js Implementation
+
+Coming soon...
