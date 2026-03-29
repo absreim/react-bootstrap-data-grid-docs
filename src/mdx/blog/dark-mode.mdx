@@ -29,7 +29,7 @@ for Next.js. MUI's solution is exclusively for MUI while next-themes can work fo
 an attribute set at the root `html` element, including Bootstrap.
 
 The solution presented in this article mainly meant for educational purposes and does not claim to be better than either
-MUI's or next-theme's. However, this article does discuss an alernative solution not employed be either of them: the
+MUI's or next-theme's. However, this article does discuss an alternative solution not employed be either of them: the
 use of cookies as a way of avoiding hydration warnings and
 [dark mode flash](https://mui.com/material-ui/customization/dark-mode/#dark-mode-flicker).
 
@@ -368,6 +368,104 @@ the background of the entire app to obey the dark mode setting.
 The source code of this example can be found in a
 [side branch of a GitHub repo](https://github.com/absreim/bs-spa-dark-mode-sample/tree/uncontrolled).
 
-## Next.js Implementation
+### Bonus: Cross-tab Option Sync
+
+Both [MUI](https://mui.com/material-ui/customization/dark-mode/#toggling-color-mode) and [next-themes](https://github.com/pacocoursey/next-themes) support syncing settings changes across tabs automatically. If such a feature is
+not enabled, changing the dark mode setting in one tab for the same site will not affect other open tabs until those
+tabs are refreshed.
+
+One way to implement such a feature is to use
+[storage events](https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event) as a way to communicate changes
+to the dark mode setting across tabs.
+
+Note that this event is received by each tab except the one that made the change to local storage. The following sample
+implementation takes this fact into account. Also note that the following sample is based off the
+[uncontrolled](#uncontrolled-implementation) implementation.
+
+#### Initialization Script Changes
+
+The [initialization script](#separate-initialization-script) from the uncontrolled implementation requires an additional
+event listener to respond to the `storage` event:
+
+##### dark-mode.js
+
+```tsx
+// rest of file...
+
+window.addEventListener("storage", (event) => {
+  if (event.key === THEME_LS_KEY) {
+    syncTheme();
+  }
+})
+
+// rest of file...
+```
+
+#### Listening to Stored Value Changes to Update the UI
+
+The changes made so far cause the styling to sync properly but not the selection widget. To sync the selection widget,
+we need to attach another handler to listen to storage events. This handler is attached and detached via
+[useSyncExternalStore](https://react.dev/reference/react/useSyncExternalStore).
+
+##### useExtChangedLsValue.ts
+
+```ts
+import { useSyncExternalStore } from "react";
+import { getThemeOptionName } from "./themeLs.ts";
+import { THEME_LS_KEY } from "./models.ts";
+
+const subscribe: (callback: () => void) => (() => void) = (callback) => {
+  const wrappedCallback: (event: StorageEvent) => void = (event) => {
+    if ((event as StorageEvent).key === THEME_LS_KEY) {
+      callback();
+    }
+  };
+  window.addEventListener("storage", wrappedCallback);
+  return () => {
+    window.removeEventListener("storage", wrappedCallback);
+  };
+};
+
+const useExtChangedLsValue = () => (
+  useSyncExternalStore(subscribe, getThemeOptionName)
+);
+
+export default useExtChangedLsValue;
+```
+
+#### Updating the UI
+
+Actually updating the UI involves reading the value of the [useExtChangedLsValue](#useextchangedlsvaluets) hook and
+then updating the component state with a [useEffect](https://react.dev/reference/react/useEffect) hook.
+
+##### App.tsx
+
+```tsx
+// imports...
+
+function App() {
+  const [themeOptionName, setThemeOptionName] = useState(
+    getThemeOptionName(),
+  );
+  const lsThemeOptionName = useExtChangedLsValue();
+  useEffect(() => {
+    setThemeOptionName(lsThemeOptionName);
+  }, [lsThemeOptionName])
+
+  return (
+    // returned JSX...
+  );
+}
+
+export default App;
+```
+
+#### Source Code
+
+For the sake of brevity, not all changes made to the uncontrolled implementation were mentioned in this (cross-tab
+syncing) section. To see the entirety of the implementation, see the
+[code sample on GitHub](https://github.com/absreim/bs-spa-dark-mode-sample/tree/tab-sync).
+
+## Next.js
 
 Coming soon...
