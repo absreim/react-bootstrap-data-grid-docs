@@ -5,6 +5,8 @@ order: 0
 
 # Dark Mode with Next.js and Bootstrap
 
+Last update: March 30, 2026
+
 ## Introduction
 
 These days, one may commonly see three color settings offered by modern websites: a _light_ color mode, a _dark_ color
@@ -468,4 +470,166 @@ syncing) section. To see the entirety of the implementation, see the
 
 ## Next.js
 
-Coming soon...
+Implementing dark mode with Bootstrap and Next.js can be done by adapting the
+[uncontrolled solution](#uncontrolled-implementation) for Vite described earlier.
+
+For the sake of brevity, the solutions discussed in this section omit the
+[cross-tab syncing functionality](#bonus-cross-tab-option-sync) implemented for Vite. However, it should be quite
+possible to adapt that solution for Next.js with moderate effort.
+
+Perhaps the greatest sticking point for dark mode with Next.js is preventing
+[dark mode flash](https://mui.com/material-ui/customization/dark-mode/#dark-mode-flicker). Two solutions will be
+presented.
+
+### Script Injection Solution
+
+This solution to dark mode flash is similar to the one used by MUI's
+[InitColorSchemeScript](https://mui.com/material-ui/react-init-color-scheme-script/) component. While not particularly
+obvious from Next.js's documentation, it is possible to use the
+[dangerouslySetInnerHTML prop](https://react.dev/reference/react-dom/components/common#:~:text=span%20/%3E%3C/div%3E.-,dangerouslySetInnerHTML,-%3A%20An%20object%20of)
+for built-in React components to inject a script that runs before any content is visible.
+
+#### The Initialization Script
+
+The [initialization script](#dark-modejs) from the uncontrolled Vite solution can be used as is for Next.js as well.
+Next.js offers a `Script` component for running external scripts. The initialization script can be configured to run
+with that `Script` component and at the earliest possible moment with the
+[beforeInteractive](https://nextjs.org/docs/pages/api-reference/components/script#beforeinteractive) loading strategy.
+
+In addition, a small portion of that script, just enough to prevent dark mode flash, can be injected via the
+[dangerouslySetInnerHTML prop](https://react.dev/reference/react-dom/components/common#:~:text=span%20/%3E%3C/div%3E.-,dangerouslySetInnerHTML,-%3A%20An%20object%20of)
+to run even earlier.
+
+##### layout.tsx
+
+```tsx
+import type { Metadata } from "next";
+import "./style.scss";
+import Script from "next/script";
+
+export const metadata: Metadata = {
+  title: "ssr-dark-mode-example",
+  description:
+    "Educational sample code for dark mode with Next.js and Bootstrap",
+};
+
+const darkModeInitScript = `
+  let currentTheme = "auto";
+  const storedTheme = localStorage.getItem("theme");
+  if (["dark", "light"].includes(storedTheme)) {
+    currentTheme = storedTheme;
+  }
+
+  if (currentTheme === "auto") {
+    document.documentElement.setAttribute(
+      "data-bs-theme",
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light",
+    );
+  } else {
+    document.documentElement.setAttribute("data-bs-theme", currentTheme);
+  }
+`;
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: darkModeInitScript }}
+        ></script>
+      </head>
+      <body>
+        <Script src="/dark-mode.js" strategy="beforeInteractive" />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+#### The Theme Selector
+
+Perhaps the biggest caveat of adapting the [theme selection UI code from the Vite example](#apptsx-1) is dealing with
+DOM variables like [window](https://developer.mozilla.org/en-US/docs/Web/API/Window) that only on the client. The UI
+code involves accessing local storage as part of rendering the component to set the initial value of a `useState` hook.
+
+For that reason, the UI code needs to imported dynamically with SSR disabled. A separate "container" component is used
+to do the dynamic import.
+
+##### ThemeSelector.tsx
+
+```tsx
+import { FC, useState } from "react";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import ToggleButton from "react-bootstrap/ToggleButton";
+import { themeOptionLabels } from "@/app/models";
+import {
+  getThemeOptionName,
+  setThemeOptionName as setLsThemeOptionName,
+} from "@/app/themeLs";
+import { ThemeOptionName } from "@/app/types";
+
+const ThemeSelector: FC = () => {
+  const [themeOptionName, setThemeOptionName] = useState(getThemeOptionName());
+
+  return (
+    <ButtonGroup>
+      {Object.keys(themeOptionLabels).map((name) => (
+        <ToggleButton
+          key={name}
+          id={`radio-${name}`}
+          type="radio"
+          value={name}
+          name="theme-selector"
+          checked={themeOptionName === name}
+          onChange={() => {
+            setThemeOptionName(name as ThemeOptionName);
+            setLsThemeOptionName(name as ThemeOptionName);
+            (
+              window as Window & typeof globalThis & { syncTheme: () => void }
+            ).syncTheme();
+          }}
+          variant="outline-primary"
+        >
+          {themeOptionLabels[name as ThemeOptionName]}
+        </ToggleButton>
+      ))}
+    </ButtonGroup>
+  );
+}
+
+export default ThemeSelector;
+```
+
+##### ThemeSelectorContainer.tsx
+
+```tsx
+"use client";
+
+import { FC } from "react";
+import dynamic from "next/dynamic";
+
+const ThemeSelector = dynamic(() => import("./ThemeSelector"), { ssr: false });
+
+const ThemeSelectorContainer: FC = () => <ThemeSelector />;
+
+export default ThemeSelectorContainer;
+```
+
+#### Source Code
+
+The source code for this example may be found in a [GitHub repo](https://github.com/absreim/ssr-dark-mode-sample#).
+
+### Cookie and Media Query Solution
+
+If one wants to avoid using script injection via the `dangerouslySetInnerHTML` prop, it is possible to make use of a
+combination of cookies for _dark_ and _light_ modes supplemented with some media query-based CSS to prevent dark mode
+flash for _system_ mode.
+
+More details coming soon...
