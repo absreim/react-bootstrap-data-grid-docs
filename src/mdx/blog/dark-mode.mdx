@@ -8,7 +8,7 @@ order: 0
 ## Introduction
 
 These days, one may commonly see three color settings offered by modern websites: a _light_ color mode, a _dark_ color
-mode, and a _"sync to system"_-type setting that obeys the setting of the underlying OS.
+mode, and a "sync to system"-type setting that obeys the setting of the underlying OS.
 
 One might classify React apps into two major categories these days:
 
@@ -35,7 +35,7 @@ use of cookies as a way of avoiding hydration warnings and
 
 ## Vite SPA
 
-### Fully-controlled Implementation Attempt
+### Fully Controlled Implementation Attempt
 
 When in `data` mode, Bootstrap's dark mode is activated by setting the `data-bs-theme` attribute to `dark`. (See the
 [relevant documentation](https://getbootstrap.com/docs/5.3/customize/color-modes/#building-with-sass) for more details.)
@@ -66,6 +66,8 @@ is
 A hook that performs that media query and keeps a React component up to date on changes to the to query result may be
 implemented as follows:
 
+##### useSystemDarkPref.ts
+
 ```tsx
 import { useSyncExternalStore } from "react";
 
@@ -88,3 +90,140 @@ function subscribe(
   };
 }
 ```
+
+#### User Settings and the Effective Theme
+
+As discussed earlier, the three settings that the user can choose are _light_, _dark_, and _system_. The
+`prefers-color-scheme: dark` media query is used to determine whether the theme should effectively be _light_ or _dark_
+if _system_ is selected by the user.
+
+These options may be defined as follows:
+
+##### types.ts
+
+```ts
+export type ThemeOptionName = "light" | "dark" | "system";
+
+export type EffectiveOptionName = Exclude<ThemeOptionName, "system">
+```
+
+#### Storing the User Setting in Local Storage
+
+To remember the user's preference in between page refreshes and new tabs being opened, we can store the setting in
+local storage in addition to a `useState` hook. The following functions can be used to read from and write to
+local storage.
+
+##### themeLs.ts
+
+```ts
+import type { ThemeOptionName } from "./types.ts";
+
+export const THEME_LS_KEY = "theme";
+
+export const getInitThemeOptionName: () => ThemeOptionName = () => {
+  const lsValue = localStorage.getItem(THEME_LS_KEY);
+  switch (lsValue) {
+    case "light": {
+      return "light";
+    }
+    case "dark": {
+      return "dark";
+    }
+    default: {
+      return "system";
+    }
+  }
+};
+
+export const setThemeOptionName = (name: ThemeOptionName) => {
+  localStorage.setItem(THEME_LS_KEY, name);
+};
+```
+
+#### Computing the Effective Setting
+
+The result of the media query and the user's setting can be combined to actually compute the effective setting. Below is
+a hook for doing so:
+
+##### useEffectiveTheme.ts
+
+```ts
+import type { EffectiveOptionName, ThemeOptionName } from "./types.ts";
+import { useMemo } from "react";
+
+const useEffectiveTheme: (
+  optionName: ThemeOptionName,
+  sysDarkPref: boolean,
+) => EffectiveOptionName = (optionName, sysDarkPref) =>
+  useMemo(() => {
+    if (optionName === "light" || optionName === "dark") {
+      return optionName;
+    }
+
+    return sysDarkPref ? "dark" : "light";
+  }, [optionName, sysDarkPref]);
+
+export default useEffectiveTheme;
+```
+
+#### Putting it Together
+
+The following top-level component for a Vite app makes use of each of the previously discussed functions and type
+definitions to implement dark mode switching in a controlled manner. React directly renders the `main` component
+that contains the `data-bs-theme` property that controls the color theme for Bootstrap.
+
+##### App.tsx
+
+```tsx
+// imports...
+
+function App() {
+  const systemDarkPref = useSystemDarkPref();
+  const [themeOptionName, setThemeOptionName] = useState(
+    getInitThemeOptionName(),
+  );
+  const effectiveTheme = useEffectiveTheme(themeOptionName, systemDarkPref);
+
+  return (
+    <main data-bs-theme={effectiveTheme}>
+      <Card>
+        <Card.Body>
+          <Card.Title>Card Title</Card.Title>
+          <Card.Text>
+            The text and background of this card should change in response to
+            color mode settings
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <ButtonGroup>
+        {Object.keys(themeOptionLabels).map((name) => (
+          <ToggleButton
+            key={name}
+            id={`radio-${name}`}
+            type="radio"
+            value={name}
+            name="theme-selector"
+            checked={themeOptionName === name}
+            onChange={() => {
+              setThemeOptionName(name as ThemeOptionName);
+              setLsThemeOptionName(name as ThemeOptionName);
+            }}
+            variant="outline-primary"
+          >
+            {themeOptionLabels[name as ThemeOptionName]}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
+    </main>
+  );
+}
+
+export default App;
+```
+
+##### Screenshot
+
+Dark mode works, but only for the portion of the site under the `main` tag. Notably, the background of the root `html`
+is not set to dark mode:
+
+![Screenshot of controlled Vite sample app showing dark mode being only partially applied](/vite-controlled-dark.png)
