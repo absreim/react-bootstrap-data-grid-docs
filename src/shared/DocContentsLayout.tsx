@@ -9,7 +9,7 @@ interface DocContentsLayoutProps {
 
 const DocContentsLayout: FC<DocContentsLayoutProps> = ({ children, linkDefs }) => {
   return (
-    <div className="d-flex flex-row gap-2 flex-grow-1 rbdg-docs-main">
+    <div className="d-flex flex-row gap-2 flex-grow-1 rbdg-docs-main h-100">
       <div className="d-none d-lg-block overflow-y-auto pe-3">
         <ContentsNavbar linkDefs={linkDefs} />
       </div>

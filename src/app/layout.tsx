@@ -51,7 +51,7 @@ export default async function RootLayout({
         <Script src="/dark-mode.js" strategy="beforeInteractive" />
         <div className="d-flex flex-column h-100">
           <AppBar linkDefs={linkDefs} />
-          <div className="container pt-2">
+          <div className="container pt-2 h-100">
             {children}
           </div>
         </div>
