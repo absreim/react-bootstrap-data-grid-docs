@@ -1,24 +1,28 @@
 "use client";
 
 import { FC } from "react";
-import ContentsHamburger from "@/app/ContentsHamburger";
+import ContentsHamburger from "@/shared/ContentsHamburger";
 import dynamic from "next/dynamic";
 import NavlinkSeparator from "@/shared/NavLInkSeparator/NavlinkSeparator";
-import { LinkDefinition } from "@/app/types";
+import { LinkMenuContents } from "@/shared/types";
 import Navbar from "react-bootstrap/Navbar";
-import SiteSectionsNav from "@/app/SiteSectionsNav";
+import SiteSectionsNav from "@/shared/SiteSectionsNav";
 import Logo from "@/assets/Logo";
 
-const DarkModeDropdown = dynamic(() => import("@/app/DarkModeDropdown"), {
+const DarkModeDropdown = dynamic(() => import("@/shared/DarkModeDropdown"), {
   ssr: false,
 });
 
-const AppBar: FC<{ linkDefs: LinkDefinition[] }> = ({ linkDefs }) => {
+export interface AppBarProps {
+  linkMenuContents?: LinkMenuContents
+}
+
+const AppBar: FC<AppBarProps> = ({ linkMenuContents }) => {
   return (
     <Navbar bg="primary" data-bs-theme="dark">
       <div className="container d-flex flex-row justify-content-between">
         <div className="d-flex flex-row justify-content-start">
-          <ContentsHamburger linkDefs={linkDefs} />
+          <ContentsHamburger linkMenuContents={linkMenuContents} />
           <span className="navbar-brand">
             <Logo className="navbar-logo me-2 align-middle" />
             react-bootstrap-data-grid

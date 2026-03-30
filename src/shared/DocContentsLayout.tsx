@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
-import ContentsNavbar from "@/app/ContentsNavbar";
-import { LinkDefinition } from "@/app/types";
+import ContentsNavbar from "@/shared/ContentsNavbar";
+import { LinkDefinition } from "@/shared/types";
 
 interface DocContentsLayoutProps {
   children: ReactNode;

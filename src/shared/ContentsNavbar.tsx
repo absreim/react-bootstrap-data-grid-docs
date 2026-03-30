@@ -4,7 +4,7 @@ import { FC } from "react";
 import { usePathname } from "next/navigation";
 import Nav from "react-bootstrap/Nav";
 import Link from "next/link";
-import { LinkDefinition } from "@/app/types";
+import { LinkDefinition } from "@/shared/types";
 
 interface ContentsNavbarProps {
   linkDefs: LinkDefinition[];

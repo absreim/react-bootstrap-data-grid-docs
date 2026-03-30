@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { cache } from "react";
-import { LinkDefinition } from "@/app/types";
+import { LinkDefinition } from "@/shared/types";
 
 const DOCS_DIR = path.join(process.cwd(), "src", "mdx", "docs");
 const DOCS_URL_BASE = "/docs";

@@ -3,12 +3,16 @@
 import { FC, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
-import ContentsNavbar from "@/app/ContentsNavbar";
-import { LinkDefinition } from "@/app/types";
-import SiteSectionsNav from "@/app/SiteSectionsNav";
+import ContentsNavbar from "@/shared/ContentsNavbar";
+import { LinkMenuContents } from "@/shared/types";
+import SiteSectionsNav from "@/shared/SiteSectionsNav";
 
-const ContentsHamburger: FC<{ linkDefs: LinkDefinition[] }> = ({
-  linkDefs,
+export interface ContentsHamburgerProps {
+  linkMenuContents?: LinkMenuContents;
+}
+
+const ContentsHamburger: FC<ContentsHamburgerProps> = ({
+  linkMenuContents,
 }) => {
   const [show, setShow] = useState(false);
 
@@ -41,9 +45,16 @@ const ContentsHamburger: FC<{ linkDefs: LinkDefinition[] }> = ({
           <Offcanvas.Title>react-bootstrap-data-grid</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="d-lg-none">
-          <h2 className="mb-1 fs-4">Doc Articles</h2>
-          <ContentsNavbar linkDefs={linkDefs} onClick={handleClose} />
-          <hr />
+          {linkMenuContents && (
+            <>
+              <h2 className="mb-1 fs-4">{linkMenuContents.sectionTitle}</h2>
+              <ContentsNavbar
+                linkDefs={linkMenuContents.linkDefs}
+                onClick={handleClose}
+              />
+              <hr />
+            </>
+          )}
           <h2 className="mb-1 fs-4">Site Sections</h2>
           <SiteSectionsNav variant="underline" onClick={handleClose} />
         </Offcanvas.Body>

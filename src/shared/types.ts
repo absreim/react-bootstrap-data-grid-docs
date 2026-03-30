@@ -8,3 +8,8 @@ export interface LinkDefinition {
   name: string;
   path: string;
 }
+
+export interface LinkMenuContents {
+  sectionTitle: string;
+  linkDefs: LinkDefinition[];
+}

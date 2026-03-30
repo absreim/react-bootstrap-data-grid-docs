@@ -56,6 +56,14 @@
   min-width: 0;
 }
 
+.rbdg-mdx-body {
+  img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 @include media-breakpoint-up(lg) {
   .overflow-lg-y-auto {
     overflow-y: auto;
