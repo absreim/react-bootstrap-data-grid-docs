@@ -266,13 +266,13 @@ The exposed function will later be called by the color mode selector UI componen
 "use strict";
 
 const syncTheme = () => {
-  let currentTheme = "auto";
+  let currentTheme = "system";
   const storedTheme = localStorage.getItem("theme");
   if (["dark", "light"].includes(storedTheme)) {
     currentTheme = storedTheme;
   }
 
-  if (currentTheme === "auto") {
+  if (currentTheme === "system") {
     document.documentElement.setAttribute(
       "data-bs-theme",
       window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -629,7 +629,109 @@ The source code for this example may be found in a [GitHub repo](https://github.
 ### Cookie and Media Query Solution
 
 If one wants to avoid using script injection via the `dangerouslySetInnerHTML` prop, it is possible to make use of a
-combination of cookies for _dark_ and _light_ modes supplemented with some media query-based CSS to prevent dark mode
-flash for _system_ mode.
+combination of cookies and additional CSS to prevent dark mode flash.
 
-More details coming soon...
+#### Setting and Reading Cookies
+
+Cookies can be used to store the user's preference in a way the Next.js server can read it while rendering server-side.
+Based on the value in the cookie, the server can set the `data-bs-theme` attribute on the root _html_ element for the
+initial render. Subsequent changes to the attribute can be made via JavaScript once client-side JavaScript gets a
+chance to run.
+
+##### layout.tsx
+
+The initial `data-bs-theme` attribute is now set server-side based on the value in the cookie.
+
+In the case of the
+_system_ setting, the special `system` value for `data-bs-theme` will activate a special set of CSS for the sake of
+preventing dark mode flash. JavaScript will later set the attribute to `light` or `dark` based on the media query
+result.
+
+```tsx
+// imports and Metadata...
+
+const cookieStore = await cookies();
+const theme = cookieStore.get("theme")?.value ?? "system";
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" data-bs-theme={theme} suppressHydrationWarning>
+      <body>
+        <Script src="/dark-mode.js" strategy="beforeInteractive" />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+##### ThemeSelector.tsx
+
+The `onChange` handler in the `ThemeSelector` component needs to updated to set the value of the cookie.
+
+```tsx
+document.cookie = `theme=${name as ThemeOptionName}; path=/; max-age=31536000`;
+```
+
+#### Custom CSS for the System Setting
+
+As of version 5.3, Bootstrap only supports data attribute-based (`data-bs-theme`) or media query-based color modes in a
+mutually exclusive manner. It is not possible to mix and match the types to implement the three-setting model that we've
+been doing without using JavaScript. See the
+[relevant Bootstrap documentation](https://getbootstrap.com/docs/5.3/customize/color-modes/#building-with-sass) for more
+details.
+
+This fact means that using the cookie-based approach to set the `data-bs-theme` attribute server-side only works for
+circumstances where the user selects _dark_ or _light_ modes. For _system_ mode, some solutions include:
+
+1 forking Bootstrap and modifying it to support media query and data modes simultaneously
+2 reimplementing portions of Bootstrap for a special value of `data-bs-theme` with a media query
+
+The following changes demonstrate option 2. The CSS only needs to prevent dark mode flash for the period of time before
+client-side JavaScript has a chance to execute. Hopefully, depending on how many features with Bootstrap are being used,
+it may not be necessary to reimplement a small portion of Bootstrap CSS.
+
+##### style.css
+
+When Bootstrap CSS encounters an unspecified `data-bs-theme` value, `system` in this case, Bootstrap defaults to using
+the _light_ theme. The following rules reimplement a subset of the _dark_ theme rules. They will be used on the client
+in the short period of time before JavaScript has a chance to run if:
+
+- the site color theme preference is `system`
+- the OS color theme preference is `dark`
+
+```scss
+@media (prefers-color-scheme: dark) {
+  :root[data-bs-theme="system"] {
+    --bs-body-color: #{$body-color-dark};
+    --bs-body-bg: #{$body-bg-dark};
+    --bs-link-color: #{$link-color-dark};
+    --bs-code-color: #{$code-color-dark};
+    --bs-link-color-rgb: #{to-rgb($link-color-dark)};
+    --bs-navbar-brand-color: #{$navbar-dark-brand-color};
+    --bs-emphasis-color: #{$body-emphasis-color-dark};
+    --bs-emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
+    --bs-border-color: #{$border-color-dark};
+  }
+}
+```
+
+#### Source Code
+
+The source code for this cookie-based solution is available in
+[separate branch](https://github.com/absreim/ssr-dark-mode-sample/tree/cookie) of the ssr-dark-mode-sample GitHub repo.
+
+## Discussion
+
+If you have questions or comments about:
+
+- things I may have missed
+- things I got wrong
+- better ways of doing things
+
+feel free to post in the relevant
+[discussion section](https://github.com/absreim/react-bootstrap-data-grid-docs/discussions) on GitHub.
