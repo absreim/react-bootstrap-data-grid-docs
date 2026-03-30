@@ -39,19 +39,17 @@ export default async function RootLayout({
   const linkDefs = getDocLinkDefs();
 
   return (
-    <html
-      lang="en"
-      data-scroll-behavior="smooth"
-      suppressHydrationWarning
-    >
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: darkModeInitScript }}></script>
+        <script
+          dangerouslySetInnerHTML={{ __html: darkModeInitScript }}
+        ></script>
       </head>
       <body className="vh-100">
         <Script src="/dark-mode.js" strategy="beforeInteractive" />
         <div className="d-flex flex-column h-100">
           <AppBar linkDefs={linkDefs} />
-          <div className="container pt-2 h-100">
+          <div className="container pt-2 flex-grow-1 rbdg-docs-main">
             {children}
           </div>
         </div>
