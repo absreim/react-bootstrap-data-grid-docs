@@ -3,6 +3,7 @@ import "./style.scss";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import { ReactNode } from "react";
+import { VercelToolbar } from "@vercel/toolbar/next";
 
 export const metadata: Metadata = {
   title: "react-bootstrap-data-grid Home Page",
@@ -34,6 +35,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const shouldInjectToolbar = process.env.NODE_ENV === "development";
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
@@ -45,6 +47,7 @@ export default async function RootLayout({
         <Script src="/dark-mode.js" strategy="beforeInteractive" />
         {children}
         <Analytics />
+        {shouldInjectToolbar && <VercelToolbar />}
       </body>
     </html>
   );

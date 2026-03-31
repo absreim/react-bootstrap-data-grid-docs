@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
+import createWithVercelToolbar from "@vercel/toolbar/plugins/next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
@@ -27,4 +28,6 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
+const withVercelToolbar = createWithVercelToolbar();
+
+export default withVercelToolbar(withMDX(nextConfig));
