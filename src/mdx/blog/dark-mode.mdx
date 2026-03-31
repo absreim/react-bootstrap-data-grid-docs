@@ -5,12 +5,12 @@ order: 0
 
 # Dark Mode with Next.js and Bootstrap
 
-Last update: March 30, 2026
+Last update: March 31, 2026
 
 ## Introduction
 
-These days, one may commonly see three color settings offered by modern websites: a _light_ color mode, a _dark_ color
-mode, and a "sync to system"-type setting that obeys the setting of the underlying OS.
+These days, one may commonly see three color settings offered by modern websites: a __light__ color mode,
+a __dark__ color mode, and a __"sync to system"__-type setting that obeys the setting of the underlying OS.
 
 One might classify React apps into two major categories these days:
 
@@ -634,7 +634,7 @@ combination of cookies and additional CSS to prevent dark mode flash.
 #### Setting and Reading Cookies
 
 Cookies can be used to store the user's preference in a way the Next.js server can read it while rendering server-side.
-Based on the value in the cookie, the server can set the `data-bs-theme` attribute on the root _html_ element for the
+Based on the value in the cookie, the server can set the `data-bs-theme` attribute on the root `html` element for the
 initial render. Subsequent changes to the attribute can be made via JavaScript once client-side JavaScript gets a
 chance to run.
 
@@ -688,8 +688,8 @@ details.
 This fact means that using the cookie-based approach to set the `data-bs-theme` attribute server-side only works for
 circumstances where the user selects _dark_ or _light_ modes. For _system_ mode, some solutions include:
 
-1 forking Bootstrap and modifying it to support media query and data modes simultaneously
-2 reimplementing portions of Bootstrap for a special value of `data-bs-theme` with a media query
+1. forking Bootstrap and modifying it to support media query and data modes simultaneously
+2. reimplementing portions of Bootstrap for a special value of `data-bs-theme` with a media query
 
 The following changes demonstrate option 2. The CSS only needs to prevent dark mode flash for the period of time before
 client-side JavaScript has a chance to execute. Hopefully, depending on how many features with Bootstrap are being used,
