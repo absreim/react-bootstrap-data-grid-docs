@@ -5,7 +5,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import ContentsNavbar from "@/shared/ContentsNavbar";
 import { LinkMenuContents } from "@/shared/types";
-import SiteSectionsNav from "@/shared/SiteSectionsNav";
+import SiteSectionsNav from "@/shared/AppBar/SiteSectionsNav";
 
 export interface ContentsHamburgerProps {
   linkMenuContents?: LinkMenuContents;

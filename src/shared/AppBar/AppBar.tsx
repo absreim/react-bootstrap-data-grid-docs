@@ -1,15 +1,16 @@
 "use client";
 
 import { FC } from "react";
-import ContentsHamburger from "@/shared/ContentsHamburger";
+import ContentsHamburger from "@/shared/AppBar/ContentsHamburger";
 import dynamic from "next/dynamic";
-import NavlinkSeparator from "@/shared/NavLInkSeparator/NavlinkSeparator";
+import NavlinkSeparator from "@/shared/AppBar/NavLInkSeparator/NavlinkSeparator";
 import { LinkMenuContents } from "@/shared/types";
 import Navbar from "react-bootstrap/Navbar";
-import SiteSectionsNav from "@/shared/SiteSectionsNav";
+import SiteSectionsNav from "@/shared/AppBar/SiteSectionsNav";
 import Logo from "@/assets/Logo";
+import Link from "next/link";
 
-const DarkModeDropdown = dynamic(() => import("@/shared/DarkModeDropdown"), {
+const DarkModeDropdown = dynamic(() => import("@/shared/AppBar/DarkModeDropdown"), {
   ssr: false,
 });
 
@@ -19,14 +20,14 @@ export interface AppBarProps {
 
 const AppBar: FC<AppBarProps> = ({ linkMenuContents }) => {
   return (
-    <Navbar bg="primary" data-bs-theme="dark">
+    <Navbar className="rbdg-docs-navbar">
       <div className="container d-flex flex-row justify-content-between">
         <div className="d-flex flex-row justify-content-start">
           <ContentsHamburger linkMenuContents={linkMenuContents} />
-          <span className="navbar-brand">
-            <Logo className="navbar-logo me-2 align-middle" />
-            <div className="d-sm-inline d-none">react-bootstrap-data-grid</div>
-          </span>
+          <Link className="navbar-brand" href="/" data-bs-theme="dark">
+            <Logo className="navbar-logo me-2 align-middle d-sm-inline d-none" />
+            <div className="d-inline">react-bootstrap-data-grid</div>
+          </Link>
           <SiteSectionsNav navClasses="d-none d-md-flex" />
         </div>
         <ul className="navbar-nav flex-row gap-2">
