@@ -102,4 +102,118 @@ Examining the Bootstrap code repo, it turns out that there is an
 [SCSS file](https://github.com/twbs/bootstrap/blob/main/scss/_navbar.scss) dedicated to styling the Navbar. We can
 adopt the sections of the file that apply to our use case.
 
-_To be continued..._
+#### style.scss
+
+The following CSS rules are adapted from Bootstrap's official documentation site. `.navbar-brand` and `.nav-link` are
+CSS classes provided by Bootstrap to style the Navbar brand and links, respectively. The class at the top of the
+snippet, `.custom-navbar`, is specific to this snippet and should be added to the `nav` element the represents the
+Navbar. The rules in this snippet are
+[more specific](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity) than the rules provided by
+Bootstrap itself and end up overriding the default behavior of Bootstrap.
+
+```scss
+// other rules...
+
+.custom-navbar {
+  @media (forced-colors) {
+    background-color: Canvas;
+  }
+
+  .navbar-brand {
+    color: $white;
+  }
+
+  .nav-link {
+    color: rgba($white, .85);
+
+    &:hover,
+    &:focus {
+      color: $white;
+    }
+
+    &.active {
+      font-weight: 600;
+      color: $white;
+    }
+  }
+}
+```
+
+#### Applying the Solution
+
+We can apply the adapated CSS rules by adding the `custom-navbar` class to the Navbar's root `nav` element. The
+previously added `data-bs-theme` attribute is no longer needed and should be removed for the dropdown menu to obey
+changes in the site-wide color theme.
+
+The following code snippet shows what the React Bootstrap's Navbar prop looks like when applying the rules.
+
+```tsx
+<Navbar bg="primary" className="custom-navbar">
+{
+    // NavBar contents...
+}
+</Navbar>
+```
+
+Upon making those changes, we can see that the dropdown menu is using the `light` theme when the entire site is set to
+`light`. The CSS rules also made it so that links and brand are brighter, improving contrast.
+
+![Screenshot showing results of applying custom CSS rules](/navbar-custom-css.png)
+
+#### Finishing Touches
+
+Even with the brighter colors set by the custom CSS rules, the contrast ratio of text to background for the Navbar does
+not meet the recommended 4.5:1 contrast ratio for accessibility.
+
+One way to meet the recommended ratio is to use a darker background color for the Navbar. Bootstrap provides [predefined
+increments](https://getbootstrap.com/docs/5.3/customize/color/#all-colors) of darkness for various colors as SCSS
+variables.
+
+In this case, setting the color to be one increment darker than the default blue primary color will solve our
+contrast ratio problems. To do so, we can add a rule to the [SCSS snippet](#stylescss) as follows:
+
+```scss
+.custom-navbar {
+  background-color: $blue-600;
+
+  // rest of SCSS rules...
+}
+```
+
+Since the background color of the Navbar is now set by CSS directly, there is no longer a need to specify in the
+`Navbar` component's `bg` prop:
+
+```tsx
+<Navbar className="custom-navbar">
+{
+    // NavBar contents...
+}
+</Navbar>
+```
+
+![Screenshot showing final result with the Navbar having a slightly darker color](/darker-bg-navbar.png)
+
+## Closing Thoughts
+
+The amount of effort needed to achieve a Navbar that mimics the style of Bootstrap's official documentation site may
+indicate that this an area ripe for improvement in an upcoming version of Boostrap. Given that dark mode is only
+relatively recently well-supported by Bootstrap, this finding is not too surprising.
+
+## Source Code
+
+For brevity, many of the implementation details of the project were left out. To see the entirety of the project used to
+demonstrate the concepts explored in the article, go the
+[navbar branch](https://github.com/absreim/ssr-dark-mode-sample/tree/navbar) of a Next.js and dark mode demo project.
+The project was also used in the [Dark Mode with Next.js and Bootstrap](/blog/dark-mode) article.
+
+## Discussion
+
+If you have questions or comments about:
+
+- things I may have missed
+- things I got wrong
+- better ways of doing things
+
+feel free to post in the
+[discussion section](https://github.com/absreim/react-bootstrap-data-grid-docs/discussions) of the repo for this site
+on GitHub.
