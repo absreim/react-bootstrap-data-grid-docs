@@ -1,0 +1,105 @@
+---
+navLabel: Fixed-theme Bootstrap Navbars
+order: 1
+indexTitle: Fixed-theme Bootstrap Navbars
+---
+
+# Fixed-theme Bootstrap Navbars
+
+Last update: April 1, 2026
+
+<div className="alert alert-info" role="alert">
+    When this article was written, the version __5.3__ of Bootstrap was used. Some or all of the information in this
+    article may not apply to other versions.
+</div>
+
+## Introduction
+
+Bootstrap provides a [Navbar](https://getbootstrap.com/docs/5.3/components/navbar/) component that is a navigation
+header. Typically, the Navbar contains:
+
+- branding text and/or a logo that identifies the company or website
+- navigation links to major sections of the website
+- additional links or settings such as a GitHub repo link or color theme selector
+
+Both the [Bootstrap](https://getbootstrap.com/) and [React Bootstrap](https://react-bootstrap.netlify.app/) sites sport
+Navbars with a fixed color theme. That is, colors used by the Navbar stay the same regardless of whether color theme of
+the overall site is set to `light` or `dark` mode.
+
+<div className="alert alert-info" role="alert">
+    In case you are unfamiliar with the dark mode support provided by Bootstrap, see the
+    [Color modes](https://getbootstrap.com/docs/5.3/customize/color-modes/) section of the official Bootstrap
+    documentation.
+</div>
+
+For me, it was far from obvious how one would reproduce this kind of behavior for one's own website when using
+Bootstrap. In this article, I'll detail what worked for me and any insights that I thought were particularly
+interesting.
+
+## Baseline Behavior of Bootstrap Navbars
+
+By default, with regard to colors, Bootstrap Navbars behave very similarly to elements that would typically appear in
+the
+[main element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/main) of a website, such as
+[Cards](https://getbootstrap.com/docs/5.3/components/card/).
+
+More specifically, when the site has a `light` theme, the Navbar has a light background and dark text.
+
+![Screenshot showing default appearance of Navbar under light theme](/default-navbar-light.png)
+
+When the site has a `dark` theme, the Navbar has a dark background and light text.
+
+![Screenshot showing default appearance of Navbar under dark theme](/default-navbar-dark.png)
+
+## Setting the Navbar to Use a Fixed Background Color
+
+Let's attempt to replicate the design of the [Bootstrap](https://getbootstrap.com/) and
+[React Bootstrap](https://react-bootstrap.netlify.app/) sites. Those sites have a relatively dark, fixed,
+background color for the Navbar. We can start off by setting the background color of the Navbar to one of the theme
+colors.
+
+For React Bootstrap, we can use the `bg` prop of `Navbar`. Alternatively, we can a utility class like `bg-primary`,
+which can be used regardless of whether we are using React Bootstrap.
+
+Below is a code snippet of applying the `primary` theme color to the `Navbar` component of React Bootstrap.
+
+```tsx
+<Navbar bg="primary">
+{
+    // NavBar contents...
+}
+</Navbar>
+```
+
+Upon making this change, we can observe that in light mode, the text is dark over the newly added dark background,
+posing issues with contrast.
+
+![Screenshot showing Navbar with primary color background applied but no other changes](/navbar-primary-bg.png)
+
+### Setting the Navbar to Always Use the Dark Theme
+
+Given that the background is relatively dark, one can follow an example in the
+[color schemes](https://getbootstrap.com/docs/5.3/components/navbar/#color-schemes) section of the Bootstrap
+documentation. Setting the color mode of the Navbar to `dark` with the `data-bs-theme` property solves problem mostly.
+
+![Screenshot showing the Navbar with primary-colored background and dark theme](/navbar-dark-theme.png)
+
+While setting the dark theme on the Navbar makes it look much better with a dark background color, some issues still
+remain:
+
+- the dropdown menu is fixed to the `dark` theme even if the rest of the site is on the `light` theme. The official
+Bootstrap site has the menu using the same theme as the rest of the site.
+- the navigation link and dropdown menu icon color is designed for a darker background and doesn't contrast well enough
+with the primary color background to pass accessibility guidelines.
+
+### Custom CSS Solution
+
+Given the issues encountered with setting the `data-bs-theme` property on the Navbar element to `dark`, one might
+examine the official Bootstrap to site to see how their solution works. It turns out that their solution is to use
+custom CSS that is not part of the official release to style the Navbar.
+
+Examining the Bootstrap code repo, it turns out that there is an
+[SCSS file](https://github.com/twbs/bootstrap/blob/main/scss/_navbar.scss) dedicated to styling the Navbar. We can
+adopt the sections of the file that apply to our use case.
+
+_To be continued..._

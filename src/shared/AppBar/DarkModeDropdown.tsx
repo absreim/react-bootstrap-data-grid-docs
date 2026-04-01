@@ -12,6 +12,19 @@ const menuOptions: [ReactNode, string, string][] = [
   [<SystemModeIcon key="system" />, "Auto", "auto"],
 ];
 
+const getThemeIcon: (theme: string) => ReactNode = (theme) => {
+  switch (theme) {
+    case "light": {
+      return <LightModeIcon />;
+    }
+    case "dark": {
+      return <DarkModeIcon />;
+    }
+    default:
+      return <SystemModeIcon />;
+  }
+};
+
 const DarkModeDropdown: FC = () => {
   // Possible values are supposed to be "auto", "light", and "dark", but I am
   // setting this type to string to account for the fact that local storage can
@@ -19,19 +32,6 @@ const DarkModeDropdown: FC = () => {
   const [theme, setTheme] = useState<string>(
     localStorage.getItem("theme") || "auto",
   );
-
-  const getThemeIcon: (theme: string) => ReactNode = () => {
-    switch (theme) {
-      case "light": {
-        return <LightModeIcon />;
-      }
-      case "dark": {
-        return <DarkModeIcon />;
-      }
-      default:
-        return <SystemModeIcon />;
-    }
-  };
 
   const getItemClickHandler: (theme: string) => () => void = (theme) => () => {
     setTheme(theme);
