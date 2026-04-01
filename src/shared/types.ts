@@ -7,6 +7,7 @@ export type NestedNavLinkNode = Pick<TocItem, "value" | "href"> & {
 export interface LinkDefinition {
   name: string;
   path: string;
+  title?: string;
 }
 
 export interface LinkMenuContents {

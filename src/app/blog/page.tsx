@@ -21,9 +21,9 @@ const Page: FC = () => {
       </p>
       <ul>
         {
-          linkDefs.map(({ name, path }) => (
+          linkDefs.map(({ name, path, title }) => (
             <li key={name}>
-              <Link href={path}>{name}</Link>
+              <Link href={path}>{title || name}</Link>
             </li>
           ))
         }

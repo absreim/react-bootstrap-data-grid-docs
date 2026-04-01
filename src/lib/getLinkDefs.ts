@@ -3,6 +3,10 @@ import path from "path";
 import { cache } from "react";
 import { LinkDefinition } from "@/shared/types";
 
+// Much of the frontmatter parsing code is derived from the Next.js Portfolio
+// Blog Starter example:
+// https://github.com/vercel/examples/blob/main/solutions/blog/app/blog/utils.ts
+
 const DOCS_DIR = path.join(process.cwd(), "src", "mdx", "docs");
 const DOCS_URL_BASE = "/docs";
 const BLOG_DIR = path.join(process.cwd(), "src", "mdx", "blog");
@@ -36,7 +40,10 @@ function readMDXFile(filePath: string) {
   return parseFrontmatter(rawContent);
 }
 
-function getMDXData(contentDir: string, urlBasePath: string): AugmentedLinkDefinition[] {
+function getMDXData(
+  contentDir: string,
+  urlBasePath: string,
+): AugmentedLinkDefinition[] {
   const mdxFiles = getMDXFiles(contentDir);
   return mdxFiles.map((file) => {
     const dict = readMDXFile(path.join(contentDir, file));
@@ -46,6 +53,7 @@ function getMDXData(contentDir: string, urlBasePath: string): AugmentedLinkDefin
       order: Number(dict.order),
       name: dict.navLabel || slug,
       path: `${urlBasePath}/${slug}`,
+      title: dict.indexTitle,
     };
   });
 }
