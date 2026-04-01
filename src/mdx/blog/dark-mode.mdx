@@ -64,14 +64,13 @@ Browser JavaScript can determine this preference by calling the
 [Window.matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) function on the
 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme)
 media feature. To listen for changes to the resulting
-[MediaQueryList](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList), one can create an event listener for
+[MediaQueryList object](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList), one can create an event listener for
 the [change event](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/change_event).
 
 React provides the [useSyncExternalStore](https://react.dev/reference/react/useSyncExternalStore) hook to subscribe to
 event listeners and update components with new values in response to events. (Using `useState` and `useEffect` instead
 is
-[subject to race conditions](https://www.epicreact.dev/use-sync-external-store-demystified-for-practical-react-development-w5ac0#:~:text=1.%20%22Why%20not%20just%20use%20useEffect%20%2B%20useState%3F%22)
-.)
+[subject to race conditions](https://www.epicreact.dev/use-sync-external-store-demystified-for-practical-react-development-w5ac0#:~:text=1.%20%22Why%20not%20just%20use%20useEffect%20%2B%20useState%3F%22).)
 
 A hook that performs that media query and keeps a React component up to date on changes to the to query result may be
 implemented as follows:
@@ -103,9 +102,10 @@ function subscribe(
 
 #### User Settings and the Effective Theme
 
-As discussed earlier, the three settings that the user can choose are _light_, _dark_, and _system_. The
-`prefers-color-scheme: dark` media query is used to determine whether the theme should effectively be _light_ or _dark_
-if _system_ is selected by the user.
+As discussed earlier, the three settings that the user can choose are __light__, __dark__, and __system__. The
+`prefers-color-scheme: dark` media query is used to determine whether the theme should effectively be __light__ or
+__dark__
+if __system__ is selected by the user.
 
 These options may be defined as follows:
 
@@ -253,7 +253,8 @@ To make the dark mode setting work for the entire site, we will need to set the 
 `html` element. Since the `html` is not being rendered by React, we will need to use an uncontrolled implementation.
 Such an implementation can be done by using the
 [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) to access the root element and set the
-`data-bs-theme` attribute on it directly. This uncontrolled implementation is in contrast the controlled implementation
+`data-bs-theme` attribute on it directly. This uncontrolled implementation is in contrast to the controlled
+implementation
 where a state and conditional rendering was used to set the attribute.
 
 #### Separate Initialization Script
@@ -314,6 +315,8 @@ component for setting the color mode to:
 - update the selected mode by writing a value to local storage
 - call the function exposed by the initialization script to sync up the `data-bs-theme` attribute with the setting in
 local storage
+
+The following `App.tsx` file has been modified from the controlled implementation version to implement those changes.
 
 ##### App.tsx
 
@@ -379,17 +382,19 @@ The source code of this example can be found in a
 
 ### Bonus: Cross-tab Option Sync
 
-Both [MUI](https://mui.com/material-ui/customization/dark-mode/#toggling-color-mode) and [next-themes](https://github.com/pacocoursey/next-themes) support syncing settings changes across tabs automatically. If such a feature is
-not enabled, changing the dark mode setting in one tab for the same site will not affect other open tabs until those
+Both [MUI](https://mui.com/material-ui/customization/dark-mode/#toggling-color-mode) and [next-themes](https://github.com/pacocoursey/next-themes) support syncing settings changes across tabs automatically. If such a feature
+were
+not present, changing the dark mode setting in one tab for the same site will not affect other open tabs until those
 tabs are refreshed.
 
 One way to implement such a feature is to use
 [storage events](https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event) as a way to communicate changes
 to the dark mode setting across tabs.
 
-Note that this event is received by each tab except the one that made the change to local storage. The following sample
+Note that this event is received by each tab _except_ the one that made the change to local storage. The following
+sample
 implementation takes this fact into account. Also note that the following sample is based off the
-[uncontrolled](#uncontrolled-implementation) implementation.
+[uncontrolled implementation](#uncontrolled-implementation).
 
 #### Initialization Script Changes
 
@@ -569,6 +574,13 @@ code involves accessing local storage as part of rendering the component to set 
 For that reason, the UI code needs to imported dynamically with SSR disabled. A separate "container" component is used
 to do the dynamic import.
 
+<div className="alert alert-info" role="alert">
+    It may be possible to entirely avoid using dynamic imports and disabling SSR in this case. The changes to do so
+    would involve moving all references to client-only variables like `localStorage` into event listeners or `useEffect`
+    hooks. For this particular component, the reading of `localStorage` to set the UI state could be moved into a
+    `useEffect` hook.
+</div>
+
 ##### ThemeSelector.tsx
 
 ```tsx
@@ -693,19 +705,20 @@ been doing without using JavaScript. See the
 details.
 
 This fact means that using the cookie-based approach to set the `data-bs-theme` attribute server-side only works for
-circumstances where the user selects _dark_ or _light_ modes. For _system_ mode, some solutions include:
+circumstances where the user selects __dark__ or __light__ modes. For __system__ mode, some solutions include:
 
 1. forking Bootstrap and modifying it to support media query and data modes simultaneously
 2. reimplementing portions of Bootstrap for a special value of `data-bs-theme` with a media query
 
-The following changes demonstrate option 2. The CSS only needs to prevent dark mode flash for the period of time before
+The following changes demonstrate __option 2__. The CSS only needs to prevent dark mode flash for the period of time
+before
 client-side JavaScript has a chance to execute. Hopefully, depending on how many features with Bootstrap are being used,
-it may not be necessary to reimplement a small portion of Bootstrap CSS.
+it may only be necessary to reimplement a small portion of Bootstrap CSS.
 
 ##### style.css
 
 When Bootstrap CSS encounters an unspecified `data-bs-theme` value, `system` in this case, Bootstrap defaults to using
-the _light_ theme. The following rules reimplement a subset of the _dark_ theme rules. They will be used on the client
+the `light` theme. The following rules reimplement a subset of the `dark` theme rules. They will be used on the client
 in the short period of time before JavaScript has a chance to run if:
 
 - the site color theme preference is `system`
@@ -726,6 +739,9 @@ in the short period of time before JavaScript has a chance to run if:
   }
 }
 ```
+
+With these changes implemented, dark mode flash should no longer occur, at least for sample project. Additional rules
+may be necessary if a project contains Bootstrap components not covered by this SCSS snippet.
 
 #### Source Code
 
