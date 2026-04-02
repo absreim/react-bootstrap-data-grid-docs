@@ -25,8 +25,8 @@ const AppBar: FC<AppBarProps> = ({ linkMenuContents }) => {
         <div className="d-flex flex-row justify-content-start">
           <ContentsHamburger linkMenuContents={linkMenuContents} />
           <Link className="navbar-brand" href="/" data-bs-theme="dark">
-            <Logo className="navbar-logo me-2 align-middle d-sm-inline d-none" />
-            <div className="d-inline">react-bootstrap-data-grid</div>
+            <Logo className="navbar-logo me-2 align-middle" />
+            <div className="d-sm-inline d-none">react-bootstrap-data-grid</div>
           </Link>
           <SiteSectionsNav navClasses="d-none d-md-flex" />
         </div>
