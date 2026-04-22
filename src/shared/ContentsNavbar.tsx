@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Nav from "react-bootstrap/Nav";
 import Link from "next/link";
 import { LinkDefinition } from "@/shared/types";
+import "./DocContentsLayout/style.scss";
 
 interface ContentsNavbarProps {
   linkDefs: LinkDefinition[];

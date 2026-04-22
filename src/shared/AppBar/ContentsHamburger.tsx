@@ -3,7 +3,7 @@
 import { FC, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
-import ContentsNavbar from "@/shared/ContentsNavbar";
+import ContentsNavbar from "../ContentsNavbar";
 import { LinkMenuContents } from "@/shared/types";
 import SiteSectionsNav from "@/shared/AppBar/SiteSectionsNav";
 
