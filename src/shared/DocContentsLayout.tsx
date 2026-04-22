@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import ContentsNavbar from "@/shared/ContentsNavbar";
+import ContentsNavbar from "./ContentsNavbar";
 import { LinkDefinition } from "@/shared/types";
 
 interface DocContentsLayoutProps {
@@ -15,11 +15,11 @@ const DocContentsLayout: FC<DocContentsLayoutProps> = ({
 }) => {
   return (
     <div className="d-flex flex-row gap-2 h-100">
-      <div className="d-none d-lg-block overflow-y-auto pe-3">
+      <div className="d-none d-lg-block overflow-y-auto pe-3 rbdg-contents-navbar">
         {prependNavContent}
         <ContentsNavbar linkDefs={linkDefs} />
       </div>
-      <main className="h-100 w-100">{children}</main>
+      <main className="h-100 w-100 rbdg-docs-main-layout">{children}</main>
     </div>
   );
 };

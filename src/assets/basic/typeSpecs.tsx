@@ -45,6 +45,19 @@ export const colDef: SpecTableRow[] = [
       </p>
     ),
   },
+  {
+    propertyName: "width",
+    typeDefinition: "number",
+    isRequired: false,
+    description: (
+      <p>
+        Sets the <code>min-width</code> and <code>max-width</code> CSS properties
+        for all cells in this column. Node that these settings only reliably
+        set a fixed width for a column if the table&apos;s <code>display</code>
+        CSS property is set to <code>block</code>.
+      </p>
+    )
+  }
 ];
 
 export const rowDef: SpecTableRow[] = [
@@ -114,7 +127,8 @@ export const gridProps: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        Used to enable <Link href="/docs/pagination">pagination</Link> for the grid.
+        Used to enable <Link href="/docs/pagination">pagination</Link> for the
+        grid.
       </p>
     ),
   },
@@ -175,8 +189,8 @@ export const gridProps: SpecTableRow[] = [
     description: (
       <p>
         Allows for customizing CSS classes on various elements of the grid. See
-        the <Link href="/docs/styling">styling</Link> section of the documentation
-        for details.
+        the <Link href="/docs/styling">styling</Link> section of the
+        documentation for details.
       </p>
     ),
   },
@@ -220,6 +234,40 @@ export const gridProps: SpecTableRow[] = [
           table is not responsive, when horizontal space is tight, the browser
           may more aggressively try to shrink the width of each column and/or
           overflow content past the table&apos;s horizontal boundaries.
+        </p>
+      </>
+    ),
+  },
+  {
+    propertyName: "displayMode",
+    typeDefinition: "'table' | 'block'",
+    isRequired: false,
+    description: (
+      <>
+        <p>
+          Sets the{" "}
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/display">
+            display
+          </a>{" "}
+          property of the main <code>table</code> element to <code>table</code>{" "}
+          or <code>block</code>. Default is <code>table</code>.
+        </p>
+        <p>
+          The layout algorithm that browsers use for tables when the{" "}
+          <code>display</code> property is set to <code>table</code> is beyond
+          the scope of this documentation. See articles like the{" "}
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/table-layout">
+            table-layout CSS property article on MDN
+          </a>{" "}
+          for more details.
+        </p>
+        <p>
+          Notably, in <code>table</code> display mode, the browser makes an
+          effort to obey
+          <code>min-width</code> and <code>max-width</code> settings but can
+          violate them if the column is needed to be larger to hold available
+          content. In <code>block</code>
+          display mode, a fixed column can be reliably achieved.
         </p>
       </>
     ),

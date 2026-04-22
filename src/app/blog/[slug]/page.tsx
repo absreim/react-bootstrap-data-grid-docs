@@ -1,6 +1,6 @@
 import getMdxStaticParamsFn from "@/shared/getMdxStaticParamsFn";
 import { FC } from "react";
-import DocContents from "@/shared/DocContents";
+import DocContents from "../../../shared/DocContents";
 import { TocItem } from "rehype-mdx-toc";
 import path from "path";
 

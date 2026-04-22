@@ -1,0 +1,445 @@
+---
+navLabel: Resize
+order: 10
+---
+
+import PrereleaseNotice from "@/assets/pro/PrereleaseNotice";
+import ResizeableGrid from "@/assets/resize/ResizeableGrid";
+import ProBadge from "@/assets/pro/ProBadge";
+
+<h1>Column Resizing <ProBadge /></h1>
+
+<PrereleaseNotice />
+
+The Pro version of react-bootstrap-data-grid allows a developer to allow the user to resize columns by dragging on a
+resize handle.
+
+The resize feature is designed to work with both pointing devices (e.g. mice and touchpads) and touchscreens. In
+addition, for the sake of accessibility, resizing also works with the left and right arrow keys on a keyboard.
+
+## Usage
+
+For columns where resizing is enabled, the grid displays a resize handle. Clicking and dragging the handle resizes the
+column based on the horizontal position of the cursor.
+
+After clicking on a resize handle and starting to drag it, but before releasing the pointer, the user can reset the
+width of the column back to the original width by pressing the <kbd>Esc</kbd> key. In this case, the "original" width
+is the width of the column before the user last clicked on the drag handle.
+
+To resize a column without using a keyboard, the user needs to first focus on the drag handle and then press either the
+<kbd>Left Arrow</kbd> or <kbd>Right Arrow</kbd> key to decrease or increase the size of the column, respectively. The
+step amount, the amount the column is resized per key press, has a sensible default and can be customized by the
+developer.
+
+To focus on the resize handle without using a mouse, the user can use the <kbd>Tab</kbd> key to cycle through elements
+on the page until they reach the desired resize handle. Resize handles have a
+[tabIndex](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex) of `0`, which means
+they are focused via the <kbd>Tab</kbd> key after higher priority elements like form fields.
+
+## Enabling Resizing
+
+Resizing is enabled on a per-column basis. To enable resizing on a column, set the `resizeable` property on the column
+definition (`ProColDef`) to `true`. The following code sample shows a column definition with resizing enable might look
+like.
+
+```ts
+const cols: ProColDef[] = [
+    {
+        name: "resizeExampleCol",
+        label: "Resize Example Column",
+        type: "string",
+        resizeable: true,
+    },
+    // additional columns
+];
+```
+
+Additionally, __the `displayMode` prop for the grid component (`GridPro`) must be set to `block` for resizing to work__.
+If not, the `resizeable` property will be ignored. The following code sample shows a `GridPro` component instance
+defined in TSX syntax with the `displayMode` prop set to `block`.
+
+```tsx
+<GridPro
+    displayMode="block"
+    rows={rows}
+    cols={cols}
+/>
+```
+
+## Additional Options
+
+By default, there is no upper limit to the size to which a column can be resized. The default lower limit is _32px_
+for columns with sorting disabled or _64px_ when sorting is enabled. A custom lower and upper limit can be set using the
+`minResizeWidth` and `maxResizeWidth` properties on the column definition object (of type `ProColDef`). The following
+code sample contains a column definition with `minResizeWidth` and `maxResizeWidth` properties set to customize the
+minimum and maximum resize widths.
+
+```ts
+const cols: ProColDef[] = [
+    {
+        name: "resizeExampleCol",
+        label: "Resize Example Column",
+        type: "string",
+        resizeable: true,
+        minResizeWidth: 100,
+        maxResizeWidth: 300,
+    },
+    // additional columns
+];
+```
+
+The default _step amount_ for keyboard resizing is _10px_. That means that for each press of the <kbd>Left Arrow</kbd>
+or <kbd>Right Arrow</kbd> keys, the column width decreases or increases by _10px_, respectively. The developer can
+customize the _step amount_ with the `keyboardResizeStep` property of the column definition. The following code sample
+shows how one can set the _step amount_ to _20px_ for a column.
+
+```ts
+const cols: ProColDef[] = [
+    {
+        name: "resizeExampleCol",
+        label: "Resize Example Column",
+        type: "string",
+        resizeable: true,
+        keyboardResizeStep: 20,
+    },
+    // additional columns
+];
+```
+
+## Controlled vs Uncontrolled
+
+The width of a resizeable column must be stored in a [React state](https://react.dev/learn/managing-state). The state
+can be either stored outside the `GridPro` component (controlled mode) or inside it (uncontrolled mode).
+
+### Uncontrolled Mode
+
+To use uncontrolled mode, either don't set the `width` property of `ProColDef` at all or set a numeric value. In this
+mode, when the `GridPro` component is mounted, the grid initializes the widths of each column to the value specified in
+the `width` property, or _100px_ if no value is set. If a user resizes a column, the internal state of the grid updates
+to keep track of the new width.
+
+Once the grid is mounted, changing the `width` property of a column to a different numeric or `undefined` value will no
+longer affect width of that column.
+
+The following code sample shows how one can set the width of a column to use uncontrolled resizing mode. In this example
+the column width is set to 150px when the `GridPro` component is first mounted.
+
+```tsx
+const cols: ProColDef[] = [
+    {
+        name: "resizeExampleCol",
+        label: "Resize Example Column",
+        type: "string",
+        width: 150,
+        resizeable: true,
+    },
+    // additional columns
+];
+```
+
+If the parent component of the already-mounted `GridPro` component changes the column definition to 200px as depicted
+below, the change will have no effect on the size of the column.
+
+```ts
+const cols: ProColDef[] = [
+    {
+        name: "resizeExampleCol",
+        label: "Resize Example Column",
+        type: "string",
+        width: 200,
+        resizeable: true,
+    },
+    // additional columns
+];
+```
+
+### Controlled Mode
+
+To use controlled mode, pass a `WidthModel` object to the `width` property for a column definition. A `WidthModel`
+consists of `width` property that represents the current width of the column and a `setWidth` property that is a
+function to update the width. In this mode, the parent component can set the width of a column by setting a new value
+of the `width` property inside the `WidthModel`. The column's width will reflect this change even if the change is made
+after the grid is mounted.
+
+In the following code sample, a parent component maintains the state that stores the width of a column. The value and
+setter from a `useState` hook is passed down as the `WidthModel` in a column definition.
+
+```tsx
+const ParentComponent = () => {
+  const [colWidth, setColWidth] = useState(200);
+
+  const cols: ProColDef[] = useMemo(
+    () => [
+      {
+        name: "dateCol",
+        label: "Date Column",
+        type: "date",
+        width: {
+          width: colWidth,
+          setWidth: setColWidth,
+        },
+        resizeable: true,
+      },
+    ],
+    [colWidth],
+  );
+
+  return (
+    <GridPro
+      displayMode="block"
+      rows={rows}
+      cols={cols}
+    />
+  );
+};
+```
+
+## Additional Information
+
+<div className="alert alert-info" role="alert">
+    These CSS property values mentioned in this section are not applied by default by react-bootstrap-data-grid for the
+    sake of backwards
+    compatibility. In a future major version with breaking changes, they may be applied by default.
+</div>
+
+### Text Overflow Behavior
+
+For resizable columns, it may be desirable to set the CSS
+[text-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-wrap) property to `nowrap` and
+the CSS [text-overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-overflow) property to
+`ellipsis`.
+
+The default values for these properties can cause behavior that may be often undesirable:
+
+- The default `text-wrap` property value, `wrap`, causes the browser to stack up text in a cell vertically when the column
+becomes small and cause the cell to take up a lot of vertical space.
+
+- The default `text-overflow` property value, `clip`, may make it so that it is not obvious to the user that there is
+additional text available in a column.
+
+Both of the property settings can be applied via Bootstrap utility classes
+[text-nowrap](https://getbootstrap.com/docs/5.3/utilities/text/#text-wrapping-and-overflow) and
+[text-truncate](https://getbootstrap.com/docs/5.3/helpers/text-truncation/) respectively. Alternatively, one
+can create a custom CSS class.
+
+Finally, the CSS class or classes can be applied to specific sets of cells in the grid using the `styleModel` prop. See
+the [Styling](/docs/styling) documentation page for details on the `styleModel` prop and the code sample on this page
+for an example.
+
+### Responsive Table
+
+It may often be advisable make the table
+[responsive](https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables) when a table has resizable columns. If
+the table is not responsive and the table is resized in a way that it is wider than the other content in the enclosing
+element, the enclosing element itself may widen to fit the table.
+
+Making a table responsive creates and enclosing `div` that is scrollable horizontally, making it so that the enclosing
+element is not affected when the table becomes wide.
+
+Both the `Grid` and `GridPro` components have the `responsive` prop that, when set to `true`, renders an enclosing `div`
+with the `table-responsive` Bootstrap utility class.
+
+## Example
+
+The following example demonstrates:
+
+- A resizeable column in controlled mode (Description)
+- A resizeable column in uncontrolled mode (Name)
+- A resizeable column that is also sortable (Name)
+- A resizeable column that is not sortable (Description)
+- A resizeable column with a minimum width (Name)
+- A resizeable column with a maximum width (Description)
+- A button that can control the width of a controlled column externally from the grid
+- Selective application of Bootstrap utility CSS classes to make overflowing text show an ellipsis
+
+### Live Demo
+
+<ResizeableGrid />
+
+### Code
+
+#### ResizableGrid.tsx
+
+```tsx
+"use client";
+
+import GridPro, {
+  ProColDef,
+  RowDef,
+  StyleModel,
+} from "@absreim/react-bootstrap-data-grid-pro";
+import { FC, useMemo, useState } from "react";
+import Button from "react-bootstrap/Button";
+import Stack from "react-bootstrap/Stack";
+
+interface UnitStats {
+  name: string;
+  hp: number;
+  speed: number;
+  attack: number;
+  range: number;
+  desc: string;
+}
+
+const rows: RowDef<UnitStats>[] = [
+  {
+    id: 0,
+    data: {
+      name: "Arclight",
+      hp: 4813,
+      speed: 7,
+      attack: 347,
+      range: 95,
+      desc: "Medium anti-swarm mech",
+    },
+  },
+  {
+    id: 1,
+    data: {
+      name: "Crawler",
+      hp: 263,
+      speed: 16,
+      attack: 79,
+      range: 6,
+      desc: "Light melee swarm robot",
+    },
+  },
+  {
+    id: 2,
+    data: {
+      name: "Fang",
+      hp: 117,
+      speed: 6,
+      attack: 63,
+      range: 75,
+      desc: "Light ranged swarm robot",
+    },
+  },
+  {
+    id: 3,
+    data: {
+      name: "Hound",
+      hp: 879,
+      speed: 10,
+      attack: 246,
+      range: 70,
+      desc: "Light anti-swarm mech",
+    },
+  },
+  {
+    id: 4,
+    data: {
+      name: "Marksman",
+      hp: 1622,
+      speed: 8,
+      attack: 2329,
+      range: 140,
+      desc: "Long range sniper",
+    },
+  },
+  {
+    id: 5,
+    data: {
+      name: "Void Eye",
+      hp: 1522,
+      speed: 8,
+      attack: 995,
+      range: 100,
+      desc: "Light high-damage robot",
+    },
+  },
+  {
+    id: 6,
+    data: {
+      name: "Vortex",
+      hp: 7071,
+      speed: 8,
+      attack: 1385,
+      range: 85,
+      desc: "Medium anti-medium robot",
+    },
+  },
+];
+
+const styleModel: StyleModel = {
+  mainTableStyleModel: {
+    tbodyTd: (rowId, displayRowIndex, colIndex) =>
+      colIndex === 5
+        ? ["text-nowrap", "text-truncate"]
+        : [],
+  },
+};
+
+const ResizeableGrid: FC = () => {
+  const [descWidth, setDescWidth] = useState<number>(200);
+  const cols: ProColDef[] = useMemo<ProColDef[]>(
+    () => [
+      {
+        name: "name",
+        type: "string",
+        label: "Name",
+        sortable: true,
+        resizeable: true,
+        width: 150,
+        minResizeWidth: 150,
+      },
+      {
+        name: "hp",
+        type: "number",
+        label: "HP",
+        sortable: true,
+      },
+      {
+        name: "speed",
+        type: "number",
+        label: "Speed (m/s)",
+        sortable: true,
+      },
+      {
+        name: "attack",
+        type: "number",
+        label: "Attack",
+        sortable: true,
+      },
+      {
+        name: "range",
+        type: "number",
+        label: "Range (m)",
+        sortable: true,
+      },
+      {
+        name: "desc",
+        type: "string",
+        label: "Description",
+        sortable: false,
+        resizeable: true,
+        width: {
+          width: descWidth,
+          setWidth: setDescWidth,
+        },
+        maxResizeWidth: 300,
+      },
+    ],
+    [descWidth],
+  );
+
+  return (
+    <Stack gap={2}>
+      <h6>Mechabellum 100-cost Units</h6>
+      <Button onClick={() => setDescWidth(200)} className="align-self-start">
+        Reset Description Column Width
+      </Button>
+      <GridPro
+        sortModel={{ type: "uncontrolled", initialSortColDef: null }}
+        responsive={true}
+        rows={rows}
+        cols={cols}
+        displayMode="block"
+        styleModel={styleModel}
+      />
+    </Stack>
+  );
+};
+
+export default ResizeableGrid;
+```

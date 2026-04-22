@@ -21,6 +21,7 @@
 @import "~bootstrap/scss/nav";
 @import "~bootstrap/scss/navbar";
 @import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
 @import "~bootstrap/scss/alert";
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/offcanvas";
@@ -31,14 +32,31 @@
 // Utilities
 @import "~bootstrap/scss/utilities/api";
 
-// --- End Bootstrap imports ---
+// --- Shiki themes ---
 
-@import "@absreim/react-bootstrap-data-grid/style";
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+@mixin shiki-dark-theme {
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+}
+
+:root[data-bs-theme="dark"] {
+  @include shiki-dark-theme;
+}
 
 // --- Styles specific to this project ---
 
 .rbdg-docs-toc {
-  min-width: 12rem;
+  width: 12rem;
+  min-width: 0;
   font-size: 0.9rem;
 
   ul {
@@ -47,6 +65,7 @@
 }
 
 .rbdg-docs-toc-li {
+  text-wrap: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden;
 }
@@ -64,13 +83,31 @@
   }
 }
 
+.rbdg-contents-navbar {
+  width: 8rem;
+  min-width: 0;
+}
+
+.rbdg-docs-main-layout {
+  min-width: 0;
+}
+
+.vr {
+  display: inline-block;
+  align-self: stretch;
+  width: var(--bs-border-width);
+  min-height: 1em;
+  background-color: currentcolor;
+  opacity: .25;
+}
+
 @include media-breakpoint-up(lg) {
   .overflow-lg-y-auto {
     overflow-y: auto;
   }
 }
 
-// --- Logo ---
+// Logo
 
 [data-bs-theme="light"] {
   .logo-grid {
@@ -103,7 +140,7 @@
   width: auto;
 }
 
-// --- Navbar ---
+// Navbar
 
 .rbdg-docs-navbar {
   background-color: $blue-600;
@@ -129,24 +166,4 @@
       color: $white;
     }
   }
-}
-
-// --- Shiki themes ---
-
-code[data-theme*=" "],
-code[data-theme*=" "] span {
-  color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
-}
-
-@mixin shiki-dark-theme {
-  code[data-theme*=" "],
-  code[data-theme*=" "] span {
-    color: var(--shiki-dark);
-    background-color: var(--shiki-dark-bg);
-  }
-}
-
-:root[data-bs-theme="dark"] {
-  @include shiki-dark-theme;
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { FC, ReactNode } from "react";
-import DocContentsLayout from "@/shared/DocContentsLayout";
+import DocContentsLayout from "../../../shared/DocContentsLayout";
 import { getBlogLinkDefs } from "@/lib/getLinkDefs";
 import Link from "next/link";
 
