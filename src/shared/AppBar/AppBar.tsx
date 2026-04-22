@@ -3,7 +3,7 @@
 import { FC } from "react";
 import ContentsHamburger from "@/shared/AppBar/ContentsHamburger";
 import dynamic from "next/dynamic";
-import NavlinkSeparator from "@/shared/AppBar/NavLInkSeparator/NavlinkSeparator";
+import NavlinkSeparator from "./NavlinkSeparator";
 import { LinkMenuContents } from "@/shared/types";
 import Navbar from "react-bootstrap/Navbar";
 import SiteSectionsNav from "@/shared/AppBar/SiteSectionsNav";
