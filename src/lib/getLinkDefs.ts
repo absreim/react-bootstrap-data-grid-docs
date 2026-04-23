@@ -54,6 +54,7 @@ function getMDXData(
       name: dict.navLabel || slug,
       path: `${urlBasePath}/${slug}`,
       title: dict.indexTitle,
+      pro: dict.pro === "true"
     };
   });
 }

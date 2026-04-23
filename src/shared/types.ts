@@ -8,6 +8,7 @@ export interface LinkDefinition {
   name: string;
   path: string;
   title?: string;
+  pro?: boolean;
 }
 
 export interface LinkMenuContents {
