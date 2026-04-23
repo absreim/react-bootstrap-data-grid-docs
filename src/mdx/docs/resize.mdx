@@ -263,7 +263,7 @@ The following example demonstrates:
 ```tsx
 "use client";
 
-import {
+import GridPro, {
   ProColDef,
   RowDef,
   StyleModel,
@@ -271,7 +271,6 @@ import {
 import { FC, useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
-import GridPro from "@absreim/react-bootstrap-data-grid-pro/grid-pro/GridPro";
 
 interface UnitStats {
   name: string;
@@ -412,7 +411,7 @@ const ResizeableGrid: FC = () => {
         name: "desc",
         type: "string",
         label: "Description",
-        sortable: true,
+        sortable: false,
         resizeable: true,
         width: {
           width: descWidth,
@@ -431,6 +430,7 @@ const ResizeableGrid: FC = () => {
         Reset Description Column Width
       </Button>
       <GridPro
+        sortModel={{ type: "uncontrolled", initialSortColDef: null }}
         responsive={true}
         rows={rows}
         cols={cols}

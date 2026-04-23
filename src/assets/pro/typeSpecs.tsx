@@ -31,8 +31,8 @@ export const proColDef: SpecTableRow[] = [
         </p>
         <p>
           Otherwise, if the column is not resizeable, either because{" "}
-          <code>resizeable</code> is falsy or <code>displayMode</code> is not
-          {" "}<code>block</code>:
+          <code>resizeable</code> is falsy or <code>displayMode</code> is not{" "}
+          <code>block</code>:
         </p>
         <ul>
           <li>
@@ -93,4 +93,32 @@ export const proColDef: SpecTableRow[] = [
       </p>
     ),
   },
+];
+
+export const widthModel: SpecTableRow[] = [
+  {
+    propertyName: "width",
+    typeDefinition: "number",
+    isRequired: true,
+    description: (
+      <p>
+        The current value for the width of a column. Often used as the source of
+        truth for the width of column where resizing is enabled, but can also be
+        used to programmatically control the width of a non-resizeable column.
+      </p>
+    ),
+  },
+  {
+    propertyName: "setWidth",
+    typeDefinition: "(width: number) => void",
+    isRequired: true,
+    description: (
+      <p>
+        Function used to set the value for the <code>width</code> property.
+        Generally, when this function called, the value of the
+        <code>width</code> property in the same object should be updated with
+        the value passed into the function.
+      </p>
+    )
+  }
 ];

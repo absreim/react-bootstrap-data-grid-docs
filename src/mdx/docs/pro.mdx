@@ -6,7 +6,7 @@ order: 9
 import PrereleaseNotice from "@/assets/pro/PrereleaseNotice";
 import ProBadge from "@/assets/pro/ProBadge";
 import TypeSpecTable from "@/shared/TypeSpecTable";
-import { proColDef} from "@/assets/pro/typeSpecs";
+import { proColDef, widthModel } from "@/assets/pro/typeSpecs";
 
 <h1>Pro Version <ProBadge /></h1>
 
@@ -76,3 +76,11 @@ The additional and changed fields for `ProColDef` are defined in the below table
 [ColDef](/docs/basic-usage#coldef).
 
 <TypeSpecTable rows={proColDef} />
+
+### WidthModel
+
+The `WidthModel` interface consists of a value and setter for column widths. It can be passed down as part of a
+`ProColDef` object to let the parent component programmatically control the widths of columns. The type specification of
+`WidthModel` is as follows.
+
+<TypeSpecTable rows={widthModel} />
