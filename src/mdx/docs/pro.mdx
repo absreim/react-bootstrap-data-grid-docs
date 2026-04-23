@@ -1,0 +1,78 @@
+---
+navLabel: Pro
+order: 9
+---
+
+import PrereleaseNotice from "@/assets/pro/PrereleaseNotice";
+import ProBadge from "@/assets/pro/ProBadge";
+import TypeSpecTable from "@/shared/TypeSpecTable";
+import { proColDef} from "@/assets/pro/typeSpecs";
+
+<h1>Pro Version <ProBadge /></h1>
+
+<PrereleaseNotice />
+
+The Pro version of react-bootstrap-data-grid:
+
+- includes advanced features not found in the Community version.
+- requires a license to use in production, but can be freely used for evaluation purposes.
+- comes in an NPM package that is separate from the Community version. It is named
+`@absreim/react-bootstrap-data-grid-pro`.
+
+## Setup
+
+The Pro version is designed to contain all the features of the Community version. The API is very similar between the
+two versions, but not entirely the same. Note the following differences when setting up the Pro version versus the
+Community version.
+
+### Installation
+
+The name of the NPM package for the pro version is different and should be installed as follows:
+
+```bash
+npm install @absreim/react-bootstrap-data-grid-pro
+```
+
+### Styling
+
+Styles specific to react-bootstrap-data-grid-pro are exposed in the file `style.css`. Unlike the Community version,
+_the styles are not available for import as an SCSS file_. Import the CSS file as follows so that the grid is styled
+properly.
+
+```ts
+import "@absreim/react-bootstrap-data-grid-pro/style.css"
+```
+
+## API Differences
+
+- the name of the grid component is `GridPro` rather than `Grid`
+- the name of the type that represents the props for the `GridPro` component is `GridProProps` rather than `GridProps`
+- the name of the column definition type `ProColDef` rather than `ColDef` and contains additional fields
+
+See more details on each specific point below.
+
+### GridPro
+
+This component is the default export of the Pro version NPM package and be imported as follows:
+
+```ts
+import GridPro from "@absreim/react-bootstrap-data-grid-pro";
+```
+
+### GridProProps
+
+This type contains the props for `GridPro`. The only difference compared to the Community version's `GridProps` is that
+the column definitions in the `cols` prop are of type `ProColDef[]` instead of `ColDef[]`.
+
+### ProColDef
+
+Compared to `ColDef`, the `width` property can be `WidthModel` in addition to `number` or `undefined`, allowing for
+external control of column widths.
+
+Several other additional optional properties are included to allow resizing of columns. See the
+[resize article](/docs/resize) for a discussion and usage examples.
+
+The additional and changed fields for `ProColDef` are defined in the below table. All other properties are the same as
+[ColDef](/docs/basic-usage#coldef).
+
+<TypeSpecTable rows={proColDef} />

@@ -1,6 +1,6 @@
 "use client";
 
-import {
+import GridPro, {
   ProColDef,
   RowDef,
   StyleModel,
@@ -8,7 +8,6 @@ import {
 import { FC, useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
-import GridPro from "@absreim/react-bootstrap-data-grid-pro/grid-pro/GridPro";
 
 interface UnitStats {
   name: string;
