@@ -16,11 +16,21 @@ import {
 
 react-bootstrap-data-grid provides functionality for the user to select and deselect rows in a `Grid` component.
 
-A `Grid` can be configured to allow or disallow selection. If allowed, it can be configured to either allow selection of one row at a time or multiple rows at a time.
+A `Grid` can be configured to allow or disallow selection. If allowed, it can be configured to either allow selection
+of one row at a time or multiple rows at a time.
 
-In addition, after configuring whether to allow single or multiple selection, it can be configured to allow selection by clicking on a row, by clicking on a radio or checkbox (single and multiple selection, respectively) for each row, or both.
+In addition, after configuring whether to allow single or multiple selection, it can be configured to allow selection
+by clicking on a row, by clicking on a radio or checkbox (single and multiple selection, respectively) for each row, or both.
 
-If radio or checkbox selection is enabled (including the "both" option), the header cell for the column that contains radio or checkbox selection inputs will be clickable. Clicking on it will deselect any existing selected rows if there is currently one or more rows selected. If no rows are selected, clicking on the header cell selects all rows if multiple selection is enabled. If single selection is enabled while no existing row is selected, clicking on the header cell does nothing.
+If radio or checkbox selection is enabled (including the "both" option), the header cell for the column that contains
+radio or checkbox selection inputs will be clickable. Clicking on it will deselect any existing selected rows if there
+is currently one or more rows selected.
+
+If no rows are selected, clicking on the header cell selects all rows if
+multiple selection is enabled.
+
+If single selection is enabled while no existing row is selected, clicking on the header
+cell does nothing.
 
 ## Type Definitions
 
@@ -52,7 +62,7 @@ A union of values that indicate the mode of selection.
   <dt>column</dt>
   <dd>
     Selection can only be done by clicking on inputs elements in a dedicated
-    column. Choosing this mode also enables a header cell that offers to select
+    column. Choosing this mode also enables a header cell that can select
     all or deselect all rows (exact functionality depends on the selection type,
     single or multi).
   </dd>
@@ -67,7 +77,8 @@ A union of values that indicate the mode of selection.
 
 ### External Interaction
 
-To have your app act on selected elements, simply read the row indices from the state that is passed down in your parent component and do something with it.
+To have your app act on selected elements, simply read the row indices from the state that is passed down in your
+parent component and do something with it.
 
 #### Code
 
