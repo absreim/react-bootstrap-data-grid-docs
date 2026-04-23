@@ -51,10 +51,11 @@ export const colDef: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        Sets the <code>min-width</code> and <code>max-width</code> CSS properties
+        Sets the <code>min-width</code> and <code>max-width</code>{" "}CSS
+        properties
         for all cells in this column. Node that these settings only reliably
         set a fixed width for a column if the table&apos;s <code>display</code>
-        CSS property is set to <code>block</code>.
+        {" "}CSS property is set to <code>block</code>.
       </p>
     )
   }
@@ -82,13 +83,13 @@ export const rowDef: SpecTableRow[] = [
       <>
         <p>
           Contains the values for the row as prescribed by the <code>cols</code>
-          prop passed to the same <code>Grid</code> component.
+          {" "}prop passed to the same <code>Grid</code> component.
         </p>
         <p>
           There should be one property in this object for each{" "}
           <code>ColDef</code> in the <code>cols</code> prop. The name of each
-          property should be the same the corresponding <code>name</code>
-          property in the <code>ColDef</code>.
+          property should be the same as the corresponding <code>name</code>
+          {" "} property in the <code>ColDef</code>.
         </p>
         <p>
           The generic type <code>Data</code> in this property is meant to
@@ -221,7 +222,7 @@ export const gridProps: SpecTableRow[] = [
       <>
         <p>
           If set to <code>true</code>, makes the table responsive at all
-          breakpoints by inserting a containing <code>div</code> and using
+          breakpoints by inserting a containing <code>div</code>{" "}and using
           Bootstrap&apos;s{" "}
           <Link href="https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables">
             table-responsive
@@ -263,10 +264,10 @@ export const gridProps: SpecTableRow[] = [
         </p>
         <p>
           Notably, in <code>table</code> display mode, the browser makes an
-          effort to obey
+          effort to obey{" "}
           <code>min-width</code> and <code>max-width</code> settings but can
           violate them if the column is needed to be larger to hold available
-          content. In <code>block</code>
+          content. In <code>block</code>{" "}
           display mode, a fixed column can be reliably achieved.
         </p>
       </>

@@ -188,7 +188,7 @@ export const uncontrolledPaginationModel: SpecTableRow[] = [
     isRequired: true,
     description: (
       <p>
-        Discriminator field that indicates that this object is of type
+        Discriminator field that indicates that this object is of type{" "}
         <code>UncontrolledPaginationModel</code> rather than{" "}
         <code>ControlledPaginationModel</code>.
       </p>
@@ -208,7 +208,7 @@ export const uncontrolledPaginationModel: SpecTableRow[] = [
         <p>
           This property is read only once, when the <code>Grid</code> component
           mounts. Subsequent changes are ignored unless the <code>Grid</code>
-          remounts.
+          {" "}remounts.
         </p>
       </>
     ),
@@ -227,7 +227,7 @@ export const uncontrolledPaginationModel: SpecTableRow[] = [
         <p>
           This property is read only once, when the <code>Grid</code> component
           mounts. Subsequent changes are ignored unless the <code>Grid</code>
-          remounts.
+          {" "}remounts.
         </p>
       </>
     ),

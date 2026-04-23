@@ -24,7 +24,11 @@ export const controlledFilterModel: SpecTableRow[] = [
     propertyName: "setTableFilterState",
     typeDefinition: "(state: EditableTableFilterState) => void",
     isRequired: true,
-    description: "Function to set a new tableFilterState",
+    description: (
+      <p>
+        Function to set a new <code>tableFilterState</code>
+      </p>
+    ),
   },
   {
     propertyName: "filterTableCaption",

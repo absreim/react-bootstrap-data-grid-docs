@@ -26,7 +26,7 @@ react-bootstrap-data-grid currently supports 4 data types: `string`, `number`, `
 `number` types correspond to the types of the same name in JavaScript.
 
 The `date` and `datetime` types are both backed by the `Date` type in JavaScript. The difference between `date` and
-`datetime` lies with the behavior of React Boostrap Data Grid with regard to each type. Notably, the default way that
+`datetime` lies with the behavior of react-bootstrap-data-grid with regard to each type. Notably, the default way that
 each type is displayed differ, as do the input elements for filtering on and editing data of each type.
 
 ### Formatting
@@ -99,7 +99,7 @@ array of `RowDef` objects.
 Each `RowDef` object has a mandatory `id` field to uniquely identify rows between renders. This field can be a `string`
 or `number` and must be unique among all rows in any given `Grid` component.
 
-This field is used a `key` prop within the grid to improve performance by reducing unnecessary unmounting and remounting
+This field is used as a `key` prop within the grid to improve performance by reducing unnecessary unmounting and remounting
 of components that represent rows.
 
 Guidelines for selecting values for the `id` field are the same as that for selecting `key` props when rendering lists
@@ -200,6 +200,11 @@ This below grid is a live demo of the sample code used throughout this section o
 
 ## Type Definitions
 
+### ColDataTypeStrings
+
+A string union that represents the data types supported by react-bootstrap-data-grid. The definition is
+`"string" | "number" | "date" | "datetime"`.
+
 ### ColDef
 
 An object that defines a single column for a grid.
@@ -220,15 +225,10 @@ declared as `RowDef<Data extends ValidRowData = ValidRowData>`.
 
 <TypeSpecTable rows={rowDef} />
 
-### ColDataTypeStrings
-
-A string union that represents the data types supported by react-bootstrap-data-grid. The definition is
-`"string" | "number" | "date" | "datetime"`.
-
 ### RowId
 
-A union between `string` and `number` types, which are the types valid for use as an `id` field for the type `RowDef`:
-`string | number`.
+A union between `string` and `number` types, which are the types valid for use as an `id` field for the type `RowDef`.
+Definition is `string | number`.
 
 ### ValidRowData
 
