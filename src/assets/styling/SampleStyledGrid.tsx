@@ -133,7 +133,7 @@ const tableStyleModel: TableStyleModel = {
   table: ["table-bordered", "border-primary"],
   tbodyTr: (id) => [`table-${id}`],
   tbodyTd: (id, _, colIndex) =>
-    colIndex === 2 ? [`align-${variantToAlignment.get(id as string)}}`] : [],
+    colIndex === 2 ? [`align-${variantToAlignment.get(id as string)}`] : [],
 };
 
 const styleModel: StyleModel = {
