@@ -115,7 +115,7 @@ export const widthModel: SpecTableRow[] = [
     description: (
       <p>
         Function used to set the value for the <code>width</code> property.
-        Generally, when this function called, the value of the
+        Generally, when this function called, the value of the{" "}
         <code>width</code> property in the same object should be updated with
         the value passed into the function.
       </p>

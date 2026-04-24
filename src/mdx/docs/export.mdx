@@ -52,13 +52,13 @@ data for that column will remain a number without conversion to a string.
 
 ### File Types
 
-The user may choose between _JSON_ or _CSV_ file formats when exporting.
+The user may choose between __JSON__ or __CSV__ file formats when exporting.
 
-For _JSON_ exports, the structure is similar to that of the `RowDef` interface for each row. The `id` field is included
+For __JSON__ exports, the structure is similar to that of the `RowDef` interface for each row. The `id` field is included
 while the data fields are either strings or numbers. Dates are converted to strings as described in the
 [previous section](#formatting).
 
-For _CSV_ exports, the structure is flattened so that the `id` field and other fields are on the same level. If there is
+For __CSV__ exports, the structure is flattened so that the `id` field and other fields are on the same level. If there is
 a column with the name `id`, it will replace the `id` field of `RowDef` in the CSV export. Numbers are converted to
 string in a manner equivalent to
 [Number.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString).

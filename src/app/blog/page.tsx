@@ -9,7 +9,7 @@ const Page: FC = () => {
     <>
       <h1>react-bootstrap-data-grid Tech Blog</h1>
       <p>
-        Throughout the development of <i>react-bootstrap-data-grid</i>, I
+        Throughout the development of react-bootstrap-data-grid, I
         encountered a number of interesting technical challenges with
         interesting solutions. Quite often, it seemed like resources and or
         documentation that led to the solution was sparse or even non-existent.

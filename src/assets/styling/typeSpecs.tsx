@@ -67,9 +67,9 @@ export const additionalComponentsStyleModel: SpecTableRow[] = [
     description: (
       <>
         <p>
-          CSS classes for the <i>div</i> that contains the page selector and
-          page size selector UI components. Useful for changing the alignment
-          and/or orientation of the two components.
+          CSS classes for the <code>div</code> that contains the page selector
+          and page size selector UI components. Useful for changing the
+          alignment and/or orientation of the two components.
         </p>
       </>
     ),
@@ -106,6 +106,30 @@ export const styleModel: SpecTableRow[] = [
       </>
     ),
   },
+  {
+    propertyName: "toolbarStyleModel",
+    typeDefinition: "ToolbarStyleModel",
+    isRequired: false,
+    description: (
+      <p>
+        Properties to apply CSS classes to various elements of the toolbar that
+        allows the user to access separate interfaces like{" "}
+        <Link href="/docs/filtering">filtering options</Link> or the{" "}
+        <Link href="/docs/export">export</Link> feature.
+      </p>
+    ),
+  },
+  {
+    propertyName: "exportFormStyleModel",
+    typeDefinition: "ExportFormStyleModel",
+    isRequired: false,
+    description: (
+      <p>
+        Properties to apply CSS classes various elements of the{" "}
+        <Link href="/docs/export">export form</Link>.
+      </p>
+    ),
+  },
 ];
 
 export const tableStyleModel: SpecTableRow[] = [
@@ -115,11 +139,16 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the main table element. This
-        element always has the <code>table</code> class to apply Bootstrap
-        styles. In addition, when row selection mode is enabled, the table will
-        have the <code>table-hover</code> class to indicate that the rows are
-        selectable by clicking on them.
+        <p>
+          Specifies additional CSS classes for the main <code>table</code>{" "}
+          element. This element always has the <code>table</code> class to apply
+          Bootstrap styles.
+        </p>
+        <p>
+          When row selection mode is enabled, the table will have the{" "}
+          <code>table-hover</code> class to indicate that the rows are
+          selectable by clicking on them.
+        </p>
       </>
     ),
   },
@@ -129,8 +158,8 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>tbody</i> element of the
-        main table.
+        Specifies additional CSS classes for the <code>tbody</code> element of
+        the main table.
       </>
     ),
   },
@@ -140,8 +169,8 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>thead</i> element of the
-        main table.
+        Specifies additional CSS classes for the <code>thead</code> element of
+        the main table.
       </>
     ),
   },
@@ -151,8 +180,8 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the sole <i>tr</i> element of the{" "}
-        <i>thead</i> element of the main table.
+        Specifies additional CSS classes for the sole <code>tr</code> element of
+        the <code>thead</code> element of the main table.
       </>
     ),
   },
@@ -162,12 +191,17 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for <i>th</i> elements inside the{" "}
-        <i>thead</i> element of the main table. For columns are currently being
-        used for sorting, the <code>Grid</code> will automatically apply the{" "}
-        <code>table-active</code> class. In addition, if a column is available
-        as an option for sorting, the <code>Grid</code> will use a CSS class
-        (specific to this project) to set the cursor to be a pointer.
+        <p>
+          Specifies additional CSS classes for <code>th</code> elements inside
+          the <code>thead</code> element of the main table.
+        </p>
+        <p>
+          For columns that are currently being used for sorting, the{" "}
+          <code>Grid</code> will automatically apply the{" "}
+          <code>table-active</code> class. In addition, if a column is available
+          as an option for sorting, the <code>Grid</code> will use a CSS class
+          to set the cursor to be a pointer.
+        </p>
       </>
     ),
   },
@@ -175,8 +209,12 @@ export const tableStyleModel: SpecTableRow[] = [
     propertyName: "caption",
     typeDefinition: "string[]",
     isRequired: false,
-    description:
-      "Specifies additional CSS classes for the caption element of the main table.",
+    description: (
+      <p>
+        Specifies additional CSS classes for the <code>caption</code> element of
+        the main table.
+      </p>
+    ),
   },
   {
     propertyName: "tbodyTr",
@@ -184,10 +222,10 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for <i>tr</i> elements inside the{" "}
-        <i>tbody</i> element of the main table. The <code>Grid</code> component
-        will automatically apply the <code>table-active</code> class to selected
-        rows.
+        Specifies additional CSS classes for <code>tr</code> elements inside the{" "}
+        <code>tbody</code> element of the main table. The <code>Grid</code>{" "}
+        component will automatically apply the <code>table-active</code> class
+        to selected rows.
       </>
     ),
   },
@@ -198,8 +236,8 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for <i>td</i> elements in side the{" "}
-        <i>tbody</i> element of the main table.
+        Specifies additional CSS classes for <code>td</code> elements in side
+        the <code>tbody</code> element of the main table.
       </>
     ),
   },
@@ -209,7 +247,7 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>th</i> element of the
+        Specifies additional CSS classes for the <code>th</code> element of the
         editing controls column.
       </>
     ),
@@ -220,7 +258,7 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>td</i> elements of the
+        Specifies additional CSS classes for the <code>td</code> elements of the
         editing controls column.
       </>
     ),
@@ -231,7 +269,7 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>th</i> element of the
+        Specifies additional CSS classes for the <code>th</code> element of the
         selection controls column.
       </>
     ),
@@ -242,7 +280,7 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>td</i> elements of the
+        Specifies additional CSS classes for the <code>td</code> elements of the
         selection controls column.
       </>
     ),
@@ -253,8 +291,8 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>input</i> elements inside
-        the <i>td</i> elements of the selection controls column.
+        Specifies additional CSS classes for the <code>input</code> elements
+        inside the <code>td</code> elements of the selection controls column.
       </>
     ),
   },
@@ -264,9 +302,9 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies the styles for all <i>Edit</i> buttons of the editing controls
+        Specifies the styles for all <b>Edit</b> buttons of the editing controls
         column. The <code>Grid</code> automatically applies the{" "}
-        <code>btn-primary</code> class to these buttons, but if a array of
+        <code>btn-primary</code> class to these buttons, but if an array of
         non-zero length is supplied, the <code>btn-primary</code> class will not
         be applied, allowing for customization of the button variant.
       </>
@@ -278,9 +316,9 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies the styles for all <i>Delete</i> buttons of the editing
+        Specifies the styles for all <b>Delete</b> buttons of the editing
         controls column. The <code>Grid</code> automatically applies the{" "}
-        <code>btn-secondary</code> class to these buttons, but if a array of
+        <code>btn-secondary</code> class to these buttons, but if an array of
         non-zero length is supplied, the <code>btn-secondary</code> class will
         not be applied, allowing for customization of the button variant.
       </>
@@ -292,9 +330,9 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies the styles for all <i>Save</i> buttons of the editing controls
+        Specifies the styles for all <b>Save</b> buttons of the editing controls
         column. The <code>Grid</code> automatically applies the{" "}
-        <code>btn-primary</code> class to these buttons, but if a array of
+        <code>btn-primary</code> class to these buttons, but if an array of
         non-zero length is supplied, the <code>btn-primary</code> class will not
         be applied, allowing for customization of the button variant.
       </>
@@ -306,9 +344,9 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies the styles for all <i>Cancel</i> buttons of the editing
+        Specifies the styles for all <b>Cancel</b> buttons of the editing
         controls column. The <code>Grid</code> automatically applies the{" "}
-        <code>btn-secondary</code> class to these buttons, but if a array of
+        <code>btn-secondary</code> class to these buttons, but if an array of
         non-zero length is supplied, the <code>btn-secondary</code> class will
         not be applied, allowing for customization of the button variant.
       </>
@@ -321,10 +359,10 @@ export const tableStyleModel: SpecTableRow[] = [
     description: (
       <>
         <p>
-          Specifies additional classes of the <i>th</i> element that contains
-          the control for selecting and deselecting all rows. The cell only
-          appears if selection for the <code>Grid</code> is enabled by passing a{" "}
-          <code>selectModel</code> prop.
+          Specifies additional classes of the <code>th</code> element that
+          contains the control for selecting and deselecting all rows. The cell
+          only appears if selection for the <code>Grid</code> is enabled by
+          passing a <code>selectModel</code> prop.
         </p>
         <p>
           By default, the CSS classes <code>btn-primary</code> and{" "}
@@ -338,8 +376,8 @@ export const tableStyleModel: SpecTableRow[] = [
           .)
         </p>
         <p>
-          There is also a class <code>rbdg-clickable-grid-header-cell</code>{" "}
-          that changes the mouse pointer based on whether the cell is clickable.
+          There is also a class <code>rbdg-sort-toggler</code> that changes the
+          mouse pointer based on whether the cell is clickable.
         </p>
       </>
     ),
@@ -350,8 +388,8 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional classes of the <i>td</i> elements in the selection
-        controls column
+        Specifies additional classes of the <code>td</code> elements in the
+        selection controls column
       </>
     ),
   },
@@ -361,7 +399,7 @@ export const tableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional classes of the <i>input</i> elements in the
+        Specifies additional classes of the <code>input</code> elements in the
         selection controls column
       </>
     ),
@@ -375,9 +413,9 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>table</i> element of filter
-        options interface. This element always has the <code>table</code> class
-        to apply Bootstrap styles.
+        Specifies additional CSS classes for the <code>table</code> element of
+        filter options interface. This element always has the <code>table</code>{" "}
+        class to apply Bootstrap styles.
       </>
     ),
   },
@@ -387,8 +425,8 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>tbody</i> element of the
-        filter options table.
+        Specifies additional CSS classes for the <code>tbody</code> element of
+        the filter options table.
       </>
     ),
   },
@@ -398,8 +436,8 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>thead</i> element of the
-        filter options table.
+        Specifies additional CSS classes for the <code>thead</code> element of
+        the filter options table.
       </>
     ),
   },
@@ -409,8 +447,8 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the sole <i>tr</i> element of the{" "}
-        <i>thead</i> element of the filter options table.
+        Specifies additional CSS classes for the sole <code>tr</code> element of
+        the <code>thead</code> element of the filter options table.
       </>
     ),
   },
@@ -420,8 +458,8 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for <i>th</i> elements inside the{" "}
-        <i>thead</i> element of the filter options table.
+        Specifies additional CSS classes for <code>th</code> elements inside the{" "}
+        <code>thead</code> element of the filter options table.
       </>
     ),
   },
@@ -429,8 +467,12 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     propertyName: "caption",
     typeDefinition: "string[]",
     isRequired: false,
-    description:
-      "Specifies additional CSS classes for the caption element of the filter options table.",
+    description: (
+      <p>
+        Specifies additional CSS classes for the <code>caption</code> element of
+        the filter options table.
+      </p>
+    ),
   },
   {
     propertyName: "tbodyTr",
@@ -438,8 +480,8 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for <i>tr</i> elements inside the{" "}
-        <i>tbody</i> element of the filter options table.
+        Specifies additional CSS classes for <code>tr</code> elements inside the{" "}
+        <code>tbody</code> element of the filter options table.
       </>
     ),
   },
@@ -449,8 +491,8 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for <i>td</i> elements in side the{" "}
-        <i>tbody</i> element of the filter options table.
+        Specifies additional CSS classes for <code>td</code> elements in side
+        the <code>tbody</code> element of the filter options table.
       </>
     ),
   },
@@ -460,8 +502,8 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for <i>input</i> checkbox elements that
-        enable and disable filtering based on certain fields.
+        Specifies additional CSS classes for <code>input</code> checkbox
+        elements that enable and disable filtering based on certain fields.
       </>
     ),
   },
@@ -471,8 +513,8 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>select</i> elements that are
-        used to adjust the operators used for filtering for a field.
+        Specifies additional CSS classes for the <code>select</code> elements
+        that are used to adjust the operators used for filtering for a field.
       </>
     ),
   },
@@ -482,10 +524,10 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>input</i> elements used to
-        specify string values on which to filter. This property only applies if
-        the row is associated with a column of type string. It is up to the
-        developer to confirm that fact.
+        Specifies additional CSS classes for the <code>input</code> elements
+        used to specify string values on which to filter. This property only
+        applies if the row is associated with a column of type{" "}
+        <code>string</code>. It is up to the developer to confirm that fact.
       </>
     ),
   },
@@ -495,10 +537,10 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>input</i> elements used to
-        specify the number values on which to filter. This property only applies
-        if the row is associated with a column of type number. It is up to the
-        developer to confirm that fact.
+        Specifies additional CSS classes for the <code>input</code> elements
+        used to specify the number values on which to filter. This property only
+        applies if the row is associated with a column of type{" "}
+        <code>number</code>. It is up to the developer to confirm that fact.
       </>
     ),
   },
@@ -508,10 +550,11 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>input</i> elements used to
-        specify the starting dates or datetimes on which to filter. This
-        property only applies if the row is associated with a column of type
-        date or datetime. It is up to the developer to confirm that fact.
+        Specifies additional CSS classes for the <code>input</code> elements
+        used to specify the starting dates or datetimes on which to filter. This
+        property only applies if the row is associated with a column of type{" "}
+        <code>date</code> or <code>datetime</code>. It is up to the developer to
+        confirm that fact.
       </>
     ),
   },
@@ -521,10 +564,11 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <>
-        Specifies additional CSS classes for the <i>input</i> elements used to
-        specify the ending dates or datetimes on which to filter. This property
-        only applies if the row is associated with a column of type date or
-        datetime. It is up to the developer to confirm that fact.
+        Specifies additional CSS classes for the <code>input</code> elements
+        used to specify the ending dates or datetimes on which to filter. This
+        property only applies if the row is associated with a column of type{" "}
+        <code>date</code> or <code>datetime</code>. It is up to the developer to
+        confirm that fact.
       </>
     ),
   },
@@ -537,7 +581,7 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
         Specifies additional CSS classes for the submit button used to save
         changes to the filter criteria. The <code>btn-secondary</code> class is
         applied automatically, but will not be applied if an array of length at
-        least 1 is passed for property.
+        least 1 is passed for this property.
       </>
     ),
   },
@@ -548,19 +592,23 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
     description: (
       <>
         <p>
-          Specifies CSS classes for the <i>form</i> element that encloses the
-          filter options table.
+          Specifies CSS classes for the <code>form</code> element that encloses
+          the filter options table.
         </p>
         <p>
           Supplying the{" "}
           <Link href="https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables">
             table-responsive
           </Link>{" "}
-          Bootstrap utility class may be used to make the table responsive. Note
-          that this responsive behavior only works if the <i>form</i> element
-          itself has constrained with. If, for example, the <i>form</i> element
-          is the child of a flex container with <code>align-items: start;</code>
-          , one can constrain the width of the <i>form</i> with the{" "}
+          Bootstrap utility class may be used to make the table responsive.
+        </p>
+        <p>
+          Note that this responsive behavior only works if the <code>form</code>{" "}
+          element itself has constrained width. If, for example, the
+          <code>form</code>{" "}
+          element is the child of a flex container with{" "}
+          <code>align-items: start;</code>, one can constrain the width of the{" "}
+          <code>form</code> with the{" "}
           <Link href="https://getbootstrap.com/docs/5.3/utilities/sizing/#relative-to-the-parent">
             w-100
           </Link>{" "}
@@ -591,7 +639,7 @@ export const toolbarStyleModel: SpecTableRow[] = [
     description: (
       <p>
         CSS classes for buttons on the toolbar that are not selected. By default
-        contains <code>btn</code>, <code>btn-outline-secondary</code>..
+        contains <code>btn</code>, <code>btn-outline-secondary</code>.
       </p>
     ),
   },
@@ -601,10 +649,10 @@ export const toolbarStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        CSS classes for the <i>div</i> that contains buttons to toggle the
+        CSS classes for the <code>div</code> that contains buttons to toggle the
         visibility of interfaces like filtering and export and has the ARIA role{" "}
-        <code>toolbar</code>. By default, the <i>div</i> has the classes
-        <code>hstack</code>, <code>gap-2</code>,{" "}
+        <code>toolbar</code>. By default, the <code>div</code> has the classes
+        {" "}<code>hstack</code>, <code>gap-2</code>,{" "}
         <code>justify-content-start</code>, and <code>px-2</code>.
       </p>
     ),
@@ -616,13 +664,13 @@ export const toolbarStyleModel: SpecTableRow[] = [
     description: (
       <>
         <p>
-          CSS classes for the <i>div</i> that contains the toolbar UI
+          CSS classes for the <code>div</code> that contains the toolbar UI
           interfaces, such as those for filtering and export settings.
         </p>
         <p>
-          By default, the <i>div</i> contains the following classes:{" "}
+          By default, the <code>div</code> contains the following classes:{" "}
           <code>position-absolute</code>, <code>z-1</code>, <code>bg-body</code>
-          ,<code>border</code>, <code>shadow</code>, <code>p-2</code>. Among
+          , <code>border</code>, <code>shadow</code>, <code>p-2</code>. Among
           other purposes, these default classes are meant to give the look of a
           dropdown menu-like container overlaying the rest of the grid.
         </p>
@@ -638,7 +686,7 @@ export const exportFormStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        CSS classes for the <i>legend</i> elements in the export form. Useful
+        CSS classes for the <code>legend</code> elements in the export form. Useful
         for adjusting the appearance of the text.
       </p>
     ),
@@ -649,12 +697,14 @@ export const exportFormStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        CSS classes for the <i>divs</i> containing radio <i>inputs</i> and{" "}
-        <i>labels</i>. As prescribed in{" "}
+        CSS classes for the <code>div</code>s containing
+        radio <code>input</code>s and{" "}
+        <code>label</code>s. As prescribed in{" "}
         <a href="https://getbootstrap.com/docs/5.3/forms/checks-radios">
           Bootstrap&apos;s documentation on checks and radios
         </a>
-        , this div by default has the <code>form-check</code> class and the
+        , these <code>div</code>s by default have the
+        <code>form-check</code> class and the
         layout of radio inputs can be further customized by adding additional
         classes according to the documentation.
       </p>
@@ -666,7 +716,7 @@ export const exportFormStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        CSS classes for the <i>input</i> radio controls of the export form.
+        CSS classes for the <code>input</code> radio controls of the export form.
         Following{" "}
         <a href="https://getbootstrap.com/docs/5.3/forms/checks-radios">
           Bootstrap&apos;s documentation
@@ -682,7 +732,8 @@ export const exportFormStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        CSS classes for the <i>labels</i> of the radio controls of the export
+        CSS classes for the <code>labels</code> of the radio controls of the
+        export
         form. Following{" "}
         <a href="https://getbootstrap.com/docs/5.3/forms/checks-radios">
           Bootstrap&apos;s documentation

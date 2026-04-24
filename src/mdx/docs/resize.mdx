@@ -123,7 +123,7 @@ Once the grid is mounted, changing the `width` property of a column to a differe
 longer affect width of that column.
 
 The following code sample shows how one can set the width of a column to use uncontrolled resizing mode. In this example
-the column width is set to 150px when the `GridPro` component is first mounted.
+the column width is set to _150px_ when the `GridPro` component is first mounted.
 
 ```tsx
 const cols: ProColDef[] = [
@@ -138,7 +138,7 @@ const cols: ProColDef[] = [
 ];
 ```
 
-If the parent component of the already-mounted `GridPro` component changes the column definition to 200px as depicted
+If the parent component of the already-mounted `GridPro` component changes the column definition to _200px_ as depicted
 below, the change will have no effect on the size of the column.
 
 ```ts
@@ -213,7 +213,7 @@ the CSS [text-overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/Referen
 The default values for these properties can cause behavior that may be often undesirable:
 
 - The default `text-wrap` property value, `wrap`, causes the browser to stack up text in a cell vertically when the column
-becomes small and cause the cell to take up a lot of vertical space.
+becomes small and can cause the cell to take up a lot of vertical space.
 
 - The default `text-overflow` property value, `clip`, may make it so that it is not obvious to the user that there is
 additional text available in a column.
@@ -232,7 +232,7 @@ for an example.
 It may often be advisable make the table
 [responsive](https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables) when a table has resizable columns. If
 the table is not responsive and the table is resized in a way that it is wider than the other content in the enclosing
-element, the enclosing element itself may widen to fit the table.
+element, the enclosing element itself may widen to fit the table. When this happens, the layout may look awkward.
 
 Making a table responsive creates and enclosing `div` that is scrollable horizontally, making it so that the enclosing
 element is not affected when the table becomes wide.

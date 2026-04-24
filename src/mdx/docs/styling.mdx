@@ -23,15 +23,41 @@ There are three primary ways of applying custom styles to the components of reac
 
 ### Bootstrap Variable Overrides
 
-Because react-bootstrap-data-grid makes heavy use of Bootstrap CSS classes and variables, it should also obey [customization of Bootstrap via variable overrides](https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults). For example, setting a new `primary` theme color with an SCSS variable will cause buttons of the `primary` variant in react-bootstrap-data-grid to be the new color as well. Additionally, setting the `$table-cell-vertical-align` variable can be used to adjust the vertical alignment of table cells from the default of `top`.
+Because react-bootstrap-data-grid makes heavy use of Bootstrap CSS classes and variables, it will also obey
+[customization of Bootstrap via variable overrides](https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults). For example, setting a new `primary` theme color with an SCSS
+variable will cause buttons of the `primary` variant in react-bootstrap-data-grid to be the new color as well.
+Additionally, setting the `$table-cell-vertical-align` variable can be used to adjust the vertical alignment of table
+cells from the default of `top`.
 
 ### Specific Members of Props in react-bootstrap-data-grid
 
-A small number of options that are set via properties of component props are implemented via CSS classes. Currently, the only properties of this type are the `pageSelectorJustifyContent` and `componentSize` properties of the `GridPaginationState` interface. These properties set the component size and flexbox justify content settings of the [Bootstrap pagination component](https://getbootstrap.com/docs/5.3/components/pagination/), respectively.
+A small number of options that are set via properties of component props are implemented via CSS classes or HTML
+[style](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/style) attributes.
+
+#### Pagination Component
+
+When [pagination](/docs/pagination) is enabled for the grid, the `pageSelectorJustifyContent` and `componentSize`
+properties of the `GridPaginationState` interface set the component size and flexbox
+[justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/justify-content) settings of
+the [Bootstrap pagination component](https://getbootstrap.com/docs/5.3/components/pagination/), respectively.
+
+#### Column Widths
+
+Column widths specified in the [ColDef](/docs/basic-usage#coldef) interface are implemented via
+HTML
+[style](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/style) attributes.
+
+#### Table Display Mode
+
+The `displayMode` property of [GridProps](/docs/basic-usage#gridprops) sets the CSS
+[display](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/display) property on the main `table`
+element via Boostrap utility classes.
 
 ### Injection of Custom Classes via the StyleModel Prop
 
-The `StyleModel` prop contains a fairly extensive of list of properties that correspond to HTML elements in various parts of react-bootstrap-data-grid. These properties either contain arrays of strings that are CSS classes or functions that return an array of such strings.
+The `StyleModel` prop contains a fairly extensive of list of properties that correspond to HTML elements in various
+parts of react-bootstrap-data-grid. These properties either contain arrays of strings that are CSS classes or functions
+that return an array of such strings.
 
 ## Type Definitions
 
@@ -45,7 +71,8 @@ A prop of this type is optionally passed to the `Grid` component to enable injec
 
 Properties of this type are used to inject custom CSS classes into the main table of the `Grid` component.
 
-When more than one of a certain kind of element exists, a function is used to specify different classes based on the index of the element. Certain parameters are common to many different properties:
+When more than one of a certain kind of element exists, a function is used to specify different classes based on the
+index of the element. Certain parameters are common to many different properties:
 
 <dl>
     <dt>

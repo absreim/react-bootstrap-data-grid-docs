@@ -43,7 +43,7 @@ Omitting this prop from the `Grid` component disables the editing feature.
 ### UpdateCallbackGenerator
 
 This type is that of the function passed into EditModel for generating a callback function on a per-index basis. The
-definition is `{"(id: RowId) => (rowDef: RowData) => void"}`.
+definition is `(id: RowId) => (rowDef: RowData) => void`.
 
 See the example below to see how this property is typically implemented.
 
