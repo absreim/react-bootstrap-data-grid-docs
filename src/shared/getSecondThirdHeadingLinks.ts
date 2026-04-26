@@ -14,6 +14,7 @@ const getSecondThirdHeadingLinks: (
         nodes[index].value = item.value;
       } else {
         nodes[index] = {
+          id: item.id,
           href: item.href,
           value: item.value,
           children: [],
@@ -35,6 +36,7 @@ const getSecondThirdHeadingLinks: (
       }
 
       nodes[twoIndex].children[threeIndex] = {
+        id: item.id,
         href: item.href,
         value: item.value,
         children: [],

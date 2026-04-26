@@ -14,10 +14,11 @@ const nextConfig: NextConfig = {
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: ["remark-frontmatter", "remark-mdx-frontmatter"],
+    remarkPlugins: ["remark-frontmatter"],
     rehypePlugins: [
       "rehype-slug",
       "rehype-mdx-toc",
+      "@hbsnow/rehype-sectionize",
       [
         "rehype-pretty-code",
         {
