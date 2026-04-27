@@ -23,9 +23,113 @@ filtering button on the toolbar.)
 
 <SampleToolbarGrid />
 
+## Getting Started
+
+Enable the toolbar by passing `true` to the `useToolbar` prop to the `Grid` component:
+
+```tsx
+<Grid rows={rows} cols={cols} useToolbar />
+```
+
+To allow the user to access the filtering interface on the toolbar, enable filtering on the grid:
+
+```tsx
+<Grid
+    rows={rows}
+    cols={cols}
+    useToolbar
+    pagination={{ type: "uncontrolled" }}
+/>
+```
+
+See the [filtering documentation](/docs/filtering) for more details on enabling filtering for a grid.
+
 ## Features
 
 The toolbar is design to provide access to multiple __features__ via icon buttons that show and hide the interface for
 each feature. The table below describes the features that are currently available.
 
 <ToolbarIconsTable />
+
+## Keyboard Navigation
+
+### Accessibility
+
+For the sake of accessibility, react-bootstrap-data-grid implements keyboard navigation according to the
+[MDN documentation on the ARIA toolbar role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role).
+
+In summary:
+
+- For each toolbar, only one button is accessible via the <kbd>Tab</kbd>
+key at any one time. This behavior is implemented by dynamically setting the
+[tabindex](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex)
+HTML attribute on each button.
+- Once the browser is focused on a button within a toolbar, the user can focus on other buttons in the toolbar by
+pressing the <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd> keys.
+
+### Accessing Features
+
+Once the user is focused on an button within a toolbar, they can use the keyboard key for pressing buttons, usually
+<kbd>Space</kbd> or <kbd>Enter</kbd>, to access to show the interface for that feature.
+
+Once the interface for a feature is displayed, the user can access the form elements of the feature by pressing
+<kbd>Tab</kbd> (or <kbd>Shift + Tab</kbd> to go in the other direction) to cycle-through tab-accessible elements on
+the page.
+
+To close the feature's interface with the keyboard, the user needs to either:
+
+- Focus on the button related to open interface and press the button again (usually with <kbd>Space</kbd> or <kbd>Enter</kbd>).
+- Focus on the button related to open interface, use the arrow keys to switch to a different button, and press that
+button. For example, opening up the __export__ interface while the __filtering__ interface is open will close the
+__filtering__ interface.
+
+### Visual Walkthrough
+
+Below is a step-by-step demonstration of how keyboard navigation works along with screenshots for each step. It possible
+to follow along with this walkthrough using the [live demo](#live-demo) above.
+
+Pressing <kbd>Tab</kbd> (forward direction) or <kbd>Shift + Tab</kbd> (backwards direction) cycles through
+tab-accessible elements on a page. Once a button in a toolbar is focused this way, the button is highlighted in a manner
+similar to the left button the below screenshot:
+
+![screenshot showing focused filtering toolbar button](/focused_filtering_icon.png)
+
+Pressing the <kbd>Right Arrow</kbd> key will move focus to the next button on the right, the __export__ button.
+
+![screenshot showing focused export toolbar button](/focused_export_icon.png)
+
+Since the __export__ button is the right-most button, pressing the <kbd>Right Arrow</kbd> key will cause the selection
+to wrap around back to the beginning. Pressing the <kbd>Left Arrow</kbd> will cause the focus to the button to the left.
+In either case, the focus moves back to the __filtering__ button.
+
+![screenshot showing focused filtering toolbar button](/focused_filtering_icon.png)
+
+Pressing the <kbd>Space</kbd> or <kbd>Enter</kbd> key will open the filtering interface but will leave focus on the
+toolbar button.
+
+![screenshot showing open filtering UI but with the button still focused](/just_opened_filtering_ui.png)
+
+Pressing <kbd>Tab</kbd> at this point will cause the browser to start cycling through form elements of the filtering
+interface. Disabled form elements are not focusable this way.
+
+![screenshot showing open filtering UI but with a checkbox focused](/filter_options_checkbox_focus.png)
+
+Pressing <kbd>Space</kbd> to check a focused checkbox will cause form fields in the same column to be enabled.
+
+![screenshot showing open filtering UI with a checkbox checked](/filter_options_checkbox_focus.png)
+
+Pressing <kbd>Tab</kbd> one or more times will focus on form elements in the row before moving onto other elements in
+the form.
+
+![screenshot showing open filtering UI with an dropdown focused](/focused_filter_input.png)
+
+One can cycle through elements with <kbd>Tab</kbd> or <kbd>Shift + Tab</kbd> to make changes. Once one is ready to
+submit changes, one can use the <kbd>Tab</kbd> key to focus the submit button and press <kbd>Space</kbd> or
+<kbd>Enter</kbd> to submit the changes.
+
+![screenshot showing open filtering UI with submit button focused](/submit_button_focused.png)
+
+After submitting the changes, one can close the interface by using <kbd>Shift + Tab</kbd> to move back to the toolbar
+button for filtering and pressing <kbd>Space</kbd> or <kbd>Enter</kbd>.
+
+![screenshot showing filtering toolbar button focused with filtering applied to grid data](/filtering_applied.png)

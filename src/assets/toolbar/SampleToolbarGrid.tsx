@@ -106,6 +106,7 @@ const SampleToolbarGrid: FC = () => (
       pageSizeOptions: [5, 10, 50],
       startingPageSizeIndex: 0,
     }}
+    caption="BG3 level 6 wizard spells"
   />
 );
 
