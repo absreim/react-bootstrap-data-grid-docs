@@ -68,6 +68,15 @@ code[data-theme*=" "] span {
   text-wrap: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden;
+  border-left: 2px solid;
+}
+
+.rbdg-docs-toc-li-inactive {
+  border-color: transparent;
+}
+
+.rbdg-docs-toc-li-active {
+  border-color: var(--bs-body-color);
 }
 
 .rbdg-docs-main {

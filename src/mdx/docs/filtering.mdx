@@ -41,14 +41,15 @@ compact toggle buttons for accessing filtering and other interfaces. To opt-in i
 
 ## Controlled vs Uncontrolled
 
-Filtering can be enabled in either a controlled or uncontrolled manner, depending on type of `FilterModel` passed as
+Filtering can be enabled in either a __controlled__ or __uncontrolled__ manner, depending on type of `FilterModel`
+passed as
 `filterModel` prop to the `Grid` component. Pass an object of type `ControlledFilterModel` or `UncontrolledFilterModel`
-to use controlled or uncontrolled mode, respectively.
+to use __controlled__ or __uncontrolled__ mode, respectively.
 
-_Controlled_ mode allows the parent component full control over the state of filtering in the grid, but requires more
+__Controlled__ mode allows the parent component full control over the state of filtering in the grid, but requires more
 code to set up.
 
-_Uncontrolled_ mode causes the `Grid` component itself to keep track of the state of filtering and this state is not
+__Uncontrolled__ mode causes the `Grid` component itself to keep track of the state of filtering and this state is not
 available to parent component. The parent component may specify a starting state. If it does not, the `Grid` component
 will generate an empty starting state with no filters initially applied.
 
@@ -61,7 +62,9 @@ This issue may be addressed in the future by adding the functionality to let use
 letting users see unformatted values.
 
 In the meantime, it is recommended that if you intend to use both filtering and formatters in the same grid, provide
-guidance as to how one can filter on the original data. For example, you may have a formatter on a number column to
+guidance as to how one can filter on the original data.
+
+For example, you may have a formatter on a number column to
 display commas to separate groups of 3 digits. In that case, you may wish display a note to your users that when
 entering a number to filter on that column, the number displayed in the input will not have commas.
 
