@@ -1,0 +1,31 @@
+---
+navLabel: Toolbar
+order: 9
+---
+
+import SampleToolbarGrid from "@/assets/toolbar/SampleToolbarGrid";
+import ToolbarIconsTable from "@/assets/toolbar/ToolbarIconsTable";
+
+# Toolbar
+
+The toolbar is a `<div>` that contains buttons for accessing interfaces that take up a considerable amount of screen
+space and are therefore not always displayed. Currently, one can access the interfaces for
+[filtering rows](/docs/filtering) and [exporting grid contents](/docs/export) via the toolbar.
+
+## Live Demo
+
+In the live demo below, the toolbar is located right above the grid. Click on the buttons on the toolbar to access the
+__filtering__ and __exporting__ interfaces. Hover over each button to see the label for the button.
+
+To close an open interface, click on the button on the related button
+toolbar again. (For example, if the filtering options interface is open, you can close it by clicking on the
+filtering button on the toolbar.)
+
+<SampleToolbarGrid />
+
+## Features
+
+The toolbar is design to provide access to multiple __features__ via icon buttons that show and hide the interface for
+each feature. The table below describes the features that are currently available.
+
+<ToolbarIconsTable />

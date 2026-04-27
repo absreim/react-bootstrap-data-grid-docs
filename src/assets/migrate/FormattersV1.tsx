@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-const formattersV1: FC = () => (
-  <table>
+const FormattersV1: FC = () => (
+  <table className="table">
     <thead>
       <tr>
         <th>Type</th>
@@ -33,4 +33,4 @@ const formattersV1: FC = () => (
   </table>
 );
 
-export default formattersV1;
+export default FormattersV1;
