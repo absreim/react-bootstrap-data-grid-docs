@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const SystemModeIcon: FC = () => {
+const SystemMode: FC = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,4 +14,4 @@ const SystemModeIcon: FC = () => {
   );
 };
 
-export default SystemModeIcon;
+export default SystemMode;

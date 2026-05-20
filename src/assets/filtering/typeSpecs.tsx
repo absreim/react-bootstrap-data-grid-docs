@@ -69,7 +69,7 @@ export const uncontrolledFilterModel: SpecTableRow[] = [
         </p>
         <p>
           If this property is not defined, the grid will create a blank filter
-          state that includes each column in the gird. All form values will be
+          state that includes each column in the grid. All form values will be
           blank and filtering will be initially disabled on every column.
         </p>
       </>

@@ -2,26 +2,26 @@
 
 import Dropdown from "react-bootstrap/Dropdown";
 import { FC, ReactNode, useState } from "react";
-import LightModeIcon from "@/assets/LightModeIcon";
-import DarkModeIcon from "@/assets/DarkModeIcon";
-import SystemModeIcon from "@/assets/SystemModeIcon";
+import LightMode from "@/assets/icons/LightMode";
+import DarkMode from "@/assets/icons/DarkMode";
+import SystemMode from "@/assets/icons/SystemMode";
 
 const menuOptions: [ReactNode, string, string][] = [
-  [<LightModeIcon key="light" />, "Light", "light"],
-  [<DarkModeIcon key="dark" />, "Dark", "dark"],
-  [<SystemModeIcon key="system" />, "Auto", "auto"],
+  [<LightMode key="light" />, "Light", "light"],
+  [<DarkMode key="dark" />, "Dark", "dark"],
+  [<SystemMode key="system" />, "Auto", "auto"],
 ];
 
 const getThemeIcon: (theme: string) => ReactNode = (theme) => {
   switch (theme) {
     case "light": {
-      return <LightModeIcon />;
+      return <LightMode />;
     }
     case "dark": {
-      return <DarkModeIcon />;
+      return <DarkMode />;
     }
     default:
-      return <SystemModeIcon />;
+      return <SystemMode />;
   }
 };
 
