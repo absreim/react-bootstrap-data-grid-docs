@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const LightModeIcon: FC = () => (
+const LightMode: FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -12,4 +12,4 @@ const LightModeIcon: FC = () => (
   </svg>
 );
 
-export default LightModeIcon;
+export default LightMode;

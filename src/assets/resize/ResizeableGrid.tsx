@@ -8,15 +8,7 @@ import GridPro, {
 import { FC, useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
-
-interface UnitStats {
-  name: string;
-  hp: number;
-  speed: number;
-  attack: number;
-  range: number;
-  desc: string;
-}
+import { UnitStats } from "@/assets/shared/types";
 
 const rows: RowDef<UnitStats>[] = [
   {
@@ -101,9 +93,7 @@ const rows: RowDef<UnitStats>[] = [
 const styleModel: StyleModel = {
   mainTableStyleModel: {
     tbodyTd: (rowId, displayRowIndex, colIndex) =>
-      colIndex === 5
-        ? ["text-nowrap", "text-truncate"]
-        : [],
+      colIndex === 5 ? ["text-nowrap", "text-truncate"] : [],
   },
 };
 

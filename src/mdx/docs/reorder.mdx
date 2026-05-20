@@ -1,0 +1,438 @@
+---
+navLabel: Reorder
+order: 12
+pro: true
+---
+
+import ProBadge from "@/assets/pro/ProBadge";
+import ReorderableGrid from "@/assets/reorder/ReorderableGrid";
+import PrereleaseNotice from "@/assets/pro/PrereleaseNotice";
+import Filter from "@/assets/icons/Filter";
+import DropZones from "@/assets/reorder/DropZones";
+import BorderHighlights from "@/assets/reorder/BorderHighlights";
+import TypeSpecTable from "@/shared/TypeSpecTable";
+import { reorderStyleModel } from "@/assets/reorder/typeSpecs";
+
+<h1>Row Reordering <ProBadge /></h1>
+
+<PrereleaseNotice />
+
+The [Pro version](/docs/pro) of react-bootstrap-data-grid allows a developer to allow the user to rearrange rows in a
+grid through a drag-and-drop interface.
+
+## End User Usage
+
+When reordering is enabled for a grid, there will be an extra column on the left side of the grid that contains buttons
+that are drag handles. _One can drag the handle to a different position on the grid to move the row to that position._
+
+### Drop Zones
+
+The drop zones are around the borders between rows and extend half of the height of each adjacent row. See the
+image below for an illustration of the location of the drag handles and the drop zone that corresponds to a particular
+row index.
+
+<DropZones />
+
+### Visual Indication
+
+When the user drags a reorder handle, the styling of the top and bottom borders of the row being dragged changes to
+indicate that fact. By default, the color of the borders change to the
+[Bootstrap success color](https://getbootstrap.com/docs/5.3/customize/color/#:~:text=primary%2Dtext%2Demphasis-,Success,-%E2%80%94%20Theme%20color).
+
+In addition, the when the user hovers over a drop zone while dragging, the border between cells indicating where the
+dropped row will be inserted will undergo a style change. By default, the
+[Bootstrap primary color](https://getbootstrap.com/docs/5.3/customize/color/#:~:text=border%2Dcolor%2Drgb-,Primary,-%E2%80%94%20Main%20theme)
+is used.
+
+The below illustration shows the location of highlighted borders as described above.
+
+<BorderHighlights />
+
+### Drag Marker
+
+When the user is dragging a row, a translucent div appears under the cursor that contains the ID of the row. A common
+term for this div is *drag ghost*.
+
+### Sorting and Filtering
+
+When a table is being [sorted](/docs/sorting) or [filtered](/docs/filtering), the reordering feature is also disabled
+by disabling the buttons that are the drag handles.
+
+Note that even if sorting or filtering is enabled for a grid, by passing in a `sortModel` or `filterModel` prop,
+respectively, those features may not be _active_. Sorting is _not active_ if no column is being sorted upon. Likewise,
+if filtering id disabled for all columns, filtering is _not active_.
+
+The reorder drag handle buttons are disabled if either sorting or filtering is _active_.
+
+### Keyboard Navigation
+
+Currently, the row reordering feature only supports use with a pointing device, be it a mouse or touch screen.
+
+Making the feature usable with only a keyboard is on the development roadmap as an
+[issue](https://github.com/users/absreim/projects/2?pane=issue&itemId=190092622&issue=absreim%7Creact-bootstrap-data-grid%7C81).
+
+## Enabling
+
+To enable the feature for a grid, pass in a `reorderModel` prop. This prop is an object with a single member named
+`callback`, which is a callback function of the type `(id: RowId, destIndex: number) => void;`.
+
+This callback function takes the row `id` and `destIndex`, which is the destination index from the drag and drop action.
+It is up to this function to act upon the action, often by setting a new [rows prop](/docs/basic-usage#gridprops) with
+the rows in a different order.
+
+### Row Insert Utility Function
+
+A function that takes an array of rows, a `RowId`, and a destination index and swaps the position of the element is
+often useful for this callback function. It is not trivial to write and thus has been exported as a utility function
+`reorderRows`.
+
+To use the utility function, import it from the react-bootstrap-data-grid pro package as follows:
+
+```tsx
+import { reorderRows } from "@absreim/react-bootstrap-data-grid-pro";
+```
+
+One imported, a typical way to use the function to implement a reorder callback is as follows
+
+```tsx
+const initRows = [
+    // initial rows...
+]
+
+const ReorderableGrid: FC = () => {
+    const [rows, setRows] = useState(initRows);
+    const reorderCallback: ReorderCallback = useCallback(
+        (id, destIndex) => {
+          const newRows = reorderRows(rows, id, destIndex);
+          setRows(newRows);
+        },
+        [rows],
+    );
+
+    return (
+        <GridPro
+          rows={rows}
+          cols={cols}
+          reorder={{ callback: reorderCallback }}
+        />
+    );
+}
+```
+
+## Caveats
+
+This feature currently does not support the situation where the contents of the
+[rows prop](/docs/basic-usage#gridprops) changes while the user is dragging it. In such a situation, the behavior of
+this feature may be difficult to predict.
+
+If you expect that your app would cause the [rows prop](/docs/basic-usage#gridprops) to update via means other than user
+input, it is recommended that you not enable this feature.
+
+## Example
+
+The following example demonstrates a grid with row reordering enabled.
+
+### Sorting and Filtering
+
+In addition, sorting and filtering are enabled. One can sort on a column and/or filter on one or more columns to see how
+row reordering becomes disabled.
+
+To enable sorting, click on the header cell for a sortable column to toggle through sorting modes. For this example, all
+columns except Description are sortable.
+
+To enable filtering, click on the Filtering button in the toolbar (icon is <Filter />), enable filtering for at least
+one column, and click the Submit button.
+
+### Custom Styles
+
+This example demonstrates custom styling specific to the row reordering feature:
+
+- The border color of dragged row is changed to the Bootstrap `warning` color.
+- The border color of drop zone is changed ot the Bootstrap `info` color.
+- The drag ghost has reduced opacity and a thicker border.
+
+### Live Demo
+
+<ReorderableGrid />
+
+### Code
+
+#### index.tsx
+
+```tsx
+"use client";
+
+import GridPro, {
+  ProColDef,
+  reorderRows,
+  RowDef,
+  ReorderCallback,
+  ReorderStyleModel,
+} from "@absreim/react-bootstrap-data-grid-pro";
+import { UnitStats } from "@/assets/shared/types";
+import { FC, useCallback, useState } from "react";
+import "./custom.scss";
+
+const initRows: RowDef<UnitStats>[] = [
+  {
+    id: "Fire Badger",
+    data: {
+      name: "Fire Badger",
+      hp: 4222,
+      speed: 9,
+      attack: 27,
+      range: 75,
+      desc: "Medium anti-swarm tank",
+    },
+  },
+  {
+    id: "Hacker",
+    data: {
+      name: "Hacker",
+      hp: 3249,
+      speed: 8,
+      attack: 585,
+      range: 110,
+      desc: "Hacker bot",
+    },
+  },
+  {
+    id: "Mustang",
+    data: {
+      name: "Mustang",
+      hp: 343,
+      speed: 16,
+      attack: 36,
+      range: 95,
+      desc: "High-speed all-purpose tank",
+    },
+  },
+  {
+    id: "Phantom Ray",
+    data: {
+      name: "Phantom Ray",
+      hp: 3412,
+      speed: 16,
+      attack: 1087,
+      range: 65,
+      desc: "Medium-sized aircraft",
+    },
+  },
+  {
+    id: "Phoenix",
+    data: {
+      name: "Phoenix",
+      hp: 1491,
+      speed: 16,
+      attack: 3219,
+      range: 120,
+      desc: "Long-range strike aircraft",
+    },
+  },
+  {
+    id: "Rhino",
+    data: {
+      name: "Rhino",
+      hp: 19297,
+      speed: 16,
+      attack: 3560,
+      range: 6,
+      desc: "Heavy melee bot",
+    },
+  },
+  {
+    id: "Sabertooth",
+    data: {
+      name: "Sabertooth",
+      hp: 15541,
+      speed: 8,
+      attack: 7858,
+      range: 95,
+      desc: "Heavy tank",
+    },
+  },
+  {
+    id: "Sledgehammer",
+    data: {
+      name: "Sledgehammer",
+      hp: 3478,
+      speed: 7,
+      attack: 608,
+      range: 95,
+      desc: "Heavy tank",
+    },
+  },
+  {
+    id: "Steel Ball",
+    data: {
+      name: "Steel Ball",
+      hp: 4571,
+      speed: 16,
+      attack: 55,
+      range: 45,
+      desc: "High-speed anti-unit bot",
+    },
+  },
+  {
+    id: "Stormcaller",
+    data: {
+      name: "Stormcaller",
+      hp: 1149,
+      speed: 6,
+      attack: 772,
+      range: 180,
+      desc: "Heavy rocket launcher",
+    },
+  },
+  {
+    id: "Tarantula",
+    data: {
+      name: "Tarantula",
+      hp: 14773,
+      speed: 8,
+      attack: 496,
+      range: 80,
+      desc: "Heavy mech",
+    },
+  },
+  {
+    id: "Wasp",
+    data: {
+      name: "Wasp",
+      hp: 311,
+      speed: 16,
+      attack: 202,
+      range: 50,
+      desc: "Light aircraft",
+    },
+  },
+];
+
+const cols: ProColDef[] = [
+  {
+    name: "name",
+    type: "string",
+    label: "Name",
+    sortable: true,
+  },
+  {
+    name: "hp",
+    type: "number",
+    label: "HP",
+    sortable: true,
+  },
+  {
+    name: "speed",
+    type: "number",
+    label: "Speed (m/s)",
+    sortable: true,
+  },
+  {
+    name: "attack",
+    type: "number",
+    label: "Attack",
+    sortable: true,
+  },
+  {
+    name: "range",
+    type: "number",
+    label: "Range (m)",
+    sortable: true,
+  },
+  {
+    name: "desc",
+    type: "string",
+    label: "Description",
+  },
+];
+
+const reorderStyleModel: ReorderStyleModel = {
+  draggedRowClasses: ["custom-reorder-dragged-row"],
+  draggedRowPredecessorClasses: ["custom-reorder-dragged-row-pred"],
+  topBorderRowClasses: ["custom-reorder-above-drag-target-row"],
+  bottomBorderRowClasses: ["custom-reorder-below-drag-target-row"],
+  ghostDivClasses: ["custom-reorder-ghost", "border", "border-3"],
+};
+
+const ReorderableGrid: FC = () => {
+  const [rows, setRows] = useState(initRows);
+  const reorderCallback: ReorderCallback = useCallback(
+    (id, destIndex) => {
+      const newRows = reorderRows(rows, id, destIndex);
+      setRows(newRows);
+    },
+    [rows],
+  );
+
+  return (
+    <GridPro
+      useToolbar
+      rows={rows}
+      cols={cols}
+      sortModel={{
+        type: "uncontrolled",
+        initialSortColDef: null,
+      }}
+      filterModel={{ type: "uncontrolled" }}
+      reorder={{ callback: reorderCallback }}
+      styleModel={{
+        reorderModel: reorderStyleModel,
+      }}
+    />
+  );
+};
+
+export default ReorderableGrid;
+```
+
+#### custom.scss
+
+```scss
+.custom-reorder-ghost {
+  opacity: 50%;
+  font-weight: bold;
+  position: fixed;
+  padding: 0.5rem;
+  z-index: 2;
+}
+
+.custom-reorder-dragged-row-pred {
+  border-bottom-color: var(--bs-warning);
+}
+
+.custom-reorder-dragged-row {
+  border-top-width: 1px;
+  opacity: 50%;
+  border-color: var(--bs-warning);
+}
+
+.custom-reorder-above-drag-target-row {
+  border-bottom-color: var(--bs-info);
+}
+
+.custom-reorder-below-drag-target-row {
+  border-top-width: 1px;
+  border-top-color: var(--bs-info);
+}
+```
+
+#### types.ts
+
+```tsx
+export interface UnitStats {
+  name: string;
+  hp: number;
+  speed: number;
+  attack: number;
+  range: number;
+  desc: string;
+}
+```
+
+## Style Customization
+
+Styles related to the row reordering feature can customized by supplying a property of the `styleModel` prop of the
+`GridPro` component. This property is named `reorderModel` and of the type named `ReorderStyleModel`. Properties of
+`ReorderStyleModel` are listed below.
+
+<TypeSpecTable rows={reorderStyleModel} />

@@ -1,6 +1,6 @@
 ---
 navLabel: Versions
-order: 12
+order: 13
 ---
 
 # Versions
@@ -10,6 +10,16 @@ breaking changes should increment the major version number, backwards-compatible
 the minor version number, and backwards-compatible bug fixes should increment the patch version number.
 
 ## Change Log
+
+### 2.6.0
+
+May 21, 2026
+
+- Added the [row reordering feature](/docs/reorder) for the pro version.
+- Fixed a bug where `aria-rowindex` values did not take into account [pagination](/docs/pagination). According to the
+[MDN article on aria-rowindex](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-rowindex)
+`aria-rowindex` should take into account rows that exist in the table but are not currently displayed.
+- Fixed a bug where [sorting](/docs/sorting) did not work for the pro version when resizing is disabled.
 
 ### 2.5.0
 

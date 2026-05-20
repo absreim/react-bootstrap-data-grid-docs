@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const DarkModeIcon: FC = () => (
+const DarkMode: FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -13,4 +13,4 @@ const DarkModeIcon: FC = () => (
   </svg>
 );
 
-export default DarkModeIcon;
+export default DarkMode;

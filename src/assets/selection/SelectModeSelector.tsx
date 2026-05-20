@@ -1,5 +1,5 @@
 import Form from "react-bootstrap/Form";
-import { ChangeEventHandler, FC } from "react";
+import { ChangeEventHandler, FC, useId } from "react";
 import { SelectMode } from "@absreim/react-bootstrap-data-grid";
 
 export interface SelectModeSelectorProps {
@@ -17,6 +17,8 @@ const SelectModeSelector: FC<SelectModeSelectorProps> = ({
     setMode(event.target.value as SelectMode);
   };
 
+  const componentId = useId();
+
   return (
     <Form>
       <fieldset>
@@ -24,6 +26,7 @@ const SelectModeSelector: FC<SelectModeSelectorProps> = ({
         {["column", "row", "both"].map((inputMode) => (
           <Form.Check
             key={inputMode}
+            id={`${componentId}-${inputMode}`}
             type="radio"
             value={inputMode}
             label={inputMode}
