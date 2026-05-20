@@ -1,12 +1,16 @@
 import { FC } from "react";
 
 const BorderHighlights: FC = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 200">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 350 200"
+    fill="currentColor"
+  >
     <g>
       <rect fill="none" x="85.34" y="44.76" width="240.8" height="26.87" />
       <path d="M325.64,45.26v25.87H85.84v-25.87h239.8M326.64,44.26H84.84v27.87h241.8v-27.87h0Z" />
     </g>
-    <text font-size="12px" transform="translate(177.05 61.72)">
+    <text fontSize="12px" transform="translate(177.05 61.72)">
       Header Row
     </text>
     <g>
@@ -18,7 +22,7 @@ const BorderHighlights: FC = () => (
       <rect fill="none" x="85.34" y="72.63" width="240.8" height="26.87" />
       <path d="M325.64,73.13v25.87H85.84v-25.87h239.8M326.64,72.13H84.84v27.87h241.8v-27.87h0Z" />
     </g>
-    <text font-size="12px" transform="translate(158.13 91.09)">
+    <text fontSize="12px" transform="translate(158.13 91.09)">
       Body Row 1 (index 0)
     </text>
     <line stroke="currentColor" x1="111.07" y1="100" x2="111.07" y2="72.13" />
@@ -27,7 +31,7 @@ const BorderHighlights: FC = () => (
       <rect fill="none" x="85.34" y="100.5" width="240.8" height="26.87" />
       <path d="M325.64,101v25.87H85.84v-25.87h239.8M326.64,100H84.84v27.87h241.8v-27.87h0Z" />
     </g>
-    <text font-size="12px" transform="translate(158.13 118.96)">
+    <text fontSize="12px" transform="translate(158.13 118.96)">
       Body Row 2 (index 1)
     </text>
     <line stroke="currentColor" x1="111.07" y1="127.87" x2="111.07" y2="100" />
@@ -36,7 +40,7 @@ const BorderHighlights: FC = () => (
       <rect fill="none" x="85.34" y="128.37" width="240.8" height="26.87" />
       <path d="M325.64,128.87v25.87H85.84v-25.87h239.8M326.64,127.87H84.84v27.87h241.8v-27.87h0Z" />
     </g>
-    <text font-size="12px" transform="translate(158.13 146.83)">
+    <text fontSize="12px" transform="translate(158.13 146.83)">
       Body Row 3 (index 2)
     </text>
     <line
@@ -52,7 +56,7 @@ const BorderHighlights: FC = () => (
       <line x1="78.44" y1="98.96" x2="64.92" y2="98.96" />
       <line x1="64.92" y1="71.6" x2="64.92" y2="98.96" />
     </g>
-    <text font-size="10px" transform="translate(19.48 123.37)">
+    <text fontSize="10px" transform="translate(14 120)">
       <tspan x="0" y="0">
         Drop target
       </tspan>
@@ -60,7 +64,7 @@ const BorderHighlights: FC = () => (
         highlight
       </tspan>
     </text>
-    <text font-size="10px" transform="translate(19.66 82.57)">
+    <text fontSize="10px" transform="translate(14 82.57)">
       <tspan x="0" y="0">
         Dragee
       </tspan>

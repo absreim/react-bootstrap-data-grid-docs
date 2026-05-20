@@ -9,6 +9,7 @@ import ReorderableGrid from "@/assets/reorder/ReorderableGrid";
 import PrereleaseNotice from "@/assets/pro/PrereleaseNotice";
 import Filter from "@/assets/icons/Filter";
 import DropZones from "@/assets/reorder/DropZones";
+import BorderHighlights from "@/assets/reorder/BorderHighlights";
 
 <h1>Row Reordering <ProBadge /></h1>
 
@@ -17,16 +18,108 @@ import DropZones from "@/assets/reorder/DropZones";
 The [Pro version](/docs/pro) of react-bootstrap-data-grid allows a developer to allow the user to rearrange rows in a
 grid through a drag-and-drop interface.
 
-## Usage
+## End User Usage
 
 When reordering is enabled for a grid, there will be an extra column on the left side of the grid that contains buttons
-that are drag handles. One can drag the handle to a different position on the grid to move the row to that position.
+that are drag handles. _One can drag the handle to a different position on the grid to move the row to that position._
 
-The drag drop zones are around the borders between rows and extend half of the height of each adjacent row. See the
+### Drop Zones
+
+The drop zones are around the borders between rows and extend half of the height of each adjacent row. See the
 image below for an illustration of the location of the drag handles and the drop zone that corresponds to a particular
 row index.
 
 <DropZones />
+
+### Visual Indication
+
+When the user drags a reorder handle, the styling of the top and bottom borders of the row being dragged changes to
+indicate that fact. By default, the color of the borders change to the
+[Bootstrap success color](https://getbootstrap.com/docs/5.3/customize/color/#:~:text=primary%2Dtext%2Demphasis-,Success,-%E2%80%94%20Theme%20color).
+
+In addition, the when the user hovers over a drop zone while dragging, the border between cells indicating where the
+dropped row will be inserted will undergo a style change. By default, the
+[Bootstrap primary color](https://getbootstrap.com/docs/5.3/customize/color/#:~:text=border%2Dcolor%2Drgb-,Primary,-%E2%80%94%20Main%20theme)
+is used.
+
+The below illustration shows the location of highlighted borders as described above.
+
+<BorderHighlights />
+
+### Sorting and Filtering
+
+When a table is being [sorted](/docs/sorting) or [filtered](/docs/filtering), the reordering feature is also disabled
+by disabling the buttons that are the drag handles.
+
+Note that even if sorting or filtering is enabled for a grid, by passing in a `sortModel` or `filterModel` prop,
+respectively, those features may not be _active_. Sorting is _not active_ if no column is being sorted upon. Likewise,
+if filtering id disabled for all columns, filtering is _not active_.
+
+The reorder drag handle buttons are disabled if either sorting or filtering is _active_.
+
+### Keyboard Navigation
+
+Currently, the row reordering feature only supports use with a pointing device, be it a mouse or touch screen.
+
+Making the feature usable with only a keyboard is on the development roadmap as an
+[issue](https://github.com/users/absreim/projects/2?pane=issue&itemId=190092622&issue=absreim%7Creact-bootstrap-data-grid%7C81).
+
+## Enabling
+
+To enable the feature for a grid, pass in a `reorderModel` prop. This prop is an object with a single member named
+`callback`, which is a callback function of the type `(id: RowId, destIndex: number) => void;`.
+
+This callback function takes the row `id` and `destIndex`, which is the destination index from the drag and drop action.
+It is up to this function to act upon the action, often by setting a new [rows prop](/docs/basic-usage#gridprops) with
+the rows in a different order.
+
+### Row Insert Utility Function
+
+A function that takes an array of rows, a `RowId`, and a destination index and swaps the position of the element is
+often useful for this callback function. It is not trivial to write and thus has been exported as a utility function
+`reorderRows`.
+
+To use the utility function, import it from the react-bootstrap-data-grid pro package as follows:
+
+```tsx
+import { reorderRows } from "@absreim/react-bootstrap-data-grid-pro";
+```
+
+One imported, a typical way to use the function to implement a reorder callback is as follows
+
+```tsx
+const initRows = [
+    // initial rows...
+]
+
+const ReorderableGrid: FC = () => {
+    const [rows, setRows] = useState(initRows);
+    const reorderCallback: ReorderCallback = useCallback(
+        (id, destIndex) => {
+          const newRows = reorderRows(rows, id, destIndex);
+          setRows(newRows);
+        },
+        [rows],
+    );
+
+    return (
+        <GridPro
+          rows={rows}
+          cols={cols}
+          reorder={{ callback: reorderCallback }}
+        />
+    );
+}
+```
+
+## Caveats
+
+This feature currently does not support the situation where the contents of the
+[rows prop](/docs/basic-usage#gridprops) changes while the user is dragging it. In such a situation, the behavior of
+this feature may be difficult to predict.
+
+If you expect that your app would cause the [rows prop](/docs/basic-usage#gridprops)to update via means other than user
+input, it is recommended that you not enable this feature.
 
 ## Example
 
