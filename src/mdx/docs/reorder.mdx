@@ -8,6 +8,7 @@ import ProBadge from "@/assets/pro/ProBadge";
 import ReorderableGrid from "@/assets/reorder/ReorderableGrid";
 import PrereleaseNotice from "@/assets/pro/PrereleaseNotice";
 import Filter from "@/assets/icons/Filter";
+import DropZones from "@/assets/reorder/DropZones";
 
 <h1>Row Reordering <ProBadge /></h1>
 
@@ -21,7 +22,11 @@ grid through a drag-and-drop interface.
 When reordering is enabled for a grid, there will be an extra column on the left side of the grid that contains buttons
 that are drag handles. One can drag the handle to a different position on the grid to move the row to that position.
 
+The drag drop zones are around the borders between rows and extend half of the height of each adjacent row. See the
+image below for an illustration of the location of the drag handles and the drop zone that corresponds to a particular
+row index.
 
+<DropZones />
 
 ## Example
 

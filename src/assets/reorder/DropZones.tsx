@@ -6,12 +6,19 @@ const DropZones: FC = () => (
     data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 350 200"
+    fill="currentColor"
   >
+    <title>Row Reorder Handles and Drop Zone Illustration</title>
+    <desc>
+      Illustration showing the location of drag handles on a grid with
+      reordering enabled. In addition, the illustration shows the area of the
+      viewport that corresponds to a particular row index.
+    </desc>
     <g>
       <rect fill="none" x="85.34" y="44.76" width="240.8" height="26.87" />
       <path d="M325.64,45.26v25.87H85.84v-25.87h239.8M326.64,44.26H84.84v27.87h241.8v-27.87h0Z" />
     </g>
-    <text font-size="12px" transform="translate(177.05 61.72)">
+    <text fontSize="12px" transform="translate(177.05 61.72)">
       Header Row
     </text>
     <g>
@@ -23,7 +30,7 @@ const DropZones: FC = () => (
       <rect fill="none" x="85.34" y="72.63" width="240.8" height="26.87" />
       <path d="M325.64,73.13v25.87H85.84v-25.87h239.8M326.64,72.13H84.84v27.87h241.8v-27.87h0Z" />
     </g>
-    <text font-size="12px" transform="translate(158.13 91.09)">
+    <text fontSize="12px" transform="translate(158.13 91.09)">
       Body Row 1 (index 0)
     </text>
     <line stroke="currentColor" x1="111.07" y1="100" x2="111.07" y2="72.13" />
@@ -32,7 +39,7 @@ const DropZones: FC = () => (
       <rect fill="none" x="85.34" y="100.5" width="240.8" height="26.87" />
       <path d="M325.64,101v25.87H85.84v-25.87h239.8M326.64,100H84.84v27.87h241.8v-27.87h0Z" />
     </g>
-    <text font-size="12px" transform="translate(158.13 118.96)">
+    <text fontSize="12px" transform="translate(158.13 118.96)">
       Body Row 2 (index 1)
     </text>
     <line stroke="currentColor" x1="111.07" y1="127.87" x2="111.07" y2="100" />
@@ -41,7 +48,7 @@ const DropZones: FC = () => (
       <rect fill="none" x="85.34" y="128.37" width="240.8" height="26.87" />
       <path d="M325.64,128.87v25.87H85.84v-25.87h239.8M326.64,127.87H84.84v27.87h241.8v-27.87h0Z" />
     </g>
-    <text font-size="12px" transform="translate(158.13 146.83)">
+    <text fontSize="12px" transform="translate(158.13 146.83)">
       Body Row 3 (index 2)
     </text>
     <line
@@ -56,15 +63,15 @@ const DropZones: FC = () => (
     <line stroke="currentColor" x1="80.74" y1="114.18" x2="67.21" y2="114.18" />
     <line stroke="currentColor" x1="80.74" y1="141.55" x2="67.21" y2="141.55" />
     <line stroke="currentColor" x1="67.21" y1="114.18" x2="67.21" y2="141.55" />
-    <text font-size="10px" transform="translate(23.36 124.88)">
+    <text fontSize="10px" transform="translate(19 124.88)">
       Index 2
-      <tspan x="0" y="12">
+      <tspan x="0" y="10">
         dropzone
       </tspan>
     </text>
-    <text font-size="10px" transform="translate(23.74 82.57)">
+    <text fontSize="10px" transform="translate(19 82.57)">
       Reorder
-      <tspan x="0" y="12">
+      <tspan x="0" y="10">
         handle
       </tspan>
     </text>
