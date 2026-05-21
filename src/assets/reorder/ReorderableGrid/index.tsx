@@ -4,10 +4,12 @@ import GridPro, {
   ProColDef,
   reorderRows,
   RowDef,
+  ReorderCallback,
+  ReorderStyleModel,
 } from "@absreim/react-bootstrap-data-grid-pro";
 import { UnitStats } from "@/assets/shared/types";
 import { FC, useCallback, useState } from "react";
-import { ReorderCallback } from "@absreim/react-bootstrap-data-grid-pro/grid-pro/reorder/types";
+import "./custom.scss";
 
 const initRows: RowDef<UnitStats>[] = [
   {
@@ -182,6 +184,14 @@ const cols: ProColDef[] = [
   },
 ];
 
+const reorderStyleModel: ReorderStyleModel = {
+  draggedRowClasses: ["custom-reorder-dragged-row"],
+  draggedRowPredecessorClasses: ["custom-reorder-dragged-row-pred"],
+  topBorderRowClasses: ["custom-reorder-above-drag-target-row"],
+  bottomBorderRowClasses: ["custom-reorder-below-drag-target-row"],
+  ghostDivClasses: ["custom-reorder-ghost", "border", "border-3"],
+};
+
 const ReorderableGrid: FC = () => {
   const [rows, setRows] = useState(initRows);
   const reorderCallback: ReorderCallback = useCallback(
@@ -203,6 +213,9 @@ const ReorderableGrid: FC = () => {
       }}
       filterModel={{ type: "uncontrolled" }}
       reorder={{ callback: reorderCallback }}
+      styleModel={{
+        reorderModel: reorderStyleModel,
+      }}
     />
   );
 };

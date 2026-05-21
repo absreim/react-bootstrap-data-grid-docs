@@ -65,6 +65,8 @@ import GridPro from "@absreim/react-bootstrap-data-grid-pro";
 This type contains the props for `GridPro`. The props are largely the same as `GridProps` but with a few differences.
 
 - The column definitions in the `cols` prop are of type `ProColDef[]` instead of `ColDef[]`.
+- The `styleModel` prop is of type `ProStyleModel`. `ProStyleModel` contains all the properties of `StyleModel` but
+additionally contains `reorderModel` property for customizing style of the [row reordering](/docs/reorder) feature.
 - `GridProProps` contains a `reorderModel` prop to enable [row reordering](/docs/reorder) while `GridProps` does not.
 
 ### ProColDef
