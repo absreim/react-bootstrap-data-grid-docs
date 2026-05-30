@@ -7,7 +7,7 @@ const PrereleaseNotice = () => (
     </p>
     <p>
       A commercial license for the Pro version is expected to be available
-      around <b>June 1, 2026</b>. In the meantime (or even after release), feel
+      around <b>June 15, 2026</b>. In the meantime (or even after release), feel
       free to use the Pro version for evaluation purposes without a license.
     </p>
   </div>

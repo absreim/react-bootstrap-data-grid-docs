@@ -7,11 +7,12 @@ pro: true
 import ProBadge from "@/assets/pro/ProBadge";
 import ReorderableGrid from "@/assets/reorder/ReorderableGrid";
 import PrereleaseNotice from "@/assets/pro/PrereleaseNotice";
-import Filter from "@/assets/icons/Filter";
 import DropZones from "@/assets/reorder/DropZones";
 import BorderHighlights from "@/assets/reorder/BorderHighlights";
 import TypeSpecTable from "@/shared/TypeSpecTable";
 import { reorderStyleModel } from "@/assets/reorder/typeSpecs";
+import Filter from "@/assets/icons/Filter";
+import HorizontalGrip from "@absreim/react-bootstrap-data-grid-pro/grid-pro/assets/HorizontalGrip";
 
 <h1>Row Reordering <ProBadge /></h1>
 
@@ -39,7 +40,7 @@ When the user drags a reorder handle, the styling of the top and bottom borders 
 indicate that fact. By default, the color of the borders change to the
 [Bootstrap success color](https://getbootstrap.com/docs/5.3/customize/color/#:~:text=primary%2Dtext%2Demphasis-,Success,-%E2%80%94%20Theme%20color).
 
-In addition, the when the user hovers over a drop zone while dragging, the border between cells indicating where the
+In addition, when the user hovers over a drop zone while dragging, the border between cells indicating where the
 dropped row will be inserted will undergo a style change. By default, the
 [Bootstrap primary color](https://getbootstrap.com/docs/5.3/customize/color/#:~:text=border%2Dcolor%2Drgb-,Primary,-%E2%80%94%20Main%20theme)
 is used.
@@ -66,10 +67,19 @@ The reorder drag handle buttons are disabled if either sorting or filtering is _
 
 ### Keyboard Navigation
 
-Currently, the row reordering feature only supports use with a pointing device, be it a mouse or touch screen.
+To reorder rows with the keyboard:
 
-Making the feature usable with only a keyboard is on the development roadmap as an
-[issue](https://github.com/users/absreim/projects/2?pane=issue&itemId=190092622&issue=absreim%7Creact-bootstrap-data-grid%7C81).
+1. Use the <kbd>Tab</kbd> key to cycle through focus on elements on the page until you get to the resize handle of the
+row that you want to reorder. Those buttons have a horizontal grip icon: <HorizontalGrip />.
+2. Click on the button using a keyboard key. For most browsers, either <kbd>Space</kbd> or <kbd>Enter</kbd> can be used
+to click on a button once it is focused. Note that the button behaves differently when clicking with a pointing device
+or touch screen (i.e. nothing happens).
+3. You should see the same visual indications as with a pointing device for the selected row (Bootstrap
+`success`-colored borders by default) and the destination index (Bootstrap `primary`-colored border by default).
+4. Used the <kbd>Up Arrow</kbd> and <kbd>Down Arrow</kbd> keys to select the index to which you want to move the
+selected row.
+5. Press <kbd>Enter</kbd> or <kbd>Space</kbd> key to perform the reorder to the selected destination index. To cancel
+the reordering process at any time without reordering anything, press the <kbd>Escape</kbd> key.
 
 ## Enabling
 
