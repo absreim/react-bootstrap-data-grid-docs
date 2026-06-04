@@ -26,14 +26,6 @@ export const additionalComponentsStyleModel: SpecTableRow[] = [
     ),
   },
   {
-    propertyName: "filterInputsDiv",
-    typeDefinition: "string[]",
-    isRequired: false,
-    description:
-      "CSS classes for the div that contains toggle button for the " +
-      "filter options table followed by the filter options table itself",
-  },
-  {
     propertyName: "tableAndPaginationDiv",
     typeDefinition: "string[]",
     isRequired: false,
@@ -42,20 +34,34 @@ export const additionalComponentsStyleModel: SpecTableRow[] = [
       "pagination component if pagination is enabled",
   },
   {
-    propertyName: "filterUiToggleButton",
+    propertyName: "tableDiv",
     typeDefinition: "string[]",
     isRequired: false,
     description: (
       <>
         <p>
-          CSS classes for the button that toggles the visibility of the filter
-          options table. Only appears if filtering is enabled (by supplying the{" "}
-          <code>filterModel</code> prop) on the <code>Grid</code> component.
+          CSS classes for a <code>div</code> element that contains the main
+          table.
         </p>
         <p>
-          The variant of this button is set to <i>primary</i> by default via the{" "}
-          <code>btn-primary</code> class. That class will not be applied if a
-          non-empty is passed via this property.
+          This <code>div</code> is inside the <code>div</code> that contains the
+          table and pagination elements. The table and pagination div is
+          described above in the entry for the property named{" "}
+          <code>tableAndPaginationDiv</code>.
+        </p>
+        <p>
+          By default, the <code>div</code> associated with this property has the
+          <code>table-responsive</code> Bootstrap utility class in order to make
+          the table{" "}
+          <Link href="https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables">
+            responsive.
+          </Link>
+        </p>
+        <p>
+          One can override this behavior putting an array of any number of
+          strings for this property. For example, to disable the responsive
+          behavior and add no additional classes, simply pass an empty array (
+          <code>[]</code>).
         </p>
       </>
     ),
@@ -187,7 +193,7 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "theadTh",
-    typeDefinition: "(colIndex: number) => string[]",
+    typeDefinition: "(colIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -218,7 +224,8 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "tbodyTr",
-    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
+    typeDefinition:
+      "(id: number | string, displayIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -232,7 +239,7 @@ export const tableStyleModel: SpecTableRow[] = [
   {
     propertyName: "tbodyTd",
     typeDefinition:
-      "(origRowIndex: number, displayRowIndex: number, colIndex: number) => string[]",
+      "(origRowIndex: number, displayRowIndex: number, colIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -254,7 +261,8 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "editColTd",
-    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
+    typeDefinition:
+      "(id: number | string, displayIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -264,7 +272,7 @@ export const tableStyleModel: SpecTableRow[] = [
     ),
   },
   {
-    propertyName: "selectColTh",
+    propertyName: "rowSelectColTh",
     typeDefinition: "string[]",
     isRequired: false,
     description: (
@@ -275,8 +283,9 @@ export const tableStyleModel: SpecTableRow[] = [
     ),
   },
   {
-    propertyName: "selectColTd",
-    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
+    propertyName: "rowSelectColTd",
+    typeDefinition:
+      "(id: number | string, displayIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -286,8 +295,9 @@ export const tableStyleModel: SpecTableRow[] = [
     ),
   },
   {
-    propertyName: "selectInput",
-    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
+    propertyName: "rowSelectInput",
+    typeDefinition:
+      "(id: number | string, displayIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -298,7 +308,8 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "editStartButton",
-    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
+    typeDefinition:
+      "(id: number | string, displayIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -312,7 +323,8 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "editDeleteButton",
-    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
+    typeDefinition:
+      "(id: number | string, displayIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -326,7 +338,8 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "editSaveButton",
-    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
+    typeDefinition:
+      "(id: number | string, displayIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -340,7 +353,8 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "editCancelButton",
-    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
+    typeDefinition:
+      "(id: number | string, displayIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -384,7 +398,8 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "rowSelectColTd",
-    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
+    typeDefinition:
+      "(id: number | string, displayIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -395,7 +410,8 @@ export const tableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "rowSelectInput",
-    typeDefinition: "(id: number | string, displayIndex: number) => string[]",
+    typeDefinition:
+      "(id: number | string, displayIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -454,7 +470,7 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "theadTh",
-    typeDefinition: "(colIndex: number) => string[]",
+    typeDefinition: "(colIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -498,7 +514,7 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "enablementInput",
-    typeDefinition: "(rowIndex: number) => string[]",
+    typeDefinition: "(rowIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -509,7 +525,7 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "schemeSelectionInput",
-    typeDefinition: "(rowIndex: number) => string[]",
+    typeDefinition: "(rowIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -520,7 +536,7 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "searchStringInput",
-    typeDefinition: "(rowIndex: number) => string[]",
+    typeDefinition: "(rowIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -533,7 +549,7 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "numberInput",
-    typeDefinition: "(rowIndex: number) => string[]",
+    typeDefinition: "(rowIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -546,7 +562,7 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "startDateInput",
-    typeDefinition: "(rowIndex: number) => string[]",
+    typeDefinition: "(rowIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -560,7 +576,7 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
   },
   {
     propertyName: "endDateInput",
-    typeDefinition: "(rowIndex: number) => string[]",
+    typeDefinition: "(rowIndex: number) => string[] | null",
     isRequired: false,
     description: (
       <>
@@ -605,8 +621,7 @@ export const filterInputTableStyleModel: SpecTableRow[] = [
         <p>
           Note that this responsive behavior only works if the <code>form</code>{" "}
           element itself has constrained width. If, for example, the
-          <code>form</code>{" "}
-          element is the child of a flex container with{" "}
+          <code>form</code> element is the child of a flex container with{" "}
           <code>align-items: start;</code>, one can constrain the width of the{" "}
           <code>form</code> with the{" "}
           <Link href="https://getbootstrap.com/docs/5.3/utilities/sizing/#relative-to-the-parent">
@@ -651,8 +666,8 @@ export const toolbarStyleModel: SpecTableRow[] = [
       <p>
         CSS classes for the <code>div</code> that contains buttons to toggle the
         visibility of interfaces like filtering and export and has the ARIA role{" "}
-        <code>toolbar</code>. By default, the <code>div</code> has the classes
-        {" "}<code>hstack</code>, <code>gap-2</code>,{" "}
+        <code>toolbar</code>. By default, the <code>div</code> has the classes{" "}
+        <code>hstack</code>, <code>gap-2</code>,{" "}
         <code>justify-content-start</code>, and <code>px-2</code>.
       </p>
     ),
@@ -686,8 +701,8 @@ export const exportFormStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        CSS classes for the <code>legend</code> elements in the export form. Useful
-        for adjusting the appearance of the text.
+        CSS classes for the <code>legend</code> elements in the export form.
+        Useful for adjusting the appearance of the text.
       </p>
     ),
   },
@@ -697,16 +712,15 @@ export const exportFormStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        CSS classes for the <code>div</code>s containing
-        radio <code>input</code>s and{" "}
-        <code>label</code>s. As prescribed in{" "}
+        CSS classes for the <code>div</code>s containing radio{" "}
+        <code>input</code>s and <code>label</code>s. As prescribed in{" "}
         <a href="https://getbootstrap.com/docs/5.3/forms/checks-radios">
           Bootstrap&apos;s documentation on checks and radios
         </a>
         , these <code>div</code>s by default have the
-        <code>form-check</code> class and the
-        layout of radio inputs can be further customized by adding additional
-        classes according to the documentation.
+        <code>form-check</code> class and the layout of radio inputs can be
+        further customized by adding additional classes according to the
+        documentation.
       </p>
     ),
   },
@@ -716,8 +730,8 @@ export const exportFormStyleModel: SpecTableRow[] = [
     isRequired: false,
     description: (
       <p>
-        CSS classes for the <code>input</code> radio controls of the export form.
-        Following{" "}
+        CSS classes for the <code>input</code> radio controls of the export
+        form. Following{" "}
         <a href="https://getbootstrap.com/docs/5.3/forms/checks-radios">
           Bootstrap&apos;s documentation
         </a>
@@ -733,8 +747,7 @@ export const exportFormStyleModel: SpecTableRow[] = [
     description: (
       <p>
         CSS classes for the <code>labels</code> of the radio controls of the
-        export
-        form. Following{" "}
+        export form. Following{" "}
         <a href="https://getbootstrap.com/docs/5.3/forms/checks-radios">
           Bootstrap&apos;s documentation
         </a>

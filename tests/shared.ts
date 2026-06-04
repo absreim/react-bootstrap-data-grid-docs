@@ -6,6 +6,6 @@ export const sectionNames = [
   "Editing",
   "Styling",
   "Versions",
-  "Migrate",
+  "Toolbar",
   "Introduction",
 ];

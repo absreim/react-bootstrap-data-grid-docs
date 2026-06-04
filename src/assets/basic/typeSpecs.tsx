@@ -124,7 +124,7 @@ export const gridProps: SpecTableRow[] = [
   },
   {
     propertyName: "pagination",
-    typeDefinition: "GridPaginationState",
+    typeDefinition: "PaginationModel",
     isRequired: false,
     description: (
       <p>
@@ -210,31 +210,6 @@ export const gridProps: SpecTableRow[] = [
           the grid, the filtering interface will only be accessible from the
           toolbar. The default button for accessing the filtering interface will
           no longer be rendered.
-        </p>
-      </>
-    ),
-  },
-  {
-    propertyName: "responsive",
-    typeDefinition: "boolean",
-    isRequired: false,
-    description: (
-      <>
-        <p>
-          If set to <code>true</code>, makes the table responsive at all
-          breakpoints by inserting a containing <code>div</code>{" "}and using
-          Bootstrap&apos;s{" "}
-          <Link href="https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables">
-            table-responsive
-          </Link>{" "}
-          CSS class.
-        </p>
-        <p>
-          Responsive tables are set to scroll horizontally when the containing
-          element is not wide enough to fit the table&apos;s contents. If a
-          table is not responsive, when horizontal space is tight, the browser
-          may more aggressively try to shrink the width of each column and/or
-          overflow content past the table&apos;s horizontal boundaries.
         </p>
       </>
     ),
