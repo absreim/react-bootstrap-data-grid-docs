@@ -1,0 +1,59 @@
+---
+navLabel: Migrate to Version 3
+order: 15
+---
+
+# Migrate to Version 3
+
+Version 3 introduces a number of breaking changes. This article describes how to migrate from version 2.x to version
+3.0.0.
+
+## GridPaginationState Rename
+
+The type `GridPaginationState` type is type of the `pagination` prop that is passed to the `Grid` or `GridPro` component
+to enable [pagination](/docs/pagination). It has been renamed to `PaginationModel`. If any of your existing code is
+explicitly referring to this type by name, simply rename each occurrence to `PaginationModel`.
+
+## Filtering and Toolbar Changes
+
+### Filtering UI Access Change
+
+Previously, there were two ways to access the [filtering](/docs/filtering) interface:
+
+- A button labeled _Show Filter Options_ that is by default located above the main table.
+- A button on the [toolbar](/docs/toolbar).
+
+Previously, the developer could choose between these two modes by specifying the `useToolbar` prop. Now, the
+`useToolbar` prop has been removed and the only way to access the filtering UI is via the toolbar.
+
+The toolbar will show up as long as there is at least one feature enabled for a grid that requires the toolbar to
+access. Filtering is one such feature and can be enabled by supplying a `filterModel` prop to the `Grid` or `GridPro`
+component.
+
+### Toolbar Enablement Change
+
+As mentioned in the previous section, previously, the `useToolbar` prop must be specified on the `Grid` or `GridPro`
+component for the toolbar to appear. Now, the toolbar appears as long as one feature is enabled for the grid that
+requires the toolbar to access.
+
+These features are [filtering](/docs/filtering) and [export](/docs/export). Filtering is enabled by passing a value for
+the `filterModel` prop to a `Grid` or `GridPro` component. Export is enabled by passing a `true` value for the
+`allowExport` prop.
+
+### Export Enablement Change
+
+Previously, export could be enabled by passing a `true` value for the `useToolbar` prop.
+
+Now, as described in the previous section, it can instead be enabled by passing a `true` value for the `allowExport`
+prop.
+
+## Table Responsive by Default
+
+Previously, tables were only [responsive](https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables) if the
+developer passed the `responsive` prop to the `Grid` or `GridPro` component. The containing `div` to which Bootstrap's
+`table-responsive` utility class was applied also only existed when the table was responsive.
+
+Now, the containing `div` always exists and tables are responsive by default.
+
+To disable responsive behavior for a table, it is necessary to use the [styling customization](/docs/styling) feature
+to remove the `table-responsive` class from the `div` that contains the main table.

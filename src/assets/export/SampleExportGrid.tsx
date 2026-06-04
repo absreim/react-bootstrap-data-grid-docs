@@ -3,7 +3,7 @@
 import Grid, {
   ColDef,
   FilterModel,
-  GridPaginationState,
+  PaginationModel,
   RowDef,
   UncontrolledFilterModel,
 } from "@absreim/react-bootstrap-data-grid";
@@ -148,7 +148,7 @@ const SampleExportGrid: FC = () => {
     }));
   }, [enableFormatters]);
 
-  const paginationModel: GridPaginationState | undefined = useMemo(() => {
+  const paginationModel: PaginationModel | undefined = useMemo(() => {
     if (!enablePagination) {
       return undefined;
     }
@@ -219,7 +219,6 @@ const SampleExportGrid: FC = () => {
         cols={modifiedCols}
         pagination={paginationModel}
         filterModel={filterModel}
-        useToolbar={true}
       />
     </Stack>
   );

@@ -124,7 +124,7 @@ export const gridProps: SpecTableRow[] = [
   },
   {
     propertyName: "pagination",
-    typeDefinition: "GridPaginationState",
+    typeDefinition: "PaginationModel",
     isRequired: false,
     description: (
       <p>
