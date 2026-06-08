@@ -426,26 +426,22 @@ const caption = "Normandy SR-1 Insiders";
 
 const styleModel: StyleModel = {
   mainTableStyleModel: {
-    table: ["table-striped"],
-    tbodyTdInput: () => ["form-control-sm"],
-    editDeleteButton: () => ["btn-danger"],
-    editSaveButton: () => ["btn-success"],
-    editCancelButton: () => ["btn-warning"],
+    table: ["table table-striped"],
+    tbodyTdInput: () => ["form-control form-control-sm"],
+    editDeleteButton: () => ["btn btn-danger"],
+    editSaveButton: () => ["btn btn-success"],
+    editCancelButton: () => ["btn btn-warning"],
   },
   additionalComponentsStyleModel: {
     topLevelDiv: ["vstack flex-column-reverse border"],
-    filterInputsDiv: [
-      "vstack flex-column-reverse align-items-start border m-2 p-2 gap-2",
-    ],
     tableAndPaginationDiv: ["vstack flex-column-reverse border m-2 p-2"],
-    filterUiToggleButton: ["btn-info"],
   },
   filterInputTableStyleModel: {
-    table: ["table-striped-columns"],
-    startDateInput: () => ["form-control-sm"],
-    endDateInput: () => ["form-control-sm"],
-    submitButton: ["btn-success"],
-    form: ["table-responsive", "w-100"]
+    table: ["table table-striped-columns"],
+    startDateInput: () => ["form-control form-control-sm"],
+    endDateInput: () => ["form-control form-control-sm"],
+    submitButton: ["btn btn-success"],
+    form: ["table-responsive", "w-100"],
   },
 };
 
@@ -524,7 +520,6 @@ const SampleStyledInputsGrid: FC = () => {
         filterModel={filterModel}
         editModel={editModel}
         styleModel={styleModel}
-        responsive={true}
       />
       <button className="btn btn-secondary btn-sm" onClick={handleReset}>
         Reset Rows

@@ -158,7 +158,6 @@ const ResizeableGrid: FC = () => {
       </Button>
       <GridPro
         sortModel={{ type: "uncontrolled", initialSortColDef: null }}
-        responsive={true}
         rows={rows}
         cols={cols}
         displayMode="block"

@@ -49,12 +49,21 @@ Previously, export could be enabled by passing a `true` value for the `useToolba
 Now, as described in the previous section, it can instead be enabled by passing a `true` value for the `allowExport`
 prop.
 
+### Submit and Cancel Buttons
+
+For both the [filtering](/docs/filtering) and [export](/docs/export) UIs, the *Submit* button now closes the interface.
+Previously, the button left the interface open.
+
+Both interfaces now also have a *Cancel* button that closes the interface without making any changes.
+
 ### Migration Steps
 
 - If your app is previously using the old interface to access the filtering UI, instruct your users to use the toolbar
 instead.
 - If your app was setting the `useToolbar` set to `true` to enable the toolbar and exporting, remove the `useToolbar`
 prop and instead set `allowExport` to `true` to continue enabling exporting.
+- You may with to instruct your users about the changes with the Submit and Cancel buttons, although they are fairly
+straightforward.
 
 ## Main Table Responsive by Default
 

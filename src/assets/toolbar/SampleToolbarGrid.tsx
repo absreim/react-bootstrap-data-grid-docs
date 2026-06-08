@@ -99,7 +99,6 @@ const SampleToolbarGrid: FC = () => (
   <Grid
     rows={rows}
     cols={cols}
-    useToolbar
     filterModel={{ type: "uncontrolled" }}
     pagination={{
       type: "uncontrolled",

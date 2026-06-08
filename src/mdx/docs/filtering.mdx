@@ -32,12 +32,9 @@ UI.
 
 ## Accessing the Interface
 
-By default, for the sake of backwards compatibility, the filtering interface can be accessed by clicking a toggle button
-above the grid.
-
-In a future release, the button for accessing the filtering interface will be moved to a toolbar that contains more
-compact toggle buttons for accessing filtering and other interfaces. To opt-in into this behavior now, pass a
-`useToolbar` prop with a `true` value to the `Grid` component.
+For grids where filtering is enabled, the user can access the filtering interface via the appropriate button on the
+[toolbar](/docs/toolbar). The button has an `aria-label` of `Filtering` and is visually labeled by the
+[filter Bootstrap icon](https://icons.getbootstrap.com/icons/filter/).
 
 ## Controlled vs Uncontrolled
 
@@ -186,7 +183,11 @@ The third type of filter state is for both date and datetime columns. It is one 
   </dd>
 </dl>
 
-Note that in terms of timezones, the grid follows the [default behavior of the JavaScript Date constructor when parsing the values from browser date and datetime-local inputs.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#:~:text=When%20the%20time%20zone%20offset%20is%20absent%2C%20date%2Donly%20forms%20are%20interpreted%20as%20a%20UTC%20time%20and%20date%2Dtime%20forms%20are%20interpreted%20as%20a%20local%20time.) In particular, the `Date` objects used for comparing dates _are in UTC_ while the `Date` objects for comparing datetimes _are in the client browser's local timezone._ This means that when supplying the `Grid` with date and datetime data, you probably want to use `Date` objects for dates in UTC and `Date` objects for datetimes in the client's local timezone.
+Note that in terms of timezones, the grid follows the
+[default behavior of the JavaScript Date constructor when parsing the values from browser date and datetime-local inputs.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#:~:text=When%20the%20time%20zone%20offset%20is%20absent%2C%20date%2Donly%20forms%20are%20interpreted%20as%20a%20UTC%20time%20and%20date%2Dtime%20forms%20are%20interpreted%20as%20a%20local%20time.)
+In particular, the `Date` objects used for comparing dates _are in UTC_ while the `Date` objects for comparing datetimes
+_are in the client browser's local timezone._ This means that when supplying the `Grid` with date and datetime data,
+you probably want to use `Date` objects for dates in UTC and `Date` objects for datetimes in the client's local timezone.
 
 ### AbstractDateFilterState
 

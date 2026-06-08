@@ -204,7 +204,6 @@ const ReorderableGrid: FC = () => {
 
   return (
     <GridPro
-      useToolbar
       rows={rows}
       cols={cols}
       sortModel={{

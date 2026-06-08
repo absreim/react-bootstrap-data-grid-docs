@@ -1,6 +1,6 @@
 "use client";
 
-import Grid, { GridPaginationState } from "@absreim/react-bootstrap-data-grid";
+import Grid, { PaginationModel } from "@absreim/react-bootstrap-data-grid";
 import { FC, useState } from "react";
 import { cols, rows } from "@/assets/pagination/paginatedGridData";
 
@@ -8,7 +8,7 @@ const ControlledPaginatedGrid: FC = () => {
   const [pageSizeIndex, setPageSizeIndex] = useState(0);
   const [pageNum, setPageNum] = useState(1);
 
-  const paginationState: GridPaginationState = {
+  const paginationState: PaginationModel = {
     pageSizeOptions: [5, 10, 15],
     pageSizeIndex: pageSizeIndex,
     setPageSizeIndex: (pageSizeIndex) => setPageSizeIndex(pageSizeIndex),
