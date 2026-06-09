@@ -97,6 +97,7 @@ const cols: ColDef[] = [
 
 const SampleToolbarGrid: FC = () => (
   <Grid
+    allowExport
     rows={rows}
     cols={cols}
     filterModel={{ type: "uncontrolled" }}

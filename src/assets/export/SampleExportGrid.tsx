@@ -215,6 +215,7 @@ const SampleExportGrid: FC = () => {
         />
       </Form>
       <Grid
+        allowExport
         rows={rows}
         cols={modifiedCols}
         pagination={paginationModel}

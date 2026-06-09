@@ -287,10 +287,10 @@ const variantToAlignment = new Map(
 
 const tableStyleModel: TableStyleModel = {
   caption: ["caption-top"],
-  table: ["table-bordered", "border-primary"],
+  table: ["table", "table-bordered", "border-primary"],
   tbodyTr: (id) => [`table-${id}`],
   tbodyTd: (id, _, colIndex) =>
-    colIndex === 2 ? [`align-${variantToAlignment.get(id as string)}}`] : [],
+    colIndex === 2 ? [`align-${variantToAlignment.get(id as string)}`] : null,
 };
 
 const styleModel: StyleModel = {

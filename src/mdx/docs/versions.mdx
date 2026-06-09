@@ -11,6 +11,33 @@ the minor version number, and backwards-compatible bug fixes should increment th
 
 ## Change Log
 
+### Version 3.0.0
+
+June 9, 2026
+
+This release introduces a number of breaking changes but adds no new features.
+
+- The `GridPaginationState` type has been renamed to `PaginationModel` to better align with naming used by other parts
+of the project.
+- The [filtering](/docs/filtering) interface is now accessible only via the [toolbar](/docs/toolbar).
+- [Style model](/docs/styling) properties for modifying the styles of the original elements used for accessing the
+filtering interface have been removed.
+- The [toolbar](/docs/toolbar) now is automatically displayed if at least one feature is enabled that uses it. The
+`useToolbar` prop, previously used to enable the toolbar, has been removed.
+- Enabling the [export](/docs/export) feature now requires the `allowExport` prop.
+- *Submit* buttons for the [export](/docs/export) and [filtering](/docs/filtering) interfaces now close the respective
+interface when clicked.
+- The [export](/docs/export) and [filtering](/docs/filtering) interfaces now include a *Cancel* button to close the
+respective interface without making any changes.
+- The main table is now [responsive](https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables) by default.
+The `responsive` prop, previously used to enable responsive tables, has been removed.
+- A [style model](/docs/styling) property for modifying the styles of a containing `div` that makes the main table
+[responsive](https://getbootstrap.com/docs/5.3/content/tables/#responsive-tables) has been added. This property can be
+used to disable the responsive behavior.
+
+For more details on these changes and how to migrate from version 2.x, see the
+[migration guide for version 3](/docs/migrate-v3).
+
 ### Version 2.7.0
 
 May 30, 2026
