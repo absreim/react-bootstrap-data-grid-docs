@@ -22,7 +22,7 @@ explicitly referring to this type by name, simply rename each occurrence to `Pag
 
 Previously, there were two ways to access the [filtering](/docs/filtering) interface:
 
-- A button labeled _Show Filter Options_ that is by default located above the main table.
+- A button labeled *Show Filter Options* that is by default located above the main table.
 - A button on the [toolbar](/docs/toolbar).
 
 Previously, the developer could choose between these two modes by specifying the `useToolbar` prop. Now, the
@@ -62,7 +62,7 @@ Both interfaces now also have a *Cancel* button that closes the interface withou
 instead.
 - If your app was setting the `useToolbar` set to `true` to enable the toolbar and exporting, remove the `useToolbar`
 prop and instead set `allowExport` to `true` to continue enabling exporting.
-- You may with to instruct your users about the changes with the Submit and Cancel buttons, although they are fairly
+- You may with to instruct your users about the changes with the *Submit* and *Cancel* buttons, although they are fairly
 straightforward.
 
 ## Main Table Responsive by Default
@@ -94,7 +94,7 @@ to the [style model](/docs/styling) for that element. These classes were:
 
 - `table` for the main table
 - `btn` for buttons
-- `form-control` for text, number, or date inputs
+- `form-control` for `text`, `number`, or `date` inputs
 - `form-select` for select dropdown controls
 
 These baseline classes are no longer preserved when an array is passed. For example, one could previously make a table
@@ -179,9 +179,9 @@ Migration is only needed if the developer was previously using empty string arra
 having function passed as a `styleModel` property return an empty string array. Migration steps differ based on whether
 a `styleModel` prop is a string array or a function.
 
--For properties that are string arrays, wherever a `styleModel` property was previously passed an empty array, simply
+- For properties that are string arrays, wherever a `styleModel` property was previously passed an empty array, simply
 pass `undefined` or omit the property.
--For `styleModel` properties that are functions, modify the function to return `null` where the function was previously
+- For `styleModel` properties that are functions, modify the function to return `null` where the function was previously
 returning an empty array.
 
 ### Properties Affected

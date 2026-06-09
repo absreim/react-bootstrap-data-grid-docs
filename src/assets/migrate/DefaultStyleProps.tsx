@@ -85,7 +85,7 @@ const DefaultStyleProps: FC = () => (
             <code>{'["btn", "btn-secondary"]'}</code>
           </td>
           <td>
-            <code>{'["btn"]'}</code>
+            <code>{'["btn-secondary"]'}</code>
           </td>
         </tr>
         <tr>
@@ -101,7 +101,7 @@ const DefaultStyleProps: FC = () => (
             <code>{'["btn", "btn-primary"]'}</code>
           </td>
           <td>
-            <code>{'["btn"]'}</code>
+            <code>{'["btn-primary"]'}</code>
           </td>
         </tr>
         <tr>
