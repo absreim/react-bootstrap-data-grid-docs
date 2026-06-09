@@ -8,6 +8,7 @@ const DefaultStyleProps: FC = () => (
           <th>Property</th>
           <th>Type</th>
           <th>Default Classes</th>
+          <th>Previously Customizable Defaults</th>
         </tr>
       </thead>
       <tbody>
@@ -21,10 +22,11 @@ const DefaultStyleProps: FC = () => (
           <td>
             <code>{'["table"]'}</code>
           </td>
+          <td>(none)</td>
         </tr>
         <tr>
           <td>
-            <code>mainTableStyleModel.tbodyTd</code>
+            <code>mainTableStyleModel.tbodyTdInput</code>
           </td>
           <td>
             <code>
@@ -36,6 +38,7 @@ const DefaultStyleProps: FC = () => (
           <td>
             <code>{'["form-control"]'}</code>
           </td>
+          <td>(none)</td>
         </tr>
         <tr>
           <td>
@@ -48,6 +51,9 @@ const DefaultStyleProps: FC = () => (
           </td>
           <td>
             <code>{'["btn", "btn-secondary"]'}</code>
+          </td>
+          <td>
+            <code>{'["btn-secondary"]'}</code>
           </td>
         </tr>
         <tr>
@@ -62,6 +68,9 @@ const DefaultStyleProps: FC = () => (
           <td>
             <code>{'["btn", "btn-primary"]'}</code>
           </td>
+          <td>
+            <code>{'["btn-primary"]'}</code>
+          </td>
         </tr>
         <tr>
           <td>
@@ -74,6 +83,9 @@ const DefaultStyleProps: FC = () => (
           </td>
           <td>
             <code>{'["btn", "btn-secondary"]'}</code>
+          </td>
+          <td>
+            <code>{'["btn"]'}</code>
           </td>
         </tr>
         <tr>
@@ -88,6 +100,9 @@ const DefaultStyleProps: FC = () => (
           <td>
             <code>{'["btn", "btn-primary"]'}</code>
           </td>
+          <td>
+            <code>{'["btn"]'}</code>
+          </td>
         </tr>
         <tr>
           <td>
@@ -99,6 +114,7 @@ const DefaultStyleProps: FC = () => (
           <td>
             <code>{'["btn-primary"]'}</code>
           </td>
+          <td>(none)</td>
         </tr>
         <tr>
           <td>
@@ -110,6 +126,7 @@ const DefaultStyleProps: FC = () => (
           <td>
             <code>{'["form-control"]'}</code>
           </td>
+          <td>(none)</td>
         </tr>
         <tr>
           <td>
@@ -121,6 +138,7 @@ const DefaultStyleProps: FC = () => (
           <td>
             <code>{'["form-control"]'}</code>
           </td>
+          <td>(none)</td>
         </tr>
         <tr>
           <td>
@@ -131,6 +149,9 @@ const DefaultStyleProps: FC = () => (
           </td>
           <td>
             <code>{'["btn", "btn-primary"]'}</code>
+          </td>
+          <td>
+            <code>{'["btn-primary"]'}</code>
           </td>
         </tr>
         <tr>
@@ -143,6 +164,7 @@ const DefaultStyleProps: FC = () => (
           <td>
             <code>{'["form-select"]'}</code>
           </td>
+          <td>(none)</td>
         </tr>
         <tr>
           <td>
@@ -154,6 +176,7 @@ const DefaultStyleProps: FC = () => (
           <td>
             <code>{'["form-control"]'}</code>
           </td>
+          <td>(none)</td>
         </tr>
         <tr>
           <td>
@@ -165,6 +188,7 @@ const DefaultStyleProps: FC = () => (
           <td>
             <code>{'["form-control"]'}</code>
           </td>
+          <td>(none)</td>
         </tr>
       </tbody>
     </table>

@@ -85,23 +85,95 @@ was set to `false` or not set.
 - If you want to disable responsive behavior for the main table, do so by configuring the `styleModel` prop using the
 instructions above.
 
-## Empty Array for Style Model Value Behavior Change
+## Style Model Behavior Changes
 
-There are a number of elements that can be modified with a `styleModel` prop that have default classes. For example,
-the `mainTableStyleModel.table` property of the `styleModel` prop modifies the main `table` element.
+### Baseline Bootstrap Classes
 
-This element has a default CSS class of `table` to apply Bootstrap table styles.
+Previously, there were certain "baseline" Bootstrap classes that were preserved even if one were to pass in a property
+to the [style model](/docs/styling) for that element. These classes were:
 
-Previously, if one were to specify an empty array (`[]`) for a [style model](/docs/styling) property, existing classes
-(like `table` in the previous example) would sometimes be preserved, depending on the exact property. Now, style model
-properties always differentiate between `undefined` and an empty array. Specifying an empty array will cause the grid to
-remove default styles, while `undefined` preserves them.
+- `table` for the main table
+- `btn` for buttons
+- `form-control` for text, number, or date inputs
+- `form-select` for select dropdown controls
 
-Below is a complete list of existing properties of the `styleModel` prop that are affected by this change:
+These baseline classes are no longer preserved when an array is passed. For example, one could previously make a table
+[striped](https://getbootstrap.com/docs/5.3/content/tables/#striped-rows) by passing in the value `["table-striped"]`
+to the `mainTableStyleModel.table` property. The `table` element would then have the classes `table` and
+`table-striped`.
 
-<DefaultStyleProps />
+Now, to achieve the same effect, one needs to pass in `["table", "table-striped"]`.
 
-### Migration Steps
+#### Migration Steps
+
+For grids for which you were previously applying custom styling to one of the affected elements, modify the values for
+these properties to include the baseline classes as well.
+
+For style model properties of type `string[]`, simply add in the baseline class: `["btn", "btn-info"]` rather than
+`["btn-info"]`.
+
+For style model properties that are functions, have the function return the baseline class as well. For example, if one
+wanted to make form controls small, instead of
+
+```ts
+() => ["form-control-sm"]
+```
+
+include the baseline `form-control` class in the function's return value:
+
+```ts
+() => ["form-control", "form-control-sm"]
+```
+
+For a list of all affected properties, see the _Properties Affected_ section below.
+
+### Empty Array vs Falsy Values
+
+Previously, the grid did not differentiate between empty arrays (`[]`) and `undefined` when passed as the value for a
+[style model](/docs/styling) property.
+
+For style model properties of type `string[]`, if an empty array `[]` were specified, the grid would use the default
+styles.
+
+Similarly, for style model properties that are functions, for the elements where the function returns `[]`, the grid
+uses default styles for that particular element.
+
+Now, if `[]` is specified for a style model property, or when the function specified for a style model property returns
+`[]`, the grid will remove the default styles for the affected elements.
+
+#### Array-typed Style Model Properties
+
+For example, the main `table` element has the
+[Bootstrap table CSS class](https://getbootstrap.com/docs/5.3/content/tables/#overview) by default. The
+`mainTableStyleModel.table` style model property can be used to customize the styling for this element. The type of this
+property is `string[]`.
+
+Specifying `[]` for the property will remove the `table` class.
+
+Specifying `undefined` or omitting the property entirely will cause the grid to behave in the original way by applying
+default styling.
+
+#### Function-typed Style Model Properties
+
+Previously, the return type for all function-typed style model properties was `string[]`. Now, due to this change in
+behavior, the return type has been changed to `string[] | null`. Whenever a function returns `null` for a particular
+element, the grid will use default classes for that element.
+
+For example, to make all cell editing input fields smaller via the
+[form-control-sm class](https://getbootstrap.com/docs/5.3/forms/form-control/#sizing) _except the first_, one can use
+the following function for the `mainTableStyleModel.tbodyTdInput` property.
+
+```ts
+(_, displayRowIndex) => {
+    if (displayRowIndex === 0) {
+        return null;
+    }
+
+    return ["form-control", "form-control-sm"];
+}
+```
+
+#### Migration Steps
 
 Migration is only needed if the developer was previously using empty string arrays for `styleModel` properties or
 having function passed as a `styleModel` property return an empty string array. Migration steps differ based on whether
@@ -111,6 +183,12 @@ a `styleModel` prop is a string array or a function.
 pass `undefined` or omit the property.
 -For `styleModel` properties that are functions, modify the function to return `null` where the function was previously
 returning an empty array.
+
+### Properties Affected
+
+Below is a complete list of existing properties of the `styleModel` prop that are affected by these changes.
+
+<DefaultStyleProps />
 
 ## New and Removed Style Model Properties
 
