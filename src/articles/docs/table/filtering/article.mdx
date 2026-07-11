@@ -1,0 +1,401 @@
+---
+navLabel: Filtering
+order: 4
+---
+
+import TypeSpecTable from "@/components/TypeSpecTable";
+import ControlledFilteredTable from "./ControlledFilteredTable";
+import {
+    abstractDateFilterState,
+    abstractFilterState,
+    betweenDatesFilterState,
+    endDateFilterState,
+    numberFilterState,
+    startDateFilterState,
+    stringFilterState,
+    controlledFilterModel,
+    uncontrolledFilterModel,
+} from "./typeSpecs";
+import UncontrolledFilteredTable from "./UncontrolledFilteredTable";
+
+# Filtering
+
+react-bootstrap-data-grid provides an interface to filter rows by specifying various criteria across one or more columns.
+
+Supplying the `filterModel` prop will enable filtering for the Grid, while omitting it will disable filtering.
+
+Currently, it is not possible to configure the grid to prevent the user from filtering on certain columns. You can
+set the initial state of the filter to disable filtering on some or all columns, but the user can re-enable them via the
+UI.
+
+## Accessing the Interface
+
+For grids where filtering is enabled, the user can access the filtering interface via the appropriate button on the
+[toolbar](/docs/table/toolbar). The button has an `aria-label` of `Filtering` and is visually labeled by the
+[filter Bootstrap icon](https://icons.getbootstrap.com/icons/filter/).
+
+## Controlled vs Uncontrolled
+
+Filtering can be enabled in either a __controlled__ or __uncontrolled__ manner, depending on type of `FilterModel`
+passed as
+`filterModel` prop to the `Grid` component. Pass an object of type `ControlledFilterModel` or `UncontrolledFilterModel`
+to use __controlled__ or __uncontrolled__ mode, respectively.
+
+__Controlled__ mode allows the parent component full control over the state of filtering in the grid, but requires more
+code to set up.
+
+__Uncontrolled__ mode causes the `Grid` component itself to keep track of the state of filtering and this state is not
+available to parent component. The parent component may specify a starting state. If it does not, the `Grid` component
+will generate an empty starting state with no filters initially applied.
+
+## Filtering and Formatter Functions
+
+Note that, as of now, filtering can only be on the original, unformatted data for each column, and there is no easy way
+for users to see the underlying unformatted data if formatters are applied.
+
+This issue may be addressed in the future by adding the functionality to let users filter on formatted strings and/or
+letting users see unformatted values.
+
+In the meantime, it is recommended that if you intend to use both filtering and formatters in the same grid, provide
+guidance as to how one can filter on the original data.
+
+For example, you may have a formatter on a number column to
+display commas to separate groups of 3 digits. In that case, you may wish display a note to your users that when
+entering a number to filter on that column, the number displayed in the input will not have commas.
+
+## Type Definitions
+
+### FilterModel
+
+`FilterModel` is the type of the prop passed to `Grid` to enable filtering. It is a discriminated union of
+`ControlledFilterModel` and `UncontrolledFilterModel`.
+
+### ControlledFilterModel
+
+<TypeSpecTable rows={controlledFilterModel}/>
+
+### UncontrolledFilterModel
+
+<TypeSpecTable rows={uncontrolledFilterModel}/>
+
+### EditableTableFilterState
+
+`EditableTableFilterState` contains the state of the filtering UI for an entire `Grid` and has the type definition
+`Record<string, FilterState>`, where the key is the `name` property of the `ColDef` for the column.
+
+### FilterState
+
+`FilterState` represents the state of the filtering UI for a single column. There are three types of `FilterState` that
+represent different column types. It has the type definition `StringFilterState | NumberFilterState | DateFilterState`.
+
+### AbstractFilterState
+
+Each type of `FilterState` extends `AbstractFilterState`, which provides a parameter to record the fact of whether the
+filter for a particular column is enabled or disabled.
+
+<TypeSpecTable rows={abstractFilterState}/>
+
+### StringFilterState
+
+The first type of filter state is for string columns.
+
+<TypeSpecTable rows={stringFilterState}/>
+
+### StringFilterScheme
+
+The `StringFilterScheme` specifies the type of filter to apply for string columns and has the following possible values
+and corresponding behaviors:
+
+<dl>
+    <dt>contains</dt>
+    <dd>
+        Does not filter out the column if the substring is present anywhere in the
+        cells value
+    </dd>
+    <dt>startsWith</dt>
+    <dd>
+        Filters out the column unless the cell's value starts with the specified
+        string
+    </dd>
+    <dt>endsWith</dt>
+    <dd>
+        Filters out the column unless the cell's value ends with the specified
+        string
+    </dd>
+</dl>
+
+### NumberFilterState
+
+The second type of filter state is for number columns.
+
+<TypeSpecTable rows={numberFilterState}/>
+
+### NumberFilterScheme
+
+The `NumberFilterScheme` specifies the type of filter to apply for number columns and has the following possible values
+and corresponding behaviors:
+
+<dl>
+    <dt>equals</dt>
+    <dd>
+        Filters out the column unless the cell's value is equal to the specified
+        value
+    </dd>
+    <dt>greaterThan</dt>
+    <dd>
+        Filters out the column unless the cell's value is greater than the specified
+        value
+    </dd>
+    <dt>lessThan</dt>
+    <dd>
+        Filters out the column unless the cell's value is less than the specified
+        value
+    </dd>
+    <dt>greaterOrEqual</dt>
+    <dd>
+        Filters out the column unless the cell's value is greater than or equal to
+        the specified value
+    </dd>
+    <dt>lessOrEqual</dt>
+    <dd>
+        Filters out the column unless the cell's value is less than or equal to the
+        specified value
+    </dd>
+</dl>
+
+### DateFilterState
+
+The third type of filter state is for both date and datetime columns. It is one of the following 3 subtypes,
+representing different filter types:
+
+<dl>
+    <dt>StartDateFilterState</dt>
+    <dd>
+        The row is filtered out unless the cell's value is the same as or after the
+        specified date.
+    </dd>
+    <dt>EndDateFilterState</dt>
+    <dd>
+        The row is filtered out unless the cell's value is the same as or before the
+        specified date.
+    </dd>
+    <dt>BetweenDatesFilterState</dt>
+    <dd>
+        The row is filtered out unless the cell's value is between the specified
+        dates, inclusive.
+    </dd>
+</dl>
+
+Note that in terms of timezones, the grid follows the
+[default behavior of the JavaScript Date constructor when parsing the values from browser date and datetime-local inputs.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#:~:text=When%20the%20time%20zone%20offset%20is%20absent%2C%20date%2Donly%20forms%20are%20interpreted%20as%20a%20UTC%20time%20and%20date%2Dtime%20forms%20are%20interpreted%20as%20a%20local%20time.)
+In particular, the `Date` objects used for comparing dates _are in UTC_ while the `Date` objects for comparing datetimes
+_are in the client browser's local timezone._ This means that when supplying the `Grid` with date and datetime data,
+you probably want to use `Date` objects for dates in UTC and `Date` objects for datetimes in the client's local timezone.
+
+### AbstractDateFilterState
+
+All three date filter state types inherit from `AbstractDateFilterState`, which differentiates between date and datetime
+columns and between different filter schemes.
+
+Note that for now, there is no difference in filter behavior between date and datetime columns.
+
+<TypeSpecTable rows={abstractDateFilterState}/>
+
+### StartDateFilterState
+
+<TypeSpecTable rows={startDateFilterState}/>
+
+### EndDateFilterState
+
+<TypeSpecTable rows={endDateFilterState}/>
+
+### BetweenDatesFilterState
+
+<TypeSpecTable rows={betweenDatesFilterState}/>
+
+## Examples
+
+Both examples use the sample data from the following file:
+
+##### tableData.ts
+
+```ts
+import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
+
+export const cols: ColDef[] = [
+  {
+    type: "number",
+    name: "number",
+    label: "Number",
+  },
+  {
+    type: "string",
+    name: "version",
+    label: "Version",
+  },
+  {
+    type: "date",
+    name: "date",
+    label: "Date",
+  },
+];
+
+interface Data {
+  number: number;
+  version: string;
+  date: Date;
+}
+
+export const rows: RowDef<Data>[] = [
+  {
+    id: 0,
+    data: {
+      number: 7,
+      version: "4.1.1.5849914",
+      date: new Date("2024-09-05"),
+    },
+  },
+  {
+    id: 1,
+    data: {
+      number: 6,
+      version: "4.1.1.4763283",
+      date: new Date("2024-02-16"),
+    },
+  },
+  {
+    id: 2,
+    data: {
+      number: 5,
+      version: "4.1.1.4061076",
+      date: new Date("2023-11-30"),
+    },
+  },
+  {
+    id: 3,
+    data: {
+      number: 4,
+      version: "4.1.1.3882084",
+      date: new Date("2023-11-02"),
+    },
+  },
+  {
+    id: 4,
+    data: {
+      number: 3,
+      version: "4.1.1.3732833",
+      date: new Date("2023-09-22"),
+    },
+  },
+  {
+    id: 5,
+    data: {
+      number: 2,
+      version: "4.1.1.3686210",
+      date: new Date("2023-08-31"),
+    },
+  },
+  {
+    id: 6,
+    data: {
+      number: 1,
+      version: "4.1.1.3669438",
+      date: new Date("2023-08-25"),
+    },
+  },
+  {
+    id: 7,
+    data: {
+      number: 0,
+      version: "4.1.1.3622274",
+      date: new Date("2023-08-03"),
+    },
+  },
+];
+```
+
+### Controlled
+
+#### Code
+
+##### ControlledFilteredTable.tsx
+
+```tsx
+"use client";
+
+import Table, {
+  EditableFilterState,
+  FilterModel,
+} from "@absreim/react-bootstrap-data-grid/table";
+import { FC, useState } from "react";
+import { cols, rows } from "./tableData";
+
+const ControlledFilteredTable: FC = () => {
+  const [tableFilterState, setTableFilterState] = useState<EditableFilterState>(
+    {
+      number: {
+        type: "number",
+        scheme: "lessOrEqual",
+        numValue: 4,
+        enabled: true,
+      },
+      version: {
+        type: "string",
+        scheme: "startsWith",
+        searchString: "4.1.1.3",
+        enabled: true,
+      },
+      date: {
+        type: "date",
+        scheme: "startFrom",
+        startDate: new Date("2023-08-15"),
+        enabled: true,
+      },
+    },
+  );
+
+  const filterModel: FilterModel = { tableFilterState, setTableFilterState };
+
+  return <Table rows={rows} cols={cols} filterModel={filterModel} />;
+};
+
+export default ControlledFilteredTable;
+```
+
+#### Live Demo
+
+<ControlledFilteredTable/>
+
+### Uncontrolled
+
+In this example, the starting filter state was omitted completely, causing the `Grid` component to generate a blank
+state. This state has no filters initially applied, but the user can use UI to modify the state to enable filtering.
+
+#### Code
+
+##### UncontrolledFilteredTable.tsx
+
+```tsx
+"use client";
+
+import Table, {
+  UncontrolledFilterModel,
+} from "@absreim/react-bootstrap-data-grid/table";
+import { FC } from "react";
+import { cols, rows } from "./tableData";
+
+const UncontrolledFilteredTable: FC = () => {
+  const filterModel: UncontrolledFilterModel = {
+    type: "uncontrolled",
+    filterTableCaption: "Uncontrolled filter mode example",
+  };
+
+  return <Table rows={rows} cols={cols} filterModel={filterModel} />;
+};
+
+export default UncontrolledFilteredTable;
+```
+
+#### Live Demo
+
+<UncontrolledFilteredTable/>

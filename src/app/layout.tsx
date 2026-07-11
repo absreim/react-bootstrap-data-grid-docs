@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./style.scss";
-import "@absreim/react-bootstrap-data-grid-pro/style.css"
+import "@absreim/react-bootstrap-data-grid-pro/table-pro.scss";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import { ReactNode } from "react";

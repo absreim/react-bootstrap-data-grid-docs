@@ -32,6 +32,11 @@
 // Utilities
 @import "~bootstrap/scss/utilities/api";
 
+// --- RBDG Grid ---
+
+@import "@absreim/react-bootstrap-data-grid-pro/table-pro.scss";
+@import "@absreim/react-bootstrap-data-grid-pro/grid.scss";
+
 // --- Shiki themes ---
 
 code[data-theme*=" "],
@@ -55,9 +60,9 @@ code[data-theme*=" "] span {
 // --- Styles specific to this project ---
 
 .rbdg-docs-toc {
-  width: 12rem;
+  width: 14rem;
   min-width: 0;
-  font-size: 0.9rem;
+  font-size: $font-size-sm;
 
   ul {
     padding-left: map.get($spacers, 2);
@@ -65,10 +70,16 @@ code[data-theme*=" "] span {
 }
 
 .rbdg-docs-toc-li {
-  text-wrap: nowrap;
+  text-wrap: wrap;
   text-overflow: ellipsis;
   overflow-x: hidden;
   border-left: 2px solid;
+
+  > a {
+    display: block;
+    padding-top: map.get($spacers, 1);
+    padding-bottom: map.get($spacers, 1);
+  }
 }
 
 .rbdg-docs-toc-li-inactive {
@@ -76,7 +87,7 @@ code[data-theme*=" "] span {
 }
 
 .rbdg-docs-toc-li-active {
-  border-color: var(--bs-body-color);
+  border-color: var(--bs-link-color);
 }
 
 .rbdg-docs-main {
@@ -93,7 +104,7 @@ code[data-theme*=" "] span {
 }
 
 .rbdg-contents-navbar {
-  width: 9rem;
+  width: 10rem;
   min-width: 0;
 }
 
@@ -101,13 +112,22 @@ code[data-theme*=" "] span {
   min-width: 0;
 }
 
-.vr {
+.rbdg-vertical-rule {
   display: inline-block;
   align-self: stretch;
   width: var(--bs-border-width);
   min-height: 1em;
   background-color: currentcolor;
   opacity: .25;
+}
+
+.rbdg-sectioned-navbar-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.rbdg-unsectioned-navbar-list {
+  font-size: $font-size-sm;
 }
 
 @include media-breakpoint-up(lg) {

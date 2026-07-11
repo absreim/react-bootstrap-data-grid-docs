@@ -1,0 +1,88 @@
+---
+navLabel: Pro
+order: 10
+pro: true
+category: Pro
+---
+
+import PrereleaseNotice from "@/assets/alerts/PrereleaseNotice";
+import ProBadge from "@/assets/ProBadge";
+import TypeSpecTable from "@/components/TypeSpecTable";
+import { proColDef, widthModel } from "./typeSpecs";
+
+<h1>Pro Version <ProBadge /></h1>
+
+<PrereleaseNotice />
+
+The Pro version of the react-bootstrap-data-grid table:
+
+- includes advanced features not found in the Community version.
+- requires a license to use in production, but can be freely used for evaluation purposes.
+- comes in an NPM package that is separate from the Community version. It is named
+`@absreim/react-bootstrap-data-grid-pro`.
+
+## Setup
+
+The Pro version is designed to contain all the features of the Community version. The API is very similar between the
+two versions, but not entirely the same. Note the following differences when setting up the Pro version versus the
+Community version.
+
+### Installation
+
+The name of the NPM package for the pro version is different and should be installed as follows:
+
+```bash
+npm install @absreim/react-bootstrap-data-grid-pro
+```
+
+### Styling
+
+The names of style sheets for the table component are slightly different. See the
+[relevant section in the installation documentation](/docs/overview/installation#table-style-sheets)
+for details on how to import style sheets for the pro edition.
+
+## API Differences
+
+- the name of the grid component is `TablePro` rather than `Table`
+- the name of the type that represents the props for the `TablePro` component is `TableProProps` rather than `TableProps`
+- the name of the column definition type `ProColDef` rather than `ColDef` and contains additional fields
+
+See more details on each specific point below.
+
+### TablePro
+
+This component is the default export of the Pro version NPM package and be imported as follows:
+
+```ts
+import GridPro from "@absreim/react-bootstrap-data-grid-pro";
+```
+
+### TableProProps
+
+This type contains the props for `TablePro`. The props are largely the same as `TableProProps` but with a few differences.
+
+- The column definitions in the `cols` prop are of type `ProColDef[]` instead of `ColDef[]`.
+- The `styleModel` prop is of type `ProStyleModel`. `ProStyleModel` contains all the properties of `StyleModel` but
+additionally contains `reorderModel` property for customizing style of the [row reordering](/docs/table/reorder) feature.
+- `GridProProps` contains a `reorderModel` prop to enable [row reordering](/docs/table/reorder) while `TableProps` does not.
+
+### ProColDef
+
+Compared to `ColDef`, the `width` property can be `WidthModel` in addition to `number` or `undefined`, allowing for
+external control of column widths.
+
+Several other additional optional properties are included to allow resizing of columns. See the
+[resize article](/docs/table/resize) for a discussion and usage examples.
+
+The additional and changed fields for `ProColDef` are defined in the below table. All other properties are the same as
+[ColDef](/docs/overview/basic-usage#coldef).
+
+<TypeSpecTable rows={proColDef} />
+
+### WidthModel
+
+The `WidthModel` interface consists of a value and setter for column widths. It can be passed down as part of a
+`ProColDef` object to let the parent component programmatically control the widths of columns. The type specification of
+`WidthModel` is as follows.
+
+<TypeSpecTable rows={widthModel} />

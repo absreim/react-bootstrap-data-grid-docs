@@ -1,0 +1,38 @@
+---
+navLabel: Grid vs. Table
+order: 3
+---
+
+# Grid vs. Table
+
+The _grid_ and _table_ components are the two major offerings of react-bootstrap-data-grid. Both components display data
+in a tabular format.
+
+The primary difference between the _grid_ and _table_ component is that the _grid_ component uses `div` elements
+with fixed width instead of the
+[HTML table element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table)
+and related child elements. This way of laying out cells is commonly found in other well-known data grid solutions, like
+[MUI-X Data Grid](https://mui.com/x/react-data-grid/).
+
+Perhaps the most noticeable difference of laying out cells this way is that the cell width can be tightly controlled.
+Browsers appear to adhere closely to
+[width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/width),
+[min-width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/min-width), and
+[max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/max-width) settings for `flex` and
+`block` display modes. In contrast, for a `table`, browsers can often ignore those CSS properties in order to
+accommodate the contents of a cell.
+
+Additionally, compared to the _table_ component, the _grid_ component:
+
+- __contains cells that have to a single line of text__. Any text that overflows is omitted. When there is overflowing
+text, an ellipsis (...) at the end of the cell indicates that some text is not being displayed.
+- __allows each cell to be individually focusable__. In contrast, in the _table_ component only certain elements within
+the cells, like buttons or checkboxes, are focusable. (This feature is not yet implemented for the grid but will be
+implemented soon.)
+- __can be configured to either take up a fixed height or take on the intrinsic height of the contents__. In contrast,
+the _table_ component will always take on the intrinsic height of the contents.
+- __is relatively new and has far fewer features than the _table_
+component currently__. Use the _table_ component if you need one of its features that is not currently available on the
+_grid_ component.
+- __is limited to a single line of text per row.__ Use the _table_
+component instead if you prefer for cells to be expandable to multiple lines to accommodate lengthier text content.

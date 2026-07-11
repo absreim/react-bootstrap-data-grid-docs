@@ -7,7 +7,7 @@ const testNavLinkAndHeading: (
 ) => Promise<void> = async (page, sectionName) => {
   // this complex selector is needed to differentiate between the desktop and
   // mobile nav links
-  const nav = page.locator("div.container > div > div > div.nav");
+  const nav = page.locator("div.container > div > div > ul");
   const link = nav.getByRole("link", { name: sectionName });
   await link.click();
   const heading = page.getByRole("heading", {
@@ -18,7 +18,7 @@ const testNavLinkAndHeading: (
 };
 
 test("desktop links work", async ({ page }) => {
-  await page.goto("/docs/introduction");
+  await page.goto("/docs/overview/introduction");
 
   const introHeading = page.getByRole("heading", {
     level: 1,

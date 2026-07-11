@@ -1,0 +1,39 @@
+"use client";
+
+import Table, {
+  EditableFilterState,
+  FilterModel,
+} from "@absreim/react-bootstrap-data-grid/table";
+import { FC, useState } from "react";
+import { cols, rows } from "./tableData";
+
+const ControlledFilteredTable: FC = () => {
+  const [tableFilterState, setTableFilterState] = useState<EditableFilterState>(
+    {
+      number: {
+        type: "number",
+        scheme: "lessOrEqual",
+        numValue: 4,
+        enabled: true,
+      },
+      version: {
+        type: "string",
+        scheme: "startsWith",
+        searchString: "4.1.1.3",
+        enabled: true,
+      },
+      date: {
+        type: "date",
+        scheme: "startFrom",
+        startDate: new Date("2023-08-15"),
+        enabled: true,
+      },
+    },
+  );
+
+  const filterModel: FilterModel = { tableFilterState, setTableFilterState };
+
+  return <Table rows={rows} cols={cols} filterModel={filterModel} />;
+};
+
+export default ControlledFilteredTable;

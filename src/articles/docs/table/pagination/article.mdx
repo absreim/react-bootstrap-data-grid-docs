@@ -1,0 +1,262 @@
+---
+navLabel: Pagination
+order: 3
+---
+
+import TypeSpecTable from "@/components/TypeSpecTable";
+import {
+  controlledPaginationModel,
+  paginationModelSharedFields,
+  uncontrolledPaginationModel,
+} from "./typeSpecs";
+import ControlledPaginatedTable from "./ControlledPaginatedTable";
+import UncontrolledPaginatedTable from "./UncontrolledPaginatedTable";
+
+# Pagination
+
+Pagination is optional and can be enabled by passing a `pagination` prop to the `Table` component.
+
+Two modes are available, controlled and uncontrolled.
+
+In a manner similar to
+[controlled form components in the official React documentation](https://legacy.reactjs.org/docs/forms.html#controlled-components),
+the parent component can use pagination with react-bootstrap-data-grid in _controlled_ manner by supplying relevant state
+values and setter functions. This mode allows the parent component full access to the pagination state of the table, but
+requires more code to set up than when using uncontrolled mode.
+
+In _uncontrolled_ mode, the parent component specifies the starting state of pagination for the grid, while the grid keeps
+track of state changes. Note that the starting state is only read once, when the `Table` component is mounted. If this
+behavior is not acceptable, one can either force a remount of the `Table` component (e.g. by changing the `key` prop), or
+by using controlled mode instead.
+
+## Type Definitions
+
+### PaginationModel
+
+This is the type of the `pagination` prop passed to the `Table` component to enable pagination.
+
+It is a discriminated union between `ControlledPaginationModel` and `UncontrolledPaginationModel`, which enable
+controlled and uncontrolled pagination modes for a grid, respectively, when passed as the `pagination` prop.
+
+`ControlledPaginationModel` and `UncontrolledPaginationModel` share the following fields:
+
+<TypeSpecTable rows={paginationModelSharedFields} />
+
+### ControlledPaginationModel
+
+The member of the discriminated union `GridPaginationState` that enables controlled pagination mode for a table. In
+addition to the properties in the table below, `ControlledPaginationModel` also includes the properties common with
+`UncontrolledPaginationModel`. Those common properties can be found in the `GridPaginationState` section.
+
+<TypeSpecTable rows={controlledPaginationModel} />
+
+### UncontrolledPaginationModel
+
+The member of the discriminated union `GridPaginationState` that enables uncontrolled pagination mode for a table. In
+addition to the properties in the table below, `ControlledPaginationModel` also includes the properties common with
+`UncontrolledPaginationModel`. Those common properties can be found in the `GridPaginationState` section.
+
+<TypeSpecTable rows={uncontrolledPaginationModel} />
+
+## Examples
+
+### Shared Code
+
+Both examples use the sample data from the following file:
+
+#### tableData.ts
+
+```ts
+import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
+
+export const cols: ColDef[] = [
+  {
+    type: "string",
+    name: "name",
+    label: "Name",
+  },
+  {
+    type: "number",
+    name: "class",
+    label: "Armor Class",
+  },
+  {
+    type: "string",
+    name: "weight",
+    label: "Weight",
+  },
+];
+
+interface Data {
+  name: string;
+  class: number;
+  weight: string;
+}
+
+export const rows: RowDef<Data>[] = [
+  {
+    id: 0,
+    data: {
+      name: "Leather Armor",
+      class: 11,
+      weight: "Light",
+    },
+  },
+  {
+    id: 1,
+    data: {
+      name: "Padded Armor",
+      class: 11,
+      weight: "Light",
+    },
+  },
+  {
+    id: 2,
+    data: {
+      name: "Studded Leather Armor",
+      class: 12,
+      weight: "Light",
+    },
+  },
+  {
+    id: 3,
+    data: {
+      name: "Hide Armor",
+      class: 12,
+      weight: "Medium",
+    },
+  },
+  {
+    id: 4,
+    data: {
+      name: "Chain Shirt",
+      class: 13,
+      weight: "Medium",
+    },
+  },
+  {
+    id: 5,
+    data: {
+      name: "Scale Mail",
+      class: 14,
+      weight: "Medium",
+    },
+  },
+  {
+    id: 6,
+    data: {
+      name: "Breastplate",
+      class: 14,
+      weight: "Medium",
+    },
+  },
+  {
+    id: 7,
+    data: {
+      name: "Half Plate",
+      class: 15,
+      weight: "Medium",
+    },
+  },
+  {
+    id: 8,
+    data: {
+      name: "Ring Mail",
+      class: 14,
+      weight: "Heavy",
+    },
+  },
+  {
+    id: 9,
+    data: {
+      name: "Chain Mail",
+      class: 16,
+      weight: "Heavy",
+    },
+  },
+  {
+    id: 10,
+    data: {
+      name: "Splint Armor",
+      class: 17,
+      weight: "Heavy",
+    },
+  },
+  {
+    id: 11,
+    data: {
+      name: "Plate Armor",
+      class: 18,
+      weight: "Heavy",
+    },
+  },
+];
+```
+
+### Controlled
+
+#### Code
+
+##### ControlledPaginatedTable.tsx
+
+```tsx
+"use client";
+
+import Table, { PaginationModel } from "@absreim/react-bootstrap-data-grid/table";
+import { FC, useState } from "react";
+import { cols, rows } from "@/assets/pagination/tableData";
+
+const ControlledPaginatedTable: FC = () => {
+  const [pageSizeIndex, setPageSizeIndex] = useState(0);
+  const [pageNum, setPageNum] = useState(1);
+
+  const paginationState: PaginationModel = {
+    pageSizeOptions: [5, 10, 15],
+    pageSizeIndex: pageSizeIndex,
+    setPageSizeIndex: (pageSizeIndex) => setPageSizeIndex(pageSizeIndex),
+    currentPage: pageNum,
+    setCurrentPage: (pageNum) => setPageNum(pageNum),
+    maxPageButtons: 5,
+    componentSize: "large",
+  };
+
+  return <Table rows={rows} cols={cols} pagination={paginationState} />;
+};
+
+export default ControlledPaginatedTable;
+```
+
+#### Live Demo
+
+<ControlledPaginatedTable />
+
+### Uncontrolled
+
+#### Code
+
+##### UncontrolledPaginatedTable.tsx
+
+```tsx
+"use client";
+
+import Table, {
+  UncontrolledPaginationModel,
+} from "@absreim/react-bootstrap-data-grid/table";
+import { FC } from "react";
+import { cols, rows } from "@/assets/pagination/tableData";
+
+const UncontrolledPaginatedTable: FC = () => {
+  const paginationState: UncontrolledPaginationModel = {
+    type: "uncontrolled",
+    pageSizeOptions: [5, 10, 15],
+  };
+
+  return <Table rows={rows} cols={cols} pagination={paginationState} />;
+};
+
+export default UncontrolledPaginatedTable;
+```
+
+#### Live Demo
+
+<UncontrolledPaginatedTable />

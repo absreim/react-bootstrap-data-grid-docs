@@ -2,7 +2,7 @@ import { FC } from "react";
 import Stack from "react-bootstrap/Stack";
 import Link from "next/link";
 import Logo from "@/assets/Logo";
-import MainLayout from "@/shared/MainLayout";
+import MainLayout from "@/components/MainLayout";
 
 const Page: FC = () => (
   <MainLayout>
@@ -14,7 +14,7 @@ const Page: FC = () => (
         with React and Bootstrap
       </p>
       <Stack direction="horizontal" gap={2} className="justify-content-center">
-        <Link href="docs/introduction" className="btn btn-primary">
+        <Link href="docs/overview/introduction" className="btn btn-primary">
           Read the docs
         </Link>
         <Link href="blog" className="btn btn-secondary">

@@ -23,12 +23,15 @@ const testNavLinkAndHeading: (
   });
   await expect(heading).toBeVisible();
 
+  const dialogCloseButton = dialog.getByRole("button", { name: "Close" });
+  await dialogCloseButton.click();
+
   menuToggleButton = navbar.getByRole("button", { name: "Articles" });
   await expect(menuToggleButton).toBeVisible();
 };
 
 test("off-canvas links work", async ({ page }) => {
-  await page.goto("/docs/introduction");
+  await page.goto("/docs/overview/introduction");
 
   const introHeading = page.getByRole("heading", {
     level: 1,

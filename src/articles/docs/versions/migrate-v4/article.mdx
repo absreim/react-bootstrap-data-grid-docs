@@ -1,0 +1,195 @@
+---
+navLabel: Migrate to Version 4
+order: 16
+---
+
+# Migrate to Version 4
+
+Version 4 brings major high level changes to the react-bootstrap-data-grid project. However, the number of breaking
+changes might be less than one would expect.
+
+Breaking changes involve the changes in the names of some TypeScript types and the directory structure of importable
+files in the NPM package. In addition, some minor changes were made to published CSS and Sass files that necessitate
+importing them in a different manner.
+
+## JS and TS Imports
+
+Previous versions of react-bootstrap-data-grid offered a component that renders an HTML `table` element. This component
+used be called `Grid` but is now called `Table`.
+
+Version 4 introduces a component that renders HTML an HTML `div` element with the
+[grid ARIA role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/grid_role). This
+component is named `Grid`.
+
+### Main Table Component
+
+#### Community Edition
+
+The main table component was previously imported from the root directory of the
+[@absreim/react-bootstrap-data-grid](https://www.npmjs.com/package/@absreim/react-bootstrap-data-grid)
+NPM package, but is now imported from the _table_ subdirectory. It is also advisable to rename the imported member to
+`Table` rather than `Grid` to avoid confusion, though this change is optional.
+
+If you previous imported the table component in version 3 as follows:
+
+```tsx
+import Grid from "@absreim/react-bootstrap-data-grid";
+```
+
+You should instead import it the following way:
+
+```tsx
+import Table from "@absreim/react-bootstrap-data-grid/table";
+```
+
+#### Pro Edition
+
+For the Pro edition, the table component was previously called `GridPro` and is now called `TablePro`. The import for
+the component is now done at the _table-pro_ subdirectory of the
+[@absreim/react-bootstrap-data-grid-pro](https://www.npmjs.com/package/@absreim/react-bootstrap-data-grid-pro) NPM
+package.
+
+Your import likely looked as follows for version 3:
+
+```tsx
+import GridPro from "@absreim/react-bootstrap-data-grid-pro";
+```
+
+For version 4, do the import this way instead:
+
+import TablePro from "@absreim/react-bootstrap-data-grid-pro/table-pro";
+
+### Other Imports
+
+Besides the main table component, other imports that might have been frequently made include TypeScript types and
+utility functions. All the types utility functions have been moved to a different directory location. Additionally, a
+few types have been renamed.
+
+#### Renamed Types
+
+- `GridProps` has been renamed to `TableProps`. This is the type of _props_ object for the community edition table
+component.
+- `GridProProps` has been renamed to `TableProProps`. This is the type of _props_ object for the pro edition table
+component.
+- `BaseGridProps` has been renamed to `BaseTableProps`. This is the type that contains the members that `TableProps`
+and `TableProProps` have in common.
+- `FilterState` has been renamed to `EditableColFilterState`.
+- `TableFilterState` has been renamed to `FilterState`.
+- `EditableTableFilterState` has been renamed to `EditableFilterState`.
+- `TableSortModel` has been renamed to `SortModel`.
+- `ControlledTableSortModel` has been renamed to `ControlledSortModel`.
+- `UncontrolledTableSortModel` has been renamed to `UncontrolledSortModel`.
+
+If your code imported these types, you will need to update their names as well their directory paths. Updating
+directory paths is explained in the next section.
+
+#### Changed Locations
+
+Various changes were made to the directory locations of exported TypeScript types and utility functions.
+
+_An easy way to resolve any broken imports as a result of these changes is to rely on the index files at the root
+directories for the table in the NPM package._ These locations are _table_ for the community edition and _table-pro_ for
+the pro
+edition. In these locations are _index.ts_ files that contain re-exports for all the exported members pertaining to
+the table component.
+
+In the following example, several types as well as a utility function (`reorderRows`) are being imported directly from
+the _index.ts_ file at the _table-pro_ subdirectory of the Pro edition NPM package:
+
+```tsx
+import TablePro, {
+  ProColDef,
+  reorderRows,
+  RowDef,
+  ReorderCallback,
+  ReorderStyleModel,
+} from "@absreim/react-bootstrap-data-grid-pro/table-pro";
+```
+
+Importing from a central point this day is done similarly for the community edition. Here is an example with several
+type imports:
+
+```tsx
+import Table, {
+  ColDef,
+  RowDef,
+  RowId,
+  SelectMode,
+  SingleSelectModel,
+} from "@absreim/react-bootstrap-data-grid/table";
+```
+
+## Style Sheet Imports
+
+There are now separate style sheets for the table and grid components. The style sheet for the table component now has
+a different name.
+
+Remediation steps differ between community and pro editions.
+
+### Community
+
+The style sheet previously named _style.css_ is now named _table.css_. Additionally, the Sass style sheet was named
+_style.scss_ but is now named _table.scss_.
+
+#### CSS
+
+A CSS import that was previously like:
+
+```tsx
+import "@absreim/react-bootstrap-data-grid/style.css";
+```
+
+Should now look like:
+
+```tsx
+import "@absreim/react-bootstrap-data-grid/table.css";
+```
+
+#### Sass
+
+##### Import in JS or TS file
+
+The previous Sass import from a JS or TS file looked like:
+
+```tsx
+import "@absreim/react-bootstrap-data-grid/style.scss";
+```
+
+But should now look like:
+
+```tsx
+import "@absreim/react-bootstrap-data-grid/table.scss";
+```
+
+##### Import in Sass file
+
+The previous Sass import from an Sass file looked like:
+
+```scss
+@import "@absreim/react-bootstrap-data-grid/style";
+```
+
+But should now look like:
+
+```scss
+@import "@absreim/react-bootstrap-data-grid/table";
+```
+
+### Pro
+
+Only a CSS style sheet was previously provided for the pro edition. The name was _style.css_ but is now _table-pro.css_.
+
+A Sass style sheet is now available. See the [installation](/docs/overview/installation) article for details on how to
+use the Sass style sheet for the pro edition.
+
+A CSS import that was previously like:
+
+```tsx
+import "@absreim/react-bootstrap-data-grid-pro/style.css";
+```
+
+Should now look like:
+
+```tsx
+import "@absreim/react-bootstrap-data-grid-pro/table-pro.css";
+```
