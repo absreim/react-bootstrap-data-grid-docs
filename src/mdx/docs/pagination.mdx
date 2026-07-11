@@ -9,8 +9,8 @@ import {
   paginationModelSharedFields,
   uncontrolledPaginationModel,
 } from "@/assets/pagination/typeSpecs";
-import ControlledPaginatedGrid from "@/assets/pagination/ControlledPaginatedGrid";
-import UncontrolledPaginatedGrid from "@/assets/pagination/UncontrolledPaginatedGrid";
+import ControlledPaginatedTable from "@/assets/pagination/ControlledPaginatedTable";
+import UncontrolledPaginatedTable from "@/assets/pagination/UncontrolledPaginatedTable";
 
 # Pagination
 
@@ -38,12 +38,6 @@ This is the type of the `pagination` prop passed to the `Grid` component to enab
 It is a discriminated union between `ControlledPaginationModel` and `UncontrolledPaginationModel`, which enable
 controlled and uncontrolled pagination modes for a grid, respectively, when passed as the `pagination` prop.
 
-<div className="alert alert-info" role="alert">
-  This name, <code>GridPaginationState</code>, is a legacy name that is preserved to maintain backwards
-  compatibility. It will be renamed to `PaginationModel` in a future release to
-  be more in line with more recent naming conventions.
-</div>
-
 `ControlledPaginationModel` and `UncontrolledPaginationModel` share the following fields:
 
 <TypeSpecTable rows={paginationModelSharedFields} />
@@ -70,10 +64,10 @@ addition to the properties in the table below, `ControlledPaginationModel` also 
 
 Both examples use the sample data from the following file:
 
-#### paginatedGridData.ts
+#### tableData.ts
 
 ```ts
-import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid";
+import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
 
 export const cols: ColDef[] = [
   {
@@ -203,16 +197,16 @@ export const rows: RowDef<Data>[] = [
 
 #### Code
 
-##### ControlledPaginatedGrid.tsx
+##### ControlledPaginatedTable.tsx
 
 ```tsx
 "use client";
 
-import Grid, { PaginationModel } from "@absreim/react-bootstrap-data-grid";
+import Table, { PaginationModel } from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useState } from "react";
-import { cols, rows } from "@/assets/pagination/paginatedGridData";
+import { cols, rows } from "@/assets/pagination/tableData";
 
-const ControlledPaginatedGrid: FC = () => {
+const ControlledPaginatedTable: FC = () => {
   const [pageSizeIndex, setPageSizeIndex] = useState(0);
   const [pageNum, setPageNum] = useState(1);
 
@@ -226,43 +220,43 @@ const ControlledPaginatedGrid: FC = () => {
     componentSize: "large",
   };
 
-  return <Grid rows={rows} cols={cols} pagination={paginationState} />;
+  return <Table rows={rows} cols={cols} pagination={paginationState} />;
 };
 
-export default ControlledPaginatedGrid;
+export default ControlledPaginatedTable;
 ```
 
 #### Live Demo
 
-<ControlledPaginatedGrid />
+<ControlledPaginatedTable />
 
 ### Uncontrolled
 
 #### Code
 
-##### UncontrolledPaginatedGrid.tsx
+##### UncontrolledPaginatedTable.tsx
 
 ```tsx
 "use client";
 
-import Grid, {
+import Table, {
   UncontrolledPaginationModel,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC } from "react";
-import { cols, rows } from "@/assets/pagination/paginatedGridData";
+import { cols, rows } from "@/assets/pagination/tableData";
 
-const UncontrolledPaginatedGrid: FC = () => {
+const UncontrolledPaginatedTable: FC = () => {
   const paginationState: UncontrolledPaginationModel = {
     type: "uncontrolled",
     pageSizeOptions: [5, 10, 15],
   };
 
-  return <Grid rows={rows} cols={cols} pagination={paginationState} />;
+  return <Table rows={rows} cols={cols} pagination={paginationState} />;
 };
 
-export default UncontrolledPaginatedGrid;
+export default UncontrolledPaginatedTable;
 ```
 
 #### Live Demo
 
-<UncontrolledPaginatedGrid />
+<UncontrolledPaginatedTable />

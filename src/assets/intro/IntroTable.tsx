@@ -1,6 +1,6 @@
 "use client";
 
-import Grid, { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid";
+import Table, { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
 import { FC } from "react";
 
 const cols: ColDef[] = [
@@ -80,8 +80,8 @@ const rows: RowDef<{ name: string; race: string; class: string }>[] = [
   },
 ];
 
-const IntroGrid: FC = () => {
-  return <Grid rows={rows} cols={cols} />;
+const IntroTable: FC = () => {
+  return <Table rows={rows} cols={cols} />;
 };
 
-export default IntroGrid;
+export default IntroTable;

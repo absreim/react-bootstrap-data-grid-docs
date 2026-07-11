@@ -4,13 +4,13 @@ order: 2
 ---
 
 import TypeSpecTable from "@/shared/TypeSpecTable";
-import ControlledSortedGrid from "@/assets/sorting/ControlledSortedGrid";
+import ControlledSortedTable from "../../assets/sorting/ControlledSortedTable";
 import {
   sortColDef,
   controlledTableSortModel,
   uncontrolledTableSortModel,
 } from "@/assets/sorting/typeSpecs";
-import UncontrolledSortedGrid from "@/assets/sorting/UncontrolledSortedGrid";
+import UncontrolledSortedTable from "@/assets/sorting/UncontrolledSortedTable";
 
 # Sorting
 
@@ -65,10 +65,10 @@ control the overall configuration of the grid with regards to sorting.
 
 Both examples use the sample data from the following file:
 
-##### sortedGridData.ts
+##### tableData.ts
 
 ```ts
-import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid";
+import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
 
 export const cols: ColDef[] = [
   {
@@ -228,19 +228,19 @@ export const rows: RowDef<Data>[] = [
 
 #### Code
 
-##### ControlledSortedGrid.tsx
+##### ControlledSortedTable.tsx
 
 ```tsx
 "use client";
 
-import Grid, {
+import Table, {
   SortColDef,
   TableSortModel,
-} from "@absreim/react-bootstrap-data-grid";
-import { rows, cols } from "./sampleSortedGridData";
+} from "@absreim/react-bootstrap-data-grid/table";
+import { rows, cols } from "./tableData";
 import { FC, useState } from "react";
 
-const SampleControlledSortedGrid: FC = () => {
+const ControlledSortedTable: FC = () => {
   const [sortColDef, setSortColDef] = useState<SortColDef | null>({
     name: "name",
     order: "asc",
@@ -251,15 +251,16 @@ const SampleControlledSortedGrid: FC = () => {
     setSortColDef,
   };
 
-  return <Grid rows={rows} cols={cols} sortModel={tableSortModel} />;
+  return <Table rows={rows} cols={cols} sortModel={tableSortModel} />;
 };
 
-export default SampleControlledSortedGrid;
+export default ControlledSortedTable;
+
 ```
 
 #### Live Demo
 
-<ControlledSortedGrid />
+<ControlledSortedTable />
 
 ### Uncontrolled
 
@@ -273,11 +274,11 @@ parent component loses access to the sorting state of the `Grid`.
 ```tsx
 "use client";
 
-import Grid, { TableSortModel } from "@absreim/react-bootstrap-data-grid";
-import { rows, cols } from "./sampleSortedGridData";
+import Table, { TableSortModel } from "@absreim/react-bootstrap-data-grid/table";
+import { rows, cols } from "./tableData";
 import { FC } from "react";
 
-const SampleUncontrolledSortedGrid: FC = () => {
+const UncontrolledSortedTable: FC = () => {
   const tableSortModel: TableSortModel = {
     type: "uncontrolled",
     initialSortColDef: {
@@ -286,12 +287,12 @@ const SampleUncontrolledSortedGrid: FC = () => {
     },
   };
 
-  return <Grid rows={rows} cols={cols} sortModel={tableSortModel} />;
+  return <Table rows={rows} cols={cols} sortModel={tableSortModel} />;
 };
 
-export default SampleUncontrolledSortedGrid;
+export default UncontrolledSortedTable;
 ```
 
 #### Live Demo
 
-<UncontrolledSortedGrid />
+<UncontrolledSortedTable />

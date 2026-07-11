@@ -1,12 +1,12 @@
 "use client";
 
-import Grid, {
+import Table, {
   ColDef,
   MultiSelectModel,
   RowDef,
   RowId,
   SelectMode,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useMemo, useState } from "react";
 
 export interface SampleMultiSelectGridProps {
@@ -91,7 +91,7 @@ const rows: RowDef<Data>[] = [
   },
 ];
 
-const SampleMultiSelectGrid: FC<SampleMultiSelectGridProps> = ({ mode }) => {
+const SampleMultiSelectTable: FC<SampleMultiSelectGridProps> = ({ mode }) => {
   const [selected, setSelected] = useState<RowId[]>([]);
   const selectModel: MultiSelectModel = useMemo(
     () => ({
@@ -103,7 +103,7 @@ const SampleMultiSelectGrid: FC<SampleMultiSelectGridProps> = ({ mode }) => {
     [mode, selected],
   );
 
-  return <Grid rows={rows} cols={cols} selectModel={selectModel} />;
+  return <Table rows={rows} cols={cols} selectModel={selectModel} />;
 };
 
-export default SampleMultiSelectGrid;
+export default SampleMultiSelectTable;

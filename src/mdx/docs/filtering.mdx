@@ -8,7 +8,7 @@ import {
   controlledFilterModel,
   uncontrolledFilterModel,
 } from "@/assets/filtering/typeSpecs";
-import ControlledFilteredGrid from "@/assets/filtering/ControlledFilteredGrid";
+import ControlledFilteredTable from "../../assets/filtering/ControlledFilteredTable";
 import {
   abstractDateFilterState,
   abstractFilterState,
@@ -18,7 +18,7 @@ import {
   startDateFilterState,
   stringFilterState,
 } from "@/assets/filtering/typeSpecs";
-import UncontrolledFilteredGrid from "@/assets/filtering/UncontrolledFilteredGrid";
+import UncontrolledFilteredTable from "@/assets/filtering/UncontrolledFilteredTable";
 
 # Filtering
 
@@ -213,10 +213,10 @@ Note that for now, there is no difference in filter behavior between date and da
 
 Both examples use the sample data from the following file:
 
-##### filteredGridData.ts
+##### tableData.ts
 
 ```ts
-import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid";
+import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
 
 export const cols: ColDef[] = [
   {
@@ -314,19 +314,19 @@ export const rows: RowDef<Data>[] = [
 
 #### Code
 
-##### ControlledFilteredGrid.tsx
+##### ControlledFilteredTable.tsx
 
 ```tsx
 "use client";
 
-import Grid, {
+import Table, {
   EditableTableFilterState,
   FilterModel,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useState } from "react";
-import { cols, rows } from "@/assets/filtering/sampleFilteredGridData";
+import { cols, rows } from "@/assets/filtering/tableData";
 
-const SampleControlledFilteredGrid: FC = () => {
+const ControlledFilteredTable: FC = () => {
   const [tableFilterState, setTableFilterState] =
     useState<EditableTableFilterState>({
       number: {
@@ -351,15 +351,15 @@ const SampleControlledFilteredGrid: FC = () => {
 
   const filterModel: FilterModel = { tableFilterState, setTableFilterState };
 
-  return <Grid rows={rows} cols={cols} filterModel={filterModel} />;
+  return <Table rows={rows} cols={cols} filterModel={filterModel} />;
 };
 
-export default SampleControlledFilteredGrid;
+export default ControlledFilteredTable;
 ```
 
 #### Live Demo
 
-<ControlledFilteredGrid />
+<ControlledFilteredTable />
 
 ### Uncontrolled
 
@@ -368,29 +368,29 @@ state. This state has no filters initially applied, but the user can use UI to m
 
 #### Code
 
-##### UncontrolledFilteredGrid.tsx
+##### UncontrolledFilteredTable.tsx
 
 ```tsx
 "use client";
 
-import Grid, {
+import Table, {
   UncontrolledFilterModel,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC } from "react";
-import { cols, rows } from "@/assets/filtering/sampleFilteredGridData";
+import { cols, rows } from "@/assets/filtering/tableData";
 
-const SampleUncontrolledFilteredGrid: FC = () => {
+const UncontrolledFilteredTable: FC = () => {
   const filterModel: UncontrolledFilterModel = {
     type: "uncontrolled",
     filterTableCaption: "Uncontrolled filter mode example",
   };
 
-  return <Grid rows={rows} cols={cols} filterModel={filterModel} />;
+  return <Table rows={rows} cols={cols} filterModel={filterModel} />;
 };
 
-export default SampleUncontrolledFilteredGrid;
+export default UncontrolledFilteredTable;
 ```
 
 #### Live Demo
 
-<UncontrolledFilteredGrid />
+<UncontrolledFilteredTable />

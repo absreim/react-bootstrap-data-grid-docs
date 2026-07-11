@@ -1,6 +1,6 @@
 "use client";
 
-import Grid, {
+import Table, {
   ColDef,
   EditableTableFilterState,
   EditModel,
@@ -9,7 +9,7 @@ import Grid, {
   RowId,
   StyleModel,
   UpdateCallbackGenerator,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, MouseEventHandler, useCallback, useMemo, useState } from "react";
 
 const cols: ColDef[] = [
@@ -118,7 +118,7 @@ const styleModel: StyleModel = {
   },
 };
 
-const SampleStyledInputsGrid: FC = () => {
+const SampleStyledInputsTable: FC = () => {
   const [rows, setRows] = useState<RowDef[]>(initRows);
   const [tableFilterState, setTableFilterState] =
     useState<EditableTableFilterState>({
@@ -186,7 +186,7 @@ const SampleStyledInputsGrid: FC = () => {
 
   return (
     <div className="vstack gap-2 align-items-start border p-2">
-      <Grid
+      <Table
         rows={rows}
         cols={cols}
         caption={caption}
@@ -201,4 +201,4 @@ const SampleStyledInputsGrid: FC = () => {
   );
 };
 
-export default SampleStyledInputsGrid;
+export default SampleStyledInputsTable;

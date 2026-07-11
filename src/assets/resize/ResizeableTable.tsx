@@ -1,10 +1,10 @@
 "use client";
 
-import GridPro, {
+import TablePro, {
   ProColDef,
   RowDef,
   StyleModel,
-} from "@absreim/react-bootstrap-data-grid-pro";
+} from "@absreim/react-bootstrap-data-grid-pro/table-pro";
 import { FC, useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
@@ -97,7 +97,7 @@ const styleModel: StyleModel = {
   },
 };
 
-const ResizeableGrid: FC = () => {
+const ResizeableTable: FC = () => {
   const [descWidth, setDescWidth] = useState<number>(200);
   const cols: ProColDef[] = useMemo<ProColDef[]>(
     () => [
@@ -156,7 +156,7 @@ const ResizeableGrid: FC = () => {
       <Button onClick={() => setDescWidth(200)} className="align-self-start">
         Reset Description Column Width
       </Button>
-      <GridPro
+      <TablePro
         sortModel={{ type: "uncontrolled", initialSortColDef: null }}
         rows={rows}
         cols={cols}
@@ -167,4 +167,4 @@ const ResizeableGrid: FC = () => {
   );
 };
 
-export default ResizeableGrid;
+export default ResizeableTable;

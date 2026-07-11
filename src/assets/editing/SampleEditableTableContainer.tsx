@@ -1,11 +1,11 @@
 "use client";
 
-import Grid, {
+import Table, {
   ColDef,
   UpdateCallbackGenerator,
   RowDef,
   RowId,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useState } from "react";
 
 const cols: ColDef[] = [
@@ -140,7 +140,7 @@ const initRows: RowDef<Data>[] = [
   },
 ];
 
-const SampleEditableGridContainer: FC = () => {
+const SampleEditableTableContainer: FC = () => {
   const [rows, setRows] = useState<RowDef[]>(initRows.slice());
   const getUpdateCallback: UpdateCallbackGenerator = (id) => (rowData) => {
     const newRows = rows.slice();
@@ -167,7 +167,7 @@ const SampleEditableGridContainer: FC = () => {
   };
 
   return (
-    <Grid
+    <Table
       rows={rows}
       cols={cols}
       editModel={{ getUpdateCallback, getDeleteCallback }}
@@ -176,4 +176,4 @@ const SampleEditableGridContainer: FC = () => {
   );
 };
 
-export default SampleEditableGridContainer;
+export default SampleEditableTableContainer;

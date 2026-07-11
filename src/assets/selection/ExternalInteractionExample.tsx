@@ -1,12 +1,12 @@
 "use client";
 
 import { FC, useMemo, useState } from "react";
-import Grid, {
+import Table, {
   ColDef,
   MultiSelectModel,
   RowDef,
   RowId,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 
@@ -75,7 +75,7 @@ const ExternalInteractionExample: FC = () => {
 
   return (
     <Stack gap={2}>
-      <Grid rows={rows} cols={cols} selectModel={selectModel} />
+      <Table rows={rows} cols={cols} selectModel={selectModel} />
       <Stack direction="horizontal" gap={2} className="justify-content-end">
         <Button
           onClick={resetRows}

@@ -1,13 +1,13 @@
 "use client";
 
-import Grid, {
+import Table, {
   SortColDef,
   TableSortModel,
-} from "@absreim/react-bootstrap-data-grid";
-import { rows, cols } from "./sortedGridData";
+} from "@absreim/react-bootstrap-data-grid/table";
+import { rows, cols } from "./tableData";
 import { FC, useState } from "react";
 
-const ControlledSortedGrid: FC = () => {
+const ControlledSortedTable: FC = () => {
   const [sortColDef, setSortColDef] = useState<SortColDef | null>({
     name: "name",
     order: "asc",
@@ -18,7 +18,7 @@ const ControlledSortedGrid: FC = () => {
     setSortColDef,
   };
 
-  return <Grid rows={rows} cols={cols} sortModel={tableSortModel} />;
+  return <Table rows={rows} cols={cols} sortModel={tableSortModel} />;
 };
 
-export default ControlledSortedGrid;
+export default ControlledSortedTable;

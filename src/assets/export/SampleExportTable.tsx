@@ -1,12 +1,12 @@
 "use client";
 
-import Grid, {
+import Table, {
   ColDef,
   FilterModel,
   PaginationModel,
   RowDef,
   UncontrolledFilterModel,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useMemo, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Stack from "react-bootstrap/Stack";
@@ -132,7 +132,7 @@ const rows: RowDef<VersionInfo>[] = [
   },
 ];
 
-const SampleExportGrid: FC = () => {
+const SampleExportTable: FC = () => {
   const [enableFilter, setEnableFilter] = useState(true);
   const [enablePagination, setEnablePagination] = useState(true);
   const [enableFormatters, setEnableFormatters] = useState(true);
@@ -214,7 +214,7 @@ const SampleExportGrid: FC = () => {
           label="Enable Formatters"
         />
       </Form>
-      <Grid
+      <Table
         allowExport
         rows={rows}
         cols={modifiedCols}
@@ -225,4 +225,4 @@ const SampleExportGrid: FC = () => {
   );
 };
 
-export default SampleExportGrid;
+export default SampleExportTable;

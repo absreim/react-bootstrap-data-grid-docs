@@ -32,6 +32,10 @@
 // Utilities
 @import "~bootstrap/scss/utilities/api";
 
+// --- RBDG Grid ---
+
+@import "@absreim/react-bootstrap-data-grid-pro/grid.scss";
+
 // --- Shiki themes ---
 
 code[data-theme*=" "],

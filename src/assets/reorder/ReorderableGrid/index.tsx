@@ -1,12 +1,12 @@
 "use client";
 
-import GridPro, {
+import TablePro, {
   ProColDef,
   reorderRows,
   RowDef,
   ReorderCallback,
   ReorderStyleModel,
-} from "@absreim/react-bootstrap-data-grid-pro";
+} from "@absreim/react-bootstrap-data-grid-pro/table-pro";
 import { UnitStats } from "@/assets/shared/types";
 import { FC, useCallback, useState } from "react";
 import "./custom.scss";
@@ -203,7 +203,7 @@ const ReorderableGrid: FC = () => {
   );
 
   return (
-    <GridPro
+    <TablePro
       rows={rows}
       cols={cols}
       sortModel={{

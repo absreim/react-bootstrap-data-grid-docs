@@ -4,7 +4,7 @@ order: 6
 ---
 
 import TypeSpecTable from "@/shared/TypeSpecTable";
-import SampleEditableGridContainer from "@/assets/editing/SampleEditableGridContainer";
+import SampleEditableTableContainer from "@/assets/editing/SampleEditableTableContainer";
 import { editModel } from "@/assets/editing/typeSpecs";
 
 # Editing
@@ -54,12 +54,12 @@ See the example below to see how this property is typically implemented.
 ```tsx
 "use client";
 
-import Grid, {
+import Table, {
   ColDef,
   UpdateCallbackGenerator,
   RowDef,
   RowId,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useState } from "react";
 
 const cols: ColDef[] = [
@@ -194,7 +194,7 @@ const initRows: RowDef<Data>[] = [
   },
 ];
 
-const SampleEditableGridContainer: FC = () => {
+const SampleEditableTableContainer: FC = () => {
   const [rows, setRows] = useState<RowDef[]>(initRows.slice());
   const getUpdateCallback: UpdateCallbackGenerator = (id) => (rowData) => {
     const newRows = rows.slice();
@@ -221,7 +221,7 @@ const SampleEditableGridContainer: FC = () => {
   };
 
   return (
-    <Grid
+    <Table
       rows={rows}
       cols={cols}
       editModel={{ getUpdateCallback, getDeleteCallback }}
@@ -230,9 +230,9 @@ const SampleEditableGridContainer: FC = () => {
   );
 };
 
-export default SampleEditableGridContainer;
+export default SampleEditableTableContainer;
 ```
 
 ### Live Demo
 
-<SampleEditableGridContainer />
+<SampleEditableTableContainer />

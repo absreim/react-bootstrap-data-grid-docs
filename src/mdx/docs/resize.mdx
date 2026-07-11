@@ -5,7 +5,7 @@ pro: true
 ---
 
 import PrereleaseNotice from "@/assets/pro/PrereleaseNotice";
-import ResizeableGrid from "@/assets/resize/ResizeableGrid";
+import ResizeableTable from "@/assets/resize/ResizeableTable";
 import ProBadge from "@/assets/pro/ProBadge";
 
 <h1>Column Resizing <ProBadge /></h1>
@@ -186,7 +186,7 @@ const ParentComponent = () => {
   );
 
   return (
-    <GridPro
+    <TablePro
       displayMode="block"
       rows={rows}
       cols={cols}
@@ -255,32 +255,24 @@ The following example demonstrates:
 
 ### Live Demo
 
-<ResizeableGrid />
+<ResizeableTable />
 
 ### Code
 
-#### ResizableGrid.tsx
+#### ResizeableTable.tsx
 
 ```tsx
 "use client";
 
-import GridPro, {
+import TablePro, {
   ProColDef,
   RowDef,
   StyleModel,
-} from "@absreim/react-bootstrap-data-grid-pro";
+} from "@absreim/react-bootstrap-data-grid-pro/table-pro";
 import { FC, useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
-
-interface UnitStats {
-  name: string;
-  hp: number;
-  speed: number;
-  attack: number;
-  range: number;
-  desc: string;
-}
+import { UnitStats } from "@/assets/shared/types";
 
 const rows: RowDef<UnitStats>[] = [
   {
@@ -365,13 +357,11 @@ const rows: RowDef<UnitStats>[] = [
 const styleModel: StyleModel = {
   mainTableStyleModel: {
     tbodyTd: (rowId, displayRowIndex, colIndex) =>
-      colIndex === 5
-        ? ["text-nowrap", "text-truncate"]
-        : [],
+      colIndex === 5 ? ["text-nowrap", "text-truncate"] : [],
   },
 };
 
-const ResizeableGrid: FC = () => {
+const ResizeableTable: FC = () => {
   const [descWidth, setDescWidth] = useState<number>(200);
   const cols: ProColDef[] = useMemo<ProColDef[]>(
     () => [
@@ -430,9 +420,8 @@ const ResizeableGrid: FC = () => {
       <Button onClick={() => setDescWidth(200)} className="align-self-start">
         Reset Description Column Width
       </Button>
-      <GridPro
+      <TablePro
         sortModel={{ type: "uncontrolled", initialSortColDef: null }}
-        responsive={true}
         rows={rows}
         cols={cols}
         displayMode="block"
@@ -442,5 +431,5 @@ const ResizeableGrid: FC = () => {
   );
 };
 
-export default ResizeableGrid;
+export default ResizeableTable;
 ```

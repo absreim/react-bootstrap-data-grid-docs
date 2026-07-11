@@ -1,4 +1,4 @@
-import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid";
+import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
 
 export const cols: ColDef[] = [
   {

@@ -1,6 +1,6 @@
 "use client";
 
-import Grid, { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid";
+import Table, { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
 import { FC } from "react";
 
 interface SpellData {
@@ -95,8 +95,8 @@ const cols: ColDef[] = [
   },
 ];
 
-const SampleToolbarGrid: FC = () => (
-  <Grid
+const SampleToolbarTable: FC = () => (
+  <Table
     allowExport
     rows={rows}
     cols={cols}
@@ -110,4 +110,4 @@ const SampleToolbarGrid: FC = () => (
   />
 );
 
-export default SampleToolbarGrid;
+export default SampleToolbarTable;

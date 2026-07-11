@@ -1,11 +1,11 @@
 "use client";
 
-import Grid, {
+import Table, {
   ColDef,
   RowDef,
   StyleModel,
   TableStyleModel,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useMemo } from "react";
 
 const cols: ColDef[] = [
@@ -144,7 +144,7 @@ const caption: string =
   "Table demonstrating various ways of customizing " +
   "styling with classes built into Bootstrap";
 
-const SampleStyledGrid: FC = () => {
+const SampleStyledTable: FC = () => {
   const rows = useMemo(() => {
     const variants = partialRows.map(({ variant }) => variant);
     const colors = getComputedTableColors(variants);
@@ -152,8 +152,8 @@ const SampleStyledGrid: FC = () => {
   }, []);
 
   return (
-    <Grid rows={rows} cols={cols} styleModel={styleModel} caption={caption} />
+    <Table rows={rows} cols={cols} styleModel={styleModel} caption={caption} />
   );
 };
 
-export default SampleStyledGrid;
+export default SampleStyledTable;

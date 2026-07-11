@@ -1,10 +1,10 @@
 "use client";
 
-import Grid, { PaginationModel } from "@absreim/react-bootstrap-data-grid";
+import Table, { PaginationModel } from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useState } from "react";
-import { cols, rows } from "@/assets/pagination/paginatedGridData";
+import { cols, rows } from "@/assets/pagination/tableData";
 
-const ControlledPaginatedGrid: FC = () => {
+const ControlledPaginatedTable: FC = () => {
   const [pageSizeIndex, setPageSizeIndex] = useState(0);
   const [pageNum, setPageNum] = useState(1);
 
@@ -18,7 +18,7 @@ const ControlledPaginatedGrid: FC = () => {
     componentSize: "large",
   };
 
-  return <Grid rows={rows} cols={cols} pagination={paginationState} />;
+  return <Table rows={rows} cols={cols} pagination={paginationState} />;
 };
 
-export default ControlledPaginatedGrid;
+export default ControlledPaginatedTable;

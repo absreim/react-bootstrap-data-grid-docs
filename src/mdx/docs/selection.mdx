@@ -5,8 +5,8 @@ order: 5
 
 import TypeSpecTable from "@/shared/TypeSpecTable";
 import ExternalInteractionExample from "@/assets/selection/ExternalInteractionExample";
-import SampleMultiSelectGridContainer from "@/assets/selection/SampleMultiSelectGridContainer";
-import SampleSingleSelectGridContainer from "@/assets/selection/SampleSingleSelectGridContainer";
+import SampleMultiSelectTableContainer from "@/assets/selection/SampleMultiSelectTableContainer";
+import SampleSingleSelectTableContainer from "@/assets/selection/SampleSingleSelectTableContainer";
 import {
   singleSelectMode,
   multiSelectMode,
@@ -86,12 +86,12 @@ parent component and do something with it.
 "use client";
 
 import { FC, useMemo, useState } from "react";
-import Grid, {
+import Table, {
   ColDef,
   MultiSelectModel,
   RowDef,
   RowId,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 
@@ -150,7 +150,7 @@ const ExternalInteractionExample: FC = () => {
   );
 
   const deleteSelectedRows = () => {
-    setRows(rows.filter((_, index) => !selected.includes(index)));
+    setRows(rows.filter(({ id }) => !selected.includes(id)));
     setSelected([]);
   };
 
@@ -160,7 +160,7 @@ const ExternalInteractionExample: FC = () => {
 
   return (
     <Stack gap={2}>
-      <Grid rows={rows} cols={cols} selectModel={selectModel} />
+      <Table rows={rows} cols={cols} selectModel={selectModel} />
       <Stack direction="horizontal" gap={2} className="justify-content-end">
         <Button
           onClick={resetRows}
@@ -195,13 +195,13 @@ export default ExternalInteractionExample;
 ```tsx
 "use client";
 
-import Grid, {
+import Table, {
   ColDef,
   MultiSelectModel,
   RowDef,
   RowId,
   SelectMode,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useMemo, useState } from "react";
 
 export interface SampleMultiSelectGridProps {
@@ -286,7 +286,7 @@ const rows: RowDef<Data>[] = [
   },
 ];
 
-const SampleMultiSelectGrid: FC<SampleMultiSelectGridProps> = ({ mode }) => {
+const SampleMultiSelectTable: FC<SampleMultiSelectGridProps> = ({ mode }) => {
   const [selected, setSelected] = useState<RowId[]>([]);
   const selectModel: MultiSelectModel = useMemo(
     () => ({
@@ -298,15 +298,15 @@ const SampleMultiSelectGrid: FC<SampleMultiSelectGridProps> = ({ mode }) => {
     [mode, selected],
   );
 
-  return <Grid rows={rows} cols={cols} selectModel={selectModel} />;
+  return <Table rows={rows} cols={cols} selectModel={selectModel} />;
 };
 
-export default SampleMultiSelectGrid;
+export default SampleMultiSelectTable;
 ```
 
 #### Live Demo
 
-<SampleMultiSelectGridContainer />
+<SampleMultiSelectTableContainer />
 
 ### Single Selection Mode
 
@@ -316,13 +316,13 @@ export default SampleMultiSelectGrid;
 "use client";
 
 import { FC, useMemo, useState } from "react";
-import Grid, {
+import Table, {
   ColDef,
   RowDef,
   RowId,
   SelectMode,
   SingleSelectModel,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 
 export interface SampleSingleSelectGridProps {
   mode: SelectMode;
@@ -398,7 +398,7 @@ const rows: RowDef<Data>[] = [
   },
 ];
 
-const SampleSingleSelectGrid: FC<SampleSingleSelectGridProps> = ({ mode }) => {
+const SampleSingleSelectTable: FC<SampleSingleSelectGridProps> = ({ mode }) => {
   const [selected, setSelected] = useState<RowId | null>(null);
   const selectModel: SingleSelectModel = useMemo(
     () => ({
@@ -411,12 +411,12 @@ const SampleSingleSelectGrid: FC<SampleSingleSelectGridProps> = ({ mode }) => {
     [mode, selected],
   );
 
-  return <Grid rows={rows} cols={cols} selectModel={selectModel} />;
+  return <Table rows={rows} cols={cols} selectModel={selectModel} />;
 };
 
-export default SampleSingleSelectGrid;
+export default SampleSingleSelectTable;
 ```
 
 #### Live Demo
 
-<SampleSingleSelectGridContainer />
+<SampleSingleSelectTableContainer />

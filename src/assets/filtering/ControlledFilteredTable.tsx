@@ -1,13 +1,13 @@
 "use client";
 
-import Grid, {
+import Table, {
   EditableTableFilterState,
   FilterModel,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useState } from "react";
-import { cols, rows } from "@/assets/filtering/filteredGridData";
+import { cols, rows } from "@/assets/filtering/tableData";
 
-const ControlledFilteredGrid: FC = () => {
+const ControlledFilteredTable: FC = () => {
   const [tableFilterState, setTableFilterState] =
     useState<EditableTableFilterState>({
       number: {
@@ -32,7 +32,7 @@ const ControlledFilteredGrid: FC = () => {
 
   const filterModel: FilterModel = { tableFilterState, setTableFilterState };
 
-  return <Grid rows={rows} cols={cols} filterModel={filterModel} />;
+  return <Table rows={rows} cols={cols} filterModel={filterModel} />;
 };
 
-export default ControlledFilteredGrid;
+export default ControlledFilteredTable;

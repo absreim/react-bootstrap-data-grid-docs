@@ -3,7 +3,7 @@ navLabel: Basic Usage
 order: 1
 ---
 
-import SampleBasicGrid from "@/assets/basic/SampleBasicGrid";
+import SampleBasicTable from "../../assets/basic/SampleBasicTable";
 import TypeSpecTable from "@/shared/TypeSpecTable";
 import { colDef, rowDef, gridProps } from "@/assets/basic/typeSpecs";
 
@@ -66,7 +66,7 @@ The in the below code sample, three columns, `name`, `frequency` and `date` are 
 ```tsx
 "use client";
 
-import Grid, { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid";
+import Table, { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
 import { FC } from "react";
 
 const cols: ColDef[] = [
@@ -187,16 +187,16 @@ sections of this documentation site for details of these additional features.
 The code sample below renders a `Grid` component with `rows` and `cols` defined earlier in this section.
 
 ```tsx
-const SampleBasicGrid: FC = () => <Grid rows={rows} cols={cols} />;
+const SampleBasicTable: FC = () => <Grid rows={rows} cols={cols} />;
 
-export default SampleBasicGrid;
+export default SampleBasicTable;
 ```
 
 #### Live Demo
 
 This below grid is a live demo of the sample code used throughout this section of the documentation.
 
-<SampleBasicGrid />
+<SampleBasicTable />
 
 ## Type Definitions
 

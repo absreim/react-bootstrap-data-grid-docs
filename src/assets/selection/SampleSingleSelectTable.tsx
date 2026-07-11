@@ -1,13 +1,13 @@
 "use client";
 
 import { FC, useMemo, useState } from "react";
-import Grid, {
+import Table, {
   ColDef,
   RowDef,
   RowId,
   SelectMode,
   SingleSelectModel,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 
 export interface SampleSingleSelectGridProps {
   mode: SelectMode;
@@ -83,7 +83,7 @@ const rows: RowDef<Data>[] = [
   },
 ];
 
-const SampleSingleSelectGrid: FC<SampleSingleSelectGridProps> = ({ mode }) => {
+const SampleSingleSelectTable: FC<SampleSingleSelectGridProps> = ({ mode }) => {
   const [selected, setSelected] = useState<RowId | null>(null);
   const selectModel: SingleSelectModel = useMemo(
     () => ({
@@ -96,7 +96,7 @@ const SampleSingleSelectGrid: FC<SampleSingleSelectGridProps> = ({ mode }) => {
     [mode, selected],
   );
 
-  return <Grid rows={rows} cols={cols} selectModel={selectModel} />;
+  return <Table rows={rows} cols={cols} selectModel={selectModel} />;
 };
 
-export default SampleSingleSelectGrid;
+export default SampleSingleSelectTable;

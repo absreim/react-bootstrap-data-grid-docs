@@ -1,11 +1,11 @@
 "use client";
 
 import { FC, useState } from "react";
-import { SelectMode } from "@absreim/react-bootstrap-data-grid";
+import { SelectMode } from "@absreim/react-bootstrap-data-grid/table";
 import SelectModeSelector from "@/assets/selection/SelectModeSelector";
-import SampleMultiSelectGrid from "@/assets/selection/SampleMultiSelectGrid";
+import SampleMultiSelectTable from "@/assets/selection/SampleMultiSelectTable";
 
-const SampleMultiSelectGridContainer: FC = () => {
+const SampleMultiSelectTableContainer: FC = () => {
   const [mode, setMode] = useState<SelectMode>("both");
 
   return (
@@ -15,9 +15,9 @@ const SampleMultiSelectGridContainer: FC = () => {
         setMode={setMode}
         radioGroupName={"sample-multiselect-grid"}
       />
-      <SampleMultiSelectGrid mode={mode} />
+      <SampleMultiSelectTable mode={mode} />
     </div>
   );
 };
 
-export default SampleMultiSelectGridContainer;
+export default SampleMultiSelectTableContainer;

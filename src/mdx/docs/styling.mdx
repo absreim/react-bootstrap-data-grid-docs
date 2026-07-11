@@ -12,8 +12,8 @@ import {
     tableStyleModel,
     toolbarStyleModel,
 } from "@/assets/styling/typeSpecs";
-import SampleStyledInputsGrid from "@/assets/styling/SampleStyledInputsGrid";
-import SampleStyledGrid from "@/assets/styling/SampleStyledGridWrapper";
+import SampleStyledInputsTable from "../../assets/styling/SampleStyledInputsTable";
+import SampleStyledTableWrapper from "@/assets/styling/SampleStyledTableWrapper";
 
 # Styling
 
@@ -157,12 +157,12 @@ parameters are used to specify classes differently for different elements.
 ```tsx
 "use client";
 
-import Grid, {
+import Table, {
   ColDef,
   RowDef,
   StyleModel,
   TableStyleModel,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useMemo } from "react";
 
 const cols: ColDef[] = [
@@ -301,7 +301,7 @@ const caption: string =
   "Table demonstrating various ways of customizing " +
   "styling with classes built into Bootstrap";
 
-const SampleStyledGrid: FC = () => {
+const SampleStyledTable: FC = () => {
   const rows = useMemo(() => {
     const variants = partialRows.map(({ variant }) => variant);
     const colors = getComputedTableColors(variants);
@@ -309,16 +309,16 @@ const SampleStyledGrid: FC = () => {
   }, []);
 
   return (
-    <Grid rows={rows} cols={cols} styleModel={styleModel} caption={caption} />
+    <Table rows={rows} cols={cols} styleModel={styleModel} caption={caption} />
   );
 };
 
-export default SampleStyledGrid;
+export default SampleStyledTable;
 ```
 
 #### Live Demo
 
-<SampleStyledGrid/>
+<SampleStyledTableWrapper />
 
 ### Inputs and Display Order Example
 
@@ -327,7 +327,7 @@ export default SampleStyledGrid;
 ```tsx
 "use client";
 
-import Grid, {
+import Table, {
   ColDef,
   EditableTableFilterState,
   EditModel,
@@ -336,7 +336,7 @@ import Grid, {
   RowId,
   StyleModel,
   UpdateCallbackGenerator,
-} from "@absreim/react-bootstrap-data-grid";
+} from "@absreim/react-bootstrap-data-grid/table";
 import { FC, MouseEventHandler, useCallback, useMemo, useState } from "react";
 
 const cols: ColDef[] = [
@@ -445,7 +445,7 @@ const styleModel: StyleModel = {
   },
 };
 
-const SampleStyledInputsGrid: FC = () => {
+const SampleStyledInputsTable: FC = () => {
   const [rows, setRows] = useState<RowDef[]>(initRows);
   const [tableFilterState, setTableFilterState] =
     useState<EditableTableFilterState>({
@@ -513,7 +513,7 @@ const SampleStyledInputsGrid: FC = () => {
 
   return (
     <div className="vstack gap-2 align-items-start border p-2">
-      <Grid
+      <Table
         rows={rows}
         cols={cols}
         caption={caption}
@@ -528,9 +528,9 @@ const SampleStyledInputsGrid: FC = () => {
   );
 };
 
-export default SampleStyledInputsGrid;
+export default SampleStyledInputsTable;
 ```
 
 #### Live Demo
 
-<SampleStyledInputsGrid/>
+<SampleStyledInputsTable/>
