@@ -1,15 +1,14 @@
 import fs from "fs";
 import path from "path";
-import { cache } from "react";
 import { LinkDefinition } from "@/shared/types";
 
 // Much of the frontmatter parsing code is derived from the Next.js Portfolio
 // Blog Starter example:
 // https://github.com/vercel/examples/blob/main/solutions/blog/app/blog/utils.ts
 
-const DOCS_DIR = path.join(process.cwd(), "src", "mdx", "docs");
+const DOCS_DIR = path.join(process.cwd(), "src", "articles", "docs");
 const DOCS_URL_BASE = "/docs";
-const BLOG_DIR = path.join(process.cwd(), "src", "mdx", "blog");
+const BLOG_DIR = path.join(process.cwd(), "src", "articles", "blog");
 const BLOG_URL_BASE = "/blog";
 
 type AugmentedLinkDefinition = LinkDefinition & { order: number };
@@ -40,6 +39,8 @@ function readMDXFile(filePath: string) {
   return parseFrontmatter(rawContent);
 }
 
+// TODO: overhaul the below members to reflect new directory structure
+
 function getMDXData(
   contentDir: string,
   urlBasePath: string,
@@ -54,15 +55,14 @@ function getMDXData(
       name: dict.navLabel || slug,
       path: `${urlBasePath}/${slug}`,
       title: dict.indexTitle,
-      pro: dict.pro === "true"
+      pro: dict.pro === "true",
     };
   });
 }
 
-export const getDocLinkDefs = cache((): LinkDefinition[] =>
-  getMDXData(DOCS_DIR, DOCS_URL_BASE).sort((a, b) => a.order - b.order),
+export const docLinkDefs = getMDXData(DOCS_DIR, DOCS_URL_BASE).sort(
+  (a, b) => a.order - b.order,
 );
-
-export const getBlogLinkDefs = cache((): LinkDefinition[] =>
-  getMDXData(BLOG_DIR, BLOG_URL_BASE).sort((a, b) => a.order - b.order),
+export const blogLinkDefs = getMDXData(BLOG_DIR, BLOG_URL_BASE).sort(
+  (a, b) => a.order - b.order,
 );

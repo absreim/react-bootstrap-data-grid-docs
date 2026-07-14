@@ -1,4 +1,4 @@
-import getMdxStaticParamsFn from "@/shared/getMdxStaticParamsFn";
+import getMdxStaticParamsFn from "@/lib/getMdxStaticParamsFn";
 import { FC } from "react";
 import DocContents from "../../../shared/DocContents";
 import { TocItem } from "rehype-mdx-toc";
@@ -10,10 +10,10 @@ export const generateStaticParams = getMdxStaticParamsFn(contentDir);
 
 export const dynamicParams = false;
 
-const Page: FC<{ params: Promise<{ slug: string }> }> = async ({ params }) => {
-  const { slug } = await params;
+const Page: FC<{ params: Promise<string> }> = async ({ params }) => {
+  const path = await params;
   const { default: Post, toc }: { default: FC; toc: TocItem[] } = await import(
-    `@/mdx/blog/${slug}.mdx`
+    `@/blog/${path}/article.mdx`
   );
 
   return <DocContents main={<Post />} tocItems={toc} />;

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { FC, ReactNode } from "react";
 import DocContentsLayout from "../../shared/DocContentsLayout";
-import { getDocLinkDefs } from "@/lib/getLinkDefs";
+import { docLinkDefs } from "@/lib/getLinkDefs";
 import MainLayout from "@/shared/MainLayout";
 
 export const metadata: Metadata = {
@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 };
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
-  const linkDefs = getDocLinkDefs();
-
   return (
-    <MainLayout linkMenuContents={{ sectionTitle: "Doc Articles", linkDefs }}>
-      <DocContentsLayout linkDefs={linkDefs}>{children}</DocContentsLayout>
+    <MainLayout
+      linkMenuContents={{ sectionTitle: "Doc Articles", linkDefs: docLinkDefs }}
+    >
+      <DocContentsLayout linkDefs={docLinkDefs}>{children}</DocContentsLayout>
     </MainLayout>
   );
 };

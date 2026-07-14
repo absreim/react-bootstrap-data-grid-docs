@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Nav from "react-bootstrap/Nav";
 import Link from "next/link";
 import { LinkDefinition } from "@/shared/types";
-import ProBadge from "@/assets/pro/ProBadge";
+import ProBadge from "@/assets/ProBadge";
 
 interface ContentsNavbarProps {
   linkDefs: LinkDefinition[];
