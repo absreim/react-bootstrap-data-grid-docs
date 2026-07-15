@@ -16,7 +16,11 @@ const ContentsNavbar: FC<ContentsNavbarProps> = ({ linkDefs, onClick }) => {
   const pathname = usePathname();
 
   return (
-    <Nav variant="underline" activeKey={pathname} className="flex-column">
+    <Nav
+      variant="pills"
+      activeKey={pathname}
+      className="flex-column rbdg-unsectioned-navbar-list"
+    >
       {linkDefs.map(({ name, path, pro }, index) => (
         <Nav.Item key={index}>
           <Nav.Link as={Link} href={path} onClick={onClick}>

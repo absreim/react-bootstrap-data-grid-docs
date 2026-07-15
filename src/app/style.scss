@@ -59,9 +59,9 @@ code[data-theme*=" "] span {
 // --- Styles specific to this project ---
 
 .rbdg-docs-toc {
-  width: 12rem;
+  width: 14rem;
   min-width: 0;
-  font-size: 0.9rem;
+  font-size: $font-size-sm;
 
   ul {
     padding-left: map.get($spacers, 2);
@@ -69,7 +69,7 @@ code[data-theme*=" "] span {
 }
 
 .rbdg-docs-toc-li {
-  text-wrap: nowrap;
+  text-wrap: wrap;
   text-overflow: ellipsis;
   overflow-x: hidden;
   border-left: 2px solid;
@@ -97,7 +97,7 @@ code[data-theme*=" "] span {
 }
 
 .rbdg-contents-navbar {
-  width: 9rem;
+  width: 10rem;
   min-width: 0;
 }
 
@@ -117,6 +117,10 @@ code[data-theme*=" "] span {
 .rbdg-sectioned-navbar-list {
   padding-left: 0;
   list-style: none;
+}
+
+.rbdg-unsectioned-navbar-list {
+  font-size: $font-size-sm;
 }
 
 @include media-breakpoint-up(lg) {

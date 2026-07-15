@@ -10,9 +10,10 @@ const SectionedNavbar: FC<SectionedNavbarProps> = ({ linkSections }) => {
   return (
     <ul className="rbdg-sectioned-navbar-list">
       {linkSections.map(({ name, icon, path, links }) => (
-        <li key={path}>
-          <div>
-            {icon} {name}
+        <li key={path} className="d-flex flex-column gap-1">
+          <div className="d-flex align-items-center gap-1">
+            {icon}
+            <div>{name}</div>
           </div>
           <ContentsNavbar linkDefs={links} />
         </li>

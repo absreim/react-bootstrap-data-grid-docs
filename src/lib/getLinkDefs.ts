@@ -58,10 +58,9 @@ const getSectionedArticles: (
     const sectionName = pathSegments[pathSegments.length - 2];
 
     if (!sections.has(sectionName)) {
-      const metadata: SectionMetadata = await import(
+      const metadata: SectionMetadata = (await import(
         path.join("@", relativeRootDir, sectionName, "metadata.tsx"),
-      );
-      console.log(metadata) // TODO: fix
+      )).default;
       sections.set(sectionName, {
         ...metadata,
         path: sectionName,
