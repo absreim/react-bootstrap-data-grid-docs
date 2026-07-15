@@ -15,7 +15,7 @@ const Page: FC<{ params: Promise<{ article: string }> }> = async ({
 }) => {
   const path = (await params).article;
   const { default: Post, toc }: { default: FC; toc: TocItem[] } = await import(
-    `@/blog/${path}/article.mdx`
+    `@/articles/blog/${path}/article.mdx`
   );
 
   return <DocContents main={<Post />} tocItems={toc} />;

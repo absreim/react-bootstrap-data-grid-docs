@@ -14,18 +14,24 @@ export const getUnsectionedMdxStaticParamsFn: (
       .map((e) => ({ article: e.parentPath.replace(contentDir + "/", "") }));
   };
 
-// TODO: finish writing the below function and update page component
-
 export const getSectionedMdxStaticParamsFn: (
   contentDir: string,
 ) => () => Promise<Array<{ section: string, article: string }>> =
   (contentDir: string) => async () => {
-    const entries = await fs.readdir(contentDir, {
-      withFileTypes: true,
-      recursive: true,
-    });
+    const entries = (await fs
+      .readdir(contentDir, {
+        withFileTypes: true,
+        recursive: true,
+      }))
+      .filter((e) => e.isFile() && e.name === "article.mdx");
+    const params: { section: string; article: string }[] = [];
+    for (const entry of entries) {
+      const pathSegments = entry.parentPath.split("/");
+      const articleDirName = pathSegments[pathSegments.length - 1];
+      const sectionName = pathSegments[pathSegments.length - 2];
 
-    return entries
-      .filter((e) => e.isFile() && e.name === "article.mdx")
-      .map((e) => ({ article: e.parentPath.replace(contentDir + "/", "") }));
+      params.push({ section: sectionName, article: articleDirName });
+    }
+
+    return params;
   };

@@ -61,6 +61,7 @@ const getSectionedArticles: (
       const metadata: SectionMetadata = await import(
         path.join("@", relativeRootDir, sectionName, "metadata.tsx"),
       );
+      console.log(metadata) // TODO: fix
       sections.set(sectionName, {
         ...metadata,
         path: sectionName,

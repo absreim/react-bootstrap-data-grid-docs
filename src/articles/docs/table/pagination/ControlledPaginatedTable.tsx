@@ -2,7 +2,7 @@
 
 import Table, { PaginationModel } from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useState } from "react";
-import { cols, rows } from "@/assets/pagination/tableData";
+import { cols, rows } from "./tableData";
 
 const ControlledPaginatedTable: FC = () => {
   const [pageSizeIndex, setPageSizeIndex] = useState(0);

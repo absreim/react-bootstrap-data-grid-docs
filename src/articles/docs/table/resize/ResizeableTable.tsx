@@ -8,7 +8,7 @@ import TablePro, {
 import { FC, useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
-import { UnitStats } from "@/assets/shared/types";
+import { UnitStats } from "@/assets/types";
 
 const rows: RowDef<UnitStats>[] = [
   {

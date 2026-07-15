@@ -7,7 +7,7 @@ import TablePro, {
   ReorderCallback,
   ReorderStyleModel,
 } from "@absreim/react-bootstrap-data-grid-pro/table-pro";
-import { UnitStats } from "@/assets/shared/types";
+import { UnitStats } from "@/assets/types";
 import { FC, useCallback, useState } from "react";
 import "./custom.scss";
 

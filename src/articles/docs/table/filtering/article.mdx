@@ -3,22 +3,20 @@ navLabel: Filtering
 order: 4
 ---
 
-import TypeSpecTable from "@/shared/TypeSpecTable";
+import TypeSpecTable from "@/components/TypeSpecTable";
+import ControlledFilteredTable from "./ControlledFilteredTable";
 import {
-  controlledFilterModel,
-  uncontrolledFilterModel,
-} from "@/assets/filtering/typeSpecs";
-import ControlledFilteredTable from "../../assets/filtering/ControlledFilteredTable";
-import {
-  abstractDateFilterState,
-  abstractFilterState,
-  betweenDatesFilterState,
-  endDateFilterState,
-  numberFilterState,
-  startDateFilterState,
-  stringFilterState,
-} from "@/assets/filtering/typeSpecs";
-import UncontrolledFilteredTable from "@/assets/filtering/UncontrolledFilteredTable";
+    abstractDateFilterState,
+    abstractFilterState,
+    betweenDatesFilterState,
+    endDateFilterState,
+    numberFilterState,
+    startDateFilterState,
+    stringFilterState,
+    controlledFilterModel,
+    uncontrolledFilterModel,
+} from "./typeSpecs";
+import UncontrolledFilteredTable from "./UncontrolledFilteredTable";
 
 # Filtering
 
@@ -74,11 +72,11 @@ entering a number to filter on that column, the number displayed in the input wi
 
 ### ControlledFilterModel
 
-<TypeSpecTable rows={controlledFilterModel} />
+<TypeSpecTable rows={controlledFilterModel}/>
 
 ### UncontrolledFilterModel
 
-<TypeSpecTable rows={uncontrolledFilterModel} />
+<TypeSpecTable rows={uncontrolledFilterModel}/>
 
 ### EditableTableFilterState
 
@@ -93,72 +91,72 @@ entering a number to filter on that column, the number displayed in the input wi
 
 Each type of `FilterState` extends `AbstractFilterState`, which provides a parameter to record the fact of whether the filter for a particular column is enabled or disabled.
 
-<TypeSpecTable rows={abstractFilterState} />
+<TypeSpecTable rows={abstractFilterState}/>
 
 ### StringFilterState
 
 The first type of filter state is for string columns.
 
-<TypeSpecTable rows={stringFilterState} />
+<TypeSpecTable rows={stringFilterState}/>
 
 ### StringFilterScheme
 
 The `StringFilterScheme` specifies the type of filter to apply for string columns and has the following possible values and corresponding behaviors:
 
 <dl>
-  <dt>contains</dt>
-  <dd>
-    Does not filter out the column if the substring is present anywhere in the
-    cells value
-  </dd>
-  <dt>startsWith</dt>
-  <dd>
-    Filters out the column unless the cell's value starts with the specified
-    string
-  </dd>
-  <dt>endsWith</dt>
-  <dd>
-    Filters out the column unless the cell's value ends with the specified
-    string
-  </dd>
+    <dt>contains</dt>
+    <dd>
+        Does not filter out the column if the substring is present anywhere in the
+        cells value
+    </dd>
+    <dt>startsWith</dt>
+    <dd>
+        Filters out the column unless the cell's value starts with the specified
+        string
+    </dd>
+    <dt>endsWith</dt>
+    <dd>
+        Filters out the column unless the cell's value ends with the specified
+        string
+    </dd>
 </dl>
 
 ### NumberFilterState
 
 The second type of filter state is for number columns.
 
-<TypeSpecTable rows={numberFilterState} />
+<TypeSpecTable rows={numberFilterState}/>
 
 ### NumberFilterScheme
 
 The `NumberFilterScheme` specifies the type of filter to apply for number columns and has the following possible values and corresponding behaviors:
 
 <dl>
-  <dt>equals</dt>
-  <dd>
-    Filters out the column unless the cell's value is equal to the specified
-    value
-  </dd>
-  <dt>greaterThan</dt>
-  <dd>
-    Filters out the column unless the cell's value is greater than the specified
-    value
-  </dd>
-  <dt>lessThan</dt>
-  <dd>
-    Filters out the column unless the cell's value is less than the specified
-    value
-  </dd>
-  <dt>greaterOrEqual</dt>
-  <dd>
-    Filters out the column unless the cell's value is greater than or equal to
-    the specified value
-  </dd>
-  <dt>lessOrEqual</dt>
-  <dd>
-    Filters out the column unless the cell's value is less than or equal to the
-    specified value
-  </dd>
+    <dt>equals</dt>
+    <dd>
+        Filters out the column unless the cell's value is equal to the specified
+        value
+    </dd>
+    <dt>greaterThan</dt>
+    <dd>
+        Filters out the column unless the cell's value is greater than the specified
+        value
+    </dd>
+    <dt>lessThan</dt>
+    <dd>
+        Filters out the column unless the cell's value is less than the specified
+        value
+    </dd>
+    <dt>greaterOrEqual</dt>
+    <dd>
+        Filters out the column unless the cell's value is greater than or equal to
+        the specified value
+    </dd>
+    <dt>lessOrEqual</dt>
+    <dd>
+        Filters out the column unless the cell's value is less than or equal to the
+        specified value
+    </dd>
 </dl>
 
 ### DateFilterState
@@ -166,21 +164,21 @@ The `NumberFilterScheme` specifies the type of filter to apply for number column
 The third type of filter state is for both date and datetime columns. It is one of the following 3 subtypes, representing different filter types:
 
 <dl>
-  <dt>StartDateFilterState</dt>
-  <dd>
-    The row is filtered out unless the cell's value is the same as or after the
-    specified date.
-  </dd>
-  <dt>EndDateFilterState</dt>
-  <dd>
-    The row is filtered out unless the cell's value is the same as or before the
-    specified date.
-  </dd>
-  <dt>BetweenDatesFilterState</dt>
-  <dd>
-    The row is filtered out unless the cell's value is between the specified
-    dates, inclusive.
-  </dd>
+    <dt>StartDateFilterState</dt>
+    <dd>
+        The row is filtered out unless the cell's value is the same as or after the
+        specified date.
+    </dd>
+    <dt>EndDateFilterState</dt>
+    <dd>
+        The row is filtered out unless the cell's value is the same as or before the
+        specified date.
+    </dd>
+    <dt>BetweenDatesFilterState</dt>
+    <dd>
+        The row is filtered out unless the cell's value is between the specified
+        dates, inclusive.
+    </dd>
 </dl>
 
 Note that in terms of timezones, the grid follows the
@@ -195,19 +193,19 @@ All three date filter state types inherit from `AbstractDateFilterState`, which 
 
 Note that for now, there is no difference in filter behavior between date and datetime columns.
 
-<TypeSpecTable rows={abstractDateFilterState} />
+<TypeSpecTable rows={abstractDateFilterState}/>
 
 ### StartDateFilterState
 
-<TypeSpecTable rows={startDateFilterState} />
+<TypeSpecTable rows={startDateFilterState}/>
 
 ### EndDateFilterState
 
-<TypeSpecTable rows={endDateFilterState} />
+<TypeSpecTable rows={endDateFilterState}/>
 
 ### BetweenDatesFilterState
 
-<TypeSpecTable rows={betweenDatesFilterState} />
+<TypeSpecTable rows={betweenDatesFilterState}/>
 
 ## Examples
 
@@ -359,7 +357,7 @@ export default ControlledFilteredTable;
 
 #### Live Demo
 
-<ControlledFilteredTable />
+<ControlledFilteredTable/>
 
 ### Uncontrolled
 
@@ -393,4 +391,4 @@ export default UncontrolledFilteredTable;
 
 #### Live Demo
 
-<UncontrolledFilteredTable />
+<UncontrolledFilteredTable/>
