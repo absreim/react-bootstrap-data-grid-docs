@@ -2,8 +2,8 @@
 
 import { FC, useEffect, useState } from "react";
 import { TocItem } from "rehype-mdx-toc";
-import getSecondThirdHeadingLinks from "@/shared/getSecondThirdHeadingLinks";
-import NestedNavLinkList from "@/shared/NestedNavLinkList";
+import getSecondThirdHeadingLinks from "@/lib/getSecondThirdHeadingLinks";
+import NestedNavLinkList from "@/components/DocContents/Toc/NestedNavLinkList";
 
 interface TocProps {
   tocItems: TocItem[];

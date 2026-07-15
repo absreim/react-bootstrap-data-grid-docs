@@ -1,10 +1,8 @@
 import { FC } from "react";
-import { getBlogLinkDefs } from "@/lib/getLinkDefs";
+import { blogArticleInfo } from "@/lib/getLinkDefs";
 import Link from "next/link";
 
 const Page: FC = () => {
-  const linkDefs = getBlogLinkDefs();
-
   return (
     <>
       <h1>react-bootstrap-data-grid Tech Blog</h1>
@@ -21,7 +19,7 @@ const Page: FC = () => {
       </p>
       <ul>
         {
-          linkDefs.map(({ name, path, title }) => (
+          blogArticleInfo.links.map(({ name, path, title }) => (
             <li key={name}>
               <Link href={path}>{title || name}</Link>
             </li>

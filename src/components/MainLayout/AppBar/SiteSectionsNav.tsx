@@ -28,7 +28,7 @@ const SiteSectionsNav: FC<SiteSectionsNavProps> = ({ navClasses, variant, onClic
   return (
     <Nav activeKey={activeKey} className={navClasses} variant={variant}>
       <Nav.Item>
-        <Nav.Link as={Link} href="/" eventKey="home" onClick={onClick}>
+        <Nav.Link as={Link} href="/public" eventKey="home" onClick={onClick}>
           Home
         </Nav.Link>
       </Nav.Item>

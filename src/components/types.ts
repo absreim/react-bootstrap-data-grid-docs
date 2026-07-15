@@ -24,7 +24,19 @@ export type LinkSection = SectionMetadata & {
   links: LinkDef[];
 }
 
+export interface SectionedArticleInfo {
+  type: "sectioned"
+  sections: LinkSection[];
+}
+
+export interface UnsectionedArticleInfo {
+  type: "unsectioned",
+  links: LinkDef[];
+}
+
+export type ArticleInfo = UnsectionedArticleInfo | SectionedArticleInfo;
+
 export interface LinkMenuContents {
   sectionTitle: string;
-  linkDefs: LinkDef[];
+  articleInfo: ArticleInfo;
 }

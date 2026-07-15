@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { FC, ReactNode } from "react";
-import DocContentsLayout from "../../../shared/DocContentsLayout";
-import { blogLinkDefs } from "@/lib/getLinkDefs";
+import DocContentsLayout from "@/components/DocContentsLayout";
+import { blogArticleInfo } from "@/lib/getLinkDefs";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ const indexLink: ReactNode = (
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <DocContentsLayout linkDefs={blogLinkDefs} prependNavContent={indexLink}>
+    <DocContentsLayout articleInfo={blogArticleInfo} prependNavContent={indexLink}>
       {children}
     </DocContentsLayout>
   );

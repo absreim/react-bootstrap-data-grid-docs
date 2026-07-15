@@ -1,4 +1,4 @@
-import { SpecTableRow } from "@/shared/TypeSpecTable";
+import { SpecTableRow } from "@/components/TypeSpecTable";
 
 export const proColDef: SpecTableRow[] = [
   {

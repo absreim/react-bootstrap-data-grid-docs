@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { FC, ReactNode } from "react";
-import DocContentsLayout from "../../shared/DocContentsLayout";
-import { docLinkDefs } from "@/lib/getLinkDefs";
-import MainLayout from "@/shared/MainLayout";
+import DocContentsLayout from "@/components/DocContentsLayout";
+import { docsArticleInfo } from "@/lib/getLinkDefs";
+import MainLayout from "@/components/MainLayout";
 
 export const metadata: Metadata = {
   title: "react-bootstrap-data-grid Documentation",
@@ -13,9 +13,14 @@ export const metadata: Metadata = {
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <MainLayout
-      linkMenuContents={{ sectionTitle: "Doc Articles", linkDefs: docLinkDefs }}
+      linkMenuContents={{
+        sectionTitle: "Doc Articles",
+        articleInfo: docsArticleInfo,
+      }}
     >
-      <DocContentsLayout linkDefs={docLinkDefs}>{children}</DocContentsLayout>
+      <DocContentsLayout articleInfo={docsArticleInfo}>
+        {children}
+      </DocContentsLayout>
     </MainLayout>
   );
 };

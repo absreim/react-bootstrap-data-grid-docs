@@ -1,4 +1,4 @@
-import { SectionMetadata } from "@/shared/types";
+import { SectionMetadata } from "@/components/types";
 import Table from "@/assets/icons/Table";
 
 const metadata: SectionMetadata = {

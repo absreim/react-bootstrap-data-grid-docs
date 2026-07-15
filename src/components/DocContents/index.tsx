@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import { TocItem } from "rehype-mdx-toc";
 import Stack from "react-bootstrap/Stack";
-import Toc from "@/shared/Toc";
+import Toc from "@/components/DocContents/Toc";
 
 interface DocContentsProps {
   main: ReactNode;

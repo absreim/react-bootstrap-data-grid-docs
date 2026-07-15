@@ -3,10 +3,10 @@
 import { FC, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
-import ContentsNavbar from "../ContentsNavbar";
-import { LinkMenuContents } from "@/shared/types";
-import SiteSectionsNav from "@/shared/AppBar/SiteSectionsNav";
+import { LinkMenuContents } from "@/components/types";
+import SiteSectionsNav from "@/components/MainLayout/AppBar/SiteSectionsNav";
 import List from "@/assets/icons/List";
+import useArticleNavbar from "@/components/useArticleNavbar";
 
 export interface ContentsHamburgerProps {
   linkMenuContents?: LinkMenuContents;
@@ -16,6 +16,8 @@ const ContentsHamburger: FC<ContentsHamburgerProps> = ({
   linkMenuContents,
 }) => {
   const [show, setShow] = useState(false);
+
+  const articleNav = useArticleNavbar(linkMenuContents?.articleInfo)
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -38,10 +40,7 @@ const ContentsHamburger: FC<ContentsHamburgerProps> = ({
           {linkMenuContents && (
             <>
               <h2 className="mb-1 fs-4">{linkMenuContents.sectionTitle}</h2>
-              <ContentsNavbar
-                linkDefs={linkMenuContents.linkDefs}
-                onClick={handleClose}
-              />
+              {articleNav}
               <hr />
             </>
           )}

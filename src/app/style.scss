@@ -105,13 +105,18 @@ code[data-theme*=" "] span {
   min-width: 0;
 }
 
-.vr {
+.rbdg-vertical-rule {
   display: inline-block;
   align-self: stretch;
   width: var(--bs-border-width);
   min-height: 1em;
   background-color: currentcolor;
   opacity: .25;
+}
+
+.rbdg-sectioned-navbar-list {
+  padding-left: 0;
+  list-style: none;
 }
 
 @include media-breakpoint-up(lg) {

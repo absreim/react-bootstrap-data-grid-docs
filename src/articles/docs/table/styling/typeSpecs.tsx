@@ -1,4 +1,4 @@
-import { SpecTableRow } from "@/shared/TypeSpecTable";
+import { SpecTableRow } from "@/components/TypeSpecTable";
 import Link from "next/link";
 
 export const additionalComponentsStyleModel: SpecTableRow[] = [

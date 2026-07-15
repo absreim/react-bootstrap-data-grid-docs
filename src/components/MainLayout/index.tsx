@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
-import { LinkMenuContents } from "@/shared/types";
-import AppBar from "@/shared/AppBar/AppBar";
+import { LinkMenuContents } from "@/components/types";
+import AppBar from "@/components/MainLayout/AppBar/AppBar";
 
 export interface MainLayoutProps {
   linkMenuContents?: LinkMenuContents

@@ -1,23 +1,25 @@
 import { FC, ReactNode } from "react";
-import ContentsNavbar from "./ContentsNavbar";
-import { LinkDef } from "@/shared/types";
+import { ArticleInfo } from "@/components/types";
+import useArticleNavbar from "@/components/useArticleNavbar";
 
 interface DocContentsLayoutProps {
   children: ReactNode;
-  linkDefs: LinkDef[];
+  articleInfo: ArticleInfo;
   prependNavContent?: ReactNode;
 }
 
 const DocContentsLayout: FC<DocContentsLayoutProps> = ({
   children,
-  linkDefs,
+  articleInfo,
   prependNavContent,
 }) => {
+  const articleNav = useArticleNavbar(articleInfo);
+
   return (
     <div className="d-flex flex-row gap-2 h-100">
       <div className="d-none d-lg-block overflow-y-auto pe-3 rbdg-contents-navbar">
         {prependNavContent}
-        <ContentsNavbar linkDefs={linkDefs} />
+        {articleNav}
       </div>
       <main className="h-100 w-100 rbdg-docs-main-layout">{children}</main>
     </div>
