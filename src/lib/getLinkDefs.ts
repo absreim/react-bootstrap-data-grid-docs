@@ -1,6 +1,6 @@
-import fs from "fs";
+import fs from "node:fs/promises";
 import path from "path";
-import { LinkDefinition } from "@/shared/types";
+import { LinkDef, LinkSection, SectionMetadata } from "@/shared/types";
 
 // Much of the frontmatter parsing code is derived from the Next.js Portfolio
 // Blog Starter example:
@@ -10,8 +10,6 @@ const DOCS_DIR = path.join(process.cwd(), "src", "articles", "docs");
 const DOCS_URL_BASE = "/docs";
 const BLOG_DIR = path.join(process.cwd(), "src", "articles", "blog");
 const BLOG_URL_BASE = "/blog";
-
-type AugmentedLinkDefinition = LinkDefinition & { order: number };
 
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
@@ -30,39 +28,80 @@ function parseFrontmatter(fileContent: string) {
   return frontMatterDict;
 }
 
-function getMDXFiles(dir: string) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
+async function getMDXFiles(dir: string) {
+  return (await fs.readdir(dir)).filter((file) => path.extname(file) === ".mdx");
 }
 
-function readMDXFile(filePath: string) {
-  const rawContent = fs.readFileSync(filePath, "utf-8");
+async function readMDXFile(filePath: string) {
+  const rawContent = await fs.readFile(filePath, "utf-8");
   return parseFrontmatter(rawContent);
 }
 
-// TODO: overhaul the below members to reflect new directory structure
+const getSectionedArticles: (
+  rootDir: string,
+  urlBasePath: string,
+) => Promise<LinkSection[]> = async (rootDir, urlBasePath) => {
+  const entries = await fs.readdir(rootDir, {
+    withFileTypes: true,
+    recursive: true,
+  });
+  const articleFiles = entries.filter((e) => e.isFile() && e.name === "article.mdx");
+  const sections: Map<string, LinkSection> = new Map();
+  for (const file of articleFiles) {
+    const pathSegments = file.parentPath.split("/");
+    const articleDirName = pathSegments[pathSegments.length - 1];
+    const sectionName = pathSegments[pathSegments.length - 2];
 
-function getMDXData(
+    if (!sections.has(sectionName)) {
+      const sectionPath = pathSegments
+        .slice(0, pathSegments.length - 1)
+        .join("/");
+      const metadata: SectionMetadata = await import(
+        sectionPath + "/metadata.tsx"
+      );
+      sections.set(sectionName, {
+        ...metadata,
+        path: sectionName,
+        links: [],
+      });
+    }
+
+    const dict = await readMDXFile(path.join(file.parentPath, file.name));
+    sections.get(sectionName)!.links.push({
+      order: Number(dict.order),
+      name: dict.navLabel || articleDirName,
+      path: `${urlBasePath}/${sectionName}/${articleDirName}`,
+      title: dict.indexTitle,
+    });
+  }
+
+  return Array.from(sections.values()).sort((a, b) => a.order - b.order);
+};
+
+async function getUnsectionedArticles(
   contentDir: string,
   urlBasePath: string,
-): AugmentedLinkDefinition[] {
-  const mdxFiles = getMDXFiles(contentDir);
-  return mdxFiles.map((file) => {
-    const dict = readMDXFile(path.join(contentDir, file));
+): Promise<LinkDef[]> {
+  const mdxFiles = await getMDXFiles(contentDir);
+  const mdxData: LinkDef[] = [];
+  for (const file of mdxFiles) {
+    const dict = await readMDXFile(path.join(contentDir, file));
     const slug = path.basename(file, path.extname(file));
-
-    return {
+    mdxData.push({
       order: Number(dict.order),
       name: dict.navLabel || slug,
       path: `${urlBasePath}/${slug}`,
       title: dict.indexTitle,
       pro: dict.pro === "true",
-    };
-  });
+    });
+  }
+
+  return mdxData;
 }
 
-export const docLinkDefs = getMDXData(DOCS_DIR, DOCS_URL_BASE).sort(
+export const docLinkDefs = (await getSectionedArticles(DOCS_DIR, DOCS_URL_BASE)).sort(
   (a, b) => a.order - b.order,
 );
-export const blogLinkDefs = getMDXData(BLOG_DIR, BLOG_URL_BASE).sort(
+export const blogLinkDefs = (await getUnsectionedArticles(BLOG_DIR, BLOG_URL_BASE)).sort(
   (a, b) => a.order - b.order,
 );

@@ -1,10 +1,10 @@
 import { FC, ReactNode } from "react";
 import ContentsNavbar from "./ContentsNavbar";
-import { LinkDefinition } from "@/shared/types";
+import { LinkDef } from "@/shared/types";
 
 interface DocContentsLayoutProps {
   children: ReactNode;
-  linkDefs: LinkDefinition[];
+  linkDefs: LinkDef[];
   prependNavContent?: ReactNode;
 }
 

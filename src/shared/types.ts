@@ -5,19 +5,26 @@ export type NestedNavLinkNode = Pick<TocItem, "value" | "href" | "id"> & {
   children: NestedNavLinkNode[];
 };
 
-export interface LinkDefinition {
+export interface LinkDef {
+  order: number;
   name: string;
   path: string;
   title?: string;
   pro?: boolean;
 }
 
-export interface LinkMenuContents {
-  sectionTitle: string;
-  linkDefs: LinkDefinition[];
+export interface SectionMetadata {
+  name: string;
+  order: number;
+  icon: ReactNode;
 }
 
-export interface SectionInfo {
-  title: string;
-  icon: ReactNode;
+export type LinkSection = SectionMetadata & {
+  path: string;
+  links: LinkDef[];
+}
+
+export interface LinkMenuContents {
+  sectionTitle: string;
+  linkDefs: LinkDef[];
 }
