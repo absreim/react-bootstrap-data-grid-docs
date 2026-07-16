@@ -17,7 +17,7 @@ const DocContents: FC<DocContentsProps> = ({ main, tocItems }) => {
       >
         {main}
       </div>
-      <nav className="d-none d-xl-block rbdg-docs-toc overflow-y-auto rbdg-docs-toc-container">
+      <nav className="d-none d-xl-block h-100 rbdg-docs-toc overflow-y-auto rbdg-docs-toc-container">
         <Toc tocItems={tocItems} />
       </nav>
     </Stack>
