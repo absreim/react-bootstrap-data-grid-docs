@@ -3,7 +3,7 @@ import Table from "@/assets/icons/Table";
 
 const metadata: SectionMetadata = {
   name: "Table",
-  order: 2,
+  order: 3,
   icon: <Table />,
 };
 

@@ -1,0 +1,310 @@
+---
+navLabel: Installation
+order: 0
+---
+
+import PrereleaseNotice from "@/assets/PrereleaseNotice";
+import GridStyleSheetTable from "./GridStyleSheetTable";
+import TableStyleSheetTable from "./TableStyleSheetTable";
+
+# Installation
+
+There are several major aspects to consider when installing react-bootstrap-data-grid:
+
+1. __Framework selection and setup__ - if you do not have an existing project with one of the supported frameworks,
+initialize one
+2. __Framework SCSS setup (optional)__ - if you wish to use SCSS rather than only CSS with your framework, some
+brief additional setup is necessary
+3. __Installation of Bootstrap__ - [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+itself is a required
+[peer dependency](https://nodejs.org/en/blog/npm/peer-dependencies)
+to use react-bootstrap-data-grid
+4. __NPM installation of react-bootstrap-data-grid__ - installing react-bootstrap-data-grid as an NPM package into your
+project
+5. __Bootstrap style sheet imports__ - style sheets of Bootstrap need to be imported into your project for styling to
+work correctly
+6. __react-bootstrap-data-grid style sheet imports__ - style sheets specific to react-bootstrap-data-grid also need to
+be imported for styling to work correctly
+
+## Framework Setup
+
+This project has been tested with [Vite](https://vite.dev/) and [Next.js](https://nextjs.org/) and those frameworks are
+officially supported by this project.
+
+<div className="alert alert-warning" role="alert">
+    Unfortunately, previous attempts to use react-bootstrap-data-grid with
+    <a href="https://astro.build/">Astro</a> ran into showstopping issues that do not seem particularly easy to solve.
+    Thus, Astro is not currently supported.
+</div>
+
+### Vite Project Init
+
+To create a new Vite project, follow the [Getting Started](https://vite.dev/guide/) guide of the official documentation.
+Using `create-vite` to scaffold a new project should be suitable in most cases:
+
+```bash
+npm create vite@latest
+```
+
+### Next.js Project Init
+
+To create a new Next.js project, follow the
+[Installation](https://nextjs.org/docs/app/getting-started/installation) guide in the official documentation. The
+default settings of `create-next-app` should suffice in most cases:
+
+```bash
+npx create-next-app@latest my-app --yes
+```
+
+## Framework Sass Setup
+
+While not required, importing Bootstrap via SCSS rather than CSS unlocks some deeper customization options. For example,
+it is possible to add a custom color variant in addition to the
+[built-in variants](https://getbootstrap.com/docs/5.3/customize/color/#colors). react-bootstrap-data-grid is designed to
+work with Bootstrap that is has been customized in ways that impact the way the way that
+[tables](https://getbootstrap.com/docs/5.3/content/tables/) are displayed.
+
+The official
+[Sass customization documentation](https://getbootstrap.com/docs/5.3/customize/sass/) goes into detail on what
+customizations can be done and how one can do them.
+
+Setting up Next.js and Vite to work with Sass is fairly straightforward. Following the
+[relevant documentation for Next.js](https://nextjs.org/docs/app/guides/sass) and
+[for Vite](https://vite.dev/guide/features#css-pre-processors) to set up your project to work with SASS.
+
+## Bootstrap Installation
+
+To install Bootstrap as an NPM package into your project, follow the instructions on the
+[official documentation for installing Bootstrap with a package manager](https://getbootstrap.com/docs/5.3/getting-started/download/#npm).
+For example, the following command is for installing with the NPM package manager.
+
+```bash
+npm install bootstrap@5.3.8
+```
+
+## react-bootstrap-data-grid package installation
+
+react-bootstrap-data-grid comes in two editions, _Community_ and _Pro_. There is a separate NPM package for each
+edition.
+[@absreim/react-bootstrap-data-grid](https://www.npmjs.com/package/@absreim/react-bootstrap-data-grid) is the
+package for the Community edition and
+[@absreim/react-bootstrap-data-grid-pro](https://www.npmjs.com/package/@absreim/react-bootstrap-data-grid-pro) is the
+package for the Pro edition. These packages contain the Community and Pro editions of the
+[table](/docs/table/introduction) component, respectively.
+
+Currently, there is only one edition of the [grid](/docs/grid/introduction) component. The grid component is included
+in both the Community edition and Pro edition NPM package.
+
+<PrereleaseNotice />
+
+To install react-bootstrap-data-grid into your project, simply install the desired package with the package manager of
+your choice.
+
+For the Community edition:
+
+```bash
+npm install @absreim/react-bootstrap-data-grid
+```
+
+For the Pro edition:
+
+```bash
+npm install @absreim/react-bootstrap-data-grid-pro
+```
+
+## Bootstrap Style Sheet Imports
+
+Once Bootstrap and react-bootstrap-data-grid have been installed into your project, Bootstrap's stylesheets must be
+imported into your project. Instructions differ by whether one is importing CSS or SCSS stylesheets.
+
+### CSS
+
+Bootstrap offers pre-compiled CSS files in its NPM package. Simply import the regular version or minified version
+into JSX or TSX files in one of your React components in your project.
+
+Regular file import:
+
+```tsx
+import "bootstrap/dist/css/bootstrap.css";
+```
+
+Minified file import:
+
+(This file has reduced size but is harder for a human to read.)
+
+```tsx
+import "bootstrap/dist/css/bootstrap.min.css";
+```
+
+For more information on compiled Bootstrap CSS files, see the
+[relevant official documentation](https://getbootstrap.com/docs/5.3/getting-started/contents/#css-files).
+
+### Sass
+
+Bootstrap's Sass stylesheet can be imported in its entirety or piecemeal to optimize bundle size. In either case,
+importing often involves creating a separate Sass stylesheet and using the `@import` Sass keyword to import Bootstrap's
+stylesheet.
+
+That separate stylesheet is in turn imported in a React component in your project. For example, if the stylesheet is
+named `style.scss` and is the same directory as your component, the import can be done as follows.
+
+```tsx
+import "./style.scss";
+```
+
+This import only needs to be done once per project and is often the done at the top-most component in your project for
+the sake of organization. For example, for an
+[app router-based Next.js project](https://nextjs.org/docs/app)
+the highest-level component is usually in the top level `layout.tsx` file.
+
+#### Simple Import
+
+To set up Bootstrap quickly by importing Bootstrap's Sass in its entirely, use the following line your separate
+Sass file (_style.scss_ in the above discussion).
+
+```scss
+@import "~bootstrap/scss/bootstrap";
+```
+
+#### Piecemeal Import
+
+As described by the [Optimize](https://getbootstrap.com/docs/5.3/customize/optimize/) article of the official Bootstrap
+documentation, one can optimize performance and/or bundle size by leaving out unneeded style rules.
+
+Among the list of Sass imports provided by Bootstrap, react-bootstrap-data-grid needs the ones listed in the following
+code snippet to be styled correctly. To use the snippet, place it inside the separate Sass file of your project
+(_style.scss_ in the above discussion).
+
+```scss
+// Configuration
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+// Layout & components
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/pagination";
+
+// Helpers
+@import "~bootstrap/scss/helpers";
+
+// Utilities
+@import "~bootstrap/scss/utilities/api";
+```
+
+#### Deprecation Warnings
+
+Bootstrap uses the deprecated @import Sass keyword andthe
+[official Bootstrap documentation](https://getbootstrap.com/docs/5.3/customize/sass/)
+cites this use of deprecated Sass syntax as a known issue.
+
+The documentation recommends ignoring warnings that the
+[Sass executable](https://www.npmjs.com/package/sass) may omit.
+These warnings may be quite numerous when using Sass and one may wish to silence the warnings. In Next.js, one can do so
+by modifying the `sassOptions` property of the `NextConfig` value in the _next.config.js_ file:
+
+```ts
+const nextConfig: NextConfig = {
+  sassOptions: {
+    silenceDeprecations: ["import"],
+    quietDeps: true,
+  },
+};
+```
+
+## react-bootstrap-data-grid Style Sheet Imports
+
+The react-bootstrap-data-grid project contains its own style sheets that need to be imported for its components to be
+styled correctly.
+
+### Grid Style Sheets
+
+Style sheets for the [grid component](/docs/grid/introduction) are the same across Community and Pro editions.
+
+<GridStyleSheetTable />
+
+Either the Sass or CSS file may be imported. The Sass version is required if one is
+[customizing Bootstrap with Sass variables](https://getbootstrap.com/docs/5.3/customize/sass/)
+and want react-bootstrap-data-grid to adhere to the overrides.
+
+### Table Style Sheets
+
+Style sheets for the [table component](/docs/table/introduction) differ in file names between the Community and Pro
+editions.
+
+<TableStyleSheetTable />
+
+### Import Method
+
+Like with [imports for Bootstrap's stylesheets](#bootstrap-style-sheet-imports), CSS imports should be done directly at
+the top level React component. For example, for a Next.js project, the imports may look like the following at the top
+level _layout.tsx_ component:
+
+```tsx
+import "@absreim/react-bootstrap-data-grid-pro/table-pro.css";
+import "@absreim/react-bootstrap-data-grid-pro/grid.css";
+```
+
+Sass imports should be done in a separate Sass file that is then imported into the top level React component. For
+example, the following code snippet may exist in a separate _style.scss_ file in a Next.js project:
+
+```scss
+@import "@absreim/react-bootstrap-data-grid-pro/table-pro.scss";
+@import "@absreim/react-bootstrap-data-grid-pro/grid.scss";
+```
+
+The _grid.scss_ import must come after the imports for Bootstrap's stylesheets. For example:, the entire _style.scss_
+file may look like the following:
+
+```scss
+// --- Bootstrap imports ---
+
+// Configuration
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+// Layout & components
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/offcanvas";
+
+// Helpers
+@import "~bootstrap/scss/helpers";
+
+// Utilities
+@import "~bootstrap/scss/utilities/api";
+
+// --- RBDG Grid ---
+
+@import "@absreim/react-bootstrap-data-grid-pro/table-pro.scss";
+@import "@absreim/react-bootstrap-data-grid-pro/grid.scss";
+```
+
+## Conclusion
+
+Upon going through all of the above steps, you should now be ready to use the
+[table component](/docs/table/introduction) of
+[grid component](/docs/grid/introduction)
+in your application. See the documentation for each component for instructions on using them.

@@ -3,7 +3,7 @@ import Grid from "@/assets/icons/Grid";
 
 const metadata: SectionMetadata = {
   name: "Grid",
-  order: 1,
+  order: 2,
   icon: <Grid />,
 };
 

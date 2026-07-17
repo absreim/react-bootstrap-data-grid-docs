@@ -6,18 +6,21 @@ order: 0
 # Introduction
 
 The _grid_ component of react-bootstrap-data-grid, like the [table](/docs/table/introduction) component, displays data
-in a tabular format. The primary difference is that the _grid_ component has its cells laid out using `div` elements
+in a tabular format.
+
+The primary difference is that the _grid_ component has its cells laid out using `div` elements
 with fixed width instead of the
 [HTML table element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table)
 and related child elements. This way of laying out cells is commonly found in other well-known data grid solutions, like
 [MUI-X Data Grid](https://mui.com/x/react-data-grid/).
 
 Perhaps the most noticeable difference of laying out cells this way is that the cell width can be tightly controlled.
-In contrast, for a table browsers can often ignore the
+Browsers appear to adhere closely to
 [width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/width),
 [min-width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/min-width), and
-[max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/max-width)
-CSS properties in order to accommodate the contents of the cell.
+[max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/max-width) settings for `flex` and
+`block` display modes. In contrast, for a `table`, browsers can often ignore those CSS properties in order to
+accommodate the contents of the cell.
 
 Additionally, compared to the
 [table](/docs/table/introduction) component,
