@@ -1,10 +1,10 @@
 import { SectionMetadata } from "@/components/types";
-import Table from "@/assets/icons/Table";
+import Grid from "@/assets/icons/Grid";
 
 const metadata: SectionMetadata = {
-  name: "Table",
-  order: 2,
-  icon: <Table />,
+  name: "Grid",
+  order: 1,
+  icon: <Grid />,
 };
 
 export default metadata;

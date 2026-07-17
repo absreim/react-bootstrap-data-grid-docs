@@ -3,7 +3,7 @@ import Git from "@/assets/icons/Git";
 
 const metadata: SectionMetadata = {
   name: "Versions",
-  order: 2,
+  order: 3,
   icon: <Git />,
 };
 

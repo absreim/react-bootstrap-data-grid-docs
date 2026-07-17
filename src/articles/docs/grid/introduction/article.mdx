@@ -1,0 +1,43 @@
+---
+navLabel: Introduction
+order: 0
+---
+
+# Introduction
+
+The _grid_ component of react-bootstrap-data-grid, like the [table](/docs/table/introduction) component, displays data
+in a tabular format. The primary difference is that the _grid_ component has its cells laid out using `div` elements
+with fixed width instead of the
+[HTML table element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table)
+and related child elements. This way of laying out cells is commonly found in other well-known data grid solutions, like
+[MUI-X Data Grid](https://mui.com/x/react-data-grid/).
+
+Perhaps the most noticeable difference of laying out cells this way is that the cell width can be tightly controlled.
+In contrast, for a table browsers can often ignore the
+[width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/width),
+[min-width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/min-width), and
+[max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/max-width)
+CSS properties in order to accommodate the contents of the cell.
+
+Additionally, compared to the
+[table](/docs/table/introduction) component,
+the _grid_ component:
+
+- __contains cells that have to a single line of text__. Any text that overflows is omitted. When there is overflowing
+text, an ellipsis (...) at the end of the cell indicates that some text is not being displayed.
+- __allows each cell to be individually focusable__. In contrast, in the _table_ component only certain elements within
+the cells, like buttons or checkboxes, are focusable. (This feature is not yet implemented but will be implemented
+soon.)
+- __can be configured to either take up a fixed height or take on the intrinsic height of the contents__. In contrast,
+the _table_ component will always take on the intrinsic height of the contents.
+
+## Deciding Between the Grid and Table
+
+- __The _grid_ component is relatively new and has far fewer features than the [table](/docs/table/introduction)
+component currently__. Use the _table_ component if you need one of its features that is not currently available on the
+_grid_ component.
+- __Use the _grid_ component if you prefer each row to have the same height (a single line of text).__ Use the _table_
+component if you prefer for cells to be expandable to multiple lines high to accommodate lengthier text content.
+- __Use the _grid_ component if you want the user to have an experience similar to that of a spreadsheet application.__
+In particular, the user can focus on any cell and then copy or edit the contents of the focused cell. (This feature is
+not yet implemented but will be implemented soon.)
