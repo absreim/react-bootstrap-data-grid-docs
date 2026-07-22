@@ -1,0 +1,305 @@
+---
+navLabel: Layout
+order: 1
+---
+
+import LayoutSettingsDemo from "./LayoutSettingsDemo";
+
+# Layout
+
+The _grid_ component allows one to customize the width of individual columns as well as both the width and height of the
+entire grid.
+
+## Column Width
+
+Column widths are set as a fixed number of pixels as part of the definition of each column. If no width is specified, it
+defaults to 100 pixels.
+
+## Row Height
+
+There are no row height settings. Row height is always fixed to contain one line of text.
+
+More specifically, row height is determined by font size and cell padding, which are in turn set by
+[Bootstrap variables](https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults).
+By default, font size is `1rem` and padding on both top and bottom is `0.5rem` each, resulting in total row height of
+`2rem`.
+
+## Grid Dimensions
+
+There are three settings for both width and height when it comes to setting dimensions for the entire grid:
+
+<dl>
+    <dt>Auto</dt>
+    <dd>Sets width or height according the intrinsic size of the contents of the grid. This is the default setting.</dd>
+    <dt>Parent</dt>
+    <dd>Sets the width or height to be the 100% of the width or height of the parent container.</dd>
+    <dt>Fixed</dt>
+    <dd>Sets the width of height to a specified number of pixels.</dd>
+</dl>
+
+For the _Parent_ or _Fixed_ setting, the grid becomes scrollable in the relevant dimension if there is content that
+overflows.
+
+## Example
+
+See the code sample below for a demo on how to set column width, grid width, and grid height.
+
+To demonstrate the effects of the `parent` setting for grid width and height, the grid is enclosed in a parent `div`
+with height _300px_ and width _300px_.
+
+Note that this demo makes use of [react-bootstrap](https://react-bootstrap.netlify.app/).
+
+### Live Demo
+
+<LayoutSettingsDemo />
+
+### Code
+
+```tsx
+"use client";
+
+import Grid, {
+  ColDef,
+  GridProps,
+  RowDef,
+} from "@absreim/react-bootstrap-data-grid/grid";
+import { FC, ReactNode, useMemo, useState } from "react";
+import Form from "react-bootstrap/Form";
+import Stack from "react-bootstrap/Stack";
+
+// --- Selectable width and height options UI ---
+
+interface Option<PropValue> {
+  label: string;
+  value: PropValue;
+}
+
+type OptionSet<OptionName extends string, PropValue> = Record<
+  OptionName,
+  Option<PropValue>
+>;
+
+type ColWidthOptionNames = "none" | "100px" | "200px";
+type GridDimOptionNames = "none" | "auto" | "parent" | "fixed";
+
+const colWidthOptions: OptionSet<ColWidthOptionNames, ColDef["width"]> = {
+  none: {
+    label: "None (same as 100px)",
+    value: undefined,
+  },
+  "100px": {
+    label: "100px",
+    value: 100,
+  },
+  "200px": {
+    label: "200px",
+    value: 200,
+  },
+};
+
+const gridWidthOptions: OptionSet<GridDimOptionNames, GridProps["width"]> = {
+  none: {
+    label: 'None (same as "auto")',
+    value: undefined,
+  },
+  auto: {
+    label: "Auto",
+    value: "auto",
+  },
+  parent: {
+    label: "Parent",
+    value: "parent",
+  },
+  fixed: {
+    label: "Fixed (250px)",
+    value: 250,
+  },
+};
+
+const gridHeightOptions: OptionSet<GridDimOptionNames, GridProps["height"]> = {
+  none: {
+    label: 'None (same as "auto")',
+    value: undefined,
+  },
+  auto: {
+    label: "Auto",
+    value: "auto",
+  },
+  parent: {
+    label: "Parent",
+    value: "parent",
+  },
+  fixed: {
+    label: "Fixed (200px)",
+    value: 200,
+  },
+};
+
+interface UseOptionSelectionHook<PropValue> {
+  value: PropValue;
+  selectionUi: ReactNode;
+}
+
+function useOptionSelection<OptionName extends string, PropValue>(
+  options: OptionSet<OptionName, PropValue>,
+  startValue: OptionName,
+  legend: string,
+  optionTypeId: string,
+): UseOptionSelectionHook<PropValue> {
+  const [selectedOption, setSelectedOption] = useState<OptionName>(startValue);
+
+  const selectionUi = (
+    <fieldset>
+      <legend>{legend}</legend>
+      {Object.keys(options).map((optionName) => {
+        const { label } = options[optionName as OptionName];
+        return (
+          <Form.Check
+            key={optionName}
+            type="radio"
+            id={`${optionTypeId}-${optionName}`}
+            label={label}
+            checked={selectedOption === optionName}
+            onChange={() => setSelectedOption(optionName as OptionName)}
+          />
+        );
+      })}
+    </fieldset>
+  );
+
+  return {
+    value: options[selectedOption].value,
+    selectionUi,
+  };
+}
+
+// --- Sample data ---
+
+interface CompanyInfo {
+  name: string;
+  marketCap: number;
+}
+
+const rows: RowDef<CompanyInfo>[] = [
+  {
+    id: "nvda",
+    data: {
+      name: "Nvidia",
+      marketCap: 4.9,
+    },
+  },
+  {
+    id: "goog",
+    data: {
+      name: "Alphabet",
+      marketCap: 4.7,
+    },
+  },
+  {
+    id: "aapl",
+    data: {
+      name: "Apple",
+      marketCap: 4.2,
+    },
+  },
+  {
+    id: "msft",
+    data: {
+      name: "Microsoft",
+      marketCap: 3.0,
+    },
+  },
+  {
+    id: "amzn",
+    data: {
+      name: "Amazon",
+      marketCap: 2.9,
+    },
+  },
+  {
+    id: "meta",
+    data: {
+      name: "Meta Platforms",
+      marketCap: 1.5,
+    },
+  },
+  {
+    id: "tsla",
+    data: {
+      name: "Tesla",
+      marketCap: 1.5,
+    },
+  },
+];
+
+const getCols: (widthSetting: ColDef["width"]) => ColDef[] = (widthSetting) => [
+  {
+    name: "name",
+    type: "string",
+    label: "Company Name",
+    width: widthSetting,
+  },
+  {
+    name: "marketCap",
+    type: "number",
+    label: "Market Cap (USD, trillions)",
+    width: widthSetting,
+  },
+];
+
+// --- Demo component ---
+
+const LayoutSettingsDemo: FC = () => {
+  const colWidthOptionHook = useOptionSelection(
+    colWidthOptions,
+    "none",
+    "Column Width Settings",
+    "colWidth",
+  );
+  const gridWidthOptionsHook = useOptionSelection(
+    gridWidthOptions,
+    "none",
+    "Grid Width Settings",
+    "gridWidth",
+  );
+  const gridHeightOptionsHook = useOptionSelection(
+    gridHeightOptions,
+    "none",
+    "Grid Height Settings",
+    "gridHeight",
+  );
+
+  const cols = useMemo(
+    () => getCols(colWidthOptionHook.value),
+    [colWidthOptionHook.value],
+  );
+
+  return (
+    <Stack gap={2}>
+      <Stack gap={2}>
+        {colWidthOptionHook.selectionUi}
+        {gridWidthOptionsHook.selectionUi}
+        {gridHeightOptionsHook.selectionUi}
+      </Stack>
+      <div
+        style={{
+          width: 300,
+          height: 300,
+        }}
+        className="overflow-auto border"
+      >
+        <Grid
+          rows={rows}
+          cols={cols}
+          width={gridWidthOptionsHook.value}
+          height={gridHeightOptionsHook.value}
+          borders="full"
+          borderVariant="primary"
+        />
+      </div>
+    </Stack>
+  );
+};
+
+export default LayoutSettingsDemo;
+```

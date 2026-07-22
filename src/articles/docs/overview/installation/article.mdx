@@ -243,6 +243,8 @@ editions.
 
 ### Import Method
 
+#### CSS
+
 Like with [imports for Bootstrap's stylesheets](#bootstrap-style-sheet-imports), CSS imports should be done directly at
 the top level React component. For example, for a Next.js project, the imports may look like the following at the top
 level _layout.tsx_ component:
@@ -251,6 +253,8 @@ level _layout.tsx_ component:
 import "@absreim/react-bootstrap-data-grid-pro/table-pro.css";
 import "@absreim/react-bootstrap-data-grid-pro/grid.css";
 ```
+
+#### Sass
 
 Sass imports should be done in a separate Sass file that is then imported into the top level React component. For
 example, the following code snippet may exist in a separate _style.scss_ file in a Next.js project:
@@ -300,6 +304,13 @@ file may look like the following:
 
 @import "@absreim/react-bootstrap-data-grid-pro/table-pro.scss";
 @import "@absreim/react-bootstrap-data-grid-pro/grid.scss";
+```
+
+Finally, importing the separate Sass file at the top level React component may look as follows, assuming that the
+Sass file is named _sytle.scss_ and is in the same directory as the top level React component.
+
+```tsx
+import "./style.scss";
 ```
 
 ## Conclusion
