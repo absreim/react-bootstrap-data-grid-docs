@@ -1,0 +1,148 @@
+---
+navLabel: Other Styles
+order: 3
+---
+
+import RefDocNotice from "../../../../assets/RefDocNotice";
+
+# Other Style Options
+
+The react-bootstrap-data-grid grid component implements some additional style options that are meant be equivalent
+those offered by Bootstrap for tables.
+
+<RefDocNotice />
+
+## Stripes
+
+Bootstrap offers both [striped rows](https://getbootstrap.com/docs/5.3/content/tables/#striped-rows) and
+[striped columns](https://getbootstrap.com/docs/5.3/content/tables/#striped-columns) for tables.
+
+react-bootstrap-data-grid implements the same styles. These styles can be activated by passing the `rows` and `columns`
+values to the `stripes` prop on the `Grid` component.
+
+By default, stripes are disabled.
+
+## Hover
+
+Bootstrap offers [hoverable row styles](https://getbootstrap.com/docs/5.3/content/tables/#hoverable-rows).
+
+The same kind of style can be activated on the `Grid` component by passing in a `true` value to the `hover` prop.
+
+Be default, hoverable row styles are disabled.
+
+## Divider
+
+Bootstrap provides a style for
+[table group dividers](https://getbootstrap.com/docs/5.3/content/tables/#table-group-dividers).
+They are relatively thick horizontal borders meant to separate the table header, body, and footer.
+
+The `Grid` component implements such dividers but only for dividing the grid header and body. The reason is that the
+grid currently does not support footers.
+
+To activate the divider between the grid header and body, pass a `true` value to the `divider` prop.
+
+Note that as of now, the divider color only responds to color modes (dark mode vs light mode). There is currently no
+officially supported way to customize the color of the divider.
+
+## Border Style
+
+Bootstrap offers three different [table border styles](https://getbootstrap.com/docs/5.3/content/tables/#table-borders):
+
+- __"bordered"__ tables have both horizontal and vertical borders around each cell and around the outer perimeter of
+the table
+- __an unnamed__ style that includes only horizontal borders and omits a order at the top edge of the table. This is the
+default style.
+- __borderless__ tables that have no borders
+
+The `Grid` component implements styles that very similar to the _unnamed_ and _borderless_ styles. For the _"bordered"_
+style, a similar options exists, but there is a key difference. See the [responsive grid](#responsive-grid) section for
+details.
+
+### How to Configure
+
+Configure border styles by passing one of the following values to the `borders` prop:
+
+<dl>
+    <dt><code>"horizontal"</code> or <code>undefined</code></dt>
+    <dd>The <i>unnamed</i> default style with horizontal borders.</dd>
+    <dt><code>"full"</code></dt>
+    <dd>The <i>"bordered"</i> style that includes horizonal and vertical borders.</dd>
+    <dt><code>"none"</code></dt>
+    <dd>The <i>"borderless"</i> style.</dd>
+</dl>
+
+## Border Color
+
+See the [borders section of the_color article](/docs/grid/colors#borders).
+
+## Small Grid
+
+Like the Bootstrap [small tables](https://getbootstrap.com/docs/5.3/content/tables/#small-tables) feature, the grid
+also implements a similar feature to reduce cell padding to produce a more densely packed grid.
+
+Pass a `true` value to the `small` prop of the `Grid` component to enable the style.
+
+## Responsive Grid
+
+Like Bootstrap's
+[responsive tables](https://getbootstrap.com/docs/5.3/content/tables/#always-responsive),
+the react-bootstrap-data-grid grid implements scrolling functionality when the grid's dimensions cannot fit its
+contents.
+
+One respect where the grid's behavior differs from responsive Bootstrap
+tables is where outer borders are applied. Outer borders are applied when the __"bordered table"__ style is applied to a
+Bootstrap table or when the __full__ option is chosen for the react-bootstrap-data-grid grid.
+
+(See the [border style](#border-style) section earlier in this article for details on applying a grid border style.)
+
+For responsive Bootstrap tables, the borders are around the table that is
+__within__ the scrollable container. For the react-bootstrap-data-grid grid, the borders are applied
+__around__ the scrollable container itself.
+
+See the [example](http://localhost:3000/docs/grid/other-styles#example) later in this article for a demonstration of
+the _"bordered"_ setting for the grid.
+
+## Unsupported Features
+
+A number of Bootstrap table style features are not supported for various reasons.
+
+### Active Tables
+
+This section refers to the [active tables](https://getbootstrap.com/docs/5.3/content/tables/#active-tables) feature of
+Bootstrap tables.
+
+While technically implemented in react-bootstrap-data-grid grid's Sass and CSS, there is currently no feature that makes
+use of active rows or cells.
+
+These styles will like be made use of in upcoming row and/or cell selection features for the react-bootstrap-data-grid
+grid.
+
+### Vertical Alignment
+
+This section refers to the [vertical alignment](https://getbootstrap.com/docs/5.3/content/tables/#vertical-alignment)
+feature of Bootstrap tables.
+
+Currently, the grid component has only one line of text per row, so vertical alignment is not applicable.
+
+### Nesting
+
+This section refers to the [nesting](https://getbootstrap.com/docs/5.3/content/tables/#nesting) feature of Bootstrap
+tables.
+
+Nesting react-bootstrap-data-grid grids within each other is not currently supported.
+
+### Caption
+
+This section refers to the discussion about [table captions](https://getbootstrap.com/docs/5.3/content/tables/#anatomy)
+on the Bootstrap tables documentation.
+
+The react-bootstrap-data-grid grid component currently does not support the equivalent of a table caption. However,
+such a feature will likely be implemented in the near future.
+
+## Example
+
+TODO
+
+### Live Demo
+
+TODO
