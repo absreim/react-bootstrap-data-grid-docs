@@ -4,7 +4,7 @@ order: 1
 ---
 
 import LayoutSettingsDemo from "./LayoutSettingsDemo";
-import ReactBootstrapNotice from "../../../../assets/ReactBootstrapNotice";
+import ReactBootstrapNotice from "../../../../assets/alerts/ReactBootstrapNotice";
 
 # Layout
 
@@ -64,21 +64,12 @@ import Grid, {
   GridProps,
   RowDef,
 } from "@absreim/react-bootstrap-data-grid/grid";
-import { FC, ReactNode, useMemo, useState } from "react";
-import Form from "react-bootstrap/Form";
+import { FC, useMemo } from "react";
 import Stack from "react-bootstrap/Stack";
+import { OptionSet } from "@/assets/examples/types";
+import useOptionSelection from "@/assets/examples/useOptionSelection";
 
 // --- Selectable width and height options UI ---
-
-interface Option<PropValue> {
-  label: string;
-  value: PropValue;
-}
-
-type OptionSet<OptionName extends string, PropValue> = Record<
-  OptionName,
-  Option<PropValue>
->;
 
 type ColWidthOptionNames = "none" | "100px" | "200px";
 type GridDimOptionNames = "none" | "auto" | "parent" | "fixed";
@@ -135,44 +126,6 @@ const gridHeightOptions: OptionSet<GridDimOptionNames, GridProps["height"]> = {
     value: 200,
   },
 };
-
-interface UseOptionSelectionHook<PropValue> {
-  value: PropValue;
-  selectionUi: ReactNode;
-}
-
-function useOptionSelection<OptionName extends string, PropValue>(
-  options: OptionSet<OptionName, PropValue>,
-  startValue: OptionName,
-  legend: string,
-  optionTypeId: string,
-): UseOptionSelectionHook<PropValue> {
-  const [selectedOption, setSelectedOption] = useState<OptionName>(startValue);
-
-  const selectionUi = (
-    <fieldset>
-      <legend>{legend}</legend>
-      {Object.keys(options).map((optionName) => {
-        const { label } = options[optionName as OptionName];
-        return (
-          <Form.Check
-            key={optionName}
-            type="radio"
-            id={`${optionTypeId}-${optionName}`}
-            label={label}
-            checked={selectedOption === optionName}
-            onChange={() => setSelectedOption(optionName as OptionName)}
-          />
-        );
-      })}
-    </fieldset>
-  );
-
-  return {
-    value: options[selectedOption].value,
-    selectionUi,
-  };
-}
 
 // --- Sample data ---
 

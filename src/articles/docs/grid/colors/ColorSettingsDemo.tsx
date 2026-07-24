@@ -5,12 +5,12 @@ import Grid, {
   RowDef,
   ColDef,
 } from "@absreim/react-bootstrap-data-grid/grid";
-import { FC, ReactNode, useState } from "react";
-import Form from "react-bootstrap/Form";
+import { FC } from "react";
 import Stack from "react-bootstrap/Stack";
+import useVariantDropdown from "@/assets/examples/useVariantDropdown";
+import useToggleSwitch from "@/assets/examples/useToggleSwitch";
 
 // --- Sample data ---
-
 
 interface Bg3Class {
   name: string;
@@ -74,7 +74,7 @@ const rows: RowDef<Bg3Class>[] = [
     },
   },
   {
-    id: "cl" + "eric",
+    id: "cleric",
     data: {
       name: "Cleric",
       primaryAttribute: "Wisdom",
@@ -175,18 +175,7 @@ const rows: RowDef<Bg3Class>[] = [
   },
 ];
 
-// --- Form elements ---
-
-const variants: string[] = [
-  "primary",
-  "secondary",
-  "success",
-  "warning",
-  "danger",
-  "info",
-  "light",
-  "dark",
-];
+// --- Cell and row color variant functions ---
 
 const headerCellsFn: GridProps["headerCellVariant"] = (_, colIndex) => {
   if (colIndex % 2 === 0) {
@@ -215,59 +204,6 @@ const bodyCellsFn: GridProps["bodyCellVariant"] = (
   }
 
   return null;
-};
-
-const useVariantDropdown: (
-  name: string,
-  label: string,
-) => { selectUi: ReactNode; propValue: string | undefined } = (name, label) => {
-  const [stateVal, setStateVal] = useState<string>("");
-
-  const id = `${name}-settingDropdown`;
-  const selectUi = (
-    <div>
-      <label htmlFor={id}>{label}</label>
-      <Form.Select
-        id={id}
-        value={stateVal}
-        onChange={({ target }) => setStateVal(target.value)}
-      >
-        <option value="">(None)</option>
-        {variants.map((variant) => (
-          <option key={variant} value={variant}>
-            {variant}
-          </option>
-        ))}
-      </Form.Select>
-    </div>
-  );
-  const propValue = stateVal === "" ? undefined : stateVal;
-
-  return {
-    selectUi,
-    propValue,
-  };
-};
-
-const useToggleSwitch: (
-  name: string,
-  label: string,
-) => { switchUi: ReactNode; enabled: boolean } = (name, label) => {
-  const [enabled, setEnabled] = useState<boolean>(false);
-  const switchUi = (
-    <Form.Check
-      id={`${name}-settingToggle`}
-      type="switch"
-      label={label}
-      checked={enabled}
-      onChange={({ target }) => setEnabled(target.checked)}
-    />
-  );
-
-  return {
-    switchUi,
-    enabled,
-  };
 };
 
 // --- Demo component ---
