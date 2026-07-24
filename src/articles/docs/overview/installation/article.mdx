@@ -250,8 +250,8 @@ the top level React component. For example, for a Next.js project, the imports m
 level _layout.tsx_ component:
 
 ```tsx
-import "@absreim/react-bootstrap-data-grid-pro/table-pro.css";
-import "@absreim/react-bootstrap-data-grid-pro/grid.css";
+import "@absreim/react-bootstrap-data-grid/table.css";
+import "@absreim/react-bootstrap-data-grid/grid.css";
 ```
 
 #### Sass
@@ -260,8 +260,8 @@ Sass imports should be done in a separate Sass file that is then imported into t
 example, the following code snippet may exist in a separate _style.scss_ file in a Next.js project:
 
 ```scss
-@import "@absreim/react-bootstrap-data-grid-pro/table-pro.scss";
-@import "@absreim/react-bootstrap-data-grid-pro/grid.scss";
+@import "@absreim/react-bootstrap-data-grid/table.scss";
+@import "@absreim/react-bootstrap-data-grid/grid.scss";
 ```
 
 The _grid.scss_ import must come after the imports for Bootstrap's stylesheets. For example:, the entire _style.scss_
@@ -302,8 +302,8 @@ file may look like the following:
 
 // --- RBDG Grid ---
 
-@import "@absreim/react-bootstrap-data-grid-pro/table-pro.scss";
-@import "@absreim/react-bootstrap-data-grid-pro/grid.scss";
+@import "@absreim/react-bootstrap-data-grid/table.scss";
+@import "@absreim/react-bootstrap-data-grid/grid.scss";
 ```
 
 Finally, importing the separate Sass file at the top level React component may look as follows, assuming that the
