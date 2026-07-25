@@ -1,0 +1,108 @@
+---
+navLabel: Introduction
+order: 0
+---
+
+import ProBadge from "../../../../assets/ProBadge";
+
+# Introduction
+
+Welcome to the documentation for react-bootstrap-data-grid!
+
+_react-bootstrap-data-grid_ is a project that provides
+[grid](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/grid_role)
+and
+[table](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table)
+UI components that work specifically with apps
+built with [React](https://react.dev/) and choosing to use [Bootstrap](https://getbootstrap.com/) as the design system.
+
+It is designed to make use of
+[Bootstrap design tokens](https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults)
+have the same look and feel as the rest of a site styled with Bootstrap.
+
+## What is a Data Grid?
+
+Web applications often involve displaying data in a tabular format and allowing the user to manipulate perform
+CRUD (Create, Read, Update, Delete) operations on the data.
+
+It is also common to allow the user to sort, filter, and paginate data displayed this way.
+
+These kinds of features take a significant time to implement from scratch. A __data grid__ is a UI component that
+partially or fully implements many of these features in order to speed up development web applications.
+
+Over time, popular data grid components have come to adopt particularly advanced features. For example:
+
+<dl>
+    <dt>Row virtualization</dt>
+    <dd>Unmounting rows that are out of view to conserve memory</dd>
+    <dt>Row and column reordering</dt>
+    <dd>Allowing the user to drag an drop rows and columns to change the displayed order</dd>
+    <dt>Column resizing</dt>
+    <dd>Allowing the user to change the width of a column by dragging a border</dd>
+    <dt>Lazy loading</dt>
+    <dd>Deferring loading of data from a server until the user scrolls that data into view</dd>
+</dl>
+
+## Comparison with Other Solutions
+
+### react-bootstrap-table2
+
+[react-bootstrap-table2](https://react-bootstrap-table.github.io/react-bootstrap-table2/)
+was previously popular table component for Bootstrap. It is one of the projects by which _react-bootstrap-data-grid_ was
+inspired.
+
+Unfortunately, the project has not seen a release since 2018 and only supports React 7 and Bootstrap 4.
+
+_react-bootstrap-data-grid_ aims to fill the niche that _react-bootstrap-table2_ left behind.
+
+### MUI-X Data Grid
+
+[MUI-X Data Grid](https://mui.com/x/react-data-grid/) is the official data grid component for the
+[Material UI](https://mui.com/material-ui/getting-started/) design system. It is the other project by which
+_react-bootstrap-data-grid_ was inspired.
+
+_react-bootstrap-data-grid_ aims to fill the same role as MUI-X Data Grid, but for Bootstrap rather than the Material UI
+design system.
+
+### Tanstack Table
+
+[Tanstack Table](https://tanstack.com/table/latest) is a popular _headless_ data grid solution. Being a headless
+solution, it provides functionality for manipulating data internally. The headless nature allows it integrates with any
+design system but leaves the developer to implement the actual UI.
+
+In contrast, _react-bootstrap-data-grid_ is for developers who have decided on using specifically Bootstrap and React
+for their web app and wishes to avoid the effort of implementing the UI portions of the data grid component.
+
+### AG Grid
+
+AG Grid is perhaps the most popular data grid solution on the market. However, it has its
+[own design system](https://www.ag-grid.com/javascript-data-grid/ag-grid-design-system/).
+
+[Customizing AG Grid](https://www.ag-grid.com/javascript-data-grid/theming-css/) to make use of Bootstrap design tokens
+to achieve some degree of the same look and feel as Bootstrap components is likely possible, but may be a significant
+effort.
+
+_react-bootstrap-data-grid_ is for those who want a data grid solution that looks aesthetically as similar as possible
+to the rest of a site styled with Bootstrap and without going through such a customization effort.
+
+## Editions
+
+There are two editions of react-bootstrap-data-grid, _Community_ and _Pro_. The _Community_ edition is released under
+the MIT license and is freely usable and distributable.
+
+The _Pro_ edition contains advanced features not available in the _Community_ edition and requires a commercial license
+to use in production. There is no license available for purchase yet, but it is expected to be made available in the
+near future.
+
+The getting started instructions in this article apply to the _Community_ edition. For information on to install and
+set up the _Pro_ edition, see the [relevant article](/docs/table/pro). Throughout this documentation site, articles with
+content that only pertain to the _Pro_ edition will be marked with the following badge: <ProBadge />.
+
+## Further information
+
+- See the source code in the project's [GitHub repo](https://github.com/absreim/react-bootstrap-data-grid).
+- The project is under active development. See the [development roadmap](https://github.com/users/absreim/projects/2/views/1).
+- See the [page for the published NPM package](https://www.npmjs.com/package/@absreim/react-bootstrap-data-grid) in case you are curious about download statistics.
+- If you have a question, concern, or suggestion, feel free to create a GitHub issue on the repo's [issue page](https://github.com/absreim/react-bootstrap-data-grid/issues).
+- If you see anything wrong with this documentation site, want to make a change it, or are just curious, see
+[this documentation site's GitHub repo](https://github.com/absreim/react-bootstrap-data-grid-docs).
