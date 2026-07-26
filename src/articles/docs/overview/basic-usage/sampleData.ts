@@ -1,9 +1,9 @@
-"use client";
+import {
+  ColDef,
+  RowDef,
+} from "@absreim/react-bootstrap-data-grid/table";
 
-import Table, { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
-import { FC } from "react";
-
-const cols: ColDef[] = [
+export const cols: ColDef[] = [
   {
     type: "string",
     name: "name",
@@ -28,7 +28,7 @@ interface CpuInfo {
   releaseDate: Date;
 }
 
-const rows: RowDef<CpuInfo>[] = [
+export const rows: RowDef<CpuInfo>[] = [
   {
     id: "m4",
     data: {
@@ -62,7 +62,3 @@ const rows: RowDef<CpuInfo>[] = [
     },
   },
 ];
-
-const SampleBasicTable: FC = () => <Table rows={rows} cols={cols} />;
-
-export default SampleBasicTable;

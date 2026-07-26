@@ -1,24 +1,29 @@
 ---
 navLabel: Basic Usage
-order: 1
+order: 2
 ---
 
 import SampleBasicTable from "./SampleBasicTable";
+import SampleBasicGrid from "./SampleBasicGrid";
 import TypeSpecTable from "@/components/TypeSpecTable";
 import { colDef, rowDef, gridProps } from "./typeSpecs";
 
 # Basic Usage
 
-Almost all the functionality offered by react-bootstrap-data-grid can be accessed by importing and rendering the `Grid`
-component.
+A characteristic common to both [table](/docs/table/introduction) and [grid](/docs/grid/introduction) components is that
+the data to display is required to use the component at all.
 
-The only required props for the `Grid` component are those that describe the _rows_ and _columns_ to be displayed by the
-grid. Additional features of the grid are enabled by passing optional props.
+This data is passed to each component in the form of row and column definitions as props named `rows` and `cols`,
+respectively. These two props are the only ones required to using the table or grid component. Additional features are
+enabled by passing optional props.
+
+The table component is named `Table` and the grid component is named `Grid`. The documentation will refer to each
+component by those names moving forward.
 
 ## Column Definition
 
-Columns are defined using the `ColDef` interface. To render a `Grid` component, an array of `ColDef` objects, one for
-each column in grid, are passed in via the `cols` prop.
+Columns are defined using the [ColDef](#coldef) interface. To render a `Table` or `Grid` component, an array of `ColDef`
+objects, one for each column in grid, are passed in via the `cols` prop.
 
 ### Data Types
 
@@ -28,6 +33,9 @@ react-bootstrap-data-grid currently supports 4 data types: `string`, `number`, `
 The `date` and `datetime` types are both backed by the `Date` type in JavaScript. The difference between `date` and
 `datetime` lies with the behavior of react-bootstrap-data-grid with regard to each type. Notably, the default way that
 each type is displayed differ, as do the input elements for filtering on and editing data of each type.
+
+For details on how formatting differs between `date` and `datetime` types, see the [next section](#formatting) on
+formatting.
 
 ### Formatting
 
@@ -42,34 +50,40 @@ When not specified, the default displayed string for each column is as follows:
   <dd>The string will be displayed as it is with no changes.</dd>
   <dt>number</dt>
   <dd>
-    The number will be converted to a string via the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString">Number.prototype.toString function</a>.
+    The number will be converted to a string via the{" "}
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString">Number.prototype.toString</a>
+    {" "}function.
   </dd>
   <dt>date</dt>
   <dd>
     The date will be displayed in the format <code>yyyy-mm-dd</code>, which is
-    the format used for{" "}<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date">date inputs</a>.
+    the format used for <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date">date inputs</a>.
   </dd>
   <dt>datetime</dt>
   <dd>
     The datetime will be displayed in the format <code>YYYY-MM-DDTHH:mm</code>,
-    which is the format used for <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local">datetime-local inputs</a>.
+    which is the format used for
+    {" "}<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local">datetime-local inputs</a>.
   </dd>
 </dl>
 
-Note that the default formatters for `date` and `datetime` types are exposed in the react-bootstrap-data-grid NPM
-package as `dateToInputStr` and `dateToDatetimeInputStr` and may be imported for use in your project.
+<div className="alert alert-info" role="alert">
+    The default formatters for `date` and `datetime` types are exposed in the react-bootstrap-data-grid NPM
+    package as <code>dateToInputStr</code> and <code>dateToDatetimeInputStr</code> and may be imported for use in your
+    project.
+</div>
 
 ### Example
 
 The in the below code sample, three columns, `name`, `frequency` and `date` are defined in the `cols` array.
 
 ```tsx
-"use client";
+import {
+  ColDef,
+  RowDef,
+} from "@absreim/react-bootstrap-data-grid/table";
 
-import Table, { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";
-import { FC } from "react";
-
-const cols: ColDef[] = [
+export const cols: ColDef[] = [
   {
     type: "string",
     name: "name",
@@ -91,16 +105,16 @@ const cols: ColDef[] = [
 
 ## Row Definition
 
-Rows are defined using the `RowDef` interface. Row data is passed to a grid component via the `rows` prop, which is an
-array of `RowDef` objects.
+Rows are defined using the [RowDef](#rowdef) interface. Row data is passed to a `Table` or `Grid` component via the
+`rows` prop, which is an array of `RowDef` objects.
 
 ### ID Field
 
 Each `RowDef` object has a mandatory `id` field to uniquely identify rows between renders. This field can be a `string`
-or `number` and must be unique among all rows in any given `Grid` component.
+or `number` and must be unique among all rows in any given `Grid` or `Table` component.
 
-This field is used as a `key` prop within the grid to improve performance by reducing unnecessary unmounting and remounting
-of components that represent rows.
+This field is used as a `key` prop within the grid to improve performance by reducing unnecessary unmounting and
+remounting of components that represent rows.
 
 Guidelines for selecting values for the `id` field are the same as that for selecting `key` props when rendering lists
 of React components. See the
@@ -121,10 +135,14 @@ An `id` field for each row is chosen that uniquely identifies the entity in ques
 Compared to a number that simply represents the index of the array, it is relatively easy to identify the meaning of
 each `id` even if the order of the rows were to be changed.
 
-For the sake of convenience of having an IDE provide assistance with TypeScript types, the `RowDef` interface accepts
-a generic parameter. It is _up to the developer_ to ensure that the type passed as this parameter lines up with the
-related `ColDef`s. In this example, the `CpuInfo` interface is derived from the `ColDef`s in the previous code sample
-to allow the IDE to provide type checking assistance. Note that this generic parameter is completely optional.
+<div className="alert alert-info" role="alert">
+    For the sake of convenience of having an IDE provide assistance with TypeScript types, the <code>RowDef</code>
+    interface accepts an <i>optional</i> generic parameter. It is <i>up to the developer</i> to ensure that the type
+    passed as this parameter lines up with the related <code>ColDef</code>s.
+
+    In this example, the <code>CpuInfo</code> interface is derived from the <code>ColDef</code>s in the previous code
+    sample to allow the IDE to provide type checking assistance.
+</div>
 
 ```tsx
 interface CpuInfo {
@@ -133,7 +151,7 @@ interface CpuInfo {
   releaseDate: Date;
 }
 
-const rows: RowDef<CpuInfo>[] = [
+export const rows: RowDef<CpuInfo>[] = [
   {
     id: "m4",
     data: {
@@ -169,32 +187,47 @@ const rows: RowDef<CpuInfo>[] = [
 ];
 ```
 
-## Grid Component
+## Examples
 
-The `Grid` component is the default export of the react-bootstrap-data-grid NPM package. Import and render this
-component to use the grid.
+These examples consist of `Grid` and `Table` displaying the same data set.
 
-The only required props to the `Grid` component are the `rows` and `cols` props, containing arrays of `RowDef` and
-`ColDef` objects, respectively.
-
-Additional features can be accessed by passing other, optional props to the `Grid` component. See the other
-sections of this documentation site for details of these additional features.
-
-### Example
+### Grid
 
 #### Code
 
-The code sample below renders a `Grid` component with `rows` and `cols` defined earlier in this section.
+```tsx
+"use client";
+
+import Grid from "@absreim/react-bootstrap-data-grid/grid";
+import { FC } from "react";
+import { rows, cols } from "./sampleData";
+
+const SampleBasicGrid: FC = () => <Grid rows={rows} cols={cols} />;
+
+export default SampleBasicGrid;
+```
+
+#### Live Demo
+
+<SampleBasicGrid />
+
+### Table
+
+#### Code
 
 ```tsx
-const SampleBasicTable: FC = () => <Grid rows={rows} cols={cols} />;
+"use client";
+
+import Table from "@absreim/react-bootstrap-data-grid/table";
+import { FC } from "react";
+import { rows, cols } from "./sampleData";
+
+const SampleBasicTable: FC = () => <Table rows={rows} cols={cols} />;
 
 export default SampleBasicTable;
 ```
 
 #### Live Demo
-
-This below grid is a live demo of the sample code used throughout this section of the documentation.
 
 <SampleBasicTable />
 
