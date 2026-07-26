@@ -14,7 +14,7 @@ import { proColDef, widthModel } from "./typeSpecs";
 
 <PrereleaseNotice />
 
-The Pro version of react-bootstrap-data-grid:
+The Pro version of the react-bootstrap-data-grid table:
 
 - includes advanced features not found in the Community version.
 - requires a license to use in production, but can be freely used for evaluation purposes.
@@ -37,23 +37,19 @@ npm install @absreim/react-bootstrap-data-grid-pro
 
 ### Styling
 
-Styles specific to react-bootstrap-data-grid-pro are exposed in the file `style.css`. Unlike the Community version,
-_the styles are not available for import as an SCSS file_. Import the CSS file as follows so that the grid is styled
-properly.
-
-```ts
-import "@absreim/react-bootstrap-data-grid-pro/style.css"
-```
+The names of style sheets for the table component are slightly different. See the
+[relevant section in the installation documentation](/docs/overview/installation#table-style-sheets)
+for details on how to import style sheets for the pro edition.
 
 ## API Differences
 
-- the name of the grid component is `GridPro` rather than `Grid`
-- the name of the type that represents the props for the `GridPro` component is `GridProProps` rather than `GridProps`
+- the name of the grid component is `TablePro` rather than `Table`
+- the name of the type that represents the props for the `TablePro` component is `TableProProps` rather than `TableProps`
 - the name of the column definition type `ProColDef` rather than `ColDef` and contains additional fields
 
 See more details on each specific point below.
 
-### GridPro
+### TablePro
 
 This component is the default export of the Pro version NPM package and be imported as follows:
 
@@ -61,14 +57,14 @@ This component is the default export of the Pro version NPM package and be impor
 import GridPro from "@absreim/react-bootstrap-data-grid-pro";
 ```
 
-### GridProProps
+### TableProProps
 
-This type contains the props for `GridPro`. The props are largely the same as `GridProps` but with a few differences.
+This type contains the props for `TablePro`. The props are largely the same as `TableProProps` but with a few differences.
 
 - The column definitions in the `cols` prop are of type `ProColDef[]` instead of `ColDef[]`.
 - The `styleModel` prop is of type `ProStyleModel`. `ProStyleModel` contains all the properties of `StyleModel` but
-additionally contains `reorderModel` property for customizing style of the [row reordering](/docs/reorder) feature.
-- `GridProProps` contains a `reorderModel` prop to enable [row reordering](/docs/reorder) while `GridProps` does not.
+additionally contains `reorderModel` property for customizing style of the [row reordering](/docs/table/reorder) feature.
+- `GridProProps` contains a `reorderModel` prop to enable [row reordering](/docs/table/reorder) while `TableProps` does not.
 
 ### ProColDef
 
@@ -76,10 +72,10 @@ Compared to `ColDef`, the `width` property can be `WidthModel` in addition to `n
 external control of column widths.
 
 Several other additional optional properties are included to allow resizing of columns. See the
-[resize article](/docs/resize) for a discussion and usage examples.
+[resize article](/docs/table/resize) for a discussion and usage examples.
 
 The additional and changed fields for `ProColDef` are defined in the below table. All other properties are the same as
-[ColDef](/docs/basic-usage#coldef).
+[ColDef](/docs/overview/basic-usage#coldef).
 
 <TypeSpecTable rows={proColDef} />
 

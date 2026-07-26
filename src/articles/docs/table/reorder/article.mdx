@@ -19,13 +19,13 @@ import HorizontalGrip from "@absreim/react-bootstrap-data-grid-pro/table-pro/ass
 
 <PrereleaseNotice />
 
-The [Pro version](/docs/pro) of react-bootstrap-data-grid allows a developer to allow the user to rearrange rows in a
+The [Pro version](/docs/table/pro) of react-bootstrap-data-grid allows a developer to allow the user to rearrange rows in a
 grid through a drag-and-drop interface.
 
 ## End User Usage
 
-When reordering is enabled for a grid, there will be an extra column on the left side of the grid that contains buttons
-that are drag handles. _One can drag the handle to a different position on the grid to move the row to that position._
+When reordering is enabled for a table, there will be an extra column on the left side of the table that contains buttons
+that are drag handles. _One can drag the handle to a different position on the table to move the row to that position._
 
 ### Drop Zones
 
@@ -57,10 +57,10 @@ term for this div is *drag ghost*.
 
 ### Sorting and Filtering
 
-When a table is being [sorted](/docs/sorting) or [filtered](/docs/filtering), the reordering feature is also disabled
+When a table is being [sorted](/docs/table/sorting) or [filtered](/docs/table/filtering), the reordering feature is also disabled
 by disabling the buttons that are the drag handles.
 
-Note that even if sorting or filtering is enabled for a grid, by passing in a `sortModel` or `filterModel` prop,
+Note that even if sorting or filtering is enabled for a table, by passing in a `sortModel` or `filterModel` prop,
 respectively, those features may not be _active_. Sorting is _not active_ if no column is being sorted upon. Likewise,
 if filtering id disabled for all columns, filtering is _not active_.
 
@@ -84,11 +84,11 @@ the reordering process at any time without reordering anything, press the <kbd>E
 
 ## Enabling
 
-To enable the feature for a grid, pass in a `reorderModel` prop. This prop is an object with a single member named
+To enable the feature for a table, pass in a `reorderModel` prop. This prop is an object with a single member named
 `callback`, which is a callback function of the type `(id: RowId, destIndex: number) => void;`.
 
 This callback function takes the row `id` and `destIndex`, which is the destination index from the drag and drop action.
-It is up to this function to act upon the action, often by setting a new [rows prop](/docs/basic-usage#gridprops) with
+It is up to this function to act upon the action, often by setting a new [rows prop](/docs/overview/basic-usage#tableprops) with
 the rows in a different order.
 
 ### Row Insert Utility Function
@@ -121,7 +121,7 @@ const ReorderableGrid: FC = () => {
     );
 
     return (
-        <GridPro
+        <TablePro
           rows={rows}
           cols={cols}
           reorder={{ callback: reorderCallback }}
@@ -133,15 +133,15 @@ const ReorderableGrid: FC = () => {
 ## Caveats
 
 This feature currently does not support the situation where the contents of the
-[rows prop](/docs/basic-usage#gridprops) changes while the user is dragging it. In such a situation, the behavior of
+[rows prop](/docs/overview/basic-usage#tableprops) changes while the user is dragging it. In such a situation, the behavior of
 this feature may be difficult to predict.
 
-If you expect that your app would cause the [rows prop](/docs/basic-usage#gridprops) to update via means other than user
+If you expect that your app would cause the [rows prop](/docs/overview/basic-usage#tableprops) to update via means other than user
 input, it is recommended that you not enable this feature.
 
 ## Example
 
-The following example demonstrates a grid with row reordering enabled.
+The following example demonstrates a table with row reordering enabled.
 
 ### Sorting and Filtering
 
@@ -158,8 +158,8 @@ one column, and click the Submit button.
 
 This example demonstrates custom styling specific to the row reordering feature:
 
-- The border color of dragged row is changed to the Bootstrap `warning` color.
-- The border color of drop zone is changed ot the Bootstrap `info` color.
+- The border color of dragged row is changed to the Bootstrap _warning_ color.
+- The border color of drop zone is changed ot the Bootstrap _info_ color.
 - The drag ghost has reduced opacity and a thicker border.
 
 ### Live Demo
@@ -173,14 +173,14 @@ This example demonstrates custom styling specific to the row reordering feature:
 ```tsx
 "use client";
 
-import GridPro, {
+import TablePro, {
   ProColDef,
   reorderRows,
   RowDef,
   ReorderCallback,
   ReorderStyleModel,
-} from "@absreim/react-bootstrap-data-grid-pro";
-import { UnitStats } from "@/assets/shared/types";
+} from "@absreim/react-bootstrap-data-grid-pro/table-pro";
+import { UnitStats } from "@/assets/types";
 import { FC, useCallback, useState } from "react";
 import "./custom.scss";
 
@@ -376,8 +376,7 @@ const ReorderableGrid: FC = () => {
   );
 
   return (
-    <GridPro
-      useToolbar
+    <TablePro
       rows={rows}
       cols={cols}
       sortModel={{
@@ -443,7 +442,7 @@ export interface UnitStats {
 ## Style Customization
 
 Styles related to the row reordering feature can customized by supplying a property of the `styleModel` prop of the
-`GridPro` component. This property is named `reorderModel` and of the type named `ReorderStyleModel`. Properties of
+`TablePro` component. This property is named `reorderModel` and of the type named `ReorderStyleModel`. Properties of
 `ReorderStyleModel` are listed below.
 
 <TypeSpecTable rows={reorderStyleModel} />

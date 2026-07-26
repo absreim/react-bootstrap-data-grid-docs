@@ -10,11 +10,11 @@ import ToolbarIconsTable from "./ToolbarIconsTable";
 
 The toolbar is a `<div>` that contains buttons for accessing interfaces that take up a considerable amount of screen
 space and are therefore not always displayed. Currently, one can access the interfaces for
-[filtering rows](/docs/filtering) and [exporting grid contents](/docs/export) via the toolbar.
+[filtering rows](/docs/table/filtering) and [exporting table contents](/docs/table/export) via the toolbar.
 
 ## Live Demo
 
-In the live demo below, the toolbar is located right above the grid. Click on the buttons on the toolbar to access the
+In the live demo below, the toolbar is located right above the table. Click on the buttons on the toolbar to access the
 __filtering__ and __exporting__ interfaces. Hover over each button to see the label for the button.
 
 To close an open interface, click on the button on the related button
@@ -25,16 +25,16 @@ filtering button on the toolbar.)
 
 ## Getting Started
 
-Enable the toolbar by passing `true` to the `useToolbar` prop to the `Grid` component:
+Enable the toolbar by passing `true` to the `useToolbar` prop to the `Table` component:
 
 ```tsx
-<Grid rows={rows} cols={cols} useToolbar />
+<Table rows={rows} cols={cols} useToolbar />
 ```
 
-To allow the user to access the filtering interface on the toolbar, enable filtering on the grid:
+To allow the user to access the filtering interface on the toolbar, enable filtering on the table:
 
 ```tsx
-<Grid
+<Table
     rows={rows}
     cols={cols}
     useToolbar
@@ -42,7 +42,7 @@ To allow the user to access the filtering interface on the toolbar, enable filte
 />
 ```
 
-See the [filtering documentation](/docs/filtering) for more details on enabling filtering for a grid.
+See the [filtering documentation](/docs/table/filtering) for more details on enabling filtering for a table.
 
 ## Features
 
@@ -132,4 +132,4 @@ submit changes, one can use the <kbd>Tab</kbd> key to focus the submit button an
 After submitting the changes, one can close the interface by using <kbd>Shift + Tab</kbd> to move back to the toolbar
 button for filtering and pressing <kbd>Space</kbd> or <kbd>Enter</kbd>.
 
-![screenshot showing filtering toolbar button focused with filtering applied to grid data](/filtering_applied.png)
+![screenshot showing filtering toolbar button focused with filtering applied to table data](/filtering_applied.png)

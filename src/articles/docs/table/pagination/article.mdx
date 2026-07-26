@@ -14,26 +14,26 @@ import UncontrolledPaginatedTable from "./UncontrolledPaginatedTable";
 
 # Pagination
 
-Pagination is optional and can be enabled by passing a `pagination` prop to the Grid component.
+Pagination is optional and can be enabled by passing a `pagination` prop to the `Table` component.
 
 Two modes are available, controlled and uncontrolled.
 
 In a manner similar to
 [controlled form components in the official React documentation](https://legacy.reactjs.org/docs/forms.html#controlled-components),
 the parent component can use pagination with react-bootstrap-data-grid in _controlled_ manner by supplying relevant state
-values and setter functions. This mode allows the parent component full access to the pagination state of the grid, but
+values and setter functions. This mode allows the parent component full access to the pagination state of the table, but
 requires more code to set up than when using uncontrolled mode.
 
 In _uncontrolled_ mode, the parent component specifies the starting state of pagination for the grid, while the grid keeps
-track of state changes. Note that the starting state is only read once, when the `Grid` component is mounted. If this
-behavior is not acceptable, one can either force a remount of the `Grid` component (e.g. by changing the `key` prop), or
+track of state changes. Note that the starting state is only read once, when the `Table` component is mounted. If this
+behavior is not acceptable, one can either force a remount of the `Table` component (e.g. by changing the `key` prop), or
 by using controlled mode instead.
 
 ## Type Definitions
 
 ### PaginationModel
 
-This is the type of the `pagination` prop passed to the `Grid` component to enable pagination.
+This is the type of the `pagination` prop passed to the `Table` component to enable pagination.
 
 It is a discriminated union between `ControlledPaginationModel` and `UncontrolledPaginationModel`, which enable
 controlled and uncontrolled pagination modes for a grid, respectively, when passed as the `pagination` prop.
@@ -44,7 +44,7 @@ controlled and uncontrolled pagination modes for a grid, respectively, when pass
 
 ### ControlledPaginationModel
 
-The member of the discriminated union `GridPaginationState` that enables controlled pagination mode for a grid. In
+The member of the discriminated union `GridPaginationState` that enables controlled pagination mode for a table. In
 addition to the properties in the table below, `ControlledPaginationModel` also includes the properties common with
 `UncontrolledPaginationModel`. Those common properties can be found in the `GridPaginationState` section.
 
@@ -52,7 +52,7 @@ addition to the properties in the table below, `ControlledPaginationModel` also 
 
 ### UncontrolledPaginationModel
 
-The member of the discriminated union `GridPaginationState` that enables uncontrolled pagination mode for a grid. In
+The member of the discriminated union `GridPaginationState` that enables uncontrolled pagination mode for a table. In
 addition to the properties in the table below, `ControlledPaginationModel` also includes the properties common with
 `UncontrolledPaginationModel`. Those common properties can be found in the `GridPaginationState` section.
 

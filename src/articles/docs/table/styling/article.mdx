@@ -19,7 +19,7 @@ import SampleStyledTableWrapper from "./SampleStyledTableWrapper";
 
 ## Methods
 
-There are three primary ways of applying custom styles to the components of react-bootstrap-data-grid:
+There are three primary ways of applying custom styles to the child components of the react-bootstrap-data-grid table:
 
 ### Bootstrap Variable Overrides
 
@@ -43,13 +43,13 @@ the [Bootstrap pagination component](https://getbootstrap.com/docs/5.3/component
 
 #### Column Widths
 
-Column widths specified in the [ColDef](/docs/basic-usage#coldef) interface are implemented via
+Column widths specified in the [ColDef](/docs/overview/basic-usage#coldef) interface are implemented via
 HTML
 [style](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/style) attributes.
 
 #### Table Display Mode
 
-The `displayMode` property of [GridProps](/docs/basic-usage#gridprops) sets the CSS
+The `displayMode` property of [TableProps](/docs/overview/basic-usage#tableprops) sets the CSS
 [display](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/display) property on the main `table`
 element via Boostrap utility classes.
 
@@ -63,13 +63,13 @@ that return an array of such strings.
 
 ### StyleModel
 
-A prop of this type is optionally passed to the `Grid` component to enable injection of custom CSS classes.
+A prop of this type is optionally passed to the `Table` component to enable injection of custom CSS classes.
 
 <TypeSpecTable rows={styleModel}/>
 
 ### TableStyleModel
 
-Properties of this type are used to inject custom CSS classes into the main table of the `Grid` component.
+Properties of this type are used to inject custom CSS classes into the main table of the `Table` component.
 
 When more than one of a certain kind of element exists, a function is used to specify different classes based on the
 index of the element. Certain parameters are common to many different properties:
@@ -80,7 +80,7 @@ index of the element. Certain parameters are common to many different properties
     </dt>
     <dd>
         Refers to the index of a row as it is passed into the <code>rows</code> prop
-        of the <code>Grid</code> component.
+        of the <code>Table</code> component.
     </dd>
     <dt>
         <code>displayIndex</code>
@@ -94,7 +94,7 @@ index of the element. Certain parameters are common to many different properties
     </dt>
     <dd>
         Refers to the index of a column as it corresponds to the <code>cols</code>{" "}
-        prop passed into the <code>Grid</code> component.
+        prop passed into the <code>Table</code> component.
     </dd>
 </dl>
 
@@ -102,7 +102,7 @@ index of the element. Certain parameters are common to many different properties
 
 ### FilterInputTableStyleModel
 
-Properties of this type are used to inject custom CSS classes into the filter options table of the `Grid` component.
+Properties of this type are used to inject custom CSS classes into the filter options table of the `Table` component.
 
 Like the `TableStyleModel` type, for certain kinds of elements there are more than one of that kind and function
 parameters are used to specify classes differently for different elements.
@@ -329,7 +329,7 @@ export default SampleStyledTable;
 
 import Table, {
   ColDef,
-  EditableTableFilterState,
+  EditableFilterState,
   EditModel,
   FilterModel,
   RowDef,
@@ -447,8 +447,8 @@ const styleModel: StyleModel = {
 
 const SampleStyledInputsTable: FC = () => {
   const [rows, setRows] = useState<RowDef[]>(initRows);
-  const [tableFilterState, setTableFilterState] =
-    useState<EditableTableFilterState>({
+  const [tableFilterState, setTableFilterState] = useState<EditableFilterState>(
+    {
       name: {
         type: "string",
         scheme: "contains",
@@ -468,7 +468,8 @@ const SampleStyledInputsTable: FC = () => {
         endDate: null,
         enabled: false,
       },
-    });
+    },
+  );
 
   const filterModel: FilterModel = useMemo(
     () => ({

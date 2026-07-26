@@ -235,7 +235,7 @@ export const rows: RowDef<Data>[] = [
 
 import Table, {
   SortColDef,
-  TableSortModel,
+  SortModel,
 } from "@absreim/react-bootstrap-data-grid/table";
 import { rows, cols } from "./tableData";
 import { FC, useState } from "react";
@@ -246,7 +246,7 @@ const ControlledSortedTable: FC = () => {
     order: "asc",
   });
 
-  const tableSortModel: TableSortModel = {
+  const tableSortModel: SortModel = {
     sortColDef,
     setSortColDef,
   };
@@ -255,7 +255,6 @@ const ControlledSortedTable: FC = () => {
 };
 
 export default ControlledSortedTable;
-
 ```
 
 #### Live Demo
@@ -274,12 +273,12 @@ parent component loses access to the sorting state of the `Grid`.
 ```tsx
 "use client";
 
-import Table, { TableSortModel } from "@absreim/react-bootstrap-data-grid/table";
+import Table, { SortModel } from "@absreim/react-bootstrap-data-grid/table";
 import { rows, cols } from "./tableData";
 import { FC } from "react";
 
 const UncontrolledSortedTable: FC = () => {
-  const tableSortModel: TableSortModel = {
+  const tableSortModel: SortModel = {
     type: "uncontrolled",
     initialSortColDef: {
       name: "name",

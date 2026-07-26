@@ -1,15 +1,15 @@
 "use client";
 
 import Table, {
-  EditableTableFilterState,
+  EditableFilterState,
   FilterModel,
 } from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useState } from "react";
 import { cols, rows } from "./tableData";
 
 const ControlledFilteredTable: FC = () => {
-  const [tableFilterState, setTableFilterState] =
-    useState<EditableTableFilterState>({
+  const [tableFilterState, setTableFilterState] = useState<EditableFilterState>(
+    {
       number: {
         type: "number",
         scheme: "lessOrEqual",
@@ -28,7 +28,8 @@ const ControlledFilteredTable: FC = () => {
         startDate: new Date("2023-08-15"),
         enabled: true,
       },
-    });
+    },
+  );
 
   const filterModel: FilterModel = { tableFilterState, setTableFilterState };
 

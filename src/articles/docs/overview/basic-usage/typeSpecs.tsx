@@ -104,7 +104,7 @@ export const rowDef: SpecTableRow[] = [
   },
 ];
 
-export const gridProps: SpecTableRow[] = [
+export const tableProps: SpecTableRow[] = [
   {
     propertyName: "rows",
     typeDefinition: "RowDef[]",

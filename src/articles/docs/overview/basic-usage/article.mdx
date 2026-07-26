@@ -6,7 +6,7 @@ order: 2
 import SampleBasicTable from "./SampleBasicTable";
 import SampleBasicGrid from "./SampleBasicGrid";
 import TypeSpecTable from "@/components/TypeSpecTable";
-import { colDef, rowDef, gridProps } from "./typeSpecs";
+import { colDef, rowDef, tableProps } from "./typeSpecs";
 
 # Basic Usage
 
@@ -274,8 +274,8 @@ A type that represents the `data` property of `RowDef`. It takes in the generic 
 constrain the possible types of `Data` to be a subtype of `ValidRowData`. The definition of `RowData` is
 `RowData<Data extends ValidRowData = ValidRowData> = Data`.
 
-### GridProps
+### TableProps
 
-This interface contains the props for the `Grid`, the highest level component of react-bootstrap-data-grid.
+This interface contains the props for the `Table`, the highest level component of the react-bootstrap-data-grid table.
 
-<TypeSpecTable rows={gridProps} />
+<TypeSpecTable rows={tableProps} />

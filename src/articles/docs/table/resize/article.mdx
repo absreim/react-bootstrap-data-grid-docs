@@ -21,7 +21,7 @@ addition, for the sake of accessibility, resizing also works with the left and r
 
 ## Usage
 
-For columns where resizing is enabled, the grid displays a resize handle. Clicking and dragging the handle resizes the
+For columns where resizing is enabled, the table displays a resize handle. Clicking and dragging the handle resizes the
 column based on the horizontal position of the cursor.
 
 After clicking on a resize handle and starting to drag it, but before releasing the pointer, the user can reset the
@@ -56,12 +56,12 @@ const cols: ProColDef[] = [
 ];
 ```
 
-Additionally, __the `displayMode` prop for the grid component (`GridPro`) must be set to `block` for resizing to work__.
-If not, the `resizeable` property will be ignored. The following code sample shows a `GridPro` component instance
+Additionally, __the `displayMode` prop for the table component (`TablePro`) must be set to `block` for resizing to work__.
+If not, the `resizeable` property will be ignored. The following code sample shows a `TablePro` component instance
 defined in TSX syntax with the `displayMode` prop set to `block`.
 
 ```tsx
-<GridPro
+<TablePro
     displayMode="block"
     rows={rows}
     cols={cols}
@@ -111,20 +111,20 @@ const cols: ProColDef[] = [
 ## Controlled vs Uncontrolled
 
 The width of a resizeable column must be stored in a [React state](https://react.dev/learn/managing-state). The state
-can be either stored outside the `GridPro` component (controlled mode) or inside it (uncontrolled mode).
+can be either stored outside the `TablePro` component (controlled mode) or inside it (uncontrolled mode).
 
 ### Uncontrolled Mode
 
 To use uncontrolled mode, either don't set the `width` property of `ProColDef` at all or set a numeric value. In this
-mode, when the `GridPro` component is mounted, the grid initializes the widths of each column to the value specified in
+mode, when the `TablePro` component is mounted, the grid initializes the widths of each column to the value specified in
 the `width` property, or _100px_ if no value is set. If a user resizes a column, the internal state of the grid updates
 to keep track of the new width.
 
-Once the grid is mounted, changing the `width` property of a column to a different numeric or `undefined` value will no
+Once the table is mounted, changing the `width` property of a column to a different numeric or `undefined` value will no
 longer affect width of that column.
 
 The following code sample shows how one can set the width of a column to use uncontrolled resizing mode. In this example
-the column width is set to _150px_ when the `GridPro` component is first mounted.
+the column width is set to _150px_ when the `TablePro` component is first mounted.
 
 ```tsx
 const cols: ProColDef[] = [
@@ -139,7 +139,7 @@ const cols: ProColDef[] = [
 ];
 ```
 
-If the parent component of the already-mounted `GridPro` component changes the column definition to _200px_ as depicted
+If the parent component of the already-mounted `TablePro` component changes the column definition to _200px_ as depicted
 below, the change will have no effect on the size of the column.
 
 ```ts
@@ -238,7 +238,7 @@ element, the enclosing element itself may widen to fit the table. When this happ
 Making a table responsive creates and enclosing `div` that is scrollable horizontally, making it so that the enclosing
 element is not affected when the table becomes wide.
 
-Both the `Grid` and `GridPro` components have the `responsive` prop that, when set to `true`, renders an enclosing `div`
+Both the `Table` and `TablePro` components have the `responsive` prop that, when set to `true`, renders an enclosing `div`
 with the `table-responsive` Bootstrap utility class.
 
 ## Example

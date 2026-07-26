@@ -15,14 +15,14 @@ export const controlledFilterModel: SpecTableRow[] = [
   },
   {
     propertyName: "tableFilterState",
-    typeDefinition: "EditableTableFilterState",
+    typeDefinition: "EditableFilterState",
     isRequired: true,
     description:
       "The state the represents the filtering options that are currently selected",
   },
   {
     propertyName: "setTableFilterState",
-    typeDefinition: "(state: EditableTableFilterState) => void",
+    typeDefinition: "(state: EditableFilterState) => void",
     isRequired: true,
     description: (
       <p>
@@ -58,7 +58,7 @@ export const uncontrolledFilterModel: SpecTableRow[] = [
   },
   {
     propertyName: "tableFilterState",
-    typeDefinition: "EditableTableFilterState",
+    typeDefinition: "EditableFilterState",
     isRequired: false,
     description: (
       <>

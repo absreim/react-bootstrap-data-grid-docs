@@ -31,7 +31,7 @@ UI.
 ## Accessing the Interface
 
 For grids where filtering is enabled, the user can access the filtering interface via the appropriate button on the
-[toolbar](/docs/toolbar). The button has an `aria-label` of `Filtering` and is visually labeled by the
+[toolbar](/docs/table/toolbar). The button has an `aria-label` of `Filtering` and is visually labeled by the
 [filter Bootstrap icon](https://icons.getbootstrap.com/icons/filter/).
 
 ## Controlled vs Uncontrolled
@@ -85,11 +85,13 @@ entering a number to filter on that column, the number displayed in the input wi
 
 ### FilterState
 
-`FilterState` represents the state of the filtering UI for a single column. There are three types of `FilterState` that represent different column types. It has the type definition `StringFilterState | NumberFilterState | DateFilterState`.
+`FilterState` represents the state of the filtering UI for a single column. There are three types of `FilterState` that
+represent different column types. It has the type definition `StringFilterState | NumberFilterState | DateFilterState`.
 
 ### AbstractFilterState
 
-Each type of `FilterState` extends `AbstractFilterState`, which provides a parameter to record the fact of whether the filter for a particular column is enabled or disabled.
+Each type of `FilterState` extends `AbstractFilterState`, which provides a parameter to record the fact of whether the
+filter for a particular column is enabled or disabled.
 
 <TypeSpecTable rows={abstractFilterState}/>
 
@@ -101,7 +103,8 @@ The first type of filter state is for string columns.
 
 ### StringFilterScheme
 
-The `StringFilterScheme` specifies the type of filter to apply for string columns and has the following possible values and corresponding behaviors:
+The `StringFilterScheme` specifies the type of filter to apply for string columns and has the following possible values
+and corresponding behaviors:
 
 <dl>
     <dt>contains</dt>
@@ -129,7 +132,8 @@ The second type of filter state is for number columns.
 
 ### NumberFilterScheme
 
-The `NumberFilterScheme` specifies the type of filter to apply for number columns and has the following possible values and corresponding behaviors:
+The `NumberFilterScheme` specifies the type of filter to apply for number columns and has the following possible values
+and corresponding behaviors:
 
 <dl>
     <dt>equals</dt>
@@ -161,7 +165,8 @@ The `NumberFilterScheme` specifies the type of filter to apply for number column
 
 ### DateFilterState
 
-The third type of filter state is for both date and datetime columns. It is one of the following 3 subtypes, representing different filter types:
+The third type of filter state is for both date and datetime columns. It is one of the following 3 subtypes,
+representing different filter types:
 
 <dl>
     <dt>StartDateFilterState</dt>
@@ -189,7 +194,8 @@ you probably want to use `Date` objects for dates in UTC and `Date` objects for 
 
 ### AbstractDateFilterState
 
-All three date filter state types inherit from `AbstractDateFilterState`, which differentiates between date and datetime columns and between different filter schemes.
+All three date filter state types inherit from `AbstractDateFilterState`, which differentiates between date and datetime
+columns and between different filter schemes.
 
 Note that for now, there is no difference in filter behavior between date and datetime columns.
 
@@ -318,15 +324,15 @@ export const rows: RowDef<Data>[] = [
 "use client";
 
 import Table, {
-  EditableTableFilterState,
+  EditableFilterState,
   FilterModel,
 } from "@absreim/react-bootstrap-data-grid/table";
 import { FC, useState } from "react";
-import { cols, rows } from "@/assets/filtering/tableData";
+import { cols, rows } from "./tableData";
 
 const ControlledFilteredTable: FC = () => {
-  const [tableFilterState, setTableFilterState] =
-    useState<EditableTableFilterState>({
+  const [tableFilterState, setTableFilterState] = useState<EditableFilterState>(
+    {
       number: {
         type: "number",
         scheme: "lessOrEqual",
@@ -345,7 +351,8 @@ const ControlledFilteredTable: FC = () => {
         startDate: new Date("2023-08-15"),
         enabled: true,
       },
-    });
+    },
+  );
 
   const filterModel: FilterModel = { tableFilterState, setTableFilterState };
 
@@ -375,7 +382,7 @@ import Table, {
   UncontrolledFilterModel,
 } from "@absreim/react-bootstrap-data-grid/table";
 import { FC } from "react";
-import { cols, rows } from "@/assets/filtering/tableData";
+import { cols, rows } from "./tableData";
 
 const UncontrolledFilteredTable: FC = () => {
   const filterModel: UncontrolledFilterModel = {

@@ -13,17 +13,17 @@ Version 3 introduces a number of breaking changes. This article describes how to
 ## GridPaginationState Rename
 
 The type `GridPaginationState` type is type of the `pagination` prop that is passed to the `Grid` or `GridPro` component
-to enable [pagination](/docs/pagination). It has been renamed to `PaginationModel`. If any of your existing code is
+to enable [pagination](/docs/table/pagination). It has been renamed to `PaginationModel`. If any of your existing code is
 explicitly referring to this type by name, simply rename each occurrence to `PaginationModel`.
 
 ## Filtering and Toolbar Changes
 
 ### Filtering UI Access Change
 
-Previously, there were two ways to access the [filtering](/docs/filtering) interface:
+Previously, there were two ways to access the [filtering](/docs/table/filtering) interface:
 
 - A button labeled *Show Filter Options* that is by default located above the main table.
-- A button on the [toolbar](/docs/toolbar).
+- A button on the [toolbar](/docs/table/toolbar).
 
 Previously, the developer could choose between these two modes by specifying the `useToolbar` prop. Now, the
 `useToolbar` prop has been removed and the only way to access the filtering UI is via the toolbar.
@@ -38,7 +38,7 @@ As mentioned in the previous section, previously, the `useToolbar` prop must be 
 component for the toolbar to appear. Now, the toolbar appears as long as one feature is enabled for the grid that
 requires the toolbar to access.
 
-These features are [filtering](/docs/filtering) and [export](/docs/export). Filtering is enabled by passing a value for
+These features are [filtering](/docs/table/filtering) and [export](/docs/table/export). Filtering is enabled by passing a value for
 the `filterModel` prop to a `Grid` or `GridPro` component. Export is enabled by passing a `true` value for the
 `allowExport` prop.
 
@@ -51,7 +51,7 @@ prop.
 
 ### Submit and Cancel Buttons
 
-For both the [filtering](/docs/filtering) and [export](/docs/export) UIs, the *Submit* button now closes the interface.
+For both the [filtering](/docs/table/filtering) and [export](/docs/table/export) UIs, the *Submit* button now closes the interface.
 Previously, the button left the interface open.
 
 Both interfaces now also have a *Cancel* button that closes the interface without making any changes.
@@ -73,7 +73,7 @@ developer passed the `responsive` prop to the `Grid` or `GridPro` component. The
 
 Now, the containing `div` always exists and tables are responsive by default.
 
-To disable responsive behavior for a table, it is necessary to use the [styling customization](/docs/styling) feature
+To disable responsive behavior for a table, it is necessary to use the [styling customization](/docs/table/styling) feature
 to remove the `table-responsive` class from the `div` that contains the main table. Setting the value of the
 `additionalComponentsStyleModel.tableDiv` property of the `styleModel` prop to `[]` will bring back the original
 behavior. There is a difference that in version 2.x, the containing `div` didn't exist at all if the `responsive` prop
@@ -90,7 +90,7 @@ instructions above.
 ### Baseline Bootstrap Classes
 
 Previously, there were certain "baseline" Bootstrap classes that were preserved even if one were to pass in a property
-to the [style model](/docs/styling) for that element. These classes were:
+to the [style model](/docs/table/styling#stylemodel) for that element. These classes were:
 
 - `table` for the main table
 - `btn` for buttons
@@ -130,7 +130,7 @@ For a list of all affected properties, see the _Properties Affected_ section bel
 ### Empty Array vs Falsy Values
 
 Previously, the grid did not differentiate between empty arrays (`[]`) and `undefined` when passed as the value for a
-[style model](/docs/styling) property.
+[style model](/docs/table/styling##stylemodel) property.
 
 For style model properties of type `string[]`, if an empty array `[]` were specified, the grid would use the default
 styles.
@@ -192,12 +192,13 @@ Below is a complete list of existing properties of the `styleModel` prop that ar
 
 ## New and Removed Style Model Properties
 
-All changes to the [Style Model](/docs/styling) occur in the `additionalComponentsStyleModel` property.
+All changes to the [Style Model](/docs/table/styling#stylemodel) occur in the `additionalComponentsStyleModel` property.
 
 ### Removed Properties
 
 The following properties have been removed. Both of the below properties belong to the original way of accessing the
-[filter options table](/docs/filtering). Since the [toolbar](/docs/toolbar) is now the only way of accessing the filter
+[filter options table](/docs/table/filtering). Since the [toolbar](/docs/table/toolbar) is now the only way of accessing
+the filter
 options table, the style model properties related to the original way are no longer applicable.
 
 - `filterInputsDiv`

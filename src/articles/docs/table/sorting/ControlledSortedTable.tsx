@@ -2,7 +2,7 @@
 
 import Table, {
   SortColDef,
-  TableSortModel,
+  SortModel,
 } from "@absreim/react-bootstrap-data-grid/table";
 import { rows, cols } from "./tableData";
 import { FC, useState } from "react";
@@ -13,7 +13,7 @@ const ControlledSortedTable: FC = () => {
     order: "asc",
   });
 
-  const tableSortModel: TableSortModel = {
+  const tableSortModel: SortModel = {
     sortColDef,
     setSortColDef,
   };

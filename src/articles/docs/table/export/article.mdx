@@ -7,37 +7,37 @@ import SampleExportTable from "./SampleExportTable";
 
 # Export
 
-react-bootstrap-data-grid supports exporting of data in a grid in JSON and CSV formats. For a user to use the export
-feature, use of the toolbar must be enabled by passing `true` into `useToolbar` prop of the `Grid` component.
+react-bootstrap-data-grid supports exporting of data in a table in JSON and CSV formats. For a user to use the export
+feature, use of the toolbar must be enabled by passing `true` into `useToolbar` prop of the `Table` component.
 
 ## Options
 
 ### Row Scope
 
-Depending on the features enabled in the grid, the user can choose between three sets of rows to export:
+Depending on the features enabled in the table, the user can choose between three sets of rows to export:
 
 <dl>
   <dt>All rows</dt>
   <dd>
-    All rows in the grid as they are passed into <code>Grid</code> component via
+    All rows in the table as they are passed into <code>Table</code> component via
     the <code>rows</code> prop.
   </dd>
   <dt>Filtered rows</dt>
   <dd>
     The subset of rows remaining after filters are applied. This option is only
-    available if filtering is enabled on the grid.
+    available if filtering is enabled on the table.
   </dd>
   <dt>Current page rows</dt>
   <dd>
     The subset of rows remaining after filters are applied and only in the
     current page. This option is only available if pagination is enabled on the
-    grid.
+    table.
   </dd>
 </dl>
 
 ### Formatting
 
-The user may choose whether to apply formatters defined in `cols` prop to the `Grid` component when exporting. If no
+The user may choose whether to apply formatters defined in `cols` prop to the `Table` component when exporting. If no
 formatters are defined in the `cols` prop, the option to apply formatters will be disabled in the UI.
 
 If no formatters are defined for `date` and `datetime` columns, or if the user chooses not to apply formatters, the
@@ -54,12 +54,13 @@ data for that column will remain a number without conversion to a string.
 
 The user may choose between __JSON__ or __CSV__ file formats when exporting.
 
-For __JSON__ exports, the structure is similar to that of the `RowDef` interface for each row. The `id` field is included
+For __JSON__ exports, the structure is similar to that of the `RowDef` interface for each row. The `id` field is
+included
 while the data fields are either strings or numbers. Dates are converted to strings as described in the
 [previous section](#formatting).
 
-For __CSV__ exports, the structure is flattened so that the `id` field and other fields are on the same level. If there is
-a column with the name `id`, it will replace the `id` field of `RowDef` in the CSV export. Numbers are converted to
+For __CSV__ exports, the structure is flattened so that the `id` field and other fields are on the same level. If there
+is a column with the name `id`, it will replace the `id` field of `RowDef` in the CSV export. Numbers are converted to
 string in a manner equivalent to
 [Number.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString).
 

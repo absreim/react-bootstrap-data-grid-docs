@@ -2,7 +2,7 @@
 
 import Table, {
   ColDef,
-  EditableTableFilterState,
+  EditableFilterState,
   EditModel,
   FilterModel,
   RowDef,
@@ -120,8 +120,8 @@ const styleModel: StyleModel = {
 
 const SampleStyledInputsTable: FC = () => {
   const [rows, setRows] = useState<RowDef[]>(initRows);
-  const [tableFilterState, setTableFilterState] =
-    useState<EditableTableFilterState>({
+  const [tableFilterState, setTableFilterState] = useState<EditableFilterState>(
+    {
       name: {
         type: "string",
         scheme: "contains",
@@ -141,7 +141,8 @@ const SampleStyledInputsTable: FC = () => {
         endDate: null,
         enabled: false,
       },
-    });
+    },
+  );
 
   const filterModel: FilterModel = useMemo(
     () => ({
