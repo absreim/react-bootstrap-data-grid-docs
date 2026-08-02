@@ -16,11 +16,13 @@ const ContentsHamburger: FC<ContentsHamburgerProps> = ({
   linkMenuContents,
 }) => {
   const [show, setShow] = useState(false);
-
-  const articleNav = useArticleNavbar(linkMenuContents?.articleInfo)
-
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
+  const articleNav = useArticleNavbar(
+    linkMenuContents?.articleInfo,
+    handleClose,
+  );
 
   return (
     <>
@@ -45,7 +47,7 @@ const ContentsHamburger: FC<ContentsHamburgerProps> = ({
             </>
           )}
           <h2 className="mb-1 fs-4">Site Sections</h2>
-          <SiteSectionsNav variant="underline" onClick={handleClose} />
+          <SiteSectionsNav variant="underline" />
         </Offcanvas.Body>
       </Offcanvas>
     </>

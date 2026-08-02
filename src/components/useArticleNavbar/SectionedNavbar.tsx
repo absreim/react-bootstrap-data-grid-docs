@@ -4,9 +4,10 @@ import ContentsNavbar from "@/components/useArticleNavbar/ContentsNavbar";
 
 export interface SectionedNavbarProps {
   linkSections: LinkSection[];
+  onClick?: () => void;
 }
 
-const SectionedNavbar: FC<SectionedNavbarProps> = ({ linkSections }) => {
+const SectionedNavbar: FC<SectionedNavbarProps> = ({ linkSections, onClick }) => {
   return (
     <ul className="rbdg-sectioned-navbar-list">
       {linkSections.map(({ name, icon, path, links }) => (
@@ -15,7 +16,7 @@ const SectionedNavbar: FC<SectionedNavbarProps> = ({ linkSections }) => {
             {icon}
             <div>{name}</div>
           </div>
-          <ContentsNavbar linkDefs={links} />
+          <ContentsNavbar linkDefs={links} onClick={onClick} />
         </li>
       ))}
     </ul>

@@ -23,9 +23,6 @@ const testNavLinkAndHeading: (
   });
   await expect(heading).toBeVisible();
 
-  const dialogCloseButton = dialog.getByRole("button", { name: "Close" });
-  await dialogCloseButton.click();
-
   menuToggleButton = navbar.getByRole("button", { name: "Articles" });
   await expect(menuToggleButton).toBeVisible();
 };
