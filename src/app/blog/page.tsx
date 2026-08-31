@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { blogArticleInfo } from "@/lib/getLinkDefs";
+import { blogArticleInfo } from "@/static/linkDefs";
 import Link from "next/link";
 
 const Page: FC = () => {

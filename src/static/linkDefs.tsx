@@ -1,21 +1,33 @@
 import fs from "node:fs/promises";
 import path from "path";
 import {
-  LinkDef,
   LinkSection,
+  OrderedLinkDef,
+  OrderedLinkSection,
   SectionedArticleInfo,
-  SectionMetadata,
   UnsectionedArticleInfo,
 } from "@/components/types";
+import {
+  BLOG_DIR,
+  BLOG_URL_BASE,
+  DOCS_DIR,
+  DOCS_URL_BASE,
+  REF_URL_SEGMENT,
+} from "@/static/constants";
+import apiLinkDefs from "@/static/api/linkDefs";
+import JournalCode from "@/assets/icons/JournalCode";
+import sectionMetadata from "@/articles/docs/sectionMetadata";
+
+const REF_LINK_SECTION: LinkSection = {
+  name: "Reference",
+  path: REF_URL_SEGMENT,
+  icon: <JournalCode />,
+  links: apiLinkDefs,
+};
 
 // Much of the frontmatter parsing code is derived from the Next.js Portfolio
 // Blog Starter example:
 // https://github.com/vercel/examples/blob/main/solutions/blog/app/blog/utils.ts
-
-const DOCS_DIR = path.join("articles", "docs");
-const DOCS_URL_BASE = "/docs";
-const BLOG_DIR = path.join("articles", "blog");
-const BLOG_URL_BASE = "/blog";
 
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
@@ -51,16 +63,14 @@ const getSectionedArticles: (
   const articleFiles = entries.filter(
     (e) => e.isFile() && e.name === "article.mdx",
   );
-  const sections: Map<string, LinkSection> = new Map();
+  const sections: Map<string, OrderedLinkSection> = new Map();
   for (const file of articleFiles) {
     const pathSegments = file.parentPath.split("/");
     const articleDirName = pathSegments[pathSegments.length - 1];
     const sectionName = pathSegments[pathSegments.length - 2];
 
     if (!sections.has(sectionName)) {
-      const metadata: SectionMetadata = (await import(
-        path.join("@", relativeRootDir, sectionName, "metadata.tsx"),
-      )).default;
+      const metadata = sectionMetadata[sectionName];
       sections.set(sectionName, {
         ...metadata,
         path: sectionName,
@@ -82,13 +92,17 @@ const getSectionedArticles: (
     (a, b) => a.order - b.order,
   );
   linkSections.forEach(({ links }) => links.sort((a, b) => a.order - b.order));
-  return linkSections;
+
+  const unorderedSections = linkSections as LinkSection[];
+  unorderedSections.push(REF_LINK_SECTION);
+
+  return unorderedSections;
 };
 
 async function getUnsectionedArticles(
   relativeRootDir: string,
   urlBasePath: string,
-): Promise<LinkDef[]> {
+): Promise<OrderedLinkDef[]> {
   const absoluteRootDir = path.join(process.cwd(), "src", relativeRootDir);
   const entries = await fs.readdir(absoluteRootDir, {
     withFileTypes: true,
@@ -98,7 +112,7 @@ async function getUnsectionedArticles(
     (e) => e.isFile() && e.name === "article.mdx",
   );
 
-  const linkDefs: LinkDef[] = [];
+  const linkDefs: OrderedLinkDef[] = [];
   for (const file of articleFiles) {
     const pathSegments = file.parentPath.split("/");
     const articleDirName = pathSegments[pathSegments.length - 1];

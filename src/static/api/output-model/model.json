@@ -1,0 +1,5660 @@
+[
+  {
+    "type": "interface",
+    "name": "AbstractDateFilterState",
+    "definition": [
+      "export interface AbstractDateFilterState extends ",
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      },
+      " "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "A base interface for ",
+            {
+              "text": "DateFilterState",
+              "href": "date-filter-state"
+            },
+            "."
+          ]
+        ]
+      },
+      {
+        "title": "@remarks",
+        "content": [
+          [
+            "Date and datetime input elements can have a state where there is no input. Nulls in the date fields correspond to this empty state."
+          ]
+        ]
+      }
+    ],
+    "extends": [
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "DateFilterScheme",
+            "href": "date-filter-scheme"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The filter scheme to apply."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"date\" | \"datetime\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "AbstractFilterState",
+    "definition": [
+      "export interface AbstractFilterState "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Base interface for various objects that represent the form state for the filter settings of a single column."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "enabled",
+        "isOptional": false,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Indicates whether filtering is enabled on the associated row."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "AdditionalComponentsStyleModel",
+    "definition": [
+      "export interface AdditionalComponentsStyleModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Style model for components that are not included in other categories."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "paginationUiDiv",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "tableAndPaginationDiv",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "tableDiv",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "topLevelDiv",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "AugRowDef",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            {
+              "text": "RowDef",
+              "href": "row-def"
+            },
+            " object that additionally contains the index of the row in the original array."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [
+      {
+        "name": "Data",
+        "constraint": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "defaultValue": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "comment": [
+          [
+            "type of the data property of the RowDef object"
+          ]
+        ]
+      }
+    ],
+    "definition": [
+      "export type AugRowDef<Data extends ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      " = ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      "> = ",
+      {
+        "text": "RowDef",
+        "href": "row-def"
+      },
+      "<Data> & {\n    origIndex: number;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "BaseSelectModel",
+    "definition": [
+      "export interface BaseSelectModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Properties shared between ",
+            {
+              "text": "SingleSelectModel",
+              "href": "single-select-model"
+            },
+            " and ",
+            {
+              "text": "MultiSelectModel",
+              "href": "multi-select-model"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "mode",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "SelectMode",
+            "href": "select-mode"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The means of selecting rows available to the user."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "selectColWidth",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The width of the select column. Set via CSS min-width and max-width properties. The column is only shown if mode is set to \"column\"."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "BetweenDatesFilterState",
+    "definition": [
+      "export interface BetweenDatesFilterState extends ",
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      },
+      " "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that holds the form state for date or datetime column filtered via the \"between\" scheme."
+          ]
+        ]
+      }
+    ],
+    "extends": [
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "endDate",
+        "isOptional": false,
+        "definition": [
+          "Date",
+          " | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The end date to filter against."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          "\"between\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "startDate",
+        "isOptional": false,
+        "definition": [
+          "Date",
+          " | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The start date to filter against."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "BodyCellVariantFn",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The type of the function used to specify color variants on a grid body on a per-cell level of granularity."
+          ]
+        ]
+      },
+      {
+        "title": "@returns",
+        "content": [
+          [
+            " - a string that is name of the color variant or null for no color variant"
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type BodyCellVariantFn = ",
+      "(cell: ",
+      {
+        "text": "CellData",
+        "href": "cell-data"
+      },
+      ", row: ",
+      {
+        "text": "FormattedRow",
+        "href": "formatted-row"
+      },
+      ", colIndex: number, displayIndex: number) => string | null",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "CellData",
+    "definition": [
+      "export interface CellData "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that describes the contents for a single table or grid cell along with various metadata."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "ariaColIndex",
+        "isOptional": false,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The ARIA column index of the column that contains the cell."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "fieldName",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The name of the property in the ",
+                {
+                  "text": "RowDef",
+                  "href": "row-def"
+                },
+                " \"data\" property that contains the value for the cell."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "formattedValue",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The value of the cell after the column's formatter function is applied."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The label of the column that the cell is in. Same as the property of the same name in the corresponding ",
+                {
+                  "text": "ColDef",
+                  "href": "col-def"
+                },
+                " object."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "ColDataTypeStrings",
+            "href": "col-data-type-strings"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A string that specifies of the value type of the column for the cell. Same as the \"type\" property in corresponding ",
+                {
+                  "text": "ColDef",
+                  "href": "col-def"
+                },
+                " object."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "value",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "ColDataType",
+            "href": "col-data-type"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The raw, unformatted, value of the cell."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "width",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The width of the column that the cell is in. Same as the property of the same name in the corresponding ",
+                {
+                  "text": "ColDef",
+                  "href": "col-def"
+                },
+                " object."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ColDataType",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Union of all possible column data types."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type ColDataType = ",
+      "string | number | ",
+      "Date",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ColDataTypeStrings",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Union of strings that describe the type of a column."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type ColDataTypeStrings = ",
+      "\"string\" | \"number\" | \"date\" | \"datetime\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ColDef",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Column definition object for the community edition of the table and grid."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [
+      {
+        "name": "ValueType",
+        "constraint": null,
+        "defaultValue": "any",
+        "comment": [
+          [
+            "the type of the value of the column (e.g. string, number, or Date)"
+          ]
+        ]
+      }
+    ],
+    "definition": [
+      "export type ColDef<ValueType = ",
+      "any",
+      "> = ",
+      {
+        "text": "ColDefBase",
+        "href": "col-def-base"
+      },
+      "<ValueType> & ",
+      {
+        "text": "CommunitySpecificColProps",
+        "href": "community-specific-col-props"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ColDefBase",
+    "definition": [
+      "export interface ColDefBase<ValueType = ",
+      "any",
+      "> "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Properties to a define a column that is shared between community and pro editions."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [
+      {
+        "name": "ValueType",
+        "constraint": null,
+        "defaultValue": "any",
+        "comment": [
+          [
+            "the type of the value of the column (e.g. string, number, or Date)"
+          ]
+        ]
+      }
+    ],
+    "members": [
+      {
+        "name": "formatter",
+        "isOptional": true,
+        "definition": [
+          "(value: ValueType) => string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The formatter function for the column."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The display name of the property in places like the column heading."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "name",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The name of the property for the column in the ",
+                {
+                  "text": "RowDef",
+                  "href": "row-def"
+                },
+                " object."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sortable",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Specifies whether the column is sortable."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "ColDataTypeStrings",
+            "href": "col-data-type-strings"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "String that specifies the data type of the column."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "CommunitySpecificColProps",
+    "definition": [
+      "export interface CommunitySpecificColProps "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Column definition properties specific to the community edition of the table and grid."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "width",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets the min-width and max-width CSS properties for all cells of the column."
+              ],
+              [
+                "For the table, if no value is specified, then no value for min-width or max-width will be set."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ControlledFilterModel",
+    "definition": [
+      "export interface ControlledFilterModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that enables the filtering feature on a grid or table in an externally controllable manner."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "filterTableCaption",
+        "isOptional": true,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Caption for the filter settings table element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "setTableFilterState",
+        "isOptional": false,
+        "definition": [
+          "(state: ",
+          {
+            "text": "EditableFilterState",
+            "href": "editable-filter-state"
+          },
+          ") => void",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Update callback function for the tableFilterState property. This function is called when the user submits the filter settings form."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tableFilterState",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "EditableFilterState",
+            "href": "editable-filter-state"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "State object that represents the filters currently being applied to the table or grid."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": true,
+        "definition": [
+          "\"controlled\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ControlledPaginationModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that enables and configures the pagination feature for a table or grid in an externally-controllable manner."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type ControlledPaginationModel = ",
+      {
+        "text": "PaginationOptions",
+        "href": "pagination-options"
+      },
+      " & ",
+      {
+        "text": "ControlledPaginationState",
+        "href": "controlled-pagination-state"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ControlledPaginationState",
+    "definition": [
+      "export interface ControlledPaginationState "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Properties specific to configuring pagination in a controlled manner."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "currentPage",
+        "isOptional": false,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The 1-based index of the currently displayed page."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pageSizeIndex",
+        "isOptional": false,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The index of current page size setting in the array of settings."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "setCurrentPage",
+        "isOptional": false,
+        "definition": [
+          "(pageNum: number) => void",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets the current page index."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "setPageSizeIndex",
+        "isOptional": false,
+        "definition": [
+          "(pageSizeIndex: number) => void",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Setter function for the page size index."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": true,
+        "definition": [
+          "\"controlled\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ControlledSortModel",
+    "definition": [
+      "export interface ControlledSortModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Externally-controllable variant of the ",
+            {
+              "text": "SortModel",
+              "href": "sort-model"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "setSortColDef",
+        "isOptional": false,
+        "definition": [
+          "(sortColDef: ",
+          {
+            "text": "SortColDef",
+            "href": "sort-col-def"
+          },
+          " | null) => void",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Setter function for sortColDef."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sortColDef",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "SortColDef",
+            "href": "sort-col-def"
+          },
+          " | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Information on the column to sort on. Null means no column is being sorted and the rows shown be shown in their original order."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": true,
+        "definition": [
+          "\"controlled\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "DateFilterScheme",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Indicates the filtering scheme to apply to date and datetime columns."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type DateFilterScheme = ",
+      "(typeof ",
+      {
+        "text": "dateFilterSchemes",
+        "href": "date-filter-schemes"
+      },
+      ")[number]",
+      ";"
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "dateFilterSchemes",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "An array of all possible values for ",
+            {
+              "text": "DateFilterScheme",
+              "href": "date-filter-scheme"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "definition": [
+      "dateFilterSchemes: ",
+      "readonly [\"startFrom\", \"endAt\", \"between\"]"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "DateFilterState",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The form state object for the filtering feature for a date or datetime column."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type DateFilterState = ",
+      {
+        "text": "StartDateFilterState",
+        "href": "start-date-filter-state"
+      },
+      " | ",
+      {
+        "text": "EndDateFilterState",
+        "href": "end-date-filter-state"
+      },
+      " | ",
+      {
+        "text": "BetweenDatesFilterState",
+        "href": "between-dates-filter-state"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "function",
+    "name": "dateToDatetimeInputStr",
+    "definition": [
+      "dateToDatetimeInputStr: (date: ",
+      "Date",
+      ") => ",
+      "string"
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Returns of string representation of datetime from a Date object."
+          ]
+        ]
+      },
+      {
+        "title": "@returns",
+        "content": [
+          [
+            " a string in the format YYYY-MM-DDTHH:mm"
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "returnType": [
+      "string"
+    ],
+    "functionParams": [
+      {
+        "type": "functionParam",
+        "name": "date",
+        "definition": [
+          "Date"
+        ],
+        "comment": [
+          [
+            "the Date object to format"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "dateToInputStr",
+    "definition": [
+      "dateToInputStr: (date: ",
+      "Date",
+      ") => ",
+      "string"
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Returns a string that represents a date in the format used by the input element of type \"date\"."
+          ]
+        ]
+      },
+      {
+        "title": "@returns",
+        "content": [
+          [
+            " a string in the format YYYY-MM-DD"
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "returnType": [
+      "string"
+    ],
+    "functionParams": [
+      {
+        "type": "functionParam",
+        "name": "date",
+        "definition": [
+          "Date"
+        ],
+        "comment": [
+          [
+            "the Date object to format"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "DisplayMode",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Available options for the displayMode prop of ",
+            {
+              "text": "TableSpecificProps",
+              "href": "table-specific-props"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type DisplayMode = ",
+      "\"table\" | \"block\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "EditableColFilterState",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The form state object for the filtering feature for a column."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type EditableColFilterState = ",
+      {
+        "text": "StringFilterState",
+        "href": "string-filter-state"
+      },
+      " | ",
+      {
+        "text": "NumberFilterState",
+        "href": "number-filter-state"
+      },
+      " | ",
+      {
+        "text": "DateFilterState",
+        "href": "date-filter-state"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "EditableFilterState",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "State object that represents the filter settings for all of the columns in a grid or table."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type EditableFilterState = ",
+      "Record",
+      "<string, ",
+      {
+        "text": "EditableColFilterState",
+        "href": "editable-col-filter-state"
+      },
+      ">",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "EditModel",
+    "definition": [
+      "export interface EditModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that enables and configures the row editing feature."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "editColWidth",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Specifies a fixed width in pixels for the column that contains the buttons for editing a row. In particular, the min-width and max-width CSS properties will be set."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "getDeleteCallback",
+        "isOptional": true,
+        "definition": [
+          "(id: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ") => () => void",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Callback function for deleting rows via the UI. Omit this property or pass undefined to disallow deletions via the UI."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "getUpdateCallback",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "UpdateCallbackGenerator",
+            "href": "update-callback-generator"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Function that generates a callback function that responds to a row update. Use this property to specify how row updates affect the state outside the table component."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "EndDateFilterState",
+    "definition": [
+      "export interface EndDateFilterState extends ",
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      },
+      " "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that holds the form state for date or datetime column filtered via the \"endAt\" scheme."
+          ]
+        ]
+      }
+    ],
+    "extends": [
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "endDate",
+        "isOptional": false,
+        "definition": [
+          "Date",
+          " | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The end date to filter against."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          "\"endAt\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ExportFormStyleModel",
+    "definition": [
+      "export interface ExportFormStyleModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "CSS styles for the UI for exporting data."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "legend",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for fieldset legend elements."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "radioContainer",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the div elements that contain radio buttons."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "radioInput",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the radio button input elements."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "radioLabel",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the label elements for radio button input elements."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "submitButton",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the submit button."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "FilterInputTableStyleModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Style model for the filter inputs table."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type FilterInputTableStyleModel = ",
+      {
+        "text": "SharedTableStyleModel",
+        "href": "shared-table-style-model"
+      },
+      " & ",
+      {
+        "text": "FilterTableSpecificStyleModel",
+        "href": "filter-table-specific-style-model"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "FilterModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object used to enable and configure filtering for a grid or table."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type FilterModel = ",
+      {
+        "text": "ControlledFilterModel",
+        "href": "controlled-filter-model"
+      },
+      " | ",
+      {
+        "text": "UncontrolledFilterModel",
+        "href": "uncontrolled-filter-model"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "FilterTableSpecificStyleModel",
+    "definition": [
+      "export interface FilterTableSpecificStyleModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Style model properties specific to the filter inputs table."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "enablementInput",
+        "isOptional": true,
+        "definition": [
+          "(rowIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the checkboxes that enable filtering for columns."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "endDateInput",
+        "isOptional": true,
+        "definition": [
+          "(rowIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the end date inputs."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "form",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the form element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "numberInput",
+        "isOptional": true,
+        "definition": [
+          "(rowIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for numerical input elements."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "schemeSelectionInput",
+        "isOptional": true,
+        "definition": [
+          "(rowIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the dropdowns for selecting filter schemes."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "searchStringInput",
+        "isOptional": true,
+        "definition": [
+          "(rowIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for text search string input elements."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "startDateInput",
+        "isOptional": true,
+        "definition": [
+          "(rowIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the state date inputs."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "submitButton",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the form submit button."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tbodyTd",
+        "isOptional": true,
+        "definition": [
+          "(rowIndex: number, colIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the td elements in the tbody element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tbodyTr",
+        "isOptional": true,
+        "definition": [
+          "(rowIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the tr elements in the tbody element."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "FormattedRow",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Comprehensive information for an entire row of a table or grid, after postprocessing such as sorting, pagination, and filtering are applied."
+          ],
+          [
+            "Contains an array of ",
+            {
+              "text": "CellData",
+              "href": "cell-data"
+            },
+            " in the order that the columns appear."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type FormattedRow = ",
+      "{\n    contents: ",
+      "Omit",
+      "<",
+      {
+        "text": "CellData",
+        "href": "cell-data"
+      },
+      ", \"width\">[];\n} & ",
+      "Omit",
+      "<",
+      {
+        "text": "PostPaginationRowDef",
+        "href": "post-pagination-row-def"
+      },
+      ", \"data\">",
+      ";"
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "Grid",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The main component for the grid feature of react-bootstrap-data-grid."
+          ]
+        ]
+      }
+    ],
+    "definition": [
+      "Grid: ",
+      "FC",
+      "<",
+      {
+        "text": "GridProps",
+        "href": "grid-props"
+      },
+      ">"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridBorderSetting",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The type of the prop to set the grid border style"
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type GridBorderSetting = ",
+      "\"horizontal\" | \"full\" | \"none\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridHeightSetting",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The type of the prop to set grid height behavior"
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type GridHeightSetting = ",
+      "number | \"auto\" | \"parent\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridProps",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The type of the props passed to the ",
+            {
+              "text": "Grid",
+              "href": "grid"
+            },
+            " component."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type GridProps = ",
+      {
+        "text": "MainComponentSharedProps",
+        "href": "main-component-shared-props"
+      },
+      " & ",
+      {
+        "text": "GridSpecificProps",
+        "href": "grid-specific-props"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "GridSpecificProps",
+    "definition": [
+      "export interface GridSpecificProps "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Props specific to the ",
+            {
+              "text": "Grid",
+              "href": "grid"
+            },
+            " and not the ",
+            {
+              "text": "Table",
+              "href": "table"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "bodyCellFocusVariant",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "BodyCellVariantFn",
+            "href": "body-cell-variant-fn"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Function to set the color variant of body cell focus rings"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "bodyCellVariant",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "BodyCellVariantFn",
+            "href": "body-cell-variant-fn"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Function to set the color variant of body cells on a per-cell basis. Overrides the row-wide setting when this function returns a non-null value."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "bodyRowVariant",
+        "isOptional": true,
+        "definition": [
+          "(row: ",
+          {
+            "text": "FormattedRow",
+            "href": "formatted-row"
+          },
+          ", displayIndex: number) => string | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Function to set the color variant of body rows"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "borders",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "GridBorderSetting",
+            "href": "grid-border-setting"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The border setting of the grid"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "borderVariant",
+        "isOptional": true,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The border color variant of the grid"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "divider",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Toggles a horizontal divider between the grid header and body"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "headerCellFocusVariant",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "HeaderCellVariantFn",
+            "href": "header-cell-variant-fn"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Function to set the color variant of header cell focus rings"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "headerCellVariant",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "HeaderCellVariantFn",
+            "href": "header-cell-variant-fn"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Function to set the color variant of header cells. Overrides the row-wide setting when this function returns a non-null value."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "headerRowVariant",
+        "isOptional": true,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets the color variant of the header row"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "height",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "GridHeightSetting",
+            "href": "grid-height-setting"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The height setting of the grid"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "hover",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Toggles hover styles for the grid"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "small",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Toggles a denser grid style"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "stripes",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "GridStripeSetting",
+            "href": "grid-stripe-setting"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The stripe setting of the grid"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "variant",
+        "isOptional": true,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The grid-wide color variant"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "width",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "GridWidthSetting",
+            "href": "grid-width-setting"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The width setting of the grid"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridStripeSetting",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The type of the prop to set the grid stripe style"
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type GridStripeSetting = ",
+      "\"rows\" | \"columns\" | \"none\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridWidthSetting",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The type of the prop to set grid width behavior"
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type GridWidthSetting = ",
+      "number | \"auto\" | \"parent\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "HeaderCellVariantFn",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The type of the function used to specify color variants on a grid header on a per-cell level of granularity."
+          ]
+        ]
+      },
+      {
+        "title": "@returns",
+        "content": [
+          [
+            " - a string that is name of the color variant or null for no color variant"
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type HeaderCellVariantFn = ",
+      "(col: ",
+      {
+        "text": "ColDef",
+        "href": "col-def"
+      },
+      ", colIndex: number) => string | null",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "JustifyContentSetting",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Strings representing different possible values of the ",
+            {
+              "text": "justify-content CSS property",
+              "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/justify-content"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type JustifyContentSetting = ",
+      "\"start\" | \"end\" | \"center\" | \"between\" | \"around\" | \"evenly\"",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "MainComponentSharedProps",
+    "definition": [
+      "export interface MainComponentSharedProps "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Interface that contains parameters shared between the Table, TablePro, and Grid components."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "cols",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "ColDef",
+            "href": "col-def"
+          },
+          "[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The column definitions of the table or grid"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rows",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "RowDef",
+            "href": "row-def"
+          },
+          "[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The rows of data to be displayed by the table or grid"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "MainTableSpecificStyleModel",
+    "definition": [
+      "export interface MainTableSpecificStyleModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Style model properties specific to the main table."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "editCancelButton",
+        "isOptional": true,
+        "definition": [
+          "(rowId: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ", displayIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the cancel button in the edit column."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "editColTd",
+        "isOptional": true,
+        "definition": [
+          "(rowId: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ", displayIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the td elements in the edit column."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "editColTh",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for th element in the edit column."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "editDeleteButton",
+        "isOptional": true,
+        "definition": [
+          "(rowId: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ", displayIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the delete button in the edit column."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "editSaveButton",
+        "isOptional": true,
+        "definition": [
+          "(rowId: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ", displayIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the save button in the edit column."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "editStartButton",
+        "isOptional": true,
+        "definition": [
+          "(rowId: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ", displayIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the start button in the edit column."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rowSelectColTd",
+        "isOptional": true,
+        "definition": [
+          "(rowId: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ", displayIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the td elements of the row selection column."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rowSelectColTh",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the th element of the row selection column."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rowSelectInput",
+        "isOptional": true,
+        "definition": [
+          "(rowId: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ", displayIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the input elements of the row selection column."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tbodyTd",
+        "isOptional": true,
+        "definition": [
+          "(rowId: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ", displayRowIndex: number, colIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for td elements within the tbody element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tbodyTdInput",
+        "isOptional": true,
+        "definition": [
+          "(rowId: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ", displayRowIndex: number, colIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for input elements within the tbody element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tbodyTr",
+        "isOptional": true,
+        "definition": [
+          "(rowId: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ", displayIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for tr elements within the tbody element."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "MultiSelectModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object to enable and configure the selection feature for a grid or table in the multiselect mode."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type MultiSelectModel = ",
+      {
+        "text": "BaseSelectModel",
+        "href": "base-select-model"
+      },
+      " & ",
+      {
+        "text": "MultiSelectState",
+        "href": "multi-select-state"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "MultiSelectState",
+    "definition": [
+      "export interface MultiSelectState "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Properties specific to the ",
+            {
+              "text": "MultiSelectModel",
+              "href": "multi-select-model"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "selected",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          "[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The ids of the currently selected rows."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "setSelected",
+        "isOptional": false,
+        "definition": [
+          "(selected: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          "[]) => void",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Setter function for the selected ids."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"multi\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "NumberFilterScheme",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Indicates the filtering scheme to apply to a number column."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type NumberFilterScheme = ",
+      "(typeof ",
+      {
+        "text": "numberFilterSchemes",
+        "href": "number-filter-schemes"
+      },
+      ")[number]",
+      ";"
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "numberFilterSchemes",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "An array of all possible values of ",
+            {
+              "text": "NumberFilterScheme",
+              "href": "number-filter-scheme"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "definition": [
+      "numberFilterSchemes: ",
+      "readonly [\"equals\", \"greaterThan\", \"lessThan\", \"greaterOrEqual\", \"lessOrEqual\"]"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "NumberFilterState",
+    "definition": [
+      "export interface NumberFilterState extends ",
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      },
+      " "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The form state for filter settings on a number column."
+          ]
+        ]
+      }
+    ],
+    "extends": [
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "numValue",
+        "isOptional": false,
+        "definition": [
+          "number | null",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "NumberFilterScheme",
+            "href": "number-filter-scheme"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"number\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "PaginationModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that enables and configures pagination for a grid or table."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type PaginationModel = ",
+      {
+        "text": "ControlledPaginationModel",
+        "href": "controlled-pagination-model"
+      },
+      " | ",
+      {
+        "text": "UncontrolledPaginationModel",
+        "href": "uncontrolled-pagination-model"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "PaginationOptions",
+    "definition": [
+      "export interface PaginationOptions "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Options for the pagination feature."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "componentSize",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "Size",
+            "href": "size"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The size of the pagination component. Set via CSS classes provided with Bootstrap."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "maxPageButtons",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Maximum number of buttons pointing to numerically-indexed pages that can be displayed at once."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pageSelectorAriaLabel",
+        "isOptional": true,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The ARIA label for the nav element that represents the pagination component."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pageSelectorJustifyContent",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "JustifyContentSetting",
+            "href": "justify-content-setting"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Justify-content CSS property for the ul element of the pagination component."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pageSizeOptions",
+        "isOptional": true,
+        "definition": [
+          "number[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "An array of page sizes that can be selected by the user."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "PostPaginationRowDef",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Row definition object that additionally contains index of the row before pagination was applied."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [
+      {
+        "name": "Data",
+        "constraint": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "defaultValue": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "comment": []
+      }
+    ],
+    "definition": [
+      "export type PostPaginationRowDef<Data extends ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      " = ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      "> = ",
+      {
+        "text": "AugRowDef",
+        "href": "aug-row-def"
+      },
+      "<Data> & {\n    prePaginationIndex: number;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "RowData",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The data fields for a row in a table or grid. Excludes the primary key for the row, which is stored separately in the \"id\" field of the ",
+            {
+              "text": "RowDef",
+              "href": "row-def"
+            },
+            " interface."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [
+      {
+        "name": "Data",
+        "constraint": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "defaultValue": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "comment": [
+          [
+            "the type of the object. A more specific type can be specified in place of the default ",
+            {
+              "text": "ValidRowData",
+              "href": "valid-row-data"
+            },
+            " type to assist in type safety and IDE coding assistance."
+          ]
+        ]
+      }
+    ],
+    "definition": [
+      "export type RowData<Data extends ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      " = ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      "> = ",
+      "Data",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "RowDef",
+    "definition": [
+      "export interface RowDef<Data extends ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      " = ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      "> "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "An object that represents a single row."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [
+      {
+        "name": "Data",
+        "constraint": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "defaultValue": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "comment": [
+          [
+            "the type of the \"data\" property. Can be specified to enhance type safety."
+          ]
+        ]
+      }
+    ],
+    "members": [
+      {
+        "name": "data",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "RowData",
+            "href": "row-data"
+          },
+          "<Data>",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Contains all data fields for different columns of the row."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "id",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "An id for the row that must be unique among all rows passed in the \"rows\" prop of the ",
+                {
+                  "text": "Table",
+                  "href": "table"
+                },
+                " or ",
+                {
+                  "text": "Grid",
+                  "href": "grid"
+                },
+                "."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "RowId",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "A union of the possible values for an id of a ",
+            {
+              "text": "RowDef",
+              "href": "row-def"
+            },
+            " object."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type RowId = ",
+      "string | number",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SelectMode",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Specifies whether the user can select rows by clicking on a control in a special column, by clicking on the row, or via either method."
+          ],
+          [
+            "- column -- can only select by clicking on radio or checkbox input in special column - row -- selection column is hidden and selection can be done by clicking anywhere in a row - both -- selection can be done by either clicking on the input or row"
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type SelectMode = ",
+      "\"column\" | \"row\" | \"both\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SelectModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object to enable and configure the selection feature for a grid or table."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type SelectModel = ",
+      {
+        "text": "SingleSelectModel",
+        "href": "single-select-model"
+      },
+      " | ",
+      {
+        "text": "MultiSelectModel",
+        "href": "multi-select-model"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "SharedTableStyleModel",
+    "definition": [
+      "export interface SharedTableStyleModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Style model properties shared between the main table and the filter options table."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "caption",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the caption element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "table",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the table element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tbody",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the tbody element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "thead",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the thead element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "theadTh",
+        "isOptional": true,
+        "definition": [
+          "(colIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the th elements within the thead element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "theadTr",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the sole tr element inside the thead element."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SingleSelectModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object to enable and configure the selection feature for a grid or table in the single select mode."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type SingleSelectModel = ",
+      {
+        "text": "BaseSelectModel",
+        "href": "base-select-model"
+      },
+      " & ",
+      {
+        "text": "SingleSelectState",
+        "href": "single-select-state"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "SingleSelectState",
+    "definition": [
+      "export interface SingleSelectState "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Properties specific to the ",
+            {
+              "text": "SingleSelectModel",
+              "href": "single-select-model"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "groupName",
+        "isOptional": true,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "String to uniquely identify the group of radio buttons."
+              ]
+            ]
+          },
+          {
+            "title": "@remarks",
+            "content": [
+              [
+                "If specified, must be unique across all radio button groups on the web page. Now optional because the ",
+                {
+                  "text": "useId hook",
+                  "href": "https://react.dev/reference/react/useId"
+                },
+                " can be used to generate an ID."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "selected",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          " | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The id of the currently selected row, or null if none is selected."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "setSelected",
+        "isOptional": false,
+        "definition": [
+          "(selected: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          " | null) => void",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Setter function for the \"selected\" property."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"single\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "Size",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Strings representing the different ",
+            {
+              "text": "possible sizes of the Bootstrap pagination component",
+              "href": "https://getbootstrap.com/docs/5.3/components/pagination/#sizing"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type Size = ",
+      "\"small\" | \"medium\" | \"large\"",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "SortColDef",
+    "definition": [
+      "export interface SortColDef "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Specifies the column to sort on and order with which to sort."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "name",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The name of the column. Corresponds to the name in the ",
+                {
+                  "text": "ColDef",
+                  "href": "col-def"
+                },
+                " type."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "order",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "SortOrder",
+            "href": "sort-order"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Order with which sorting should be done."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SortModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Prop that enables and configures sorting on a grid or table."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type SortModel = ",
+      {
+        "text": "ControlledSortModel",
+        "href": "controlled-sort-model"
+      },
+      " | ",
+      {
+        "text": "UncontrolledSortModel",
+        "href": "uncontrolled-sort-model"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SortOrder",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Sort order setting for the sort feature."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type SortOrder = ",
+      "\"asc\" | \"desc\"",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "StartDateFilterState",
+    "definition": [
+      "export interface StartDateFilterState extends ",
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      },
+      " "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that holds the form state for date or datetime column filtered via the \"startFrom\" scheme."
+          ]
+        ]
+      }
+    ],
+    "extends": [
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          "\"startFrom\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "startDate",
+        "isOptional": false,
+        "definition": [
+          "Date",
+          " | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The start date to filter against."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "StringFilterScheme",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Represents all possible filter schemes for a string column."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type StringFilterScheme = ",
+      "(typeof ",
+      {
+        "text": "stringFilterSchemes",
+        "href": "string-filter-schemes"
+      },
+      ")[number]",
+      ";"
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "stringFilterSchemes",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "An array of all possible values of ",
+            {
+              "text": "StringFilterScheme",
+              "href": "string-filter-scheme"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "definition": [
+      "stringFilterSchemes: ",
+      "readonly [\"contains\", \"startsWith\", \"endsWith\"]"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "StringFilterState",
+    "definition": [
+      "export interface StringFilterState extends ",
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      },
+      " "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Form state for the filter settings for a string column."
+          ]
+        ]
+      }
+    ],
+    "extends": [
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "StringFilterScheme",
+            "href": "string-filter-scheme"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The filter scheme to apply."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "searchString",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The search string to filter on."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"string\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "StyleModel",
+    "definition": [
+      "export interface StyleModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Top level object that is passed as a prop to a table to enable custom styles."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "additionalComponentsStyleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "AdditionalComponentsStyleModel",
+            "href": "additional-components-style-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for components that don't fit into other categories."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "exportFormStyleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "ExportFormStyleModel",
+            "href": "export-form-style-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the data export UI."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "filterInputTableStyleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "FilterInputTableStyleModel",
+            "href": "filter-input-table-style-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the filter options table."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "mainTableStyleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "TableStyleModel",
+            "href": "table-style-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the main table (as opposed to the filter options table)."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "toolbarStyleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "ToolbarStyleModel",
+            "href": "toolbar-style-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the toolbar."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "Table",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The main component of the table feature of react-bootstrap-data-grid."
+          ]
+        ]
+      }
+    ],
+    "definition": [
+      "Table: ",
+      "FC",
+      "<",
+      {
+        "text": "TableProps",
+        "href": "table-props"
+      },
+      ">"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "TableProps",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "The type of the props object for the Table component."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type TableProps = ",
+      {
+        "text": "MainComponentSharedProps",
+        "href": "main-component-shared-props"
+      },
+      " & ",
+      {
+        "text": "TableSpecificProps",
+        "href": "table-specific-props"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "TableSpecificProps",
+    "definition": [
+      "export interface TableSpecificProps "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Props specific to the ",
+            {
+              "text": "Table",
+              "href": "table"
+            },
+            " component and not the ",
+            {
+              "text": "Grid",
+              "href": "grid"
+            },
+            " component."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "allowExport",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Enables exporting of data from the table."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "caption",
+        "isOptional": true,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets a caption for the table"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "displayMode",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "DisplayMode",
+            "href": "display-mode"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets the CSS display property for the table element."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "editModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "EditModel",
+            "href": "edit-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The edit model of the table. Passing a truthy value enables the editing feature of the component."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "filterModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "FilterModel",
+            "href": "filter-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The filter model of the table. Passing a truthy value enables the filtering feature of the component."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pagination",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "PaginationModel",
+            "href": "pagination-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The pagination model of the table. Passing a truthy value enables the pagination feature of the component."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "selectModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "SelectModel",
+            "href": "select-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The select model of the table. Passing a truthy value enables the selection feature of the component."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sortModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "SortModel",
+            "href": "sort-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The sort model of the table. Passing a truthy value enables the sorting feature of the component."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "styleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "StyleModel",
+            "href": "style-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The style model of the table. Passing a truthy value enables the developer to customize the CSS classes applied to various elements of the table."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "TableStyleModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Style model for the main table."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type TableStyleModel = ",
+      {
+        "text": "SharedTableStyleModel",
+        "href": "shared-table-style-model"
+      },
+      " & ",
+      {
+        "text": "MainTableSpecificStyleModel",
+        "href": "main-table-specific-style-model"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ToolbarStyleModel",
+    "definition": [
+      "export interface ToolbarStyleModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "CSS styles for the toolbar."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "activeButton",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the button of the currently selected tool."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "inactiveButton",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the buttons of tools that are not currently selected."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "interfaceContainer",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the div element that contains the interface for each tool."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "toolbar",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Styles for the div element that contains the other elements of the toolbar."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "UncontrolledFilterModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that enables the filtering feature on a grid or table in manner that cannot be controlled externally. In this mode, \"tableFilterState\" is the initial set of filtering settings."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type UncontrolledFilterModel = ",
+      "Partial",
+      "<",
+      "Pick",
+      "<",
+      {
+        "text": "ControlledFilterModel",
+        "href": "controlled-filter-model"
+      },
+      ", \"tableFilterState\" | \"filterTableCaption\">> & {\n    type: \"uncontrolled\";\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "UncontrolledPaginationInitState",
+    "definition": [
+      "export interface UncontrolledPaginationInitState "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Initial values for pagination in uncontrolled mode."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "startingCurrentPage",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Starting 1-based current page number."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "startingPageSizeIndex",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Starting page size setting index of pageSizeOptions array."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"uncontrolled\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "UncontrolledPaginationModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that enables and configures pagination in an uncontrolled manner."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type UncontrolledPaginationModel = ",
+      {
+        "text": "PaginationOptions",
+        "href": "pagination-options"
+      },
+      " & ",
+      {
+        "text": "UncontrolledPaginationInitState",
+        "href": "uncontrolled-pagination-init-state"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "UncontrolledSortModel",
+    "definition": [
+      "export interface UncontrolledSortModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Uncontrolled variant of the ",
+            {
+              "text": "SortModel",
+              "href": "sort-model"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "initialSortColDef",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "SortColDef",
+            "href": "sort-col-def"
+          },
+          " | null",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Initial column to sort on, if any."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"uncontrolled\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "A type discriminator."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "UpdateCallbackGenerator",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Function that returns a callback function that responds to a row being updated with the editing feature."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type UpdateCallbackGenerator = ",
+      "(id: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ") => (rowData: ",
+      {
+        "text": "RowData",
+        "href": "row-data"
+      },
+      ") => void",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ValidRowData",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Type alias for \"data\" property of the ",
+            {
+              "text": "RowDef",
+              "href": "row-def"
+            },
+            " interface. This type alias represents the most general type possible. One can specify a more specific type via the Data type parameter."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type ValidRowData = ",
+      "Record",
+      "<string, any>",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ProColDef",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Type of the column definition object for the pro edition of the table feature."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [
+      {
+        "name": "ValueType",
+        "constraint": null,
+        "defaultValue": "any",
+        "comment": []
+      }
+    ],
+    "definition": [
+      "export type ProColDef<ValueType = ",
+      "any",
+      "> = ",
+      {
+        "text": "ColDefBase",
+        "href": "col-def-base"
+      },
+      "<ValueType> & ",
+      {
+        "text": "ProColDefSpecificFields",
+        "href": "pro-col-def-specific-fields"
+      },
+      ";"
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "interface",
+    "name": "ProColDefSpecificFields",
+    "definition": [
+      "export interface ProColDefSpecificFields "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Fields specific to ",
+            {
+              "text": "ProColDef",
+              "href": "pro-col-def"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "keyboardResizeStep",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Configures the number of pixels to change the width per keypress when resizing."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "maxResizeWidth",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "When the column is resizable, configures the maximum width to which the column can be resized."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "minResizeWidth",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "When the column is resizable, configures the minimum width to which the column can be resized."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "resizeable",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Configures whether the column is resizable."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "width",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "ColDef",
+            "href": "col-def"
+          },
+          "[\"width\"] | ",
+          {
+            "text": "WidthModel",
+            "href": "width-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Configures the width of the column. The value can be a number in pixels or a state setter/getter object of type ",
+                {
+                  "text": "WidthModel",
+                  "href": "width-model"
+                },
+                "."
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "typeAlias",
+    "name": "ProStyleModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Type of the combined style model object for the pro edition of the table component."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type ProStyleModel = ",
+      {
+        "text": "ProStyleSubmodels",
+        "href": "pro-style-submodels"
+      },
+      " & ",
+      {
+        "text": "StyleModel",
+        "href": "style-model"
+      },
+      ";"
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "interface",
+    "name": "ProStyleSubmodels",
+    "definition": [
+      "export interface ProStyleSubmodels "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Style models specific the pro edition of the table component."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "reorderModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "ReorderStyleModel",
+            "href": "reorder-style-model"
+          },
+          ";"
+        ],
+        "comment": []
+      }
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "typeAlias",
+    "name": "ReorderCallback",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Type of the callback function to respond to a reorder operation."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type ReorderCallback = ",
+      "(id: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", destIndex: number) => void",
+      ";"
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "interface",
+    "name": "ReorderModel",
+    "definition": [
+      "export interface ReorderModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that enables the row reordering feature."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "callback",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "ReorderCallback",
+            "href": "reorder-callback"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Callback function called when a reorder operation is performed via the UI."
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "function",
+    "name": "reorderRows",
+    "definition": [
+      "reorderRows: <Data extends ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      ">(rows: ",
+      {
+        "text": "RowDef",
+        "href": "row-def"
+      },
+      "<Data>[]",
+      ", id: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", destIndex: ",
+      "number",
+      ") => ",
+      {
+        "text": "RowDef",
+        "href": "row-def"
+      },
+      "<Data>[]"
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Utility function for implementing the reorder callback function for the row reordering feature."
+          ]
+        ]
+      },
+      {
+        "title": "@returns",
+        "content": [
+          [
+            " A new array where row to move is inserted into the destination index."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [
+      {
+        "name": "Data",
+        "constraint": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "defaultValue": null,
+        "comment": []
+      }
+    ],
+    "returnType": [
+      {
+        "text": "RowDef",
+        "href": "row-def"
+      },
+      "<Data>[]"
+    ],
+    "functionParams": [
+      {
+        "type": "functionParam",
+        "name": "rows",
+        "definition": [
+          {
+            "text": "RowDef",
+            "href": "row-def"
+          },
+          "<Data>[]"
+        ],
+        "comment": [
+          [
+            "an array of row data of the type ",
+            {
+              "text": "RowDef",
+              "href": "row-def"
+            },
+            "."
+          ]
+        ]
+      },
+      {
+        "type": "functionParam",
+        "name": "id",
+        "definition": [
+          {
+            "text": "RowId",
+            "href": "row-id"
+          }
+        ],
+        "comment": [
+          [
+            "the id of the row to move."
+          ]
+        ]
+      },
+      {
+        "type": "functionParam",
+        "name": "destIndex",
+        "definition": [
+          "number"
+        ],
+        "comment": [
+          [
+            "the destination index of the row to move."
+          ]
+        ]
+      }
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "interface",
+    "name": "ReorderStyleModel",
+    "definition": [
+      "export interface ReorderStyleModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Style model properties specific to the row reordering feature."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "bottomBorderRowClasses",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the row above the drag destination."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "draggedRowClasses",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the row being dragged."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "draggedRowPredecessorClasses",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the row above the row being dragged."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ghostDivClasses",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the drag marker that follows the cursor while dragging."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "topBorderRowClasses",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Classes for the row below the drag destination."
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "variable",
+    "name": "TablePro",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Pro edition of the table component."
+          ]
+        ]
+      }
+    ],
+    "definition": [
+      "TablePro: ",
+      "FC",
+      "<",
+      {
+        "text": "TableProProps",
+        "href": "table-pro-props"
+      },
+      ">"
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "typeAlias",
+    "name": "TableProProps",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Props object for the pro edition of the table component, ",
+            {
+              "text": "TablePro",
+              "href": "table-pro"
+            },
+            "."
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type TableProProps = ",
+      "Omit",
+      "<",
+      {
+        "text": "TableProps",
+        "href": "table-props"
+      },
+      ", \"cols\" | \"styleModel\"> & ",
+      {
+        "text": "TableProSpecificProps",
+        "href": "table-pro-specific-props"
+      },
+      ";"
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "interface",
+    "name": "TableProSpecificProps",
+    "definition": [
+      "export interface TableProSpecificProps "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Props that are specific to the pro edition of the table component."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "cols",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "ProColDef",
+            "href": "pro-col-def"
+          },
+          "[]",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Column definitions for the table."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "reorder",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "ReorderModel",
+            "href": "reorder-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Enables and configures the row reordering feature."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "styleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "ProStyleModel",
+            "href": "pro-style-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Applies custom CSS styles for elements specific to the pro edition of the table."
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "proOnly": true
+  },
+  {
+    "type": "interface",
+    "name": "WidthModel",
+    "definition": [
+      "export interface WidthModel "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "State object with getter and setter that represents the width of a column. Used as part of ",
+            {
+              "text": "ProColDefSpecificFields",
+              "href": "pro-col-def-specific-fields"
+            },
+            " to specify the width of a column in a way that can be changed externally."
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "setWidth",
+        "isOptional": false,
+        "definition": [
+          "(width: number) => void",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Setter function to update the width value."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "width",
+        "isOptional": false,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The current width value stored by the object."
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "proOnly": true
+  }
+]

@@ -14,7 +14,7 @@ const testNavLinkAndHeading: (
   await menuToggleButton.click();
 
   const dialog = page.getByRole("dialog");
-  const link = dialog.getByRole("link", { name: sectionName });
+  const link = dialog.getByRole("link", { name: sectionName, exact: true });
   await link.click();
 
   const heading = page.getByRole("heading", {

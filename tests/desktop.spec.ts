@@ -8,7 +8,7 @@ const testNavLinkAndHeading: (
   // this complex selector is needed to differentiate between the desktop and
   // mobile nav links
   const nav = page.locator("div.container > div > div > ul");
-  const link = nav.getByRole("link", { name: sectionName });
+  const link = nav.getByRole("link", { name: sectionName, exact: true });
   await link.click();
   const heading = page.getByRole("heading", {
     level: 1,

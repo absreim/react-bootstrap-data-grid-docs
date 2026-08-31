@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Link from "next/link";
 import { LinkDef } from "@/components/types";
 import ProBadge from "@/assets/ProBadge";
+import { prefixBadges } from "@/components/constants";
 
 interface ContentsNavbarProps {
   linkDefs: LinkDef[];
@@ -21,9 +22,10 @@ const ContentsNavbar: FC<ContentsNavbarProps> = ({ linkDefs, onClick }) => {
       activeKey={pathname}
       className="flex-column rbdg-unsectioned-navbar-list"
     >
-      {linkDefs.map(({ name, path, pro }, index) => (
-        <Nav.Item key={index}>
+      {linkDefs.map(({ name, path, pro, prefixBadgeId }, index) => (
+        <Nav.Item key={index} className="rbdg-contents-navbar-item">
           <Nav.Link as={Link} href={path} onClick={onClick}>
+            {prefixBadgeId && <>{prefixBadges[prefixBadgeId]} </>}
             {name}
             {pro && (
               <>
