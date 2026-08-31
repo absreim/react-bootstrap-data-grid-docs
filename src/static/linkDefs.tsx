@@ -63,11 +63,11 @@ const getSectionedArticles: (
     const sectionName = pathSegments[pathSegments.length - 2];
 
     if (!sections.has(sectionName)) {
-      const metadata: SectionMetadata = {
-        name: "Test",
-        order: 0,
-        icon: <JournalCode />
-      };
+      // Note: testing has shown that this way of dynamically importing files
+      // may not work when using Next.js with webpack (rather than Turbopack).
+      const metadata: SectionMetadata = (await import(
+        path.join("@", relativeRootDir, sectionName, "metadata.tsx"),
+      )).default;
       sections.set(sectionName, {
         ...metadata,
         path: sectionName,
