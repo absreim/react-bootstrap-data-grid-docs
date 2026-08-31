@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import MainLayout from "@/components/MainLayout";
-import { blogArticleInfo } from "@/lib/getLinkDefs";
+import { blogArticleInfo } from "@/static/linkDefs";
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   return (

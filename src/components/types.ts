@@ -5,8 +5,11 @@ export type NestedNavLinkNode = Pick<TocItem, "value" | "href" | "id"> & {
   children: NestedNavLinkNode[];
 };
 
-export interface LinkDef {
+export type OrderedLinkDef = LinkDef & {
   order: number;
+}
+
+export interface LinkDef {
   name: string;
   path: string;
   title?: string;
@@ -19,18 +22,22 @@ export interface SectionMetadata {
   icon: ReactNode;
 }
 
-export type LinkSection = SectionMetadata & {
+export type OrderedLinkSection = SectionMetadata & {
   path: string;
-  links: LinkDef[];
+  links: OrderedLinkDef[];
+}
+
+export type LinkSection = Omit<OrderedLinkSection, "links" | "order"> & {
+  links: LinkDef[]
 }
 
 export interface SectionedArticleInfo {
-  type: "sectioned"
+  type: "sectioned";
   sections: LinkSection[];
 }
 
 export interface UnsectionedArticleInfo {
-  type: "unsectioned",
+  type: "unsectioned";
   links: LinkDef[];
 }
 

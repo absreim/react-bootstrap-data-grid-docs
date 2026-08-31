@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { FC, ReactNode } from "react";
 import DocContentsLayout from "@/components/DocContentsLayout";
-import { blogArticleInfo } from "@/lib/getLinkDefs";
+import { blogArticleInfo } from "@/static/linkDefs";
 import Link from "next/link";
 
 export const metadata: Metadata = {
