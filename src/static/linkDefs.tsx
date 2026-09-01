@@ -18,6 +18,13 @@ import { apiLinkDefs } from "@/static/api/apiRefLinkDefs";
 import JournalCode from "@/assets/icons/JournalCode";
 import sectionMetadata from "@/articles/docs/sectionMetadata";
 
+const REF_LINK_SECTION: LinkSection = {
+  name: "Reference",
+  path: REF_URL_SEGMENT,
+  icon: <JournalCode />,
+  links: apiLinkDefs,
+};
+
 // Much of the frontmatter parsing code is derived from the Next.js Portfolio
 // Blog Starter example:
 // https://github.com/vercel/examples/blob/main/solutions/blog/app/blog/utils.ts
@@ -87,12 +94,7 @@ const getSectionedArticles: (
   linkSections.forEach(({ links }) => links.sort((a, b) => a.order - b.order));
 
   const unorderedSections = linkSections as LinkSection[];
-  unorderedSections.push({
-    name: "Reference",
-    path: REF_URL_SEGMENT,
-    icon: <JournalCode />,
-    links: apiLinkDefs,
-  });
+  unorderedSections.push(REF_LINK_SECTION);
 
   return unorderedSections;
 };
