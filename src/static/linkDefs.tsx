@@ -5,7 +5,6 @@ import {
   OrderedLinkDef,
   OrderedLinkSection,
   SectionedArticleInfo,
-  SectionMetadata,
   UnsectionedArticleInfo,
 } from "@/components/types";
 import {
@@ -17,6 +16,7 @@ import {
 } from "@/static/constants";
 import { apiLinkDefs } from "@/static/api/apiRefLinkDefs";
 import JournalCode from "@/assets/icons/JournalCode";
+import sectionMetadata from "@/articles/docs/sectionMetadata";
 
 // Much of the frontmatter parsing code is derived from the Next.js Portfolio
 // Blog Starter example:
@@ -63,11 +63,7 @@ const getSectionedArticles: (
     const sectionName = pathSegments[pathSegments.length - 2];
 
     if (!sections.has(sectionName)) {
-      // Note: testing has shown that this way of dynamically importing files
-      // may not work when using Next.js with webpack (rather than Turbopack).
-      const metadata: SectionMetadata = (await import(
-        path.join("@", relativeRootDir, sectionName, "metadata.tsx"),
-      )).default;
+      const metadata = sectionMetadata[sectionName];
       sections.set(sectionName, {
         ...metadata,
         path: sectionName,
