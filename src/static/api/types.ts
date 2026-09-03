@@ -6,8 +6,8 @@ export interface Reference {
 export type Token = string | Reference;
 
 export interface TypeParam {
-  constraint: Token;
-  default?: Token;
+  constraint: Token | null;
+  default: Token | null;
 }
 
 export interface Member {
@@ -17,25 +17,25 @@ export interface Member {
   comment: string;
 }
 
-export interface ApiItemBase {
+export interface ItemBase {
   name: string;
   comment: string;
 }
 
-export interface Interface extends ApiItemBase {
+export interface Interface extends ItemBase {
   type: "interface";
   extends: Token[];
   typeParams: TypeParam[];
   members: Member[];
 }
 
-export interface Type extends ApiItemBase {
+export interface Type extends ItemBase {
   type: "type";
   typeParams: TypeParam[];
   definition: Token[];
 }
 
-export interface Variable extends ApiItemBase {
+export interface Variable extends ItemBase {
   type: "variable";
   definition: Token[];
 }
@@ -45,10 +45,10 @@ export interface FunctionParam {
   type: Token[];
 }
 
-export interface Function extends ApiItemBase {
+export interface Function extends ItemBase {
   type: "function";
   typeParams: TypeParam[];
   returnType: Token[];
 }
 
-export type ApiItem = Interface | Type | Variable | Function;
+export type Item = Interface | Type | Variable | Function;
