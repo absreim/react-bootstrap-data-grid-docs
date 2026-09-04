@@ -1,7 +1,6 @@
 import {
   ApiEntryPoint,
   ApiModel,
-  ApiPropertySignature,
   ExcerptToken,
   HeritageType,
   TypeParameter,
@@ -63,6 +62,12 @@ function convertExtendsTypes(extendsTypes: readonly HeritageType[]): Token[] {
   return extendsTypes.map(({ excerpt: { text } }) => resolveReference(text));
 }
 
+// Not dealing with interfaces with nested members because none currently exist.
+// Omit the first token of the excerpt array to get the definition of a property.
+// The first token contains the property name and colon.
+//
+// It makes sense to check for interfaces with nested properties and throw an
+// error if one is detected to avoid confusing behavior in the future.
 function convertExcerptTokens(excerptTokens: readonly ExcerptToken[]): Token[] {
   return excerptTokens.map((token) => {
     if (token.kind === "Reference") {
@@ -73,11 +78,6 @@ function convertExcerptTokens(excerptTokens: readonly ExcerptToken[]): Token[] {
   })
 }
 
-// TODO: deal interfaces with nested members, possibly by flattening the nested
-// members in a string
-function convertFlatProperties(apiPropertySignatures: readonly ApiPropertySignature[]): Token[] {
-
-}
 
 const item: Item[] = entryPoint.members.map((apiItem) => {
   switch (apiItem.constructor.name) {
