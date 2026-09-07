@@ -10,6 +10,7 @@ import {
   Parameter,
   ApiFunction,
   ApiVariable,
+  ApiTypeAlias,
 } from "@microsoft/api-extractor-model";
 import {
   DocComment,
@@ -17,7 +18,7 @@ import {
   DocPlainText,
   DocSection,
 } from "@microsoft/tsdoc";
-import {
+import type {
   Item,
   Reference,
   TypeParam,
@@ -27,11 +28,26 @@ import {
   FunctionParam,
   FunctionItem,
   Variable,
-} from "@/static/api/types";
+  TypeAlias,
+} from "./types";
 import { kebabCase } from "change-case";
+import path from "path";
+import fs from "node:fs";
+
+const inputFilePath = path.join(
+  import.meta.dirname,
+  "input-model",
+  "doc-model.api.json",
+);
+
+const outputFilePath = path.join(
+  import.meta.dirname,
+  "output-model",
+  "model.json",
+);
 
 const apiModel = new ApiModel();
-const apiPackage = apiModel.loadPackage("./input-model/doc-model.api.json");
+const apiPackage = apiModel.loadPackage(inputFilePath);
 
 const entryPoint = apiPackage.members[0];
 if (!(entryPoint instanceof ApiEntryPoint)) {
@@ -54,6 +70,8 @@ entryPoint.members.forEach(({ displayName }) => {
     href: kebabName,
   });
 });
+
+// -- Start of utility functions for item conversions --
 
 function resolveReference(name: string): Token {
   if (references.has(name)) {
@@ -172,13 +190,35 @@ function convertVariable(variable: ApiVariable): Variable {
     type: "variable",
     name: variable.name,
     comment: convertComment(variable.tsdocComment),
-    definition: convertExcerptTokens(variable.excerptTokens.slice(1))
+    definition: convertExcerptTokens(variable.excerptTokens.slice(1)),
   };
 }
+
+function convertTypeAlias(apiTypeAlias: ApiTypeAlias): TypeAlias {
+  return {
+    type: "typeAlias",
+    name: apiTypeAlias.name,
+    comment: convertComment(apiTypeAlias.tsdocComment),
+    typeParams: convertTypeParams(apiTypeAlias.typeParameters),
+    definition: convertExcerptTokens(apiTypeAlias.excerptTokens.slice(1)),
+  };
+}
+
+// -- End of utility functions for item conversions --
 
 const item: Item[] = entryPoint.members.map((apiItem) => {
   switch (apiItem.constructor.name) {
     case "ApiInterface": {
+      return convertInterface(apiItem as ApiInterface);
+    }
+    case "ApiVariable": {
+      return convertVariable(apiItem as ApiVariable);
+    }
+    case "ApiFunction": {
+      return convertFunction(apiItem as ApiFunction);
+    }
+    case "ApiTypeAlias": {
+      return convertTypeAlias(apiItem as ApiTypeAlias);
     }
     default: {
       throw new Error(
@@ -187,3 +227,6 @@ const item: Item[] = entryPoint.members.map((apiItem) => {
     }
   }
 });
+
+const jsonStr = JSON.stringify(item, null, 2);
+fs.writeFileSync(outputFilePath, jsonStr);

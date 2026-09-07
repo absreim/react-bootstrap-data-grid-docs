@@ -1,0 +1,2582 @@
+[
+  {
+    "type": "interface",
+    "name": "AbstractDateFilterState",
+    "comment": [],
+    "extends": [
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "DateFilterScheme",
+            "href": "date-filter-scheme"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"date\" | \"datetime\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "AbstractFilterState",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "enabled",
+        "isOptional": false,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "AdditionalComponentsStyleModel",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "paginationUiDiv",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "tableAndPaginationDiv",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "tableDiv",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "topLevelDiv",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "AugFormattedRow",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "{\n    contents: ",
+      {
+        "text": "CellData",
+        "href": "cell-data"
+      },
+      "[];\n} & ",
+      "Omit",
+      "<",
+      {
+        "text": "PostPaginationRowDef",
+        "href": "post-pagination-row-def"
+      },
+      ", \"data\">",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "AugRowDef",
+    "comment": [],
+    "typeParams": [
+      {
+        "constraint": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "default": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        }
+      }
+    ],
+    "definition": [
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      " = ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      "> = ",
+      {
+        "text": "RowDef",
+        "href": "row-def"
+      },
+      "<Data> & {\n    origIndex: number;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "BetweenDatesFilterState",
+    "comment": [],
+    "extends": [
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "endDate",
+        "isOptional": false,
+        "definition": [
+          "Date",
+          " | null",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          "\"between\"",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "startDate",
+        "isOptional": false,
+        "definition": [
+          "Date",
+          " | null",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "BodyCellVariantFn",
+    "comment": [
+      "The type of the function used to specify color variants on a grid body on a per-cell level of granularity."
+    ],
+    "typeParams": [],
+    "definition": [
+      "(cell: ",
+      {
+        "text": "CellData",
+        "href": "cell-data"
+      },
+      ", row: ",
+      {
+        "text": "FormattedRow",
+        "href": "formatted-row"
+      },
+      ", colIndex: number, displayIndex: number) => string | null",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "CellData",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "ariaColIndex",
+        "isOptional": false,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "fieldName",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "formattedValue",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "label",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "ColDataTypeStrings",
+            "href": "col-data-type-strings"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "value",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "ColDataType",
+            "href": "col-data-type"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "width",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ColDataType",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "string | number | ",
+      "Date",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ColDataTypeStrings",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "\"string\" | \"number\" | \"date\" | \"datetime\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ColDef",
+    "comment": [],
+    "typeParams": [
+      {
+        "constraint": null,
+        "default": "any"
+      }
+    ],
+    "definition": [
+      "any",
+      "> = ",
+      {
+        "text": "ColDefBase",
+        "href": "col-def-base"
+      },
+      "<ValueType> & {\n    width?: number;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ColDefBase",
+    "comment": [],
+    "extends": [],
+    "typeParams": [
+      {
+        "constraint": null,
+        "default": "any"
+      }
+    ],
+    "members": [
+      {
+        "name": "formatter",
+        "isOptional": true,
+        "definition": [
+          "(value: ValueType) => string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "label",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "name",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "sortable",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "ColDataTypeStrings",
+            "href": "col-data-type-strings"
+          },
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ColFilterState",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "editableState",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "EditableColFilterState",
+            "href": "editable-col-filter-state"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "label",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ColHeaderCellProps",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "additionalClasses",
+        "isOptional": true,
+        "definition": [
+          "string[] | null",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "ariaColIndex",
+        "isOptional": false,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "label",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "sortModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "ColSortModel",
+            "href": "col-sort-model"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "width",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ColNameToWidth",
+    "comment": [],
+    "typeParams": [
+      {
+        "constraint": "string",
+        "default": "string"
+      }
+    ],
+    "definition": [
+      "string",
+      " = ",
+      "string",
+      "> = ",
+      "Record",
+      "<ColName, number | undefined>",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ColSortModel",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "setSortOrder",
+        "isOptional": false,
+        "definition": [
+          "(order: ",
+          {
+            "text": "SortOrder",
+            "href": "sort-order"
+          },
+          " | null) => void",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "sortOrder",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "SortOrder",
+            "href": "sort-order"
+          },
+          " | null",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ControlledFilterModel",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "filterTableCaption",
+        "isOptional": true,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "setTableFilterState",
+        "isOptional": false,
+        "definition": [
+          "(state: ",
+          {
+            "text": "EditableFilterState",
+            "href": "editable-filter-state"
+          },
+          ") => void",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "tableFilterState",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "EditableFilterState",
+            "href": "editable-filter-state"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "type",
+        "isOptional": true,
+        "definition": [
+          "\"controlled\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ControlledPaginationModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "PaginationOptions",
+        "href": "pagination-options"
+      },
+      " & {\n    type?: \"controlled\";\n    pageSizeIndex: number;\n    setPageSizeIndex: (pageSizeIndex: number) => void;\n    currentPage: number;\n    setCurrentPage: (pageNum: number) => void;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ControlledSortModel",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "setSortColDef",
+        "isOptional": false,
+        "definition": [
+          "(sortColDef: ",
+          {
+            "text": "SortColDef",
+            "href": "sort-col-def"
+          },
+          " | null) => void",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "sortColDef",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "SortColDef",
+            "href": "sort-col-def"
+          },
+          " | null",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "type",
+        "isOptional": true,
+        "definition": [
+          "\"controlled\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "DateFilterScheme",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "(typeof ",
+      {
+        "text": "dateFilterSchemes",
+        "href": "date-filter-schemes"
+      },
+      ")[number]",
+      ";"
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "dateFilterSchemeNames",
+    "comment": [],
+    "definition": [
+      "Record",
+      "<",
+      {
+        "text": "DateFilterScheme",
+        "href": "date-filter-scheme"
+      },
+      ", string>"
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "dateFilterSchemes",
+    "comment": [],
+    "definition": [
+      "readonly [\"startFrom\", \"endAt\", \"between\"]"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "DateFilterState",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "StartDateFilterState",
+        "href": "start-date-filter-state"
+      },
+      " | ",
+      {
+        "text": "EndDateFilterState",
+        "href": "end-date-filter-state"
+      },
+      " | ",
+      {
+        "text": "BetweenDatesFilterState",
+        "href": "between-dates-filter-state"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "DateFormFilterState",
+    "comment": [],
+    "extends": [
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "endDate",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "DateFilterScheme",
+            "href": "date-filter-scheme"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "startDate",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "dateToDatetimeInputStr",
+    "comment": [],
+    "typeParams": [],
+    "returnType": [
+      "string"
+    ],
+    "functionParams": [
+      {
+        "name": "date",
+        "definition": [
+          "Date"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "dateToInputStr",
+    "comment": [],
+    "typeParams": [],
+    "returnType": [
+      "string"
+    ],
+    "functionParams": [
+      {
+        "name": "date",
+        "definition": [
+          "Date"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "DisplayMode",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "\"table\" | \"block\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "EditableColFilterState",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "StringFilterState",
+        "href": "string-filter-state"
+      },
+      " | ",
+      {
+        "text": "NumberFilterState",
+        "href": "number-filter-state"
+      },
+      " | ",
+      {
+        "text": "DateFilterState",
+        "href": "date-filter-state"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "EditableFilterState",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "Record",
+      "<string, ",
+      {
+        "text": "EditableColFilterState",
+        "href": "editable-col-filter-state"
+      },
+      ">",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "EditModel",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "editColWidth",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "getDeleteCallback",
+        "isOptional": true,
+        "definition": [
+          "(id: ",
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ") => () => void",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "getUpdateCallback",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "UpdateCallbackGenerator",
+            "href": "update-callback-generator"
+          },
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "EndDateFilterState",
+    "comment": [],
+    "extends": [
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "endDate",
+        "isOptional": false,
+        "definition": [
+          "Date",
+          " | null",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          "\"endAt\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ExportFormStyleModel",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "legend",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "radioContainer",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "radioInput",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "radioLabel",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "submitButton",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "FilterFormRowState",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "StringFilterState",
+        "href": "string-filter-state"
+      },
+      " | ",
+      {
+        "text": "NumberFormFilterState",
+        "href": "number-form-filter-state"
+      },
+      " | ",
+      {
+        "text": "DateFormFilterState",
+        "href": "date-form-filter-state"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "FilterFormState",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "Record",
+      "<string, ",
+      {
+        "text": "FilterFormRowState",
+        "href": "filter-form-row-state"
+      },
+      ">",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "FilterInputTableStyleModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "SharedTableStyleModel",
+        "href": "shared-table-style-model"
+      },
+      " & {\n    tbodyTr?: (rowIndex: number) => string[] | null;\n    tbodyTd?: (rowIndex: number, colIndex: number) => string[] | null;\n    enablementInput?: (rowIndex: number) => string[] | null;\n    schemeSelectionInput?: (rowIndex: number) => string[] | null;\n    searchStringInput?: (rowIndex: number) => string[] | null;\n    numberInput?: (rowIndex: number) => string[] | null;\n    startDateInput?: (rowIndex: number) => string[] | null;\n    endDateInput?: (rowIndex: number) => string[] | null;\n    submitButton?: string[];\n    form?: string[];\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "FilterModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "ControlledFilterModel",
+        "href": "controlled-filter-model"
+      },
+      " | ",
+      {
+        "text": "UncontrolledFilterModel",
+        "href": "uncontrolled-filter-model"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "FilterState",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "Record",
+      "<string, ",
+      {
+        "text": "ColFilterState",
+        "href": "col-filter-state"
+      },
+      ">",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "FormattedExportRow",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "{\n    id: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ";\n    data: ",
+      "Record",
+      "<string, string | number>;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "FormattedRow",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "{\n    contents: ",
+      "Omit",
+      "<",
+      {
+        "text": "CellData",
+        "href": "cell-data"
+      },
+      ", \"width\">[];\n} & ",
+      "Omit",
+      "<",
+      {
+        "text": "PostPaginationRowDef",
+        "href": "post-pagination-row-def"
+      },
+      ", \"data\">",
+      ";"
+    ]
+  },
+  {
+    "type": "function",
+    "name": "getWidthStyle",
+    "comment": [],
+    "typeParams": [],
+    "returnType": [
+      "CSSProperties",
+      " | undefined"
+    ],
+    "functionParams": [
+      {
+        "name": "width",
+        "definition": [
+          "number | undefined"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "Grid",
+    "comment": [],
+    "definition": [
+      "FC",
+      "<",
+      {
+        "text": "GridProps",
+        "href": "grid-props"
+      },
+      ">"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridBorderSetting",
+    "comment": [
+      "The type of the prop to set the grid border style"
+    ],
+    "typeParams": [],
+    "definition": [
+      "\"horizontal\" | \"full\" | \"none\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridHeightSetting",
+    "comment": [
+      "The type of the prop to set grid height behavior"
+    ],
+    "typeParams": [],
+    "definition": [
+      "number | \"auto\" | \"parent\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridProps",
+    "comment": [
+      "The type of the props passed to the Grid component."
+    ],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "MainComponentSharedProps",
+        "href": "main-component-shared-props"
+      },
+      " & {\n    height?: ",
+      {
+        "text": "GridHeightSetting",
+        "href": "grid-height-setting"
+      },
+      ";\n    width?: ",
+      {
+        "text": "GridWidthSetting",
+        "href": "grid-width-setting"
+      },
+      ";\n    variant?: string;\n    stripes?: ",
+      {
+        "text": "GridStripeSetting",
+        "href": "grid-stripe-setting"
+      },
+      ";\n    hover?: boolean;\n    borders?: ",
+      {
+        "text": "GridBorderSetting",
+        "href": "grid-border-setting"
+      },
+      ";\n    borderVariant?: string;\n    small?: boolean;\n    divider?: boolean;\n    headerRowVariant?: string;\n    headerCellVariant?: ",
+      {
+        "text": "HeaderCellVariantFn",
+        "href": "header-cell-variant-fn"
+      },
+      ";\n    bodyRowVariant?: (row: ",
+      {
+        "text": "FormattedRow",
+        "href": "formatted-row"
+      },
+      ", displayIndex: number) => string | null;\n    bodyCellVariant?: ",
+      {
+        "text": "BodyCellVariantFn",
+        "href": "body-cell-variant-fn"
+      },
+      ";\n    headerCellFocusVariant?: ",
+      {
+        "text": "HeaderCellVariantFn",
+        "href": "header-cell-variant-fn"
+      },
+      ";\n    bodyCellFocusVariant?: ",
+      {
+        "text": "BodyCellVariantFn",
+        "href": "body-cell-variant-fn"
+      },
+      ";\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridStripeSetting",
+    "comment": [
+      "The type of the prop to set the grid stripe style"
+    ],
+    "typeParams": [],
+    "definition": [
+      "\"rows\" | \"columns\" | \"none\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridWidthSetting",
+    "comment": [
+      "The type of the prop to set grid width behavior"
+    ],
+    "typeParams": [],
+    "definition": [
+      "number | \"auto\" | \"parent\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "HeaderCellVariantFn",
+    "comment": [
+      "The type of the function used to specify color variants on a grid header on a per-cell level of granularity."
+    ],
+    "typeParams": [],
+    "definition": [
+      "(col: ",
+      {
+        "text": "ColDef",
+        "href": "col-def"
+      },
+      ", colIndex: number) => string | null",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "InterfaceNodeGenerator",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "(closeUiCallback: () => void) => ",
+      {
+        "text": "ToolbarInterfaces",
+        "href": "toolbar-interfaces"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "InterfaceParams",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "exporting",
+        "isOptional": true,
+        "definition": [
+          "ExportFormProps",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "filtering",
+        "isOptional": true,
+        "definition": [
+          "FilterOptionsTableProps",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "InterfacePropGenerator",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "(closeUiCallback: () => void) => ",
+      {
+        "text": "InterfaceParams",
+        "href": "interface-params"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "function",
+    "name": "isSubset",
+    "comment": [],
+    "typeParams": [
+      {
+        "constraint": null,
+        "default": null
+      }
+    ],
+    "returnType": [
+      "boolean"
+    ],
+    "functionParams": [
+      {
+        "name": "subset",
+        "definition": [
+          "T[]"
+        ],
+        "comment": []
+      },
+      {
+        "name": "superSet",
+        "definition": [
+          "T[]"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "JustifyContentSetting",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "\"start\" | \"end\" | \"center\" | \"between\" | \"around\" | \"evenly\"",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "MainComponentSharedProps",
+    "comment": [
+      "Interface that contains parameters shared between the Table, TablePro, and Grid components."
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "cols",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "ColDef",
+            "href": "col-def"
+          },
+          "[]",
+          ";"
+        ],
+        "comment": [
+          "The column definitions of the table or grid"
+        ]
+      },
+      {
+        "name": "rows",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "RowDef",
+            "href": "row-def"
+          },
+          "[]",
+          ";"
+        ],
+        "comment": [
+          "The rows of data to be displayed by the table or grid"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "MultiExistingSelection",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "\"full\" | \"partial\" | \"none\"",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "MultiSelectionInfo",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "existingSelection",
+        "isOptional": false,
+        "definition": [
+          "\"full\" | \"partial\" | \"none\"",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "selectType",
+        "isOptional": false,
+        "definition": [
+          "\"multi\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "MultiSelectModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "BaseSelectModel",
+      " & {\n    type: \"multi\";\n    selected: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      "[];\n    setSelected: (selected: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      "[]) => void;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "NormalizedPaginationModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "Required",
+      "<",
+      "Omit",
+      "<",
+      {
+        "text": "ControlledPaginationModel",
+        "href": "controlled-pagination-model"
+      },
+      ", \"type\" | \"pageSelectorAriaLabel\" | \"pageSelectorJustifyContent\">> & ",
+      "Pick",
+      "<",
+      {
+        "text": "ControlledPaginationModel",
+        "href": "controlled-pagination-model"
+      },
+      ", \"pageSelectorAriaLabel\" | \"pageSelectorJustifyContent\">",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "NormalizedTableFilterModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "Pick",
+      "<",
+      {
+        "text": "ControlledFilterModel",
+        "href": "controlled-filter-model"
+      },
+      ", \"tableFilterState\" | \"setTableFilterState\">",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "NumberFilterScheme",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "(typeof ",
+      {
+        "text": "numberFilterSchemes",
+        "href": "number-filter-schemes"
+      },
+      ")[number]",
+      ";"
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "numberFilterSchemeNames",
+    "comment": [],
+    "definition": [
+      "Record",
+      "<",
+      {
+        "text": "NumberFilterScheme",
+        "href": "number-filter-scheme"
+      },
+      ", string>"
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "numberFilterSchemes",
+    "comment": [],
+    "definition": [
+      "readonly [\"equals\", \"greaterThan\", \"lessThan\", \"greaterOrEqual\", \"lessOrEqual\"]"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "NumberFilterState",
+    "comment": [],
+    "extends": [
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "numValue",
+        "isOptional": false,
+        "definition": [
+          "number | null",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "NumberFilterScheme",
+            "href": "number-filter-scheme"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"number\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "NumberFormFilterState",
+    "comment": [],
+    "extends": [
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "inputValue",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "NumberFilterScheme",
+            "href": "number-filter-scheme"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"number\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "PaginationModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "ControlledPaginationModel",
+        "href": "controlled-pagination-model"
+      },
+      " | ",
+      {
+        "text": "UncontrolledPaginationModel",
+        "href": "uncontrolled-pagination-model"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "PaginationOptions",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "componentSize",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "Size",
+            "href": "size"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "maxPageButtons",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "pageSelectorAriaLabel",
+        "isOptional": true,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "pageSelectorJustifyContent",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "JustifyContentSetting",
+            "href": "justify-content-setting"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "pageSizeOptions",
+        "isOptional": true,
+        "definition": [
+          "number[]",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "PostPaginationRowDef",
+    "comment": [],
+    "typeParams": [
+      {
+        "constraint": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "default": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        }
+      }
+    ],
+    "definition": [
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      " = ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      "> = ",
+      {
+        "text": "AugRowDef",
+        "href": "aug-row-def"
+      },
+      "<Data> & {\n    prePaginationIndex: number;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "RowData",
+    "comment": [],
+    "typeParams": [
+      {
+        "constraint": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "default": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        }
+      }
+    ],
+    "definition": [
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      " = ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      "> = ",
+      "Data",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "RowDef",
+    "comment": [],
+    "extends": [],
+    "typeParams": [
+      {
+        "constraint": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        },
+        "default": {
+          "text": "ValidRowData",
+          "href": "valid-row-data"
+        }
+      }
+    ],
+    "members": [
+      {
+        "name": "data",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "RowData",
+            "href": "row-data"
+          },
+          "<Data>",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "id",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "RowId",
+            "href": "row-id"
+          },
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "RowId",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "string | number",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SelectionInfo",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "SingleSelectionInfo",
+        "href": "single-selection-info"
+      },
+      " | ",
+      {
+        "text": "MultiSelectionInfo",
+        "href": "multi-selection-info"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SelectMode",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "\"column\" | \"row\" | \"both\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SelectModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "SingleSelectModel",
+        "href": "single-select-model"
+      },
+      " | ",
+      {
+        "text": "MultiSelectModel",
+        "href": "multi-select-model"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SelectType",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "\"single\" | \"multi\"",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "SharedTableStyleModel",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "caption",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "table",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "tbody",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "thead",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "theadTh",
+        "isOptional": true,
+        "definition": [
+          "(colIndex: number) => string[] | null",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "theadTr",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "SingleSelectionInfo",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "existingSelection",
+        "isOptional": false,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "selectType",
+        "isOptional": false,
+        "definition": [
+          "\"single\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SingleSelectModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "BaseSelectModel",
+      " & {\n    type: \"single\";\n    selected: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      " | null;\n    setSelected: (selected: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      " | null) => void;\n    groupName?: string;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "Size",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "\"small\" | \"medium\" | \"large\"",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "SortColDef",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "name",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "order",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "SortOrder",
+            "href": "sort-order"
+          },
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SortModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "ControlledSortModel",
+        "href": "controlled-sort-model"
+      },
+      " | ",
+      {
+        "text": "UncontrolledSortModel",
+        "href": "uncontrolled-sort-model"
+      },
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "SortOrder",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "\"asc\" | \"desc\"",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "StartDateFilterState",
+    "comment": [],
+    "extends": [
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          "\"startFrom\"",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "startDate",
+        "isOptional": false,
+        "definition": [
+          "Date",
+          " | null",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "StringFilterScheme",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "(typeof ",
+      {
+        "text": "stringFilterSchemes",
+        "href": "string-filter-schemes"
+      },
+      ")[number]",
+      ";"
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "stringFilterSchemeNames",
+    "comment": [],
+    "definition": [
+      "Record",
+      "<",
+      {
+        "text": "StringFilterScheme",
+        "href": "string-filter-scheme"
+      },
+      ", string>"
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "stringFilterSchemes",
+    "comment": [],
+    "definition": [
+      "readonly [\"contains\", \"startsWith\", \"endsWith\"]"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "StringFilterState",
+    "comment": [],
+    "extends": [
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      }
+    ],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "scheme",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "StringFilterScheme",
+            "href": "string-filter-scheme"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "searchString",
+        "isOptional": false,
+        "definition": [
+          "string",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"string\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "StyleModel",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "additionalComponentsStyleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "AdditionalComponentsStyleModel",
+            "href": "additional-components-style-model"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "exportFormStyleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "ExportFormStyleModel",
+            "href": "export-form-style-model"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "filterInputTableStyleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "FilterInputTableStyleModel",
+            "href": "filter-input-table-style-model"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "mainTableStyleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "TableStyleModel",
+            "href": "table-style-model"
+          },
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "toolbarStyleModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "ToolbarStyleModel",
+            "href": "toolbar-style-model"
+          },
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "variable",
+    "name": "Table",
+    "comment": [],
+    "definition": [
+      "FC",
+      "<",
+      {
+        "text": "TableProps",
+        "href": "table-props"
+      },
+      ">"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "TableProps",
+    "comment": [
+      "The type of the props object for the Table component"
+    ],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "MainComponentSharedProps",
+        "href": "main-component-shared-props"
+      },
+      " & {\n    pagination?: ",
+      {
+        "text": "PaginationModel",
+        "href": "pagination-model"
+      },
+      ";\n    sortModel?: ",
+      {
+        "text": "SortModel",
+        "href": "sort-model"
+      },
+      ";\n    filterModel?: ",
+      {
+        "text": "FilterModel",
+        "href": "filter-model"
+      },
+      ";\n    selectModel?: ",
+      {
+        "text": "SelectModel",
+        "href": "select-model"
+      },
+      ";\n    editModel?: ",
+      {
+        "text": "EditModel",
+        "href": "edit-model"
+      },
+      ";\n    styleModel?: ",
+      {
+        "text": "StyleModel",
+        "href": "style-model"
+      },
+      ";\n    allowExport?: boolean;\n    caption?: string;\n    displayMode?: ",
+      {
+        "text": "DisplayMode",
+        "href": "display-mode"
+      },
+      ";\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "TableStyleModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "SharedTableStyleModel",
+        "href": "shared-table-style-model"
+      },
+      " & {\n    tbodyTr?: (rowId: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", displayIndex: number) => string[] | null;\n    tbodyTd?: (rowId: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", displayRowIndex: number, colIndex: number) => string[] | null;\n    tbodyTdInput?: (rowId: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", displayRowIndex: number, colIndex: number) => string[] | null;\n    editColTh?: string[];\n    editColTd?: (rowId: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", displayIndex: number) => string[] | null;\n    editStartButton?: (rowId: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", displayIndex: number) => string[] | null;\n    editDeleteButton?: (rowId: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", displayIndex: number) => string[] | null;\n    editSaveButton?: (rowId: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", displayIndex: number) => string[] | null;\n    editCancelButton?: (rowId: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", displayIndex: number) => string[] | null;\n    rowSelectColTh?: string[];\n    rowSelectColTd?: (rowId: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", displayIndex: number) => string[] | null;\n    rowSelectInput?: (rowId: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ", displayIndex: number) => string[] | null;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ToolbarInterfaces",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "Partial",
+      "<",
+      "Record",
+      "<",
+      {
+        "text": "ToolbarOption",
+        "href": "toolbar-option"
+      },
+      ", ",
+      "ReactNode",
+      ">>",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "ToolbarOption",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "\"filtering\" | \"exporting\"",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "ToolbarStyleModel",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "activeButton",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "inactiveButton",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "interfaceContainer",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "toolbar",
+        "isOptional": true,
+        "definition": [
+          "string[]",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "trueModulo",
+    "comment": [],
+    "typeParams": [],
+    "returnType": [
+      "number"
+    ],
+    "functionParams": [
+      {
+        "name": "num",
+        "definition": [
+          "number"
+        ],
+        "comment": []
+      },
+      {
+        "name": "divisor",
+        "definition": [
+          "number"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "UncontrolledFilterModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "Partial",
+      "<",
+      "Pick",
+      "<",
+      {
+        "text": "ControlledFilterModel",
+        "href": "controlled-filter-model"
+      },
+      ", \"tableFilterState\" | \"filterTableCaption\">> & {\n    type: \"uncontrolled\";\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "UncontrolledPaginationModel",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      {
+        "text": "PaginationOptions",
+        "href": "pagination-options"
+      },
+      " & {\n    type: \"uncontrolled\";\n    startingPageSizeIndex?: number;\n    startingCurrentPage?: number;\n}",
+      ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "UncontrolledSortModel",
+    "comment": [],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "initialSortColDef",
+        "isOptional": false,
+        "definition": [
+          {
+            "text": "SortColDef",
+            "href": "sort-col-def"
+          },
+          " | null",
+          ";"
+        ],
+        "comment": []
+      },
+      {
+        "name": "type",
+        "isOptional": false,
+        "definition": [
+          "\"uncontrolled\"",
+          ";"
+        ],
+        "comment": []
+      }
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "UpdateCallbackGenerator",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "(id: ",
+      {
+        "text": "RowId",
+        "href": "row-id"
+      },
+      ") => (rowData: ",
+      {
+        "text": "RowData",
+        "href": "row-data"
+      },
+      ") => void",
+      ";"
+    ]
+  },
+  {
+    "type": "function",
+    "name": "useControlledHover",
+    "comment": [],
+    "typeParams": [
+      {
+        "constraint": null,
+        "default": null
+      }
+    ],
+    "returnType": [
+      "UseControlledHoverHook",
+      "<T>"
+    ],
+    "functionParams": []
+  },
+  {
+    "type": "typeAlias",
+    "name": "ValidRowData",
+    "comment": [],
+    "typeParams": [],
+    "definition": [
+      "Record",
+      "<string, any>",
+      ";"
+    ]
+  }
+]

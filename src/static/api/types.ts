@@ -29,8 +29,8 @@ export interface Interface extends ItemBase {
   members: Member[];
 }
 
-export interface Type extends ItemBase {
-  type: "type";
+export interface TypeAlias extends ItemBase {
+  type: "typeAlias";
   typeParams: TypeParam[];
   definition: Token[];
 }
@@ -51,4 +51,4 @@ export interface FunctionItem extends ItemBase {
   functionParams: FunctionParam[];
 }
 
-export type Item = Interface | Type | Variable | FunctionItem;
+export type Item = Interface | TypeAlias | Variable | FunctionItem;
