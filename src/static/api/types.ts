@@ -40,15 +40,15 @@ export interface Variable extends ItemBase {
   definition: Token[];
 }
 
-export interface FunctionParam {
-  name: string;
-  type: Token[];
+export interface FunctionParam extends ItemBase {
+  definition: Token[];
 }
 
-export interface Function extends ItemBase {
+export interface FunctionItem extends ItemBase {
   type: "function";
   typeParams: TypeParam[];
   returnType: Token[];
+  functionParams: FunctionParam[];
 }
 
-export type Item = Interface | Type | Variable | Function;
+export type Item = Interface | Type | Variable | FunctionItem;

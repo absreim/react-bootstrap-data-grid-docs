@@ -3,11 +3,20 @@ import {
   ApiInterface,
   ApiModel,
   ApiPropertySignature,
+  Excerpt,
   ExcerptToken,
   HeritageType,
   TypeParameter,
+  Parameter,
+  ApiFunction,
+  ApiVariable,
 } from "@microsoft/api-extractor-model";
-import { DocComment, DocParagraph, DocPlainText } from "@microsoft/tsdoc";
+import {
+  DocComment,
+  DocParagraph,
+  DocPlainText,
+  DocSection,
+} from "@microsoft/tsdoc";
 import {
   Item,
   Reference,
@@ -15,6 +24,9 @@ import {
   Token,
   Member,
   Interface,
+  FunctionParam,
+  FunctionItem,
+  Variable,
 } from "@/static/api/types";
 import { kebabCase } from "change-case";
 
@@ -88,8 +100,13 @@ function convertExcerptTokens(excerptTokens: readonly ExcerptToken[]): Token[] {
   });
 }
 
-function convertComment(comment: DocComment): string[] {
-  return comment.summarySection.nodes
+function convertRangedExcerpt(excerpt: Excerpt): Token[] {
+  const { startIndex, endIndex } = excerpt.tokenRange;
+  return convertExcerptTokens(excerpt.tokens.slice(startIndex, endIndex));
+}
+
+function convertDocSection(section: DocSection): string[] {
+  return section.nodes
     .filter((node) => node instanceof DocParagraph)
     .flatMap((paragraph) =>
       paragraph.nodes.filter(
@@ -99,12 +116,20 @@ function convertComment(comment: DocComment): string[] {
     .map((paragraphNode) => paragraphNode.text);
 }
 
+function convertComment(comment: DocComment | undefined): string[] {
+  if (comment === undefined) {
+    return [];
+  }
+
+  return convertDocSection(comment.summarySection);
+}
+
 function convertMember(member: ApiPropertySignature): Member {
   return {
     name: member.name,
     isOptional: member.isOptional,
-    definition: convertExcerptTokens(member.excerptTokens),
-    comment: member.tsdocComment ? convertComment(member.tsdocComment) : [],
+    definition: convertExcerptTokens(member.excerptTokens.slice(1)),
+    comment: convertComment(member.tsdocComment),
   };
 }
 
@@ -112,14 +137,42 @@ function convertInterface(apiInterface: ApiInterface): Interface {
   return {
     type: "interface",
     name: apiInterface.name,
-    comment: apiInterface.tsdocComment
-      ? convertComment(apiInterface.tsdocComment)
-      : [],
+    comment: convertComment(apiInterface.tsdocComment),
     extends: convertExtendsTypes(apiInterface.extendsTypes),
     typeParams: convertTypeParams(apiInterface.typeParameters),
     members: apiInterface.members
       .filter((member) => member instanceof ApiPropertySignature)
       .map((member) => convertMember(member)),
+  };
+}
+
+function convertFunctionParam(param: Parameter): FunctionParam {
+  return {
+    name: param.name,
+    definition: convertRangedExcerpt(param.parameterTypeExcerpt),
+    comment: param.tsdocParamBlock
+      ? convertDocSection(param.tsdocParamBlock.content)
+      : [],
+  };
+}
+
+function convertFunction(fn: ApiFunction): FunctionItem {
+  return {
+    type: "function",
+    name: fn.name,
+    comment: convertComment(fn.tsdocComment),
+    typeParams: convertTypeParams(fn.typeParameters),
+    returnType: convertRangedExcerpt(fn.returnTypeExcerpt),
+    functionParams: fn.parameters.map((param) => convertFunctionParam(param)),
+  };
+}
+
+function convertVariable(variable: ApiVariable): Variable {
+  return {
+    type: "variable",
+    name: variable.name,
+    comment: convertComment(variable.tsdocComment),
+    definition: convertExcerptTokens(variable.excerptTokens.slice(1))
   };
 }
 
