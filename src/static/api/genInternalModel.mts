@@ -1,11 +1,21 @@
 import {
   ApiEntryPoint,
+  ApiInterface,
   ApiModel,
+  ApiPropertySignature,
   ExcerptToken,
   HeritageType,
   TypeParameter,
 } from "@microsoft/api-extractor-model";
-import { Item, Reference, TypeParam, Token } from "@/static/api/types";
+import { DocComment, DocParagraph, DocPlainText } from "@microsoft/tsdoc";
+import {
+  Item,
+  Reference,
+  TypeParam,
+  Token,
+  Member,
+  Interface,
+} from "@/static/api/types";
 import { kebabCase } from "change-case";
 
 const apiModel = new ApiModel();
@@ -75,9 +85,43 @@ function convertExcerptTokens(excerptTokens: readonly ExcerptToken[]): Token[] {
     }
 
     return token.text;
-  })
+  });
 }
 
+function convertComment(comment: DocComment): string[] {
+  return comment.summarySection.nodes
+    .filter((node) => node instanceof DocParagraph)
+    .flatMap((paragraph) =>
+      paragraph.nodes.filter(
+        (paragraphNode) => paragraphNode instanceof DocPlainText,
+      ),
+    )
+    .map((paragraphNode) => paragraphNode.text);
+}
+
+function convertMember(member: ApiPropertySignature): Member {
+  return {
+    name: member.name,
+    isOptional: member.isOptional,
+    definition: convertExcerptTokens(member.excerptTokens),
+    comment: member.tsdocComment ? convertComment(member.tsdocComment) : [],
+  };
+}
+
+function convertInterface(apiInterface: ApiInterface): Interface {
+  return {
+    type: "interface",
+    name: apiInterface.name,
+    comment: apiInterface.tsdocComment
+      ? convertComment(apiInterface.tsdocComment)
+      : [],
+    extends: convertExtendsTypes(apiInterface.extendsTypes),
+    typeParams: convertTypeParams(apiInterface.typeParameters),
+    members: apiInterface.members
+      .filter((member) => member instanceof ApiPropertySignature)
+      .map((member) => convertMember(member)),
+  };
+}
 
 const item: Item[] = entryPoint.members.map((apiItem) => {
   switch (apiItem.constructor.name) {

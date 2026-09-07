@@ -14,12 +14,12 @@ export interface Member {
   name: string;
   isOptional: boolean;
   definition: Token[];
-  comment: string;
+  comment: string[];
 }
 
 export interface ItemBase {
   name: string;
-  comment: string;
+  comment: string[];
 }
 
 export interface Interface extends ItemBase {
