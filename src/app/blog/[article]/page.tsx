@@ -1,4 +1,4 @@
-import { getUnsectionedMdxStaticParamsFn } from "@/lib/mdxStaticParamGenerators";
+import { getUnsectionedMdxStaticParamsFn } from "@/static/mdxStaticParamGenerators";
 import { FC } from "react";
 import DocContents from "@/components/DocContents";
 import { TocItem } from "rehype-mdx-toc";

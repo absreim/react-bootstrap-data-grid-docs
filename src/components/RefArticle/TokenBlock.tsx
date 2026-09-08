@@ -7,7 +7,7 @@ export interface TokenBlockProps {
 }
 
 const TokenBlock: FC<TokenBlockProps> = ({ tokens }) => {
-  return <>{tokens.map((token, index) => renderToken(token, index))}</>;
+  return <code>{tokens.map((token, index) => renderToken(token, index))}</code>;
 };
 
 export default TokenBlock;

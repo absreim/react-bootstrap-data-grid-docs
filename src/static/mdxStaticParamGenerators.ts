@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import { SectionedArticleParams } from "@/static/types";
 
 export const getUnsectionedMdxStaticParamsFn: (
   contentDir: string,
@@ -16,7 +17,7 @@ export const getUnsectionedMdxStaticParamsFn: (
 
 export const getSectionedMdxStaticParamsFn: (
   contentDir: string,
-) => () => Promise<Array<{ section: string, article: string }>> =
+) => () => Promise<Array<SectionedArticleParams>> =
   (contentDir: string) => async () => {
     const entries = (await fs
       .readdir(contentDir, {

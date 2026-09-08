@@ -94,7 +94,7 @@ function convertTypeParams(typeParams: readonly TypeParameter[]): TypeParam[] {
     return {
       name: typeParam.name,
       constraint,
-      default: defaultType,
+      defaultValue: defaultType,
     };
   });
 }

@@ -11,14 +11,20 @@ export interface InterfaceProps {
 const InterfaceArticle: FC<InterfaceProps> = ({ interfaceItem }) => {
   return (
     <>
-      <h1>{interfaceItem.name} <Badge>Interface</Badge></h1>
+      <h1>
+        {interfaceItem.name} <Badge>Interface</Badge>
+      </h1>
       <section>
         {interfaceItem.comment.map((commentParagraph, index) => (
           <p key={index}>{commentParagraph}</p>
         ))}
       </section>
-      <h2>Type Parameters</h2>
-      <TypeParamTable typeParams={interfaceItem.typeParams} />
+      {interfaceItem.typeParams.length > 0 && (
+        <>
+          <h2>Type Parameters</h2>
+          <TypeParamTable typeParams={interfaceItem.typeParams} />
+        </>
+      )}
       <h2>Properties</h2>
       <MemberTable members={interfaceItem.members} />
     </>

@@ -12,22 +12,26 @@ export interface FunctionArticleProps {
 const FunctionArticle: FC<FunctionArticleProps> = ({ functionItem }) => {
   return (
     <>
-      <h1>{functionItem.name} <Badge>Function</Badge></h1>
+      <h1>
+        {functionItem.name} <Badge>Function</Badge>
+      </h1>
       <section>
-        {
-          functionItem.comment.map((commentParagraph, index) => (
-            <p key={index}>{commentParagraph}</p>
-          ))
-        }
+        {functionItem.comment.map((commentParagraph, index) => (
+          <p key={index}>{commentParagraph}</p>
+        ))}
       </section>
-      <h2>Type Parameters</h2>
-      <TypeParamTable typeParams={functionItem.typeParams} />
+      {functionItem.typeParams.length > 0 && (
+        <>
+          <h2>Type Parameters</h2>
+          <TypeParamTable typeParams={functionItem.typeParams} />
+        </>
+      )}
       <h2>Function Parameters</h2>
       <FunctionParamTable functionParams={functionItem.functionParams} />
       <h2>Return Type</h2>
       <TokenBlock tokens={functionItem.returnType} />
     </>
-  )
+  );
 }
 
 export default FunctionArticle;

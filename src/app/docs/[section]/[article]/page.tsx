@@ -1,4 +1,4 @@
-import { getSectionedMdxStaticParamsFn } from "@/lib/mdxStaticParamGenerators";
+import { getSectionedMdxStaticParamsFn } from "@/static/mdxStaticParamGenerators";
 import { FC } from "react";
 import DocContents from "@/components/DocContents";
 import { TocItem } from "rehype-mdx-toc";
@@ -6,6 +6,7 @@ import path from "path";
 
 const contentDir = path.join(process.cwd(), "src", "articles", "docs");
 
+// TODO: integrate API ref article params with this component
 export const generateStaticParams = getSectionedMdxStaticParamsFn(contentDir);
 
 export const dynamicParams = false;
