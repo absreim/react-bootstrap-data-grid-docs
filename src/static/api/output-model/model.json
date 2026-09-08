@@ -125,6 +125,7 @@
     "comment": [],
     "typeParams": [
       {
+        "name": "Data",
         "constraint": {
           "text": "ValidRowData",
           "href": "valid-row-data"
@@ -324,6 +325,7 @@
     "comment": [],
     "typeParams": [
       {
+        "name": "ValueType",
         "constraint": null,
         "default": "any"
       }
@@ -346,6 +348,7 @@
     "extends": [],
     "typeParams": [
       {
+        "name": "ValueType",
         "constraint": null,
         "default": "any"
       }
@@ -494,6 +497,7 @@
     "comment": [],
     "typeParams": [
       {
+        "name": "ColName",
         "constraint": "string",
         "default": "string"
       }
@@ -1324,6 +1328,7 @@
     "comment": [],
     "typeParams": [
       {
+        "name": "T",
         "constraint": null,
         "default": null
       }
@@ -1707,6 +1712,7 @@
     "comment": [],
     "typeParams": [
       {
+        "name": "Data",
         "constraint": {
           "text": "ValidRowData",
           "href": "valid-row-data"
@@ -1742,6 +1748,7 @@
     "comment": [],
     "typeParams": [
       {
+        "name": "Data",
         "constraint": {
           "text": "ValidRowData",
           "href": "valid-row-data"
@@ -1774,6 +1781,7 @@
     "extends": [],
     "typeParams": [
       {
+        "name": "Data",
         "constraint": {
           "text": "ValidRowData",
           "href": "valid-row-data"
@@ -2558,6 +2566,7 @@
     "comment": [],
     "typeParams": [
       {
+        "name": "T",
         "constraint": null,
         "default": null
       }

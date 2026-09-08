@@ -6,6 +6,7 @@ export interface Reference {
 export type Token = string | Reference;
 
 export interface TypeParam {
+  name: string;
   constraint: Token | null;
   default: Token | null;
 }

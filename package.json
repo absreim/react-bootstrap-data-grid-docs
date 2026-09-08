@@ -4,8 +4,8 @@
   "version": "4.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "prettify": "npx prettier --write .",
@@ -36,7 +36,6 @@
     "@hbsnow/rehype-sectionize": "^1.0.7",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@microsoft/api-extractor-model": "^7.33.11",
     "@next/mdx": "^16.3.3",
     "@vercel/analytics": "^2.0.1",
     "@vercel/toolbar": "^0.2.7",
@@ -55,6 +54,7 @@
     "shiki": "^4.4.3"
   },
   "devDependencies": {
+    "@microsoft/api-extractor-model": "^7.33.11",
     "@playwright/test": "^1.62.1",
     "@types/mdx": "^2.0.14",
     "@types/node": "^20",

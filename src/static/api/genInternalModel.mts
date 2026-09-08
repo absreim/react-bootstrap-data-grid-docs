@@ -92,6 +92,7 @@ function convertTypeParams(typeParams: readonly TypeParameter[]): TypeParam[] {
       : resolveReference(defaultTypeExcerpt.text);
 
     return {
+      name: typeParam.name,
       constraint,
       default: defaultType,
     };
