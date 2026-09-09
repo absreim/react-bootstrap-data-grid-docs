@@ -14,7 +14,7 @@ import {
   DOCS_URL_BASE,
   REF_URL_SEGMENT,
 } from "@/static/constants";
-import { apiLinkDefs } from "@/static/api/apiRefLinkDefs";
+import apiLinkDefs from "@/static/api/linkDefs";
 import JournalCode from "@/assets/icons/JournalCode";
 import sectionMetadata from "@/articles/docs/sectionMetadata";
 

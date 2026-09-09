@@ -13,4 +13,6 @@ const getApiRefLinkDefs: (
     path: `${urlBasePath}/${kebabCase(item.name)}`,
   })).sort((a, b) => a.name.localeCompare(b.name));
 
-export const apiLinkDefs = getApiRefLinkDefs(internalModel as Item[], REF_URL_BASE);
+const apiLinkDefs = getApiRefLinkDefs(internalModel as Item[], REF_URL_BASE);
+
+export default apiLinkDefs;

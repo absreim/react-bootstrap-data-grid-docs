@@ -1,4 +1,4 @@
-import { getUnsectionedMdxStaticParamsFn } from "@/static/mdxStaticParamGenerators";
+import { getUnsectionedFn } from "@/static/mdxStaticParamGen";
 import { FC } from "react";
 import DocContents from "@/components/DocContents";
 import { TocItem } from "rehype-mdx-toc";
@@ -6,7 +6,7 @@ import path from "path";
 
 const contentDir = path.join(process.cwd(), "src", "articles", "blog");
 
-export const generateStaticParams = getUnsectionedMdxStaticParamsFn(contentDir);
+export const generateStaticParams = getUnsectionedFn(contentDir);
 
 export const dynamicParams = false;
 
