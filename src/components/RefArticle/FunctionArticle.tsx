@@ -15,11 +15,15 @@ const FunctionArticle: FC<FunctionArticleProps> = ({ functionItem }) => {
       <h1>
         {functionItem.name} <Badge>Function</Badge>
       </h1>
-      <section>
-        {functionItem.comment.map((commentParagraph, index) => (
-          <p key={index}>{commentParagraph}</p>
-        ))}
-      </section>
+      {functionItem.comment.length > 0 && (
+        <section>
+          {functionItem.comment.map((commentParagraph, index) => (
+            <p key={index}>{commentParagraph}</p>
+          ))}
+        </section>
+      )}
+      <h2>Definition</h2>
+      <TokenBlock tokens={functionItem.definition} />
       {functionItem.typeParams.length > 0 && (
         <>
           <h2>Type Parameters</h2>
@@ -32,6 +36,6 @@ const FunctionArticle: FC<FunctionArticleProps> = ({ functionItem }) => {
       <TokenBlock tokens={functionItem.returnType} />
     </>
   );
-}
+};
 
 export default FunctionArticle;

@@ -2,6 +2,14 @@
   {
     "type": "interface",
     "name": "AbstractDateFilterState",
+    "definition": [
+      "export interface AbstractDateFilterState extends ",
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      },
+      " "
+    ],
     "comment": [],
     "extends": [
       {
@@ -37,6 +45,9 @@
   {
     "type": "interface",
     "name": "AbstractFilterState",
+    "definition": [
+      "export interface AbstractFilterState "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -55,6 +66,9 @@
   {
     "type": "interface",
     "name": "AdditionalComponentsStyleModel",
+    "definition": [
+      "export interface AdditionalComponentsStyleModel "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -103,6 +117,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type AugFormattedRow = ",
       "{\n    contents: ",
       {
         "text": "CellData",
@@ -130,13 +145,14 @@
           "text": "ValidRowData",
           "href": "valid-row-data"
         },
-        "default": {
+        "defaultValue": {
           "text": "ValidRowData",
           "href": "valid-row-data"
         }
       }
     ],
     "definition": [
+      "export type AugRowDef<Data extends ",
       {
         "text": "ValidRowData",
         "href": "valid-row-data"
@@ -158,6 +174,14 @@
   {
     "type": "interface",
     "name": "BetweenDatesFilterState",
+    "definition": [
+      "export interface BetweenDatesFilterState extends ",
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      },
+      " "
+    ],
     "comment": [],
     "extends": [
       {
@@ -206,6 +230,7 @@
     ],
     "typeParams": [],
     "definition": [
+      "export type BodyCellVariantFn = ",
       "(cell: ",
       {
         "text": "CellData",
@@ -223,6 +248,9 @@
   {
     "type": "interface",
     "name": "CellData",
+    "definition": [
+      "export interface CellData "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -304,6 +332,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type ColDataType = ",
       "string | number | ",
       "Date",
       ";"
@@ -315,6 +344,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type ColDataTypeStrings = ",
       "\"string\" | \"number\" | \"date\" | \"datetime\"",
       ";"
     ]
@@ -327,10 +357,11 @@
       {
         "name": "ValueType",
         "constraint": null,
-        "default": "any"
+        "defaultValue": "any"
       }
     ],
     "definition": [
+      "export type ColDef<ValueType = ",
       "any",
       "> = ",
       {
@@ -344,13 +375,18 @@
   {
     "type": "interface",
     "name": "ColDefBase",
+    "definition": [
+      "export interface ColDefBase<ValueType = ",
+      "any",
+      "> "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [
       {
         "name": "ValueType",
         "constraint": null,
-        "default": "any"
+        "defaultValue": "any"
       }
     ],
     "members": [
@@ -407,6 +443,9 @@
   {
     "type": "interface",
     "name": "ColFilterState",
+    "definition": [
+      "export interface ColFilterState "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -437,6 +476,9 @@
   {
     "type": "interface",
     "name": "ColHeaderCellProps",
+    "definition": [
+      "export interface ColHeaderCellProps "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -499,10 +541,11 @@
       {
         "name": "ColName",
         "constraint": "string",
-        "default": "string"
+        "defaultValue": "string"
       }
     ],
     "definition": [
+      "export type ColNameToWidth<ColName extends ",
       "string",
       " = ",
       "string",
@@ -515,6 +558,9 @@
   {
     "type": "interface",
     "name": "ColSortModel",
+    "definition": [
+      "export interface ColSortModel "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -551,6 +597,9 @@
   {
     "type": "interface",
     "name": "ControlledFilterModel",
+    "definition": [
+      "export interface ControlledFilterModel "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -607,6 +656,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type ControlledPaginationModel = ",
       {
         "text": "PaginationOptions",
         "href": "pagination-options"
@@ -618,6 +668,9 @@
   {
     "type": "interface",
     "name": "ControlledSortModel",
+    "definition": [
+      "export interface ControlledSortModel "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -666,6 +719,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type DateFilterScheme = ",
       "(typeof ",
       {
         "text": "dateFilterSchemes",
@@ -680,6 +734,7 @@
     "name": "dateFilterSchemeNames",
     "comment": [],
     "definition": [
+      "dateFilterSchemeNames: ",
       "Record",
       "<",
       {
@@ -694,6 +749,7 @@
     "name": "dateFilterSchemes",
     "comment": [],
     "definition": [
+      "dateFilterSchemes: ",
       "readonly [\"startFrom\", \"endAt\", \"between\"]"
     ]
   },
@@ -703,6 +759,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type DateFilterState = ",
       {
         "text": "StartDateFilterState",
         "href": "start-date-filter-state"
@@ -723,6 +780,14 @@
   {
     "type": "interface",
     "name": "DateFormFilterState",
+    "definition": [
+      "export interface DateFormFilterState extends ",
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      },
+      " "
+    ],
     "comment": [],
     "extends": [
       {
@@ -767,6 +832,12 @@
   {
     "type": "function",
     "name": "dateToDatetimeInputStr",
+    "definition": [
+      "dateToDatetimeInputStr: (date: ",
+      "Date",
+      ") => ",
+      "string"
+    ],
     "comment": [],
     "typeParams": [],
     "returnType": [
@@ -774,6 +845,7 @@
     ],
     "functionParams": [
       {
+        "type": "functionParam",
         "name": "date",
         "definition": [
           "Date"
@@ -785,6 +857,12 @@
   {
     "type": "function",
     "name": "dateToInputStr",
+    "definition": [
+      "dateToInputStr: (date: ",
+      "Date",
+      ") => ",
+      "string"
+    ],
     "comment": [],
     "typeParams": [],
     "returnType": [
@@ -792,6 +870,7 @@
     ],
     "functionParams": [
       {
+        "type": "functionParam",
         "name": "date",
         "definition": [
           "Date"
@@ -806,6 +885,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type DisplayMode = ",
       "\"table\" | \"block\"",
       ";"
     ]
@@ -816,6 +896,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type EditableColFilterState = ",
       {
         "text": "StringFilterState",
         "href": "string-filter-state"
@@ -839,6 +920,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type EditableFilterState = ",
       "Record",
       "<string, ",
       {
@@ -852,6 +934,9 @@
   {
     "type": "interface",
     "name": "EditModel",
+    "definition": [
+      "export interface EditModel "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -896,6 +981,14 @@
   {
     "type": "interface",
     "name": "EndDateFilterState",
+    "definition": [
+      "export interface EndDateFilterState extends ",
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      },
+      " "
+    ],
     "comment": [],
     "extends": [
       {
@@ -929,6 +1022,9 @@
   {
     "type": "interface",
     "name": "ExportFormStyleModel",
+    "definition": [
+      "export interface ExportFormStyleModel "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -986,6 +1082,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type FilterFormRowState = ",
       {
         "text": "StringFilterState",
         "href": "string-filter-state"
@@ -1009,6 +1106,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type FilterFormState = ",
       "Record",
       "<string, ",
       {
@@ -1025,6 +1123,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type FilterInputTableStyleModel = ",
       {
         "text": "SharedTableStyleModel",
         "href": "shared-table-style-model"
@@ -1039,6 +1138,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type FilterModel = ",
       {
         "text": "ControlledFilterModel",
         "href": "controlled-filter-model"
@@ -1057,6 +1157,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type FilterState = ",
       "Record",
       "<string, ",
       {
@@ -1073,6 +1174,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type FormattedExportRow = ",
       "{\n    id: ",
       {
         "text": "RowId",
@@ -1090,6 +1192,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type FormattedRow = ",
       "{\n    contents: ",
       "Omit",
       "<",
@@ -1111,6 +1214,13 @@
   {
     "type": "function",
     "name": "getWidthStyle",
+    "definition": [
+      "getWidthStyle: (width: ",
+      "number | undefined",
+      ") => ",
+      "CSSProperties",
+      " | undefined"
+    ],
     "comment": [],
     "typeParams": [],
     "returnType": [
@@ -1119,6 +1229,7 @@
     ],
     "functionParams": [
       {
+        "type": "functionParam",
         "name": "width",
         "definition": [
           "number | undefined"
@@ -1132,6 +1243,7 @@
     "name": "Grid",
     "comment": [],
     "definition": [
+      "Grid: ",
       "FC",
       "<",
       {
@@ -1149,6 +1261,7 @@
     ],
     "typeParams": [],
     "definition": [
+      "export type GridBorderSetting = ",
       "\"horizontal\" | \"full\" | \"none\"",
       ";"
     ]
@@ -1161,6 +1274,7 @@
     ],
     "typeParams": [],
     "definition": [
+      "export type GridHeightSetting = ",
       "number | \"auto\" | \"parent\"",
       ";"
     ]
@@ -1173,6 +1287,7 @@
     ],
     "typeParams": [],
     "definition": [
+      "export type GridProps = ",
       {
         "text": "MainComponentSharedProps",
         "href": "main-component-shared-props"
@@ -1234,6 +1349,7 @@
     ],
     "typeParams": [],
     "definition": [
+      "export type GridStripeSetting = ",
       "\"rows\" | \"columns\" | \"none\"",
       ";"
     ]
@@ -1246,6 +1362,7 @@
     ],
     "typeParams": [],
     "definition": [
+      "export type GridWidthSetting = ",
       "number | \"auto\" | \"parent\"",
       ";"
     ]
@@ -1258,6 +1375,7 @@
     ],
     "typeParams": [],
     "definition": [
+      "export type HeaderCellVariantFn = ",
       "(col: ",
       {
         "text": "ColDef",
@@ -1273,6 +1391,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type InterfaceNodeGenerator = ",
       "(closeUiCallback: () => void) => ",
       {
         "text": "ToolbarInterfaces",
@@ -1284,6 +1403,9 @@
   {
     "type": "interface",
     "name": "InterfaceParams",
+    "definition": [
+      "export interface InterfaceParams "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -1314,6 +1436,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type InterfacePropGenerator = ",
       "(closeUiCallback: () => void) => ",
       {
         "text": "InterfaceParams",
@@ -1325,12 +1448,20 @@
   {
     "type": "function",
     "name": "isSubset",
+    "definition": [
+      "isSubset: <T>(subset: ",
+      "T[]",
+      ", superSet: ",
+      "T[]",
+      ") => ",
+      "boolean"
+    ],
     "comment": [],
     "typeParams": [
       {
         "name": "T",
         "constraint": null,
-        "default": null
+        "defaultValue": null
       }
     ],
     "returnType": [
@@ -1338,6 +1469,7 @@
     ],
     "functionParams": [
       {
+        "type": "functionParam",
         "name": "subset",
         "definition": [
           "T[]"
@@ -1345,6 +1477,7 @@
         "comment": []
       },
       {
+        "type": "functionParam",
         "name": "superSet",
         "definition": [
           "T[]"
@@ -1359,6 +1492,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type JustifyContentSetting = ",
       "\"start\" | \"end\" | \"center\" | \"between\" | \"around\" | \"evenly\"",
       ";"
     ]
@@ -1366,6 +1500,9 @@
   {
     "type": "interface",
     "name": "MainComponentSharedProps",
+    "definition": [
+      "export interface MainComponentSharedProps "
+    ],
     "comment": [
       "Interface that contains parameters shared between the Table, TablePro, and Grid components."
     ],
@@ -1410,6 +1547,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type MultiExistingSelection = ",
       "\"full\" | \"partial\" | \"none\"",
       ";"
     ]
@@ -1417,6 +1555,9 @@
   {
     "type": "interface",
     "name": "MultiSelectionInfo",
+    "definition": [
+      "export interface MultiSelectionInfo "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -1447,6 +1588,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type MultiSelectModel = ",
       "BaseSelectModel",
       " & {\n    type: \"multi\";\n    selected: ",
       {
@@ -1468,6 +1610,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type NormalizedPaginationModel = ",
       "Required",
       "<",
       "Omit",
@@ -1493,6 +1636,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type NormalizedTableFilterModel = ",
       "Pick",
       "<",
       {
@@ -1509,6 +1653,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type NumberFilterScheme = ",
       "(typeof ",
       {
         "text": "numberFilterSchemes",
@@ -1523,6 +1668,7 @@
     "name": "numberFilterSchemeNames",
     "comment": [],
     "definition": [
+      "numberFilterSchemeNames: ",
       "Record",
       "<",
       {
@@ -1537,12 +1683,21 @@
     "name": "numberFilterSchemes",
     "comment": [],
     "definition": [
+      "numberFilterSchemes: ",
       "readonly [\"equals\", \"greaterThan\", \"lessThan\", \"greaterOrEqual\", \"lessOrEqual\"]"
     ]
   },
   {
     "type": "interface",
     "name": "NumberFilterState",
+    "definition": [
+      "export interface NumberFilterState extends ",
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      },
+      " "
+    ],
     "comment": [],
     "extends": [
       {
@@ -1587,6 +1742,14 @@
   {
     "type": "interface",
     "name": "NumberFormFilterState",
+    "definition": [
+      "export interface NumberFormFilterState extends ",
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      },
+      " "
+    ],
     "comment": [],
     "extends": [
       {
@@ -1634,6 +1797,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type PaginationModel = ",
       {
         "text": "ControlledPaginationModel",
         "href": "controlled-pagination-model"
@@ -1649,6 +1813,9 @@
   {
     "type": "interface",
     "name": "PaginationOptions",
+    "definition": [
+      "export interface PaginationOptions "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -1717,13 +1884,14 @@
           "text": "ValidRowData",
           "href": "valid-row-data"
         },
-        "default": {
+        "defaultValue": {
           "text": "ValidRowData",
           "href": "valid-row-data"
         }
       }
     ],
     "definition": [
+      "export type PostPaginationRowDef<Data extends ",
       {
         "text": "ValidRowData",
         "href": "valid-row-data"
@@ -1753,13 +1921,14 @@
           "text": "ValidRowData",
           "href": "valid-row-data"
         },
-        "default": {
+        "defaultValue": {
           "text": "ValidRowData",
           "href": "valid-row-data"
         }
       }
     ],
     "definition": [
+      "export type RowData<Data extends ",
       {
         "text": "ValidRowData",
         "href": "valid-row-data"
@@ -1777,6 +1946,19 @@
   {
     "type": "interface",
     "name": "RowDef",
+    "definition": [
+      "export interface RowDef<Data extends ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      " = ",
+      {
+        "text": "ValidRowData",
+        "href": "valid-row-data"
+      },
+      "> "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [
@@ -1786,7 +1968,7 @@
           "text": "ValidRowData",
           "href": "valid-row-data"
         },
-        "default": {
+        "defaultValue": {
           "text": "ValidRowData",
           "href": "valid-row-data"
         }
@@ -1826,6 +2008,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type RowId = ",
       "string | number",
       ";"
     ]
@@ -1836,6 +2019,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type SelectionInfo = ",
       {
         "text": "SingleSelectionInfo",
         "href": "single-selection-info"
@@ -1854,6 +2038,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type SelectMode = ",
       "\"column\" | \"row\" | \"both\"",
       ";"
     ]
@@ -1864,6 +2049,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type SelectModel = ",
       {
         "text": "SingleSelectModel",
         "href": "single-select-model"
@@ -1882,6 +2068,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type SelectType = ",
       "\"single\" | \"multi\"",
       ";"
     ]
@@ -1889,6 +2076,9 @@
   {
     "type": "interface",
     "name": "SharedTableStyleModel",
+    "definition": [
+      "export interface SharedTableStyleModel "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -1952,6 +2142,9 @@
   {
     "type": "interface",
     "name": "SingleSelectionInfo",
+    "definition": [
+      "export interface SingleSelectionInfo "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -1982,6 +2175,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type SingleSelectModel = ",
       "BaseSelectModel",
       " & {\n    type: \"single\";\n    selected: ",
       {
@@ -2003,6 +2197,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type Size = ",
       "\"small\" | \"medium\" | \"large\"",
       ";"
     ]
@@ -2010,6 +2205,9 @@
   {
     "type": "interface",
     "name": "SortColDef",
+    "definition": [
+      "export interface SortColDef "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -2043,6 +2241,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type SortModel = ",
       {
         "text": "ControlledSortModel",
         "href": "controlled-sort-model"
@@ -2061,6 +2260,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type SortOrder = ",
       "\"asc\" | \"desc\"",
       ";"
     ]
@@ -2068,6 +2268,14 @@
   {
     "type": "interface",
     "name": "StartDateFilterState",
+    "definition": [
+      "export interface StartDateFilterState extends ",
+      {
+        "text": "AbstractDateFilterState",
+        "href": "abstract-date-filter-state"
+      },
+      " "
+    ],
     "comment": [],
     "extends": [
       {
@@ -2104,6 +2312,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type StringFilterScheme = ",
       "(typeof ",
       {
         "text": "stringFilterSchemes",
@@ -2118,6 +2327,7 @@
     "name": "stringFilterSchemeNames",
     "comment": [],
     "definition": [
+      "stringFilterSchemeNames: ",
       "Record",
       "<",
       {
@@ -2132,12 +2342,21 @@
     "name": "stringFilterSchemes",
     "comment": [],
     "definition": [
+      "stringFilterSchemes: ",
       "readonly [\"contains\", \"startsWith\", \"endsWith\"]"
     ]
   },
   {
     "type": "interface",
     "name": "StringFilterState",
+    "definition": [
+      "export interface StringFilterState extends ",
+      {
+        "text": "AbstractFilterState",
+        "href": "abstract-filter-state"
+      },
+      " "
+    ],
     "comment": [],
     "extends": [
       {
@@ -2182,6 +2401,9 @@
   {
     "type": "interface",
     "name": "StyleModel",
+    "definition": [
+      "export interface StyleModel "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -2253,6 +2475,7 @@
     "name": "Table",
     "comment": [],
     "definition": [
+      "Table: ",
       "FC",
       "<",
       {
@@ -2270,6 +2493,7 @@
     ],
     "typeParams": [],
     "definition": [
+      "export type TableProps = ",
       {
         "text": "MainComponentSharedProps",
         "href": "main-component-shared-props"
@@ -2319,6 +2543,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type TableStyleModel = ",
       {
         "text": "SharedTableStyleModel",
         "href": "shared-table-style-model"
@@ -2383,6 +2608,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type ToolbarInterfaces = ",
       "Partial",
       "<",
       "Record",
@@ -2403,6 +2629,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type ToolbarOption = ",
       "\"filtering\" | \"exporting\"",
       ";"
     ]
@@ -2410,6 +2637,9 @@
   {
     "type": "interface",
     "name": "ToolbarStyleModel",
+    "definition": [
+      "export interface ToolbarStyleModel "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -2455,6 +2685,14 @@
   {
     "type": "function",
     "name": "trueModulo",
+    "definition": [
+      "trueModulo: (num: ",
+      "number",
+      ", divisor: ",
+      "number",
+      ") => ",
+      "number"
+    ],
     "comment": [],
     "typeParams": [],
     "returnType": [
@@ -2462,6 +2700,7 @@
     ],
     "functionParams": [
       {
+        "type": "functionParam",
         "name": "num",
         "definition": [
           "number"
@@ -2469,6 +2708,7 @@
         "comment": []
       },
       {
+        "type": "functionParam",
         "name": "divisor",
         "definition": [
           "number"
@@ -2483,6 +2723,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type UncontrolledFilterModel = ",
       "Partial",
       "<",
       "Pick",
@@ -2501,6 +2742,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type UncontrolledPaginationModel = ",
       {
         "text": "PaginationOptions",
         "href": "pagination-options"
@@ -2512,6 +2754,9 @@
   {
     "type": "interface",
     "name": "UncontrolledSortModel",
+    "definition": [
+      "export interface UncontrolledSortModel "
+    ],
     "comment": [],
     "extends": [],
     "typeParams": [],
@@ -2546,6 +2791,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type UpdateCallbackGenerator = ",
       "(id: ",
       {
         "text": "RowId",
@@ -2563,12 +2809,17 @@
   {
     "type": "function",
     "name": "useControlledHover",
+    "definition": [
+      "useControlledHover: <T>() => ",
+      "UseControlledHoverHook",
+      "<T>"
+    ],
     "comment": [],
     "typeParams": [
       {
         "name": "T",
         "constraint": null,
-        "default": null
+        "defaultValue": null
       }
     ],
     "returnType": [
@@ -2583,6 +2834,7 @@
     "comment": [],
     "typeParams": [],
     "definition": [
+      "export type ValidRowData = ",
       "Record",
       "<string, any>",
       ";"

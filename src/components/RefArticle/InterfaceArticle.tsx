@@ -3,6 +3,7 @@ import { FC } from "react";
 import TypeParamTable from "@/components/RefArticle/TypeParamTable";
 import MemberTable from "@/components/RefArticle/MemberTable";
 import Badge from "react-bootstrap/Badge";
+import TokenBlock from "@/components/RefArticle/TokenBlock";
 
 export interface InterfaceProps {
   interfaceItem: Interface;
@@ -14,11 +15,15 @@ const InterfaceArticle: FC<InterfaceProps> = ({ interfaceItem }) => {
       <h1>
         {interfaceItem.name} <Badge>Interface</Badge>
       </h1>
-      <section>
-        {interfaceItem.comment.map((commentParagraph, index) => (
-          <p key={index}>{commentParagraph}</p>
-        ))}
-      </section>
+      {interfaceItem.comment.length > 0 && (
+        <section>
+          {interfaceItem.comment.map((commentParagraph, index) => (
+            <p key={index}>{commentParagraph}</p>
+          ))}
+        </section>
+      )}
+      <h2>Definition</h2>
+      <TokenBlock tokens={interfaceItem.definition} />
       {interfaceItem.typeParams.length > 0 && (
         <>
           <h2>Type Parameters</h2>

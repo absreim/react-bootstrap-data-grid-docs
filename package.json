@@ -10,7 +10,8 @@
     "lint": "eslint",
     "prettify": "npx prettier --write .",
     "test": "npx playwright test",
-    "test:ui": "npx playwright test --ui"
+    "test:ui": "npx playwright test --ui",
+    "build:api:ref:doc": "node ./src/static/api/genInternalModel.mts"
   },
   "keywords": [
     "react",

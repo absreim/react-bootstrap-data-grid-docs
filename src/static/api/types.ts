@@ -21,6 +21,7 @@ export interface Member {
 export interface ItemBase {
   name: string;
   comment: string[];
+  definition: Token[];
 }
 
 export interface Interface extends ItemBase {
@@ -33,16 +34,14 @@ export interface Interface extends ItemBase {
 export interface TypeAlias extends ItemBase {
   type: "typeAlias";
   typeParams: TypeParam[];
-  definition: Token[];
 }
 
 export interface Variable extends ItemBase {
   type: "variable";
-  definition: Token[];
 }
 
 export interface FunctionParam extends ItemBase {
-  definition: Token[];
+  type: "functionParam";
 }
 
 export interface FunctionItem extends ItemBase {

@@ -147,7 +147,7 @@ function convertMember(member: ApiPropertySignature): Member {
   return {
     name: member.name,
     isOptional: member.isOptional,
-    definition: convertExcerptTokens(member.excerptTokens.slice(1)),
+    definition: convertExcerptTokens(member.excerptTokens).slice(1),
     comment: convertComment(member.tsdocComment),
   };
 }
@@ -156,6 +156,7 @@ function convertInterface(apiInterface: ApiInterface): Interface {
   return {
     type: "interface",
     name: apiInterface.name,
+    definition: convertRangedExcerpt(apiInterface.excerpt),
     comment: convertComment(apiInterface.tsdocComment),
     extends: convertExtendsTypes(apiInterface.extendsTypes),
     typeParams: convertTypeParams(apiInterface.typeParameters),
@@ -167,6 +168,7 @@ function convertInterface(apiInterface: ApiInterface): Interface {
 
 function convertFunctionParam(param: Parameter): FunctionParam {
   return {
+    type: "functionParam",
     name: param.name,
     definition: convertRangedExcerpt(param.parameterTypeExcerpt),
     comment: param.tsdocParamBlock
@@ -179,6 +181,7 @@ function convertFunction(fn: ApiFunction): FunctionItem {
   return {
     type: "function",
     name: fn.name,
+    definition: convertRangedExcerpt(fn.excerpt),
     comment: convertComment(fn.tsdocComment),
     typeParams: convertTypeParams(fn.typeParameters),
     returnType: convertRangedExcerpt(fn.returnTypeExcerpt),
@@ -191,7 +194,7 @@ function convertVariable(variable: ApiVariable): Variable {
     type: "variable",
     name: variable.name,
     comment: convertComment(variable.tsdocComment),
-    definition: convertExcerptTokens(variable.excerptTokens.slice(1)),
+    definition: convertExcerptTokens(variable.excerptTokens),
   };
 }
 
@@ -201,7 +204,7 @@ function convertTypeAlias(apiTypeAlias: ApiTypeAlias): TypeAlias {
     name: apiTypeAlias.name,
     comment: convertComment(apiTypeAlias.tsdocComment),
     typeParams: convertTypeParams(apiTypeAlias.typeParameters),
-    definition: convertExcerptTokens(apiTypeAlias.excerptTokens.slice(1)),
+    definition: convertExcerptTokens(apiTypeAlias.excerptTokens),
   };
 }
 
