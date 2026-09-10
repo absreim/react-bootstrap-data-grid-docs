@@ -29,16 +29,16 @@ const ContentsHamburger: FC<ContentsHamburgerProps> = ({
       <Button
         variant="secondary"
         onClick={handleShow}
-        className="d-lg-none me-2"
+        className="d-xl-none me-2"
         aria-label="Articles"
       >
         <List />
       </Button>
-      <Offcanvas show={show} onHide={handleClose} responsive="lg">
+      <Offcanvas show={show} onHide={handleClose} responsive="xl">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>react-bootstrap-data-grid</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body className="d-lg-none">
+        <Offcanvas.Body className="d-xl-none">
           {linkMenuContents && (
             <>
               <h2 className="mb-1 fs-4">{linkMenuContents.sectionTitle}</h2>

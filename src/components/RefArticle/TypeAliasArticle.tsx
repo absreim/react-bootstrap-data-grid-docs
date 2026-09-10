@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { TypeAlias } from "@/static/api/types";
 import Badge from "react-bootstrap/Badge";
-import TokenBlock from "@/components/RefArticle/TokenBlock";
 import TypeParamTable from "@/components/RefArticle/TypeParamTable";
+import HighlightDefBlock from "@/components/RefArticle/HighlightDefBlock";
 
 export interface TypeAliasArticleProps {
   typeAlias: TypeAlias;
@@ -20,7 +20,7 @@ const TypeAliasArticle: FC<TypeAliasArticleProps> = ({ typeAlias }) => {
         ))}
       </section>
       <h2>Definition</h2>
-      <TokenBlock tokens={typeAlias.definition} />
+      <HighlightDefBlock tokens={typeAlias.definition} />
       {typeAlias.typeParams.length > 0 && (
         <>
           <h2>Type Params</h2>

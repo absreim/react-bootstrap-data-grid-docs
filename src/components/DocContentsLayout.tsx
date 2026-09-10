@@ -17,7 +17,7 @@ const DocContentsLayout: FC<DocContentsLayoutProps> = ({
 
   return (
     <div className="d-flex flex-row gap-2 h-100">
-      <div className="d-none d-lg-block overflow-y-auto pe-3 rbdg-contents-navbar">
+      <div className="d-none d-xl-block overflow-y-auto pe-3 rbdg-contents-navbar">
         {prependNavContent}
         {articleNav}
       </div>
