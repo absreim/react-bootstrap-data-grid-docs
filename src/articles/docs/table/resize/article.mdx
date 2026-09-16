@@ -40,9 +40,10 @@ they are focused via the <kbd>Tab</kbd> key after higher priority elements like 
 
 ## Enabling Resizing
 
-Resizing is enabled on a per-column basis. To enable resizing on a column, set the `resizeable` property on the column
-definition (`ProColDef`) to `true`. The following code sample shows a column definition with resizing enable might look
-like.
+Resizing is enabled on a per-column basis. To enable resizing on a column, set the
+[resizeable](/docs/ref/pro-col-def-specific-fields) property on the column
+definition ([ProColDef](/docs/ref/pro-col-def)) to `true`. The following code sample shows a column definition with
+resizing enable might look like.
 
 ```ts
 const cols: ProColDef[] = [
@@ -56,9 +57,12 @@ const cols: ProColDef[] = [
 ];
 ```
 
-Additionally, __the `displayMode` prop for the table component (`TablePro`) must be set to `block` for resizing to work__.
-If not, the `resizeable` property will be ignored. The following code sample shows a `TablePro` component instance
-defined in TSX syntax with the `displayMode` prop set to `block`.
+Additionally, __the [displayMode](/docs/ref/table-specific-props) prop for the table component
+([TablePro](/docs/ref/table-pro)) must be set to `block`
+for resizing to work__.
+If not, the [resizeable](/docs/ref/pro-col-def-specific-fields) property will be ignored. The following code sample
+shows a [TablePro](/docs/ref/table-pro) component instance
+defined in TSX syntax with the [displayMode](/docs/ref/table-specific-props) prop set to `block`.
 
 ```tsx
 <TablePro
@@ -72,8 +76,10 @@ defined in TSX syntax with the `displayMode` prop set to `block`.
 
 By default, there is no upper limit to the size to which a column can be resized. The default lower limit is _32px_
 for columns with sorting disabled or _64px_ when sorting is enabled. A custom lower and upper limit can be set using the
-`minResizeWidth` and `maxResizeWidth` properties on the column definition object (of type `ProColDef`). The following
-code sample contains a column definition with `minResizeWidth` and `maxResizeWidth` properties set to customize the
+[minResizeWidth](/docs/ref/pro-col-def-specific-fields) and [maxResizeWidth](/docs/ref/pro-col-def-specific-fields)
+properties on the column definition object (of type [ProColDef](/docs/ref/pro-col-def)). The following
+code sample contains a column definition with [minResizeWidth](/docs/ref/pro-col-def-specific-fields) and
+[maxResizeWidth](/docs/ref/pro-col-def-specific-fields) properties set to customize the
 minimum and maximum resize widths.
 
 ```ts
@@ -92,7 +98,8 @@ const cols: ProColDef[] = [
 
 The default _step amount_ for keyboard resizing is _10px_. That means that for each press of the <kbd>Left Arrow</kbd>
 or <kbd>Right Arrow</kbd> keys, the column width decreases or increases by _10px_, respectively. The developer can
-customize the _step amount_ with the `keyboardResizeStep` property of the column definition. The following code sample
+customize the _step amount_ with the [keyboardResizeStep](/docs/ref/pro-col-def-specific-fields) property of the column
+definition. The following code sample
 shows how one can set the _step amount_ to _20px_ for a column.
 
 ```ts
@@ -111,20 +118,27 @@ const cols: ProColDef[] = [
 ## Controlled vs Uncontrolled
 
 The width of a resizeable column must be stored in a [React state](https://react.dev/learn/managing-state). The state
-can be either stored outside the `TablePro` component (controlled mode) or inside it (uncontrolled mode).
+can be either stored outside the [TablePro](/docs/ref/table-pro) component (controlled mode) or inside it
+(uncontrolled mode).
 
 ### Uncontrolled Mode
 
-To use uncontrolled mode, either don't set the `width` property of `ProColDef` at all or set a numeric value. In this
-mode, when the `TablePro` component is mounted, the grid initializes the widths of each column to the value specified in
-the `width` property, or _100px_ if no value is set. If a user resizes a column, the internal state of the grid updates
-to keep track of the new width.
+To use uncontrolled mode, either don't set the [width](/docs/ref/pro-col-def-specific-fields) property of
+[ProColDef](/docs/ref/pro-col-def) at all or set a
+numeric value. In this
+mode, when the [TablePro](/docs/ref/table-pro) component is mounted, the grid initializes the widths of each column to
+the value specified in
+the [width](/docs/ref/pro-col-def-specific-fields) property, or _100px_ if no value is set. If a user resizes a column,
+the internal state of the grid updates to keep track of the new width.
 
-Once the table is mounted, changing the `width` property of a column to a different numeric or `undefined` value will no
-longer affect width of that column.
+Once the table is mounted, changing the [width](/docs/ref/pro-col-def-specific-fields) property of a column to a
+different numeric value or `undefined` value will no longer affect width of that column. (However, it is possible to
+switch to
+controlled mode to influence the width by passing a [WidthModel](/docs/ref/width-model). See the
+[next section](#controlled-mode) for details.)
 
 The following code sample shows how one can set the width of a column to use uncontrolled resizing mode. In this example
-the column width is set to _150px_ when the `TablePro` component is first mounted.
+the column width is set to _150px_ when the [TablePro](/docs/ref/table-pro) component is first mounted.
 
 ```tsx
 const cols: ProColDef[] = [
@@ -139,8 +153,8 @@ const cols: ProColDef[] = [
 ];
 ```
 
-If the parent component of the already-mounted `TablePro` component changes the column definition to _200px_ as depicted
-below, the change will have no effect on the size of the column.
+If the parent component of the already-mounted [TablePro](/docs/ref/table-pro) component changes the column definition
+to _200px_ as depicted below, the change will have no effect on the size of the column.
 
 ```ts
 const cols: ProColDef[] = [
@@ -157,14 +171,16 @@ const cols: ProColDef[] = [
 
 ### Controlled Mode
 
-To use controlled mode, pass a `WidthModel` object to the `width` property for a column definition. A `WidthModel`
+To use controlled mode, pass a [WidthModel](/docs/ref/width-model) object to the
+[width](/docs/ref/pro-col-def-specific-fields) property for a column definition ([ProColDef](/docs/ref/pro-col-def)).
+A [WidthModel](/docs/ref/width-model)
 consists of `width` property that represents the current width of the column and a `setWidth` property that is a
 function to update the width. In this mode, the parent component can set the width of a column by setting a new value
-of the `width` property inside the `WidthModel`. The column's width will reflect this change even if the change is made
-after the grid is mounted.
+of the `width` property inside the [WidthModel](/docs/ref/width-model). The column's width will reflect this change even
+if the change is made after the grid is mounted.
 
 In the following code sample, a parent component maintains the state that stores the width of a column. The value and
-setter from a `useState` hook is passed down as the `WidthModel` in a column definition.
+setter from a `useState` hook is passed down as the [WidthModel](/docs/ref/width-model) in a column definition.
 
 ```tsx
 const ParentComponent = () => {
@@ -238,8 +254,8 @@ element, the enclosing element itself may widen to fit the table. When this happ
 Making a table responsive creates and enclosing `div` that is scrollable horizontally, making it so that the enclosing
 element is not affected when the table becomes wide.
 
-Both the `Table` and `TablePro` components have the `responsive` prop that, when set to `true`, renders an enclosing `div`
-with the `table-responsive` Bootstrap utility class.
+Both the [Table](/docs/ref/table) and [TablePro](/docs/ref/table-pro) components have the `responsive` prop that, when
+set to `true`, renders an enclosing `div` with the `table-responsive` Bootstrap utility class.
 
 ## Example
 

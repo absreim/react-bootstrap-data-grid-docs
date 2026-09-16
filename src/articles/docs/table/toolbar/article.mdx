@@ -25,24 +25,12 @@ filtering button on the toolbar.)
 
 ## Getting Started
 
-Enable the toolbar by passing `true` to the `useToolbar` prop to the `Table` component:
+The toolbar is shown if any toolbar tools are enabled. Tools can be enabled by setting props on the
+[Table](/docs/ref/table) component. These tools include:
 
-```tsx
-<Table rows={rows} cols={cols} useToolbar />
-```
-
-To allow the user to access the filtering interface on the toolbar, enable filtering on the table:
-
-```tsx
-<Table
-    rows={rows}
-    cols={cols}
-    useToolbar
-    pagination={{ type: "uncontrolled" }}
-/>
-```
-
-See the [filtering documentation](/docs/table/filtering) for more details on enabling filtering for a table.
+- The export feature, which can enabled by setting the [allowExport](/docs/ref/table-specific-props) prop to `true`.
+- The filtering feature, which can enabled by setting the [filterModel](/docs/ref/table-specific-props) prop to a
+[FilterModel](/docs/ref/filter-model) object
 
 ## Features
 

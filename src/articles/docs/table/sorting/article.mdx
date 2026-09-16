@@ -3,28 +3,30 @@ navLabel: Sorting
 order: 2
 ---
 
-import TypeSpecTable from "@/components/TypeSpecTable";
 import ControlledSortedTable from "./ControlledSortedTable";
-import {
-  sortColDef,
-  controlledTableSortModel,
-  uncontrolledTableSortModel,
-} from "./typeSpecs";
 import UncontrolledSortedTable from "./UncontrolledSortedTable";
 
 # Sorting
 
-react-bootstrap-data-grid implements simple sorting of data, one column at a time, in ascending or descending order. The user can change the column being sorted and the sort order by clicking on a column header.
+react-bootstrap-data-grid implements simple sorting of data, one column at a time, in ascending or descending order.
+The user can change the column being sorted and the sort order by clicking on a column header.
 
-When a user clicks on a column header, the sort order changes between _ascending_, _descending_, and _none_. When the sort order is _none_, the rows in the table will appear in original order of the array in which data was passed to the Grid component.
+When a user clicks on a column header, the sort order changes between _ascending_, _descending_, and _none_. When the
+sort order is _none_, the rows in the table will appear in original order of the array in which data was passed to the
+[Table](/docs/ref/table) component.
 
-Note that sorting is done on the original data, before pagination and before formatting functions are applied. In particular, note that numbers will be sorted by the value of the number rather than lexicographically. Similarly, dates and datetimes will be sorted by the number of milliseconds after the epoch time as opposed to any time of string representation of the Date object.
+Note that sorting is done on the original data, before pagination and before formatting functions are applied. In
+particular, note that numbers will be sorted by the value of the number rather than lexicographically. Similarly, dates
+and datetimes will be sorted by the number of milliseconds after the epoch time as opposed to any time of string
+representation of the `Date` object.
 
 ## How to Enable
 
-To allow a user to sort a Grid by a particular column, set the `sortable` property to `true` in the column definition (`ColDef`) for the column.
+To allow a user to sort a Grid by a particular column, set the [sortable](/docs/ref/col-def-base) property to `true` in
+the column definition ([ColDef](/docs/ref/col-def)) for the column.
 
-In addition, setting the `sortModel` property on the `Grid` component is required to enable sorting.
+In addition, setting the [sortModel](/docs/ref/table-specific-props) property on the [Table](/docs/ref/table) component
+is required to enable sorting.
 
 ## Controlled vs Uncontrolled
 
@@ -33,33 +35,15 @@ _controlled_ mode allows for the state to be read and written to externally, but
 to _uncontrolled_ mode.
 
 In _controlled_ mode, the variable representing the current state and the setter function for that variable are passed
-down from the parent component to the `Grid` component via the `sortModel` prop. Pass a prop of type
-`ControlledTableSortModel` to enable controlled mode.
+down from the parent component to the [Table](/docs/ref/table) component via the
+[sortModel](/docs/ref/table-specific-props) prop. Pass a prop of type
+[ControlledSortModel](/docs/ref/controlled-sort-model) to enable controlled mode.
 
-In _uncontrolled_ mode, the `Grid` component itself contains the state with regards to sorting. When using this mode,
-one passes the starting state to the `Grid` component. This starting state is read only once when the `Grid` component
-mounts. Pass a prop of type `UncontrolledTableSortModel` to enable uncontrolled mode.
-
-## Type Definitions
-
-See below for specifications for the `sortModel` property and related types.
-
-### TableSortModel
-
-Union type that includes `ControlledTableSortModel` and `UncontrolledTableSortModel`. Passed to the `Grid` component to
-control the overall configuration of the grid with regards to sorting.
-
-### ControlledTableSortModel
-
-<TypeSpecTable rows={controlledTableSortModel} />
-
-### UncontrolledTableSortModel
-
-<TypeSpecTable rows={uncontrolledTableSortModel} />
-
-### SortColDef
-
-<TypeSpecTable rows={sortColDef} />
+In _uncontrolled_ mode, the [Table](/docs/ref/table) component itself contains the state with regard to sorting. When
+using this mode,
+one passes the starting state to the [Table](/docs/ref/table) component. This starting state is read only once when the
+[Table](/docs/ref/table) component
+mounts. Pass a prop of type [UncontrolledTableSortModel](/docs/ref/uncontrolled-sort-model) to enable uncontrolled mode.
 
 ## Examples
 
@@ -264,7 +248,7 @@ export default ControlledSortedTable;
 ### Uncontrolled
 
 The same functionality as the controlled example above can be implemented in uncontrolled mode, though in doing so the
-parent component loses access to the sorting state of the `Grid`.
+parent component loses access to the sorting state of the [Table](/docs/ref/table).
 
 #### Code
 
