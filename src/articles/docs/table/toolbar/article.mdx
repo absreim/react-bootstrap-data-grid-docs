@@ -25,10 +25,12 @@ filtering button on the toolbar.)
 
 ## Getting Started
 
-The toolbar is enabled by default and is hidden only if all toolbar tools are disabled. This disabled situation only
-occurs if exporting is disabled by setting the [allowExport](/docs/ref/table-specific-props) prop to `false` and
-setting the [filterModel](/docs/ref/table-specific-props) pro to `undefined` on the [Table](/docs/ref/table)
-component.
+The toolbar is shown if any toolbar tools are enabled. Tools can be enabled by setting props on the
+[Table](/docs/ref/table) component. These tools include:
+
+- The export feature, which can enabled by setting the [allowExport](/docs/ref/table-specific-props) prop to `true`.
+- The filtering feature, which can enabled by setting the [filterModel](/docs/ref/table-specific-props) prop to a
+[FilterModel](/docs/ref/filter-model) object
 
 ## Features
 
