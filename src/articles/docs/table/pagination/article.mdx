@@ -3,18 +3,13 @@ navLabel: Pagination
 order: 3
 ---
 
-import TypeSpecTable from "@/components/TypeSpecTable";
-import {
-  controlledPaginationModel,
-  paginationModelSharedFields,
-  uncontrolledPaginationModel,
-} from "./typeSpecs";
 import ControlledPaginatedTable from "./ControlledPaginatedTable";
 import UncontrolledPaginatedTable from "./UncontrolledPaginatedTable";
 
 # Pagination
 
-Pagination is optional and can be enabled by passing a `pagination` prop to the `Table` component.
+Pagination is optional and can be enabled by passing a [pagination](/docs/ref/table-specific-props) prop to the
+[Table](/docs/ref/table) component.
 
 Two modes are available, controlled and uncontrolled.
 
@@ -25,38 +20,11 @@ values and setter functions. This mode allows the parent component full access t
 requires more code to set up than when using uncontrolled mode.
 
 In _uncontrolled_ mode, the parent component specifies the starting state of pagination for the grid, while the grid keeps
-track of state changes. Note that the starting state is only read once, when the `Table` component is mounted. If this
-behavior is not acceptable, one can either force a remount of the `Table` component (e.g. by changing the `key` prop), or
+track of state changes. Note that the starting state is only read once, when the [Table](/docs/ref/table) component is
+mounted. If this
+behavior is not acceptable, one can either force a remount of the [Table](/docs/ref/table) component (e.g. by changing
+the `key` prop), or
 by using controlled mode instead.
-
-## Type Definitions
-
-### PaginationModel
-
-This is the type of the `pagination` prop passed to the `Table` component to enable pagination.
-
-It is a discriminated union between `ControlledPaginationModel` and `UncontrolledPaginationModel`, which enable
-controlled and uncontrolled pagination modes for a grid, respectively, when passed as the `pagination` prop.
-
-`ControlledPaginationModel` and `UncontrolledPaginationModel` share the following fields:
-
-<TypeSpecTable rows={paginationModelSharedFields} />
-
-### ControlledPaginationModel
-
-The member of the discriminated union `GridPaginationState` that enables controlled pagination mode for a table. In
-addition to the properties in the table below, `ControlledPaginationModel` also includes the properties common with
-`UncontrolledPaginationModel`. Those common properties can be found in the `GridPaginationState` section.
-
-<TypeSpecTable rows={controlledPaginationModel} />
-
-### UncontrolledPaginationModel
-
-The member of the discriminated union `GridPaginationState` that enables uncontrolled pagination mode for a table. In
-addition to the properties in the table below, `ControlledPaginationModel` also includes the properties common with
-`UncontrolledPaginationModel`. Those common properties can be found in the `GridPaginationState` section.
-
-<TypeSpecTable rows={uncontrolledPaginationModel} />
 
 ## Examples
 
