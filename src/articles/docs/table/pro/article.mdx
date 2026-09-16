@@ -7,8 +7,6 @@ category: Pro
 
 import PrereleaseNotice from "@/assets/alerts/PrereleaseNotice";
 import ProBadge from "@/assets/ProBadge";
-import TypeSpecTable from "@/components/TypeSpecTable";
-import { proColDef, widthModel } from "./typeSpecs";
 
 <h1>Pro Version <ProBadge /></h1>
 
@@ -43,9 +41,11 @@ for details on how to import style sheets for the pro edition.
 
 ## API Differences
 
-- the name of the grid component is `TablePro` rather than `Table`
-- the name of the type that represents the props for the `TablePro` component is `TableProProps` rather than `TableProps`
-- the name of the column definition type `ProColDef` rather than `ColDef` and contains additional fields
+- the name of the grid component is [TablePro](/docs/ref/table-pro) rather than [Table](/docs/ref/table)
+- the name of the type that represents the props for the [TablePro](/docs/ref/table-pro) component is
+[TableProProps](/docs/ref/table-pro-props) rather than [TableProps](/docs/ref/table-props)
+- the name of the column definition type [ProColDef](/docs/ref/pro-col-def) rather than [ColDef](/docs/ref/col-def)
+and contains additional fields
 
 See more details on each specific point below.
 
@@ -54,35 +54,35 @@ See more details on each specific point below.
 This component is the default export of the Pro version NPM package and be imported as follows:
 
 ```ts
-import GridPro from "@absreim/react-bootstrap-data-grid-pro";
+import TablePro from "@absreim/react-bootstrap-data-grid-pro";
 ```
 
 ### TableProProps
 
-This type contains the props for `TablePro`. The props are largely the same as `TableProProps` but with a few differences.
+This type contains the props for [TablePro](/docs/ref/table-pro). The props are largely the same as
+[TableProProps](/docs/ref/table-pro-props) but with a few differences.
 
-- The column definitions in the `cols` prop are of type `ProColDef[]` instead of `ColDef[]`.
-- The `styleModel` prop is of type `ProStyleModel`. `ProStyleModel` contains all the properties of `StyleModel` but
-additionally contains `reorderModel` property for customizing style of the [row reordering](/docs/table/reorder) feature.
-- `GridProProps` contains a `reorderModel` prop to enable [row reordering](/docs/table/reorder) while `TableProps` does not.
+- The column definitions in the [cols](/docs/ref/table-pro-specific-props) prop are of type `ProColDef[]` instead of
+`ColDef[]`.
+- The [styleModel](/docs/ref/table-pro-specific-props) prop is of type [ProStyleModel](/docs/ref/pro-style-model).
+[ProStyleModel](/docs/ref/pro-style-model) contains all the properties of [StyleModel](/docs/ref/style-model) but
+additionally contains [reorderModel](/docs/ref/pro-style-submodels) property for customizing style of the
+[row reordering](/docs/table/reorder) feature.
+- [TableProProps](/docs/ref/table-pro-props) contains a [reorderModel](/docs/ref/table-pro-specific-props) prop to
+enable [row reordering](/docs/table/reorder) while [TableProps](/docs/ref/table-props) does not.
 
 ### ProColDef
 
-Compared to `ColDef`, the `width` property can be `WidthModel` in addition to `number` or `undefined`, allowing for
+Compared to [ColDef](/docs/ref/col-def), the [width](/docs/ref/pro-col-def-specific-fields) property for
+[ProColDef](/docs/ref/pro-col-def) can be
+[WidthModel](/docs/ref/width-model) in addition to `number` or `undefined`, allowing for
 external control of column widths.
 
 Several other additional optional properties are included to allow resizing of columns. See the
 [resize article](/docs/table/resize) for a discussion and usage examples.
 
-The additional and changed fields for `ProColDef` are defined in the below table. All other properties are the same as
-[ColDef](/docs/overview/basic-usage#coldef).
-
-<TypeSpecTable rows={proColDef} />
-
 ### WidthModel
 
-The `WidthModel` interface consists of a value and setter for column widths. It can be passed down as part of a
-`ProColDef` object to let the parent component programmatically control the widths of columns. The type specification of
-`WidthModel` is as follows.
-
-<TypeSpecTable rows={widthModel} />
+The [WidthModel](/docs/ref/width-model) interface consists of a value and setter for column widths. It can be passed
+down as part of a [ProColDef](/docs/ref/pro-col-def) object to let the parent component programmatically control the
+widths of columns. The type specification of [WidthModel](/docs/ref/width-model) is as follows.

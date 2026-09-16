@@ -5,32 +5,35 @@ order: 2
 
 import SampleBasicTable from "./SampleBasicTable";
 import SampleBasicGrid from "./SampleBasicGrid";
-import TypeSpecTable from "@/components/TypeSpecTable";
-import { colDef, rowDef, tableProps } from "./typeSpecs";
+import Link from "next/link";
 
 # Basic Usage
 
-A characteristic common to both [table](/docs/table/introduction) and [grid](/docs/grid/introduction) components is that
+A characteristic common to both [Table](/docs/table/introduction) and [Grid](/docs/grid/introduction) components is that
 the data to display is required to use the component at all.
 
-This data is passed to each component in the form of row and column definitions as props named `rows` and `cols`,
+This data is passed to each component in the form of row and column definitions as props named
+[rows](/docs/ref/main-component-shared-props) and [cols](/docs/ref/main-component-shared-props),
 respectively. These two props are the only ones required to using the table or grid component. Additional features are
 enabled by passing optional props.
 
-The table component is named `Table` and the grid component is named `Grid`. The documentation will refer to each
-component by those names moving forward.
+The table component is named [Table](/docs/ref/table) and the grid component is named [Grid](/docs/ref/grid). The
+documentation will refer to each component by those names moving forward.
 
 ## Column Definition
 
-Columns are defined using the [ColDef](#coldef) interface. To render a `Table` or `Grid` component, an array of `ColDef`
-objects, one for each column in grid, are passed in via the `cols` prop.
+Columns are defined using the [ColDef](/docs/col-def) interface. To render a [Table](/docs/ref/table) or
+[Grid](/docs/ref/grid) component, an array of [ColDef](/docs/col-def)
+objects, one for each column in grid, are passed in via the [cols](/docs/ref/main-component-shared-props) prop.
 
 ### Data Types
 
 react-bootstrap-data-grid currently supports 4 data types: `string`, `number`, `date`, and `datetime`. The `string` and
 `number` types correspond to the types of the same name in JavaScript.
 
-The `date` and `datetime` types are both backed by the `Date` type in JavaScript. The difference between `date` and
+The `date` and `datetime` types are both backed by the
+[Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+type in JavaScript. The difference between `date` and
 `datetime` lies with the behavior of react-bootstrap-data-grid with regard to each type. Notably, the default way that
 each type is displayed differ, as do the input elements for filtering on and editing data of each type.
 
@@ -40,8 +43,8 @@ formatting.
 ### Formatting
 
 A formatter function that takes in a value of the corresponding type for a column (`string`, `number`, or `Date`) and
-returns a string may be optionally specified for each `ColDef`. When specified, this function will be used when
-displaying data for that column in the grid.
+returns a string may be optionally specified for each [ColDef](/docs/col-def). When specified, this function will be
+used when displaying data for that column in the grid.
 
 When not specified, the default displayed string for each column is as follows:
 
@@ -69,7 +72,8 @@ When not specified, the default displayed string for each column is as follows:
 
 <div className="alert alert-info" role="alert">
     The default formatters for `date` and `datetime` types are exposed in the react-bootstrap-data-grid NPM
-    package as <code>dateToInputStr</code> and <code>dateToDatetimeInputStr</code> and may be imported for use in your
+    package as <Link href="/docs/ref/date-to-input-str">dateToInputStr</Link> and
+    <Link href="/docs/ref/date-to-datetime-input-str">dateToDatetimeInputStr</Link> and may be imported for use in your
     project.
 </div>
 
@@ -105,13 +109,16 @@ export const cols: ColDef[] = [
 
 ## Row Definition
 
-Rows are defined using the [RowDef](#rowdef) interface. Row data is passed to a `Table` or `Grid` component via the
-`rows` prop, which is an array of `RowDef` objects.
+Rows are defined using the [RowDef](/docs/ref/row-def) interface. Row data is passed to a
+[Table](/docs/table/introduction) or [Grid](/docs/grid/introduction) component via the
+[rows](/docs/ref/main-component-shared-props) prop, which is an array of [RowDef](/docs/ref/row-def) objects.
 
 ### ID Field
 
-Each `RowDef` object has a mandatory `id` field to uniquely identify rows between renders. This field can be a `string`
-or `number` and must be unique among all rows in any given `Grid` or `Table` component.
+Each [RowDef](/docs/ref/row-def) object has a mandatory `id` field to uniquely identify rows between renders. This field
+can be a `string`
+or `number` and must be unique among all rows in any given [Grid](/docs/grid/introduction) or
+[Table](/docs/table/introduction) component.
 
 This field is used as a `key` prop within the grid to improve performance by reducing unnecessary unmounting and
 remounting of components that represent rows.
@@ -123,13 +130,15 @@ for additional information.
 
 ### Data Field
 
-The data in a row that corresponds to the column definitions passed in the `cols` prop is in a property named `data` in
-`RowDef`. The property names and types must match up with properties in the `cols` prop to avoid a runtime error.
+The data in a row that corresponds to the column definitions passed in the [cols](/docs/ref/main-component-shared-props)
+prop is in a property named `data` in
+[RowDef](/docs/ref/row-def). The property names and types must match up with properties in the
+[cols](/docs/ref/main-component-shared-props) prop to avoid a runtime error.
 
 ### Example
 
-In the following code sample, `RowDef` objects that line up with the column definitions in the previous code sample are
-assigned to the `rows` constant.
+In the following code sample, [RowDef](/docs/ref/row-def) objects that line up with the column definitions in the
+previous code sample are assigned to the `rows` constant.
 
 An `id` field for each row is chosen that uniquely identifies the entity in question (Apple Silicon chip models).
 Compared to a number that simply represents the index of the array, it is relatively easy to identify the meaning of
@@ -230,52 +239,3 @@ export default SampleBasicTable;
 #### Live Demo
 
 <SampleBasicTable />
-
-## Type Definitions
-
-### ColDataTypeStrings
-
-A string union that represents the data types supported by react-bootstrap-data-grid. The definition is
-`"string" | "number" | "date" | "datetime"`.
-
-### ColDef
-
-An object that defines a single column for a grid.
-
-This type has an optional generic parameter `ValueType` that can be
-used to specify of the type of the input of the formatter function. In practice, this parameter is rarely explicitly
-specified since it is common to define a set of columns in an array of `ColDef` with different data types. In this case,
-it is usually not convenient to define this generic type.
-
-<TypeSpecTable rows={colDef} />
-
-### RowDef
-
-An object that defines a single row for a grid.
-
-This type has an options generic parameter `Data` that can be used to define the type of `data` property. `RowDef` is
-declared as `RowDef<Data extends ValidRowData = ValidRowData>`.
-
-<TypeSpecTable rows={rowDef} />
-
-### RowId
-
-A union between `string` and `number` types, which are the types valid for use as an `id` field for the type `RowDef`.
-Definition is `string | number`.
-
-### ValidRowData
-
-A type that represents the most general possibilities for the `data` property of `RowDef`. It is defined by
-`Record<string, any>`.
-
-### RowData
-
-A type that represents the `data` property of `RowDef`. It takes in the generic parameter `Data` and is used to
-constrain the possible types of `Data` to be a subtype of `ValidRowData`. The definition of `RowData` is
-`RowData<Data extends ValidRowData = ValidRowData> = Data`.
-
-### TableProps
-
-This interface contains the props for the `Table`, the highest level component of the react-bootstrap-data-grid table.
-
-<TypeSpecTable rows={tableProps} />
