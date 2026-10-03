@@ -1,0 +1,220 @@
+---
+navLabel: Sorting
+order: 5
+---
+
+import SortDemoGrid from "./SortDemoGrid";
+
+# Sorting
+
+The react-bootstrap-data-grid grid component implements interactive sorting of the rows in a grid. Sorting can be done
+on a single column at a time.
+
+## Enabling
+
+Sorting for a grid is disabled by default. To enable sorting, enabling must be done for both the [Grid](/docs/ref/grid)
+component and for individual columns inside the grid.
+
+To enable sorting for individual columns, set the `sortable` property to `true` for the [ColDef](/docs/ref/col-def)
+object for each column for which you wish to enable sorting.
+
+```tsx
+export const heroColumns: ColDef[] = [
+  // other columns
+  {
+    type: "number",
+    name: "damageMinLv1",
+    label: "Damage Min Lv 1",
+    width: 150,
+    sortable: true
+  },
+  // other columns
+];
+```
+
+To enable sorting for a [Grid](/docs/ref/grid) component, set the `sortModel` prop. See the following section for
+examples.
+
+## Controlled vs Uncontrolled
+
+Like for several other features of react-bootstrap-data-grid, here are two ways to configure sorting for a grid
+component, _controlled_ and _uncontrolled_.
+
+__Controlled__ mode maximizes customizability by exposing the [state](https://react.dev/reference/react/useState) and
+setter function to the parent component of the [Grid](/docs/ref/grid) component. Configure a grid to sort in controlled
+mode by passing a prop of type [ControlledSortModel](/docs/ref/controlled-sort-model).
+
+```tsx
+const SortDemoGrid: FC = () => {
+  const [sortColDef, setSortColDef] = useState<SortColDef | null>(null);
+
+  return (
+    <Grid
+      rows={rows}
+      cols={heroColumns}
+      width="parent"
+      sortModel={{ type: "controlled", sortColDef, setSortColDef }}
+    />
+  );
+};
+```
+
+__Uncontrolled__ mode reduces the amount of code needed to configure sorting at the cost of the parent component losing
+the ability to directly configure the column being sorted. Instead, the state of column being sorted is stored in the
+[Grid](/docs/ref/grid) component itself. To enable sorting for a grid in uncontrolled mode, pass an
+[UncontrolledSortModel](/docs/ref/uncontrolled-sort-model) as the `sortModel` prop.
+
+```tsx
+const SortDemoGrid: FC = () => {
+  return (
+    <Grid
+      rows={rows}
+      cols={heroColumns}
+      width="parent"
+      sortModel={{ type: "uncontrolled", initialSortColDef: null }}
+    />
+  );
+};
+```
+
+## UI
+
+The user may change the sort order for a grid by clicking on the header cell to cycle between sorting in the following
+order:
+
+- ascending
+- descending
+- none
+
+One may also use keyboard navigation to select the header cell to control and then use the key bindings for clicking on
+a button, generally <kbd>Enter</kbd> or <kbd>Space</kbd>, to cycle through sort orders with a keyboard.
+
+## Example
+
+### Live Demo
+
+<SortDemoGrid />
+
+### Code
+
+```tsx
+import { Grid, RowDef, ColDef } from "@absreim/react-bootstrap-data-grid";
+import heroData from "./heroes.json";
+import { Hero } from "./types";
+import { FC } from "react";
+
+export const heroColumns: ColDef[] = [
+  { type: "string", name: "hero", label: "Hero", width: 140 },
+  { type: "string", name: "religious", label: "Religious", width: 110 },
+  { type: "string", name: "provisions", label: "Provisions", width: 150 },
+  { type: "number", name: "maxHp", label: "Max HP", width: 100 },
+  { type: "number", name: "maxHpPerRank", label: "HP / Rank", width: 110 },
+  { type: "number", name: "dodge", label: "Dodge", width: 90 },
+  { type: "number", name: "dodgePerRank", label: "Dodge / Rank", width: 130 },
+  { type: "number", name: "protection", label: "Protection", width: 120 },
+  { type: "number", name: "speedLv1", label: "Speed Lv 1", width: 120 },
+  { type: "number", name: "speedLv2", label: "Speed Lv 2", width: 120 },
+  { type: "number", name: "speedLv3", label: "Speed Lv 3", width: 120 },
+  { type: "number", name: "speedLv4", label: "Speed Lv 4", width: 120 },
+  { type: "number", name: "speedLv5", label: "Speed Lv 5", width: 120 },
+  { type: "number", name: "critLv1", label: "Crit % Lv 1", width: 120 },
+  { type: "number", name: "critLv2", label: "Crit % Lv 2", width: 120 },
+  { type: "number", name: "critLv3", label: "Crit % Lv 3", width: 120 },
+  { type: "number", name: "critLv4", label: "Crit % Lv 4", width: 120 },
+  { type: "number", name: "critLv5", label: "Crit % Lv 5", width: 120 },
+  {
+    type: "number",
+    name: "damageMinLv1",
+    label: "Damage Min Lv 1",
+    width: 150,
+  },
+  {
+    type: "number",
+    name: "damageMinLv2",
+    label: "Damage Min Lv 2",
+    width: 150,
+  },
+  {
+    type: "number",
+    name: "damageMinLv3",
+    label: "Damage Min Lv 3",
+    width: 150,
+  },
+  {
+    type: "number",
+    name: "damageMinLv4",
+    label: "Damage Min Lv 4",
+    width: 150,
+  },
+  {
+    type: "number",
+    name: "damageMinLv5",
+    label: "Damage Min Lv 5",
+    width: 150,
+  },
+  {
+    type: "number",
+    name: "damageMaxLv1",
+    label: "Damage Max Lv 1",
+    width: 150,
+  },
+  {
+    type: "number",
+    name: "damageMaxLv2",
+    label: "Damage Max Lv 2",
+    width: 150,
+  },
+  {
+    type: "number",
+    name: "damageMaxLv3",
+    label: "Damage Max Lv 3",
+    width: 150,
+  },
+  {
+    type: "number",
+    name: "damageMaxLv4",
+    label: "Damage Max Lv 4",
+    width: 150,
+  },
+  {
+    type: "number",
+    name: "damageMaxLv5",
+    label: "Damage Max Lv 5",
+    width: 150,
+  },
+  { type: "number", name: "stunRes", label: "Stun Res %", width: 120 },
+  { type: "number", name: "blightRes", label: "Blight Res %", width: 130 },
+  { type: "number", name: "bleedRes", label: "Bleed Res %", width: 130 },
+  { type: "number", name: "diseaseRes", label: "Disease Res %", width: 140 },
+  { type: "number", name: "moveRes", label: "Move Res %", width: 120 },
+  { type: "number", name: "debuffRes", label: "Debuff Res %", width: 130 },
+  {
+    type: "number",
+    name: "deathblowRes",
+    label: "Deathblow Res %",
+    width: 150,
+  },
+  { type: "number", name: "trapRes", label: "Trap Res %", width: 120 },
+];
+
+heroColumns.forEach((hero) => {
+  hero.sortable = true;
+});
+
+const rows: RowDef<Hero>[] = heroData.map((hero) => ({
+  id: hero.hero,
+  data: hero,
+}));
+
+const SortDemoGrid: FC = () => (
+  <Grid
+    rows={rows}
+    cols={heroColumns}
+    width="parent"
+    height={700}
+    sortModel={{ type: "uncontrolled", initialSortColDef: null }}
+  />
+);
+
+export default SortDemoGrid;
+```

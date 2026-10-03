@@ -208,7 +208,12 @@
         },
         "comment": [
           [
-            "type of the data property of the RowDef object"
+            "type of the data property of the ",
+            {
+              "text": "RowDef",
+              "href": "row-def"
+            },
+            " object"
           ]
         ]
       }
@@ -2057,6 +2062,11 @@
         "content": [
           [
             "The type of the prop to set grid height behavior"
+          ],
+          [
+            "- number: fixed height of grid in pixels - ",
+            ": takes on the intrinsic height of the contents - ",
+            ": takes on 100% of the parent height"
           ]
         ]
       }
@@ -2460,6 +2470,11 @@
         "content": [
           [
             "The type of the prop to set grid width behavior"
+          ],
+          [
+            "- number: fixed width of grid in pixels - ",
+            ": takes on the intrinsic width of the contents - ",
+            ": takes on 100% of the parent width"
           ]
         ]
       }
@@ -2540,7 +2555,22 @@
         "title": "Summary",
         "content": [
           [
-            "Interface that contains parameters shared between the Table, TablePro, and Grid components."
+            "Interface that contains parameters shared between the ",
+            {
+              "text": "Table",
+              "href": "table"
+            },
+            ", ",
+            {
+              "text": "TablePro",
+              "href": "table-pro"
+            },
+            ", and ",
+            {
+              "text": "Grid",
+              "href": "grid"
+            },
+            " components."
           ]
         ]
       }
@@ -2564,7 +2594,7 @@
             "title": "Summary",
             "content": [
               [
-                "The column definitions of the table or grid"
+                "The column definitions of the table or grid."
               ]
             ]
           }
@@ -2586,7 +2616,28 @@
             "title": "Summary",
             "content": [
               [
-                "The rows of data to be displayed by the table or grid"
+                "The rows of data to be displayed by the table or grid."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sortModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "SortModel",
+            "href": "sort-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The sort model of the table or grid. Passing a truthy value enables the sorting feature of the component."
               ]
             ]
           }
@@ -4495,27 +4546,6 @@
             "content": [
               [
                 "The select model of the table. Passing a truthy value enables the selection feature of the component."
-              ]
-            ]
-          }
-        ]
-      },
-      {
-        "name": "sortModel",
-        "isOptional": true,
-        "definition": [
-          {
-            "text": "SortModel",
-            "href": "sort-model"
-          },
-          ";"
-        ],
-        "comment": [
-          {
-            "title": "Summary",
-            "content": [
-              [
-                "The sort model of the table. Passing a truthy value enables the sorting feature of the component."
               ]
             ]
           }
