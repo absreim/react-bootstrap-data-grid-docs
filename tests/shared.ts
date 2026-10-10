@@ -1,6 +1,6 @@
 export const sectionNames = [
   "Pagination",
-  "Sorting",
+  "Export",
   "Filtering",
   "Selection",
   "Editing",
