@@ -5232,7 +5232,11 @@
             "title": "@defaultValue",
             "content": [
               [
-                " 10"
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "10"
+                }
               ]
             ]
           }
@@ -5288,7 +5292,17 @@
             "title": "@defaultValue",
             "content": [
               [
-                " 64 if the column is sortable, 32 if not"
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "64"
+                },
+                " if the column is sortable, ",
+                {
+                  "type": "codeSpan",
+                  "text": "32"
+                },
+                " if not"
               ]
             ]
           }
@@ -5314,7 +5328,11 @@
             "title": "@defaultValue",
             "content": [
               [
-                " false"
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "false"
+                }
               ]
             ]
           }
@@ -5353,7 +5371,11 @@
             "title": "@defaultValue",
             "content": [
               [
-                " 100"
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "100"
+                }
               ]
             ]
           }
