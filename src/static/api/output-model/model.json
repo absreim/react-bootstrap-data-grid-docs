@@ -303,6 +303,19 @@
                 "The width of the select column. Set via CSS min-width and max-width properties. The column is only shown if mode is set to \"column\"."
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no CSS properties will be set"
+              ]
+            ]
           }
         ]
       }
@@ -794,6 +807,18 @@
                 "Specifies whether the column is sortable."
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "false"
+                }
+              ]
+            ]
           }
         ]
       },
@@ -857,6 +882,24 @@
                 "For the table, if no value is specified, then no value for min-width or max-width will be set."
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "100"
+                },
+                " for the grid, ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " for the table"
+              ]
+            ]
           }
         ]
       }
@@ -894,6 +937,19 @@
             "content": [
               [
                 "Caption for the filter settings table element."
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no caption will be displayed"
               ]
             ]
           }
@@ -1482,6 +1538,19 @@
                 "Specifies a fixed width in pixels for the column that contains the buttons for editing a row. In particular, the min-width and max-width CSS properties will be set."
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no CSS will be specified"
+              ]
+            ]
           }
         ]
       },
@@ -2065,7 +2134,15 @@
           ],
           [
             "- number: fixed height of grid in pixels - ",
+            {
+              "type": "codeSpan",
+              "text": "auto"
+            },
             ": takes on the intrinsic height of the contents - ",
+            {
+              "type": "codeSpan",
+              "text": "parent"
+            },
             ": takes on 100% of the parent height"
           ]
         ]
@@ -2340,6 +2417,18 @@
                 "The height setting of the grid"
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "\"auto\""
+                }
+              ]
+            ]
           }
         ]
       },
@@ -2436,6 +2525,18 @@
                 "The width setting of the grid"
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "\"auto\""
+                }
+              ]
+            ]
           }
         ]
       }
@@ -2473,7 +2574,15 @@
           ],
           [
             "- number: fixed width of grid in pixels - ",
+            {
+              "type": "codeSpan",
+              "text": "auto"
+            },
             ": takes on the intrinsic width of the contents - ",
+            {
+              "type": "codeSpan",
+              "text": "parent"
+            },
             ": takes on 100% of the parent width"
           ]
         ]
@@ -3223,6 +3332,19 @@
                 "The size of the pagination component. Set via CSS classes provided with Bootstrap."
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "\"medium\""
+                },
+                " - corresponds to not specifying a CSS class for pagination component size"
+              ]
+            ]
           }
         ]
       },
@@ -3241,6 +3363,18 @@
                 "Maximum number of buttons pointing to numerically-indexed pages that can be displayed at once."
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "5"
+                }
+              ]
+            ]
           }
         ]
       },
@@ -3257,6 +3391,19 @@
             "content": [
               [
                 "The ARIA label for the nav element that represents the pagination component."
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no ARIA label"
               ]
             ]
           }
@@ -3280,6 +3427,24 @@
                 "Justify-content CSS property for the ul element of the pagination component."
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no justify-content property is specified, which acts like \"start\" based on CSS standards. See ",
+                {
+                  "text": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/justify-content#syntax",
+                  "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/justify-content#syntax"
+                },
+                "."
+              ]
+            ]
           }
         ]
       },
@@ -3296,6 +3461,18 @@
             "content": [
               [
                 "An array of page sizes that can be selected by the user."
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "[10, 25, 100]"
+                }
               ]
             ]
           }
@@ -3791,6 +3968,19 @@
                   "href": "https://react.dev/reference/react/useId"
                 },
                 " can be used to generate an ID."
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - an id generated by the useId hook will be used"
               ]
             ]
           }
@@ -4464,6 +4654,18 @@
                 "Sets the CSS display property for the table element."
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "\"table\""
+                }
+              ]
+            ]
           }
         ]
       },
@@ -5025,6 +5227,14 @@
                 "Configures the number of pixels to change the width per keypress when resizing."
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " 10"
+              ]
+            ]
           }
         ]
       },
@@ -5041,6 +5251,18 @@
             "content": [
               [
                 "When the column is resizable, configures the maximum width to which the column can be resized."
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "text": "Number.MAX_VALUE",
+                  "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_VALUE"
+                }
               ]
             ]
           }
@@ -5061,6 +5283,14 @@
                 "When the column is resizable, configures the minimum width to which the column can be resized."
               ]
             ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " 64 if the column is sortable, 32 if not"
+              ]
+            ]
           }
         ]
       },
@@ -5077,6 +5307,14 @@
             "content": [
               [
                 "Configures whether the column is resizable."
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " false"
               ]
             ]
           }
@@ -5108,6 +5346,14 @@
                   "href": "width-model"
                 },
                 "."
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " 100"
               ]
             ]
           }

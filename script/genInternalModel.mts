@@ -20,6 +20,7 @@ import {
   DocSection,
   DocBlock,
   DocLinkTag,
+  DocCodeSpan,
 } from "@microsoft/tsdoc";
 import type {
   Item,
@@ -42,7 +43,7 @@ import fs from "node:fs";
 // module vs CommonJS mismatch, so I duplicated this value here.
 const COMMENT_SUMMARY_SECTION_NAME = "Summary";
 
-const apiPathSegments = ["..", "src", "static", "api"]
+const apiPathSegments = ["..", "src", "static", "api"];
 
 const inputFilePath = path.join(
   import.meta.dirname,
@@ -170,16 +171,33 @@ function convertDocSection(section: DocSection): Token[][] {
     .filter((node) => node instanceof DocParagraph)
     .map((paragraph) => {
       const trimmedParagraphNodes = paragraph.nodes.filter(
-        (node) => node instanceof DocPlainText || node instanceof DocLinkTag,
+        (node) =>
+          node instanceof DocPlainText ||
+          node instanceof DocLinkTag ||
+          node instanceof DocCodeSpan,
       );
       return trimmedParagraphNodes.map((node) => {
         if (node instanceof DocPlainText) {
           return node.text;
         }
 
+        if (node instanceof DocCodeSpan) {
+          return {
+            type: "codeSpan",
+            text: node.code,
+          };
+        }
+
         if (node.linkText && node.urlDestination) {
           return {
             text: node.linkText,
+            href: node.urlDestination,
+          };
+        }
+
+        if (!node.linkText && node.urlDestination) {
+          return {
+            text: node.urlDestination,
             href: node.urlDestination,
           };
         }
@@ -220,7 +238,30 @@ function convertComment(comment: DocComment | undefined): CommentBlock[] {
     blocks.push(returnsBlock);
   }
 
+  const defaultValueBlock = extractDefaultValueBlock(comment);
+  if (defaultValueBlock) {
+    blocks.push(defaultValueBlock);
+  }
+
   return blocks;
+}
+
+function extractDefaultValueBlock(
+  comment: DocComment | undefined,
+): CommentBlock | null {
+  if (comment === undefined) {
+    return null;
+  }
+
+  const defaultValueBlock = comment.customBlocks.find(
+    (block) => block.blockTag.tagName === "@defaultValue",
+  );
+
+  if (!defaultValueBlock) {
+    return null;
+  }
+
+  return convertDocBlock(defaultValueBlock);
 }
 
 function convertMember(member: ApiPropertySignature): Member {

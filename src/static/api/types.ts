@@ -3,7 +3,12 @@ export interface Reference {
   href: string;
 }
 
-export type Token = string | Reference;
+export interface CodeSpan {
+  type: "codeSpan";
+  text: string;
+}
+
+export type Token = string | Reference | CodeSpan;
 
 export interface TypeParam {
   name: string;
