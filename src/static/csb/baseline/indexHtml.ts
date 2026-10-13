@@ -1,0 +1,13 @@
+const indexHtml = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>react-bootstrap-data-grid Code Sample</title>
+</head>
+<body>
+<div id="app"></div>
+</body>
+</html>
+`;
+
+export default indexHtml;
