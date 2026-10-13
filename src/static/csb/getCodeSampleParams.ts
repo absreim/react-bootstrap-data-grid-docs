@@ -16,7 +16,7 @@ const getCodeSampleParams: (codeSampleDir: string) => Promise<string> = async (
   const fileParams: FileParamSet = fileContents.reduce(
     (prev, contents, index) => {
       const filename = filenames[index];
-      const filenameWithSubdir = path.join(subdirName, filename);
+      const filenameWithSubdir = path.join("src", subdirName, filename);
       prev[filenameWithSubdir] = {
         content: contents,
       };
