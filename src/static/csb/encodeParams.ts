@@ -9,7 +9,7 @@ const compress: (input: string) => string = (input) => {
     .replace(/=+$/, ""); // Remove ending '='
 };
 
-const getParameters: (parameters: object) => string = (parameters) =>
+const encodeParams: (parameters: object) => string = (parameters) =>
   compress(JSON.stringify(parameters));
 
-export default getParameters;
+export default encodeParams;
