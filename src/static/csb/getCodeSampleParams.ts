@@ -2,9 +2,11 @@ import path from "path";
 import fs from "node:fs/promises";
 import { FileParamSet } from "@/static/csb/types";
 import encodeParams from "@/static/csb/encodeParams";
+import getDefaultParams from "@/static/csb/getDefaultParams";
 
-const getCodeSampleParams: (codeSampleDir: string) => Promise<string> = async (
+const getCodeSampleParams: (codeSampleDir: string, isPro: boolean) => Promise<string> = async (
   codeSampleDir,
+  isPro
 ) => {
   const filenames = await fs.readdir(codeSampleDir);
   const fileContentPromises = filenames.map(async (filename) => {
@@ -24,8 +26,9 @@ const getCodeSampleParams: (codeSampleDir: string) => Promise<string> = async (
     },
     {} as FileParamSet,
   );
-  // TODO: assign default files
-  return encodeParams(fileParams);
+  const defaultParams = getDefaultParams(subdirName, isPro);
+  Object.assign(fileParams, defaultParams);
+  return encodeParams({ files: fileParams });
 };
 
 export default getCodeSampleParams;

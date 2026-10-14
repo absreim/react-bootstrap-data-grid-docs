@@ -1,3 +1,4 @@
+const indexHtml = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,3 +8,6 @@
 <div id="app"></div>
 </body>
 </html>
+`;
+
+export default indexHtml;

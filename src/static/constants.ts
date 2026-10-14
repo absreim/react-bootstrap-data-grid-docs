@@ -7,3 +7,4 @@ export const BLOG_URL_BASE = "/blog";
 export const REF_URL_SEGMENT = "ref";
 export const REF_URL_BASE = DOCS_URL_BASE + `/${REF_URL_SEGMENT}`;
 export const COMMENT_SUMMARY_SECTION_NAME = "Summary";
+export const CSB_RBDG_VERSION = "^4.3.0";

@@ -1,1 +1,1 @@
-export type FileParamSet = Record<string, { content: string }>;
+export type FileParamSet = Record<string, { content: string | object }>;
