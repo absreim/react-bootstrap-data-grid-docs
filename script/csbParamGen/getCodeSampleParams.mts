@@ -1,13 +1,13 @@
 import path from "path";
 import fs from "node:fs/promises";
-import { FileParamSet } from "@/static/csb/types";
-import encodeParams from "@/static/csb/encodeParams";
-import getDefaultParams from "@/static/csb/getDefaultParams";
+import type { FileParamSet } from "./types";
+import encodeParams from "./encodeParams.mts";
+import getDefaultParams from "./getDefaultParams.mts";
 
-const getCodeSampleParams: (codeSampleDir: string, isPro: boolean) => Promise<string> = async (
-  codeSampleDir,
-  isPro
-) => {
+const getCodeSampleParams: (
+  codeSampleDir: string,
+  isPro: boolean,
+) => Promise<string> = async (codeSampleDir, isPro) => {
   const filenames = await fs.readdir(codeSampleDir);
   const fileContentPromises = filenames.map(async (filename) => {
     const filePath = path.join(codeSampleDir, filename);

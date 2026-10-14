@@ -7,8 +7,7 @@ import {
 } from "@absreim/react-bootstrap-data-grid";
 import heroData from "./heroes.json";
 import { Hero } from "./types";
-import { FC, useState } from "react";
-import { SortColDef } from "@absreim/react-bootstrap-data-grid/table";
+import { FC } from "react";
 
 export const heroColumns: ColDef[] = [
   { type: "string", name: "hero", label: "Hero", width: 140 },

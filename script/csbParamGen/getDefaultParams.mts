@@ -1,8 +1,9 @@
-import { FileParamSet } from "@/static/csb/types";
-import packageJsonBaseline from "./baseline/baseline-package.json";
-import { CSB_RBDG_VERSION } from "@/static/constants";
-import getIndexTsx from "@/static/csb/baseline/getIndexTsx";
-import indexHtml from "@/static/csb/baseline/indexHtml";
+import type { FileParamSet } from "./types";
+import packageJsonBaseline from "./baseline/baseline-package.json" with { type: "json" };
+import getIndexTsx from "./baseline/getIndexTsx.mts";
+import indexHtml from "./baseline/indexHtml.mts";
+
+const CSB_RBDG_VERSION = "^4.3.0";
 
 const getDefaultParams: (
   subdirName: string,
