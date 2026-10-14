@@ -6,7 +6,8 @@
     "@types/react-dom": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "bootstrap": "^5.3.8"
   },
   "devDependencies": {
     "react-scripts": "latest"
