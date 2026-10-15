@@ -7,11 +7,18 @@ import indexHtml from "@/static/csb/baseline/indexHtml";
 const getDefaultParams: (
   subdirName: string,
   isPro: boolean,
-) => FileParamSet = (subdirName, isPro) => {
+  usesReactBootstrap?: boolean,
+) => FileParamSet = (subdirName, isPro, usesReactBootstrap = false) => {
   const dependencies = Object.assign({}, packageJsonBaseline.dependencies, {
     [`@absreim/react-bootstrap-data-grid${isPro ? "-pro" : ""}`]:
       CSB_RBDG_VERSION,
   });
+  if (usesReactBootstrap) {
+    Object.assign(dependencies, packageJsonBaseline.dependencies, {
+      [`react-bootstrap`]:
+        "latest",
+    });
+  }
   const packageJson = Object.assign({}, packageJsonBaseline, { dependencies });
   const indexTsx = getIndexTsx(subdirName);
 
