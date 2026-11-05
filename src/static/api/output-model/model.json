@@ -20,7 +20,9 @@
               "text": "DateFilterState",
               "href": "date-filter-state"
             },
-            "."
+            ".",
+            " ",
+            " "
           ]
         ]
       },
@@ -28,7 +30,14 @@
         "title": "@remarks",
         "content": [
           [
-            "Date and datetime input elements can have a state where there is no input. Nulls in the date fields correspond to this empty state."
+            " ",
+            " ",
+            "Date and datetime input elements can have a state where there is no input.",
+            " ",
+            "Nulls in the date fields correspond to this empty state.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -56,7 +65,8 @@
             "title": "Summary",
             "content": [
               [
-                "The filter scheme to apply."
+                "The filter scheme to apply.",
+                " "
               ]
             ]
           }
@@ -74,7 +84,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -93,7 +104,12 @@
         "title": "Summary",
         "content": [
           [
-            "Base interface for various objects that represent the form state for the filter settings of a single column."
+            "Base interface for various objects that represent the form state for the",
+            " ",
+            "filter settings of a single column.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -113,7 +129,8 @@
             "title": "Summary",
             "content": [
               [
-                "Indicates whether filtering is enabled on the associated row."
+                "Indicates whether filtering is enabled on the associated row.",
+                " "
               ]
             ]
           }
@@ -132,7 +149,10 @@
         "title": "Summary",
         "content": [
           [
-            "Style model for components that are not included in other categories."
+            "Style model for components that are not included in other categories.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -190,7 +210,11 @@
               "text": "RowDef",
               "href": "row-def"
             },
-            " object that additionally contains the index of the row in the original array."
+            " object that additionally contains the index of the row in the",
+            " ",
+            "original array.",
+            " ",
+            " "
           ]
         ]
       }
@@ -213,7 +237,10 @@
               "text": "RowDef",
               "href": "row-def"
             },
-            " object"
+            " object",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -254,12 +281,16 @@
               "text": "SingleSelectModel",
               "href": "single-select-model"
             },
-            " and ",
+            " and",
+            " ",
             {
               "text": "MultiSelectModel",
               "href": "multi-select-model"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -282,7 +313,8 @@
             "title": "Summary",
             "content": [
               [
-                "The means of selecting rows available to the user."
+                "The means of selecting rows available to the user.",
+                " "
               ]
             ]
           }
@@ -300,7 +332,11 @@
             "title": "Summary",
             "content": [
               [
-                "The width of the select column. Set via CSS min-width and max-width properties. The column is only shown if mode is set to \"column\"."
+                "The width of the select column. Set via CSS min-width and max-width",
+                " ",
+                "properties. The column is only shown if mode is set to \"column\".",
+                " ",
+                " "
               ]
             ]
           },
@@ -313,7 +349,8 @@
                   "type": "codeSpan",
                   "text": "undefined"
                 },
-                " - no CSS properties will be set"
+                " - no CSS properties will be set",
+                " "
               ]
             ]
           }
@@ -337,7 +374,12 @@
         "title": "Summary",
         "content": [
           [
-            "Object that holds the form state for date or datetime column filtered via the \"between\" scheme."
+            "Object that holds the form state for date or datetime column filtered via the",
+            " ",
+            "\"between\" scheme.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -363,7 +405,8 @@
             "title": "Summary",
             "content": [
               [
-                "The end date to filter against."
+                "The end date to filter against.",
+                " "
               ]
             ]
           }
@@ -381,7 +424,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -400,7 +444,8 @@
             "title": "Summary",
             "content": [
               [
-                "The start date to filter against."
+                "The start date to filter against.",
+                " "
               ]
             ]
           }
@@ -416,7 +461,11 @@
         "title": "Summary",
         "content": [
           [
-            "The type of the function used to specify color variants on a grid body on a per-cell level of granularity."
+            "The type of the function used to specify color variants on a grid body on a",
+            " ",
+            "per-cell level of granularity.",
+            " ",
+            " "
           ]
         ]
       },
@@ -424,7 +473,12 @@
         "title": "@returns",
         "content": [
           [
-            " - a string that is name of the color variant or null for no color variant"
+            " - a string that is name of the color variant or null for no color",
+            " ",
+            "variant",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -457,7 +511,12 @@
         "title": "Summary",
         "content": [
           [
-            "Object that describes the contents for a single table or grid cell along with various metadata."
+            "Object that describes the contents for a single table or grid cell along",
+            " ",
+            "with various metadata.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -477,7 +536,8 @@
             "title": "Summary",
             "content": [
               [
-                "The ARIA column index of the column that contains the cell."
+                "The ARIA column index of the column that contains the cell.",
+                " "
               ]
             ]
           }
@@ -500,7 +560,10 @@
                   "text": "RowDef",
                   "href": "row-def"
                 },
-                " \"data\" property that contains the value for the cell."
+                " \"data\" property that",
+                " ",
+                "contains the value for the cell.",
+                " "
               ]
             ]
           }
@@ -518,7 +581,8 @@
             "title": "Summary",
             "content": [
               [
-                "The value of the cell after the column's formatter function is applied."
+                "The value of the cell after the column's formatter function is applied.",
+                " "
               ]
             ]
           }
@@ -536,12 +600,15 @@
             "title": "Summary",
             "content": [
               [
-                "The label of the column that the cell is in. Same as the property of the same name in the corresponding ",
+                "The label of the column that the cell is in. Same as the property of the",
+                " ",
+                "same name in the corresponding ",
                 {
                   "text": "ColDef",
                   "href": "col-def"
                 },
-                " object."
+                " object.",
+                " "
               ]
             ]
           }
@@ -562,12 +629,15 @@
             "title": "Summary",
             "content": [
               [
-                "A string that specifies of the value type of the column for the cell. Same as the \"type\" property in corresponding ",
+                "A string that specifies of the value type of the column for the cell.",
+                " ",
+                "Same as the \"type\" property in corresponding ",
                 {
                   "text": "ColDef",
                   "href": "col-def"
                 },
-                " object."
+                " object.",
+                " "
               ]
             ]
           }
@@ -588,7 +658,8 @@
             "title": "Summary",
             "content": [
               [
-                "The raw, unformatted, value of the cell."
+                "The raw, unformatted, value of the cell.",
+                " "
               ]
             ]
           }
@@ -606,12 +677,15 @@
             "title": "Summary",
             "content": [
               [
-                "The width of the column that the cell is in. Same as the property of the same name in the corresponding ",
+                "The width of the column that the cell is in. Same as the property of the",
+                " ",
+                "same name in the corresponding ",
                 {
                   "text": "ColDef",
                   "href": "col-def"
                 },
-                " object."
+                " object.",
+                " "
               ]
             ]
           }
@@ -627,7 +701,10 @@
         "title": "Summary",
         "content": [
           [
-            "Union of all possible column data types."
+            "Union of all possible column data types.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -648,7 +725,10 @@
         "title": "Summary",
         "content": [
           [
-            "Union of strings that describe the type of a column."
+            "Union of strings that describe the type of a column.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -668,7 +748,9 @@
         "title": "Summary",
         "content": [
           [
-            "Column definition object for the community edition of the table and grid."
+            "Column definition object for the community edition of the table and grid.",
+            " ",
+            " "
           ]
         ]
       }
@@ -680,7 +762,12 @@
         "defaultValue": "any",
         "comment": [
           [
-            "the type of the value of the column (e.g. string, number, or Date)"
+            "the type of the value of the column (e.g. string,",
+            " ",
+            "number, or Date)",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -714,7 +801,11 @@
         "title": "Summary",
         "content": [
           [
-            "Properties to a define a column that is shared between community and pro editions."
+            "Properties to a define a column that is shared between community and pro",
+            " ",
+            "editions.",
+            " ",
+            " "
           ]
         ]
       }
@@ -727,7 +818,12 @@
         "defaultValue": "any",
         "comment": [
           [
-            "the type of the value of the column (e.g. string, number, or Date)"
+            "the type of the value of the column (e.g. string,",
+            " ",
+            "number, or Date)",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -745,7 +841,8 @@
             "title": "Summary",
             "content": [
               [
-                "The formatter function for the column."
+                "The formatter function for the column.",
+                " "
               ]
             ]
           }
@@ -763,7 +860,8 @@
             "title": "Summary",
             "content": [
               [
-                "The display name of the property in places like the column heading."
+                "The display name of the property in places like the column heading.",
+                " "
               ]
             ]
           }
@@ -786,7 +884,8 @@
                   "text": "RowDef",
                   "href": "row-def"
                 },
-                " object."
+                " object.",
+                " "
               ]
             ]
           }
@@ -804,7 +903,9 @@
             "title": "Summary",
             "content": [
               [
-                "Specifies whether the column is sortable."
+                "Specifies whether the column is sortable.",
+                " ",
+                " "
               ]
             ]
           },
@@ -816,7 +917,8 @@
                 {
                   "type": "codeSpan",
                   "text": "false"
-                }
+                },
+                " "
               ]
             ]
           }
@@ -837,7 +939,8 @@
             "title": "Summary",
             "content": [
               [
-                "String that specifies the data type of the column."
+                "String that specifies the data type of the column.",
+                " "
               ]
             ]
           }
@@ -856,7 +959,12 @@
         "title": "Summary",
         "content": [
           [
-            "Column definition properties specific to the community edition of the table and grid."
+            "Column definition properties specific to the community edition of the table",
+            " ",
+            "and grid.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -876,10 +984,18 @@
             "title": "Summary",
             "content": [
               [
-                "Sets the min-width and max-width CSS properties for all cells of the column."
+                "Sets the min-width and max-width CSS properties for all cells of the",
+                " ",
+                "column.",
+                " ",
+                " "
               ],
               [
-                "For the table, if no value is specified, then no value for min-width or max-width will be set."
+                "For the table, if no value is specified, then no value for min-width",
+                " ",
+                "or max-width will be set.",
+                " ",
+                " "
               ]
             ]
           },
@@ -897,7 +1013,8 @@
                   "type": "codeSpan",
                   "text": "undefined"
                 },
-                " for the table"
+                " for the table",
+                " "
               ]
             ]
           }
@@ -916,7 +1033,12 @@
         "title": "Summary",
         "content": [
           [
-            "Object that enables the filtering feature on a grid or table in an externally controllable manner."
+            "Object that enables the filtering feature on a grid or table in an",
+            " ",
+            "externally controllable manner.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -936,7 +1058,9 @@
             "title": "Summary",
             "content": [
               [
-                "Caption for the filter settings table element."
+                "Caption for the filter settings table element.",
+                " ",
+                " "
               ]
             ]
           },
@@ -949,7 +1073,8 @@
                   "type": "codeSpan",
                   "text": "undefined"
                 },
-                " - no caption will be displayed"
+                " - no caption will be displayed",
+                " "
               ]
             ]
           }
@@ -972,7 +1097,10 @@
             "title": "Summary",
             "content": [
               [
-                "Update callback function for the tableFilterState property. This function is called when the user submits the filter settings form."
+                "Update callback function for the tableFilterState property. This function",
+                " ",
+                "is called when the user submits the filter settings form.",
+                " "
               ]
             ]
           }
@@ -993,7 +1121,10 @@
             "title": "Summary",
             "content": [
               [
-                "State object that represents the filters currently being applied to the table or grid."
+                "State object that represents the filters currently being applied to the",
+                " ",
+                "table or grid.",
+                " "
               ]
             ]
           }
@@ -1011,7 +1142,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -1027,7 +1159,12 @@
         "title": "Summary",
         "content": [
           [
-            "Object that enables and configures the pagination feature for a table or grid in an externally-controllable manner."
+            "Object that enables and configures the pagination feature for a table or",
+            " ",
+            "grid in an externally-controllable manner.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1058,7 +1195,10 @@
         "title": "Summary",
         "content": [
           [
-            "Properties specific to configuring pagination in a controlled manner."
+            "Properties specific to configuring pagination in a controlled manner.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1078,7 +1218,8 @@
             "title": "Summary",
             "content": [
               [
-                "The 1-based index of the currently displayed page."
+                "The 1-based index of the currently displayed page.",
+                " "
               ]
             ]
           }
@@ -1096,7 +1237,8 @@
             "title": "Summary",
             "content": [
               [
-                "The index of current page size setting in the array of settings."
+                "The index of current page size setting in the array of settings.",
+                " "
               ]
             ]
           }
@@ -1114,7 +1256,8 @@
             "title": "Summary",
             "content": [
               [
-                "Sets the current page index."
+                "Sets the current page index.",
+                " "
               ]
             ]
           }
@@ -1132,7 +1275,8 @@
             "title": "Summary",
             "content": [
               [
-                "Setter function for the page size index."
+                "Setter function for the page size index.",
+                " "
               ]
             ]
           }
@@ -1150,7 +1294,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -1174,7 +1319,10 @@
               "text": "SortModel",
               "href": "sort-model"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1199,7 +1347,8 @@
             "title": "Summary",
             "content": [
               [
-                "Setter function for sortColDef."
+                "Setter function for sortColDef.",
+                " "
               ]
             ]
           }
@@ -1221,7 +1370,10 @@
             "title": "Summary",
             "content": [
               [
-                "Information on the column to sort on. Null means no column is being sorted and the rows shown be shown in their original order."
+                "Information on the column to sort on. Null means no column is being sorted",
+                " ",
+                "and the rows shown be shown in their original order.",
+                " "
               ]
             ]
           }
@@ -1239,7 +1391,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -1255,7 +1408,10 @@
         "title": "Summary",
         "content": [
           [
-            "Indicates the filtering scheme to apply to date and datetime columns."
+            "Indicates the filtering scheme to apply to date and datetime columns.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1285,7 +1441,10 @@
               "text": "DateFilterScheme",
               "href": "date-filter-scheme"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1303,7 +1462,12 @@
         "title": "Summary",
         "content": [
           [
-            "The form state object for the filtering feature for a date or datetime column."
+            "The form state object for the filtering feature for a date or datetime",
+            " ",
+            "column.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1342,7 +1506,9 @@
         "title": "Summary",
         "content": [
           [
-            "Returns of string representation of datetime from a Date object."
+            "Returns of string representation of datetime from a Date object.",
+            " ",
+            " "
           ]
         ]
       },
@@ -1350,7 +1516,10 @@
         "title": "@returns",
         "content": [
           [
-            " a string in the format YYYY-MM-DDTHH:mm"
+            " a string in the format YYYY-MM-DDTHH:mm",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1368,7 +1537,9 @@
         ],
         "comment": [
           [
-            "the Date object to format"
+            "the Date object to format",
+            " ",
+            " "
           ]
         ]
       }
@@ -1388,7 +1559,11 @@
         "title": "Summary",
         "content": [
           [
-            "Returns a string that represents a date in the format used by the input element of type \"date\"."
+            "Returns a string that represents a date in the format used by the input",
+            " ",
+            "element of type \"date\".",
+            " ",
+            " "
           ]
         ]
       },
@@ -1396,7 +1571,10 @@
         "title": "@returns",
         "content": [
           [
-            " a string in the format YYYY-MM-DD"
+            " a string in the format YYYY-MM-DD",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1414,7 +1592,9 @@
         ],
         "comment": [
           [
-            "the Date object to format"
+            "the Date object to format",
+            " ",
+            " "
           ]
         ]
       }
@@ -1433,7 +1613,10 @@
               "text": "TableSpecificProps",
               "href": "table-specific-props"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1453,7 +1636,10 @@
         "title": "Summary",
         "content": [
           [
-            "The form state object for the filtering feature for a column."
+            "The form state object for the filtering feature for a column.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1486,7 +1672,12 @@
         "title": "Summary",
         "content": [
           [
-            "State object that represents the filter settings for all of the columns in a grid or table."
+            "State object that represents the filter settings for all of the columns in a",
+            " ",
+            "grid or table.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1515,7 +1706,10 @@
         "title": "Summary",
         "content": [
           [
-            "Object that enables and configures the row editing feature."
+            "Object that enables and configures the row editing feature.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1535,7 +1729,13 @@
             "title": "Summary",
             "content": [
               [
-                "Specifies a fixed width in pixels for the column that contains the buttons for editing a row. In particular, the min-width and max-width CSS properties will be set."
+                "Specifies a fixed width in pixels for the column that contains the buttons",
+                " ",
+                "for editing a row. In particular, the min-width and max-width CSS",
+                " ",
+                "properties will be set.",
+                " ",
+                " "
               ]
             ]
           },
@@ -1548,7 +1748,8 @@
                   "type": "codeSpan",
                   "text": "undefined"
                 },
-                " - no CSS will be specified"
+                " - no CSS will be specified",
+                " "
               ]
             ]
           }
@@ -1571,7 +1772,10 @@
             "title": "Summary",
             "content": [
               [
-                "Callback function for deleting rows via the UI. Omit this property or pass undefined to disallow deletions via the UI."
+                "Callback function for deleting rows via the UI. Omit this property or pass",
+                " ",
+                "undefined to disallow deletions via the UI.",
+                " "
               ]
             ]
           }
@@ -1592,7 +1796,12 @@
             "title": "Summary",
             "content": [
               [
-                "Function that generates a callback function that responds to a row update. Use this property to specify how row updates affect the state outside the table component."
+                "Function that generates a callback function that responds to a row update.",
+                " ",
+                "Use this property to specify how row updates affect the state outside",
+                " ",
+                "the table component.",
+                " "
               ]
             ]
           }
@@ -1616,7 +1825,12 @@
         "title": "Summary",
         "content": [
           [
-            "Object that holds the form state for date or datetime column filtered via the \"endAt\" scheme."
+            "Object that holds the form state for date or datetime column filtered via the",
+            " ",
+            "\"endAt\" scheme.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1642,7 +1856,8 @@
             "title": "Summary",
             "content": [
               [
-                "The end date to filter against."
+                "The end date to filter against.",
+                " "
               ]
             ]
           }
@@ -1660,7 +1875,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -1679,7 +1895,10 @@
         "title": "Summary",
         "content": [
           [
-            "CSS styles for the UI for exporting data."
+            "CSS styles for the UI for exporting data.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1699,7 +1918,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for fieldset legend elements."
+                "Styles for fieldset legend elements.",
+                " "
               ]
             ]
           }
@@ -1717,7 +1937,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the div elements that contain radio buttons."
+                "Styles for the div elements that contain radio buttons.",
+                " "
               ]
             ]
           }
@@ -1735,7 +1956,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the radio button input elements."
+                "Styles for the radio button input elements.",
+                " "
               ]
             ]
           }
@@ -1753,7 +1975,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the label elements for radio button input elements."
+                "Styles for the label elements for radio button input elements.",
+                " "
               ]
             ]
           }
@@ -1771,7 +1994,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the submit button."
+                "Styles for the submit button.",
+                " "
               ]
             ]
           }
@@ -1787,7 +2011,10 @@
         "title": "Summary",
         "content": [
           [
-            "Style model for the filter inputs table."
+            "Style model for the filter inputs table.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1815,7 +2042,10 @@
         "title": "Summary",
         "content": [
           [
-            "Object used to enable and configure filtering for a grid or table."
+            "Object used to enable and configure filtering for a grid or table.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1846,7 +2076,10 @@
         "title": "Summary",
         "content": [
           [
-            "Style model properties specific to the filter inputs table."
+            "Style model properties specific to the filter inputs table.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -1866,7 +2099,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the checkboxes that enable filtering for columns."
+                "Classes for the checkboxes that enable filtering for columns.",
+                " "
               ]
             ]
           }
@@ -1884,7 +2118,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the end date inputs."
+                "Classes for the end date inputs.",
+                " "
               ]
             ]
           }
@@ -1902,7 +2137,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the form element."
+                "Classes for the form element.",
+                " "
               ]
             ]
           }
@@ -1920,7 +2156,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for numerical input elements."
+                "Classes for numerical input elements.",
+                " "
               ]
             ]
           }
@@ -1938,7 +2175,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the dropdowns for selecting filter schemes."
+                "Classes for the dropdowns for selecting filter schemes.",
+                " "
               ]
             ]
           }
@@ -1956,7 +2194,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for text search string input elements."
+                "Classes for text search string input elements.",
+                " "
               ]
             ]
           }
@@ -1974,7 +2213,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the state date inputs."
+                "Classes for the state date inputs.",
+                " "
               ]
             ]
           }
@@ -1992,7 +2232,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the form submit button."
+                "Classes for the form submit button.",
+                " "
               ]
             ]
           }
@@ -2010,7 +2251,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the td elements in the tbody element."
+                "Classes for the td elements in the tbody element.",
+                " "
               ]
             ]
           }
@@ -2028,7 +2270,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the tr elements in the tbody element."
+                "Classes for the tr elements in the tbody element.",
+                " "
               ]
             ]
           }
@@ -2044,7 +2287,11 @@
         "title": "Summary",
         "content": [
           [
-            "Comprehensive information for an entire row of a table or grid, after postprocessing such as sorting, pagination, and filtering are applied."
+            "Comprehensive information for an entire row of a table or grid, after",
+            " ",
+            "postprocessing such as sorting, pagination, and filtering are applied.",
+            " ",
+            " "
           ],
           [
             "Contains an array of ",
@@ -2052,7 +2299,10 @@
               "text": "CellData",
               "href": "cell-data"
             },
-            " in the order that the columns appear."
+            " in the order that the columns appear.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2086,7 +2336,10 @@
         "title": "Summary",
         "content": [
           [
-            "The main component for the grid feature of react-bootstrap-data-grid."
+            "The main component for the grid feature of react-bootstrap-data-grid.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2110,7 +2363,10 @@
         "title": "Summary",
         "content": [
           [
-            "The type of the prop to set the grid border style"
+            "The type of the prop to set the grid border style",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2130,20 +2386,29 @@
         "title": "Summary",
         "content": [
           [
-            "The type of the prop to set grid height behavior"
+            "The type of the prop to set grid height behavior",
+            " ",
+            " "
           ],
           [
-            "- number: fixed height of grid in pixels - ",
+            "- number: fixed height of grid in pixels",
+            " ",
+            "- ",
             {
               "type": "codeSpan",
               "text": "auto"
             },
-            ": takes on the intrinsic height of the contents - ",
+            ": takes on the intrinsic height of the contents",
+            " ",
+            "- ",
             {
               "type": "codeSpan",
               "text": "parent"
             },
-            ": takes on 100% of the parent height"
+            ": takes on 100% of the parent height",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2152,6 +2417,42 @@
     "definition": [
       "export type GridHeightSetting = ",
       "number | \"auto\" | \"parent\"",
+      ";"
+    ]
+  },
+  {
+    "type": "typeAlias",
+    "name": "GridPaginationModel",
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Enables and configures pagination for the ",
+            {
+              "text": "Grid",
+              "href": "grid"
+            },
+            " component.",
+            " ",
+            " ",
+            " "
+          ]
+        ]
+      }
+    ],
+    "typeParams": [],
+    "definition": [
+      "export type GridPaginationModel = ",
+      {
+        "text": "PaginationModel",
+        "href": "pagination-model"
+      },
+      " & ",
+      {
+        "text": "GridSpecificPaginationProperties",
+        "href": "grid-specific-pagination-properties"
+      },
       ";"
     ]
   },
@@ -2168,7 +2469,10 @@
               "text": "Grid",
               "href": "grid"
             },
-            " component."
+            " component.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2186,6 +2490,84 @@
         "href": "grid-specific-props"
       },
       ";"
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "GridSpecificPaginationProperties",
+    "definition": [
+      "export interface GridSpecificPaginationProperties "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Properties in the ",
+            {
+              "text": "GridPaginationModel",
+              "href": "grid-pagination-model"
+            },
+            " but not the",
+            " ",
+            {
+              "text": "PaginationModel",
+              "href": "pagination-model"
+            },
+            ".",
+            " ",
+            " ",
+            " "
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "styleOptions",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "PaginationStyleOptions",
+            "href": "pagination-style-options"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Preset style options involving pagination UI components.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - All default values for the",
+                " ",
+                {
+                  "text": "PaginationStyleOptions",
+                  "href": "pagination-style-options"
+                },
+                " interface will be applied.",
+                " "
+              ]
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -2209,7 +2591,10 @@
               "text": "Table",
               "href": "table"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2232,7 +2617,8 @@
             "title": "Summary",
             "content": [
               [
-                "Function to set the color variant of body cell focus rings"
+                "Function to set the color variant of body cell focus rings",
+                " "
               ]
             ]
           }
@@ -2253,7 +2639,10 @@
             "title": "Summary",
             "content": [
               [
-                "Function to set the color variant of body cells on a per-cell basis. Overrides the row-wide setting when this function returns a non-null value."
+                "Function to set the color variant of body cells on a per-cell basis.",
+                " ",
+                "Overrides the row-wide setting when this function returns a non-null value.",
+                " "
               ]
             ]
           }
@@ -2276,7 +2665,8 @@
             "title": "Summary",
             "content": [
               [
-                "Function to set the color variant of body rows"
+                "Function to set the color variant of body rows",
+                " "
               ]
             ]
           }
@@ -2297,7 +2687,8 @@
             "title": "Summary",
             "content": [
               [
-                "The border setting of the grid"
+                "The border setting of the grid",
+                " "
               ]
             ]
           }
@@ -2315,7 +2706,8 @@
             "title": "Summary",
             "content": [
               [
-                "The border color variant of the grid"
+                "The border color variant of the grid",
+                " "
               ]
             ]
           }
@@ -2333,7 +2725,8 @@
             "title": "Summary",
             "content": [
               [
-                "Toggles a horizontal divider between the grid header and body"
+                "Toggles a horizontal divider between the grid header and body",
+                " "
               ]
             ]
           }
@@ -2354,7 +2747,8 @@
             "title": "Summary",
             "content": [
               [
-                "Function to set the color variant of header cell focus rings"
+                "Function to set the color variant of header cell focus rings",
+                " "
               ]
             ]
           }
@@ -2375,7 +2769,10 @@
             "title": "Summary",
             "content": [
               [
-                "Function to set the color variant of header cells. Overrides the row-wide setting when this function returns a non-null value."
+                "Function to set the color variant of header cells. Overrides the row-wide",
+                " ",
+                "setting when this function returns a non-null value.",
+                " "
               ]
             ]
           }
@@ -2393,7 +2790,8 @@
             "title": "Summary",
             "content": [
               [
-                "Sets the color variant of the header row"
+                "Sets the color variant of the header row",
+                " "
               ]
             ]
           }
@@ -2414,7 +2812,9 @@
             "title": "Summary",
             "content": [
               [
-                "The height setting of the grid"
+                "The height setting of the grid",
+                " ",
+                " "
               ]
             ]
           },
@@ -2426,7 +2826,8 @@
                 {
                   "type": "codeSpan",
                   "text": "\"auto\""
-                }
+                },
+                " "
               ]
             ]
           }
@@ -2444,7 +2845,30 @@
             "title": "Summary",
             "content": [
               [
-                "Toggles hover styles for the grid"
+                "Toggles hover styles for the grid",
+                " "
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pagination",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "GridPaginationModel",
+            "href": "grid-pagination-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Enables and configures pagination for the grid",
+                " "
               ]
             ]
           }
@@ -2462,7 +2886,8 @@
             "title": "Summary",
             "content": [
               [
-                "Toggles a denser grid style"
+                "Toggles a denser grid style",
+                " "
               ]
             ]
           }
@@ -2483,7 +2908,8 @@
             "title": "Summary",
             "content": [
               [
-                "The stripe setting of the grid"
+                "The stripe setting of the grid",
+                " "
               ]
             ]
           }
@@ -2501,7 +2927,8 @@
             "title": "Summary",
             "content": [
               [
-                "The grid-wide color variant"
+                "The grid-wide color variant",
+                " "
               ]
             ]
           }
@@ -2522,7 +2949,9 @@
             "title": "Summary",
             "content": [
               [
-                "The width setting of the grid"
+                "The width setting of the grid",
+                " ",
+                " "
               ]
             ]
           },
@@ -2534,7 +2963,8 @@
                 {
                   "type": "codeSpan",
                   "text": "\"auto\""
-                }
+                },
+                " "
               ]
             ]
           }
@@ -2550,7 +2980,10 @@
         "title": "Summary",
         "content": [
           [
-            "The type of the prop to set the grid stripe style"
+            "The type of the prop to set the grid stripe style",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2570,20 +3003,29 @@
         "title": "Summary",
         "content": [
           [
-            "The type of the prop to set grid width behavior"
+            "The type of the prop to set grid width behavior",
+            " ",
+            " "
           ],
           [
-            "- number: fixed width of grid in pixels - ",
+            "- number: fixed width of grid in pixels",
+            " ",
+            "- ",
             {
               "type": "codeSpan",
               "text": "auto"
             },
-            ": takes on the intrinsic width of the contents - ",
+            ": takes on the intrinsic width of the contents",
+            " ",
+            "- ",
             {
               "type": "codeSpan",
               "text": "parent"
             },
-            ": takes on 100% of the parent width"
+            ": takes on 100% of the parent width",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2603,7 +3045,11 @@
         "title": "Summary",
         "content": [
           [
-            "The type of the function used to specify color variants on a grid header on a per-cell level of granularity."
+            "The type of the function used to specify color variants on a grid header on a",
+            " ",
+            "per-cell level of granularity.",
+            " ",
+            " "
           ]
         ]
       },
@@ -2611,7 +3057,12 @@
         "title": "@returns",
         "content": [
           [
-            " - a string that is name of the color variant or null for no color variant"
+            " - a string that is name of the color variant or null for no color",
+            " ",
+            "variant",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2636,12 +3087,16 @@
         "title": "Summary",
         "content": [
           [
-            "Strings representing different possible values of the ",
+            "Strings representing different possible values of the",
+            " ",
             {
               "text": "justify-content CSS property",
               "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/justify-content"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2669,17 +3124,22 @@
               "text": "Table",
               "href": "table"
             },
-            ", ",
+            ",",
+            " ",
             {
               "text": "TablePro",
               "href": "table-pro"
             },
-            ", and ",
+            ", and",
+            " ",
             {
               "text": "Grid",
               "href": "grid"
             },
-            " components."
+            " components.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2703,7 +3163,8 @@
             "title": "Summary",
             "content": [
               [
-                "The column definitions of the table or grid."
+                "The column definitions of the table or grid.",
+                " "
               ]
             ]
           }
@@ -2725,7 +3186,8 @@
             "title": "Summary",
             "content": [
               [
-                "The rows of data to be displayed by the table or grid."
+                "The rows of data to be displayed by the table or grid.",
+                " "
               ]
             ]
           }
@@ -2746,7 +3208,10 @@
             "title": "Summary",
             "content": [
               [
-                "The sort model of the table or grid. Passing a truthy value enables the sorting feature of the component."
+                "The sort model of the table or grid. Passing a truthy value enables the",
+                " ",
+                "sorting feature of the component.",
+                " "
               ]
             ]
           }
@@ -2765,7 +3230,10 @@
         "title": "Summary",
         "content": [
           [
-            "Style model properties specific to the main table."
+            "Style model properties specific to the main table.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -2790,7 +3258,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the cancel button in the edit column."
+                "Classes for the cancel button in the edit column.",
+                " "
               ]
             ]
           }
@@ -2813,7 +3282,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the td elements in the edit column."
+                "Classes for the td elements in the edit column.",
+                " "
               ]
             ]
           }
@@ -2831,7 +3301,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for th element in the edit column."
+                "Classes for th element in the edit column.",
+                " "
               ]
             ]
           }
@@ -2854,7 +3325,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the delete button in the edit column."
+                "Classes for the delete button in the edit column.",
+                " "
               ]
             ]
           }
@@ -2877,7 +3349,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the save button in the edit column."
+                "Classes for the save button in the edit column.",
+                " "
               ]
             ]
           }
@@ -2900,7 +3373,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the start button in the edit column."
+                "Classes for the start button in the edit column.",
+                " "
               ]
             ]
           }
@@ -2923,7 +3397,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the td elements of the row selection column."
+                "Classes for the td elements of the row selection column.",
+                " "
               ]
             ]
           }
@@ -2941,7 +3416,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the th element of the row selection column."
+                "Classes for the th element of the row selection column.",
+                " "
               ]
             ]
           }
@@ -2964,7 +3440,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the input elements of the row selection column."
+                "Classes for the input elements of the row selection column.",
+                " "
               ]
             ]
           }
@@ -2987,7 +3464,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for td elements within the tbody element."
+                "Classes for td elements within the tbody element.",
+                " "
               ]
             ]
           }
@@ -3010,7 +3488,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for input elements within the tbody element."
+                "Classes for input elements within the tbody element.",
+                " "
               ]
             ]
           }
@@ -3033,7 +3512,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for tr elements within the tbody element."
+                "Classes for tr elements within the tbody element.",
+                " "
               ]
             ]
           }
@@ -3049,7 +3529,12 @@
         "title": "Summary",
         "content": [
           [
-            "Object to enable and configure the selection feature for a grid or table in the multiselect mode."
+            "Object to enable and configure the selection feature for a grid or table in",
+            " ",
+            "the multiselect mode.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3085,7 +3570,10 @@
               "text": "MultiSelectModel",
               "href": "multi-select-model"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3109,7 +3597,8 @@
             "title": "Summary",
             "content": [
               [
-                "The ids of the currently selected rows."
+                "The ids of the currently selected rows.",
+                " "
               ]
             ]
           }
@@ -3132,7 +3621,8 @@
             "title": "Summary",
             "content": [
               [
-                "Setter function for the selected ids."
+                "Setter function for the selected ids.",
+                " "
               ]
             ]
           }
@@ -3150,7 +3640,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -3166,7 +3657,10 @@
         "title": "Summary",
         "content": [
           [
-            "Indicates the filtering scheme to apply to a number column."
+            "Indicates the filtering scheme to apply to a number column.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3196,7 +3690,10 @@
               "text": "NumberFilterScheme",
               "href": "number-filter-scheme"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3222,7 +3719,10 @@
         "title": "Summary",
         "content": [
           [
-            "The form state for filter settings on a number column."
+            "The form state for filter settings on a number column.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3275,7 +3775,10 @@
         "title": "Summary",
         "content": [
           [
-            "Object that enables and configures pagination for a grid or table."
+            "Object that enables and configures pagination for a grid or table.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3306,7 +3809,10 @@
         "title": "Summary",
         "content": [
           [
-            "Options for the pagination feature."
+            "Options for the pagination feature.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3329,7 +3835,11 @@
             "title": "Summary",
             "content": [
               [
-                "The size of the pagination component. Set via CSS classes provided with Bootstrap."
+                "The size of the pagination component. Set via CSS classes provided with",
+                " ",
+                "Bootstrap.",
+                " ",
+                " "
               ]
             ]
           },
@@ -3342,7 +3852,10 @@
                   "type": "codeSpan",
                   "text": "\"medium\""
                 },
-                " - corresponds to not specifying a CSS class for pagination component size"
+                " - corresponds to not specifying a CSS class for",
+                " ",
+                "pagination component size",
+                " "
               ]
             ]
           }
@@ -3360,7 +3873,11 @@
             "title": "Summary",
             "content": [
               [
-                "Maximum number of buttons pointing to numerically-indexed pages that can be displayed at once."
+                "Maximum number of buttons pointing to numerically-indexed pages that can",
+                " ",
+                "be displayed at once.",
+                " ",
+                " "
               ]
             ]
           },
@@ -3372,7 +3889,8 @@
                 {
                   "type": "codeSpan",
                   "text": "5"
-                }
+                },
+                " "
               ]
             ]
           }
@@ -3390,7 +3908,11 @@
             "title": "Summary",
             "content": [
               [
-                "The ARIA label for the nav element that represents the pagination component."
+                "The ARIA label for the nav element that represents the pagination",
+                " ",
+                "component.",
+                " ",
+                " "
               ]
             ]
           },
@@ -3403,7 +3925,8 @@
                   "type": "codeSpan",
                   "text": "undefined"
                 },
-                " - no ARIA label"
+                " - no ARIA label",
+                " "
               ]
             ]
           }
@@ -3424,7 +3947,11 @@
             "title": "Summary",
             "content": [
               [
-                "Justify-content CSS property for the ul element of the pagination component."
+                "Justify-content CSS property for the ul element of the pagination",
+                " ",
+                "component.",
+                " ",
+                " "
               ]
             ]
           },
@@ -3437,12 +3964,16 @@
                   "type": "codeSpan",
                   "text": "undefined"
                 },
-                " - no justify-content property is specified, which acts like \"start\" based on CSS standards. See ",
+                " - no justify-content property is specified, which",
+                " ",
+                "acts like \"start\" based on CSS standards. See",
+                " ",
                 {
                   "text": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/justify-content#syntax",
                   "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/justify-content#syntax"
                 },
-                "."
+                ".",
+                " "
               ]
             ]
           }
@@ -3460,7 +3991,9 @@
             "title": "Summary",
             "content": [
               [
-                "An array of page sizes that can be selected by the user."
+                "An array of page sizes that can be selected by the user.",
+                " ",
+                " "
               ]
             ]
           },
@@ -3472,7 +4005,258 @@
                 {
                   "type": "codeSpan",
                   "text": "[10, 25, 100]"
-                }
+                },
+                " "
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "PaginationStyleOptions",
+    "definition": [
+      "export interface PaginationStyleOptions "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that contains preset style options involving the pagination UI",
+            " ",
+            "components. These settings are in contrast to the alternative means of",
+            " ",
+            "controlling styling that involve applying custom CSS classes to different",
+            " ",
+            "slots.",
+            " ",
+            " ",
+            " "
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "aboveMainComponent",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets whether the pagination components are positioned above the main",
+                " ",
+                "grid or table component.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "false"
+                },
+                " - pagination components are positioned below the main",
+                " ",
+                "component.",
+                " "
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "horizontalAlignment",
+        "isOptional": true,
+        "definition": [
+          "\"left\" | \"center\" | \"right\"",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets the horizontal alignment of the pagination UI components.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "\"right\""
+                },
+                " - both pagination UI components, the page size",
+                " ",
+                "selector and page number selector, are aligned to the left of the",
+                " ",
+                "enclosing div.",
+                " "
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "mainComponentSpacing",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets the amount of vertical spacing between the main grid or table",
+                " ",
+                "component and the pagination UI components. The number supplied to this",
+                " ",
+                "property will be used for the",
+                " ",
+                {
+                  "text": "Bootstrap gap utility",
+                  "href": "https://getbootstrap.com/docs/5.3/utilities/spacing/#gap"
+                },
+                ".",
+                " ",
+                "Valid values depend on Bootstrap ",
+                {
+                  "type": "codeSpan",
+                  "text": "$spacers"
+                },
+                " Sass map. Be default, the valid",
+                " ",
+                "values range from 0 to 5.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "2"
+                },
+                "- the gap-2 Bootstrap utility class will be applied.",
+                " "
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "paginationComponentSpacing",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets the amount of horizontal spacing between page size selector and page",
+                " ",
+                "number selector. The number supplied to this",
+                " ",
+                "property will be used for the",
+                " ",
+                {
+                  "text": "Bootstrap gap utility",
+                  "href": "https://getbootstrap.com/docs/5.3/utilities/spacing/#gap"
+                },
+                ".",
+                " ",
+                "Valid values depend on Bootstrap ",
+                {
+                  "type": "codeSpan",
+                  "text": "$spacers"
+                },
+                " Sass map. Be default, the valid",
+                " ",
+                "values range from 0 to 5.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "2"
+                },
+                "- the gap-2 Bootstrap utility class will be applied.",
+                " "
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sizeSelectAfterPageSelect",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets whether the page size selector dropdown menu is placed to the right of",
+                " ",
+                "the page number selector.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "false"
+                },
+                " - the page size selector dropdown menu is placed",
+                " ",
+                "before (to the left of) the page number selector component.",
+                " "
               ]
             ]
           }
@@ -3488,7 +4272,12 @@
         "title": "Summary",
         "content": [
           [
-            "Row definition object that additionally contains index of the row before pagination was applied."
+            "Row definition object that additionally contains index of the row before",
+            " ",
+            "pagination was applied.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3535,12 +4324,17 @@
         "title": "Summary",
         "content": [
           [
-            "The data fields for a row in a table or grid. Excludes the primary key for the row, which is stored separately in the \"id\" field of the ",
+            "The data fields for a row in a table or grid. Excludes the primary key for",
+            " ",
+            "the row, which is stored separately in the \"id\" field of the ",
             {
               "text": "RowDef",
               "href": "row-def"
             },
-            " interface."
+            " ",
+            "interface.",
+            " ",
+            " "
           ]
         ]
       }
@@ -3558,12 +4352,19 @@
         },
         "comment": [
           [
-            "the type of the object. A more specific type can be specified in place of the default ",
+            "the type of the object. A more specific type can be",
+            " ",
+            "specified in place of the default ",
             {
               "text": "ValidRowData",
               "href": "valid-row-data"
             },
-            " type to assist in type safety and IDE coding assistance."
+            " type to assist in",
+            " ",
+            "type safety and IDE coding assistance.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3605,7 +4406,9 @@
         "title": "Summary",
         "content": [
           [
-            "An object that represents a single row."
+            "An object that represents a single row.",
+            " ",
+            " "
           ]
         ]
       }
@@ -3624,7 +4427,12 @@
         },
         "comment": [
           [
-            "the type of the \"data\" property. Can be specified to enhance type safety."
+            "the type of the \"data\" property. Can be specified to",
+            " ",
+            "enhance type safety.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3646,7 +4454,8 @@
             "title": "Summary",
             "content": [
               [
-                "Contains all data fields for different columns of the row."
+                "Contains all data fields for different columns of the row.",
+                " "
               ]
             ]
           }
@@ -3667,7 +4476,9 @@
             "title": "Summary",
             "content": [
               [
-                "An id for the row that must be unique among all rows passed in the \"rows\" prop of the ",
+                "An id for the row that must be unique among all rows passed in the \"rows\"",
+                " ",
+                "prop of the ",
                 {
                   "text": "Table",
                   "href": "table"
@@ -3677,7 +4488,8 @@
                   "text": "Grid",
                   "href": "grid"
                 },
-                "."
+                ".",
+                " "
               ]
             ]
           }
@@ -3698,7 +4510,10 @@
               "text": "RowDef",
               "href": "row-def"
             },
-            " object."
+            " object.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3718,10 +4533,25 @@
         "title": "Summary",
         "content": [
           [
-            "Specifies whether the user can select rows by clicking on a control in a special column, by clicking on the row, or via either method."
+            "Specifies whether the user can select rows by clicking on a control in a",
+            " ",
+            "special column, by clicking on the row, or via either method.",
+            " ",
+            " "
           ],
           [
-            "- column -- can only select by clicking on radio or checkbox input in special column - row -- selection column is hidden and selection can be done by clicking anywhere in a row - both -- selection can be done by either clicking on the input or row"
+            "- column -- can only select by clicking on radio or checkbox input in special",
+            " ",
+            "column",
+            " ",
+            "- row -- selection column is hidden and selection can be done by clicking",
+            " ",
+            "anywhere in a row",
+            " ",
+            "- both -- selection can be done by either clicking on the input or row",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3741,7 +4571,10 @@
         "title": "Summary",
         "content": [
           [
-            "Object to enable and configure the selection feature for a grid or table."
+            "Object to enable and configure the selection feature for a grid or table.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3772,7 +4605,12 @@
         "title": "Summary",
         "content": [
           [
-            "Style model properties shared between the main table and the filter options table."
+            "Style model properties shared between the main table and the filter",
+            " ",
+            "options table.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3792,7 +4630,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the caption element."
+                "Classes for the caption element.",
+                " "
               ]
             ]
           }
@@ -3810,7 +4649,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the table element."
+                "Classes for the table element.",
+                " "
               ]
             ]
           }
@@ -3828,7 +4668,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the tbody element."
+                "Classes for the tbody element.",
+                " "
               ]
             ]
           }
@@ -3846,7 +4687,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the thead element."
+                "Classes for the thead element.",
+                " "
               ]
             ]
           }
@@ -3864,7 +4706,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the th elements within the thead element."
+                "Classes for the th elements within the thead element.",
+                " "
               ]
             ]
           }
@@ -3882,7 +4725,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the sole tr element inside the thead element."
+                "Classes for the sole tr element inside the thead element.",
+                " "
               ]
             ]
           }
@@ -3898,7 +4742,12 @@
         "title": "Summary",
         "content": [
           [
-            "Object to enable and configure the selection feature for a grid or table in the single select mode."
+            "Object to enable and configure the selection feature for a grid or table in",
+            " ",
+            "the single select mode.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3934,7 +4783,10 @@
               "text": "SingleSelectModel",
               "href": "single-select-model"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -3954,7 +4806,9 @@
             "title": "Summary",
             "content": [
               [
-                "String to uniquely identify the group of radio buttons."
+                "String to uniquely identify the group of radio buttons.",
+                " ",
+                " "
               ]
             ]
           },
@@ -3962,12 +4816,20 @@
             "title": "@remarks",
             "content": [
               [
-                "If specified, must be unique across all radio button groups on the web page. Now optional because the ",
+                " ",
+                " ",
+                "If specified, must be unique across all radio button groups on the web",
+                " ",
+                "page. Now optional because the",
+                " ",
                 {
                   "text": "useId hook",
                   "href": "https://react.dev/reference/react/useId"
                 },
-                " can be used to generate an ID."
+                " ",
+                "can be used to generate an ID.",
+                " ",
+                " "
               ]
             ]
           },
@@ -3980,7 +4842,8 @@
                   "type": "codeSpan",
                   "text": "undefined"
                 },
-                " - an id generated by the useId hook will be used"
+                " - an id generated by the useId hook will be used",
+                " "
               ]
             ]
           }
@@ -4002,7 +4865,8 @@
             "title": "Summary",
             "content": [
               [
-                "The id of the currently selected row, or null if none is selected."
+                "The id of the currently selected row, or null if none is selected.",
+                " "
               ]
             ]
           }
@@ -4025,7 +4889,8 @@
             "title": "Summary",
             "content": [
               [
-                "Setter function for the \"selected\" property."
+                "Setter function for the \"selected\" property.",
+                " "
               ]
             ]
           }
@@ -4043,7 +4908,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -4059,12 +4925,16 @@
         "title": "Summary",
         "content": [
           [
-            "Strings representing the different ",
+            "Strings representing the different",
+            " ",
             {
               "text": "possible sizes of the Bootstrap pagination component",
               "href": "https://getbootstrap.com/docs/5.3/components/pagination/#sizing"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4087,7 +4957,10 @@
         "title": "Summary",
         "content": [
           [
-            "Specifies the column to sort on and order with which to sort."
+            "Specifies the column to sort on and order with which to sort.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4112,7 +4985,9 @@
                   "text": "ColDef",
                   "href": "col-def"
                 },
-                " type."
+                " ",
+                "type.",
+                " "
               ]
             ]
           }
@@ -4133,7 +5008,8 @@
             "title": "Summary",
             "content": [
               [
-                "Order with which sorting should be done."
+                "Order with which sorting should be done.",
+                " "
               ]
             ]
           }
@@ -4149,7 +5025,10 @@
         "title": "Summary",
         "content": [
           [
-            "Prop that enables and configures sorting on a grid or table."
+            "Prop that enables and configures sorting on a grid or table.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4177,7 +5056,10 @@
         "title": "Summary",
         "content": [
           [
-            "Sort order setting for the sort feature."
+            "Sort order setting for the sort feature.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4205,7 +5087,12 @@
         "title": "Summary",
         "content": [
           [
-            "Object that holds the form state for date or datetime column filtered via the \"startFrom\" scheme."
+            "Object that holds the form state for date or datetime column filtered via the",
+            " ",
+            "\"startFrom\" scheme.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4230,7 +5117,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -4249,7 +5137,8 @@
             "title": "Summary",
             "content": [
               [
-                "The start date to filter against."
+                "The start date to filter against.",
+                " "
               ]
             ]
           }
@@ -4265,7 +5154,10 @@
         "title": "Summary",
         "content": [
           [
-            "Represents all possible filter schemes for a string column."
+            "Represents all possible filter schemes for a string column.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4295,7 +5187,10 @@
               "text": "StringFilterScheme",
               "href": "string-filter-scheme"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4321,7 +5216,10 @@
         "title": "Summary",
         "content": [
           [
-            "Form state for the filter settings for a string column."
+            "Form state for the filter settings for a string column.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4349,7 +5247,8 @@
             "title": "Summary",
             "content": [
               [
-                "The filter scheme to apply."
+                "The filter scheme to apply.",
+                " "
               ]
             ]
           }
@@ -4367,7 +5266,8 @@
             "title": "Summary",
             "content": [
               [
-                "The search string to filter on."
+                "The search string to filter on.",
+                " "
               ]
             ]
           }
@@ -4385,7 +5285,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -4404,7 +5305,10 @@
         "title": "Summary",
         "content": [
           [
-            "Top level object that is passed as a prop to a table to enable custom styles."
+            "Top level object that is passed as a prop to a table to enable custom styles.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4427,7 +5331,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for components that don't fit into other categories."
+                "Styles for components that don't fit into other categories.",
+                " "
               ]
             ]
           }
@@ -4448,7 +5353,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the data export UI."
+                "Styles for the data export UI.",
+                " "
               ]
             ]
           }
@@ -4469,7 +5375,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the filter options table."
+                "Styles for the filter options table.",
+                " "
               ]
             ]
           }
@@ -4490,7 +5397,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the main table (as opposed to the filter options table)."
+                "Styles for the main table (as opposed to the filter options table).",
+                " "
               ]
             ]
           }
@@ -4511,7 +5419,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the toolbar."
+                "Styles for the toolbar.",
+                " "
               ]
             ]
           }
@@ -4527,7 +5436,10 @@
         "title": "Summary",
         "content": [
           [
-            "The main component of the table feature of react-bootstrap-data-grid."
+            "The main component of the table feature of react-bootstrap-data-grid.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4551,7 +5463,10 @@
         "title": "Summary",
         "content": [
           [
-            "The type of the props object for the Table component."
+            "The type of the props object for the Table component.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4592,7 +5507,11 @@
               "text": "Grid",
               "href": "grid"
             },
-            " component."
+            " ",
+            "component.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4612,7 +5531,8 @@
             "title": "Summary",
             "content": [
               [
-                "Enables exporting of data from the table."
+                "Enables exporting of data from the table.",
+                " "
               ]
             ]
           }
@@ -4630,7 +5550,8 @@
             "title": "Summary",
             "content": [
               [
-                "Sets a caption for the table"
+                "Sets a caption for the table",
+                " "
               ]
             ]
           }
@@ -4651,7 +5572,9 @@
             "title": "Summary",
             "content": [
               [
-                "Sets the CSS display property for the table element."
+                "Sets the CSS display property for the table element.",
+                " ",
+                " "
               ]
             ]
           },
@@ -4663,7 +5586,8 @@
                 {
                   "type": "codeSpan",
                   "text": "\"table\""
-                }
+                },
+                " "
               ]
             ]
           }
@@ -4684,7 +5608,10 @@
             "title": "Summary",
             "content": [
               [
-                "The edit model of the table. Passing a truthy value enables the editing feature of the component."
+                "The edit model of the table. Passing a truthy value enables the",
+                " ",
+                "editing feature of the component.",
+                " "
               ]
             ]
           }
@@ -4705,7 +5632,10 @@
             "title": "Summary",
             "content": [
               [
-                "The filter model of the table. Passing a truthy value enables the filtering feature of the component."
+                "The filter model of the table. Passing a truthy value enables the",
+                " ",
+                "filtering feature of the component.",
+                " "
               ]
             ]
           }
@@ -4726,7 +5656,10 @@
             "title": "Summary",
             "content": [
               [
-                "The pagination model of the table. Passing a truthy value enables the pagination feature of the component."
+                "The pagination model of the table. Passing a truthy value enables",
+                " ",
+                "the pagination feature of the component.",
+                " "
               ]
             ]
           }
@@ -4747,7 +5680,10 @@
             "title": "Summary",
             "content": [
               [
-                "The select model of the table. Passing a truthy value enables the selection feature of the component."
+                "The select model of the table. Passing a truthy value enables the",
+                " ",
+                "selection feature of the component.",
+                " "
               ]
             ]
           }
@@ -4768,7 +5704,12 @@
             "title": "Summary",
             "content": [
               [
-                "The style model of the table. Passing a truthy value enables the developer to customize the CSS classes applied to various elements of the table."
+                "The style model of the table. Passing a truthy value enables the",
+                " ",
+                "developer to customize the CSS classes applied to various elements of the",
+                " ",
+                "table.",
+                " "
               ]
             ]
           }
@@ -4784,7 +5725,10 @@
         "title": "Summary",
         "content": [
           [
-            "Style model for the main table."
+            "Style model for the main table.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4815,7 +5759,10 @@
         "title": "Summary",
         "content": [
           [
-            "CSS styles for the toolbar."
+            "CSS styles for the toolbar.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4835,7 +5782,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the button of the currently selected tool."
+                "Styles for the button of the currently selected tool.",
+                " "
               ]
             ]
           }
@@ -4853,7 +5801,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the buttons of tools that are not currently selected."
+                "Styles for the buttons of tools that are not currently selected.",
+                " "
               ]
             ]
           }
@@ -4871,7 +5820,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the div element that contains the interface for each tool."
+                "Styles for the div element that contains the interface for each tool.",
+                " "
               ]
             ]
           }
@@ -4889,7 +5839,8 @@
             "title": "Summary",
             "content": [
               [
-                "Styles for the div element that contains the other elements of the toolbar."
+                "Styles for the div element that contains the other elements of the toolbar.",
+                " "
               ]
             ]
           }
@@ -4905,7 +5856,14 @@
         "title": "Summary",
         "content": [
           [
-            "Object that enables the filtering feature on a grid or table in manner that cannot be controlled externally. In this mode, \"tableFilterState\" is the initial set of filtering settings."
+            "Object that enables the filtering feature on a grid or table in manner that",
+            " ",
+            "cannot be controlled externally. In this mode, \"tableFilterState\" is the",
+            " ",
+            "initial set of filtering settings.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4936,7 +5894,10 @@
         "title": "Summary",
         "content": [
           [
-            "Initial values for pagination in uncontrolled mode."
+            "Initial values for pagination in uncontrolled mode.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -4956,7 +5917,8 @@
             "title": "Summary",
             "content": [
               [
-                "Starting 1-based current page number."
+                "Starting 1-based current page number.",
+                " "
               ]
             ]
           }
@@ -4974,7 +5936,8 @@
             "title": "Summary",
             "content": [
               [
-                "Starting page size setting index of pageSizeOptions array."
+                "Starting page size setting index of pageSizeOptions array.",
+                " "
               ]
             ]
           }
@@ -4992,7 +5955,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -5008,7 +5972,10 @@
         "title": "Summary",
         "content": [
           [
-            "Object that enables and configures pagination in an uncontrolled manner."
+            "Object that enables and configures pagination in an uncontrolled manner.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5044,7 +6011,10 @@
               "text": "SortModel",
               "href": "sort-model"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5068,7 +6038,8 @@
             "title": "Summary",
             "content": [
               [
-                "Initial column to sort on, if any."
+                "Initial column to sort on, if any.",
+                " "
               ]
             ]
           }
@@ -5086,7 +6057,8 @@
             "title": "Summary",
             "content": [
               [
-                "A type discriminator."
+                "A type discriminator.",
+                " "
               ]
             ]
           }
@@ -5102,7 +6074,11 @@
         "title": "Summary",
         "content": [
           [
-            "Function that returns a callback function that responds to a row being updated with the editing feature."
+            "Function that returns a callback function that responds to a row being",
+            " ",
+            "updated with the editing feature.",
+            " ",
+            " "
           ]
         ]
       }
@@ -5137,7 +6113,14 @@
               "text": "RowDef",
               "href": "row-def"
             },
-            " interface. This type alias represents the most general type possible. One can specify a more specific type via the Data type parameter."
+            " interface. This type",
+            " ",
+            "alias represents the most general type possible. One can specify a more",
+            " ",
+            "specific type via the Data type parameter.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5158,7 +6141,12 @@
         "title": "Summary",
         "content": [
           [
-            "Type of the column definition object for the pro edition of the table feature."
+            "Type of the column definition object for the pro edition of the table",
+            " ",
+            "feature.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5204,7 +6192,10 @@
               "text": "ProColDef",
               "href": "pro-col-def"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5224,7 +6215,11 @@
             "title": "Summary",
             "content": [
               [
-                "Configures the number of pixels to change the width per keypress when resizing."
+                "Configures the number of pixels to change the width per keypress when",
+                " ",
+                "resizing.",
+                " ",
+                " "
               ]
             ]
           },
@@ -5236,7 +6231,8 @@
                 {
                   "type": "codeSpan",
                   "text": "10"
-                }
+                },
+                " "
               ]
             ]
           }
@@ -5254,7 +6250,11 @@
             "title": "Summary",
             "content": [
               [
-                "When the column is resizable, configures the maximum width to which the column can be resized."
+                "When the column is resizable, configures the maximum width to which the",
+                " ",
+                "column can be resized.",
+                " ",
+                " "
               ]
             ]
           },
@@ -5266,7 +6266,8 @@
                 {
                   "text": "Number.MAX_VALUE",
                   "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_VALUE"
-                }
+                },
+                " "
               ]
             ]
           }
@@ -5284,7 +6285,11 @@
             "title": "Summary",
             "content": [
               [
-                "When the column is resizable, configures the minimum width to which the column can be resized."
+                "When the column is resizable, configures the minimum width to which the",
+                " ",
+                "column can be resized.",
+                " ",
+                " "
               ]
             ]
           },
@@ -5302,7 +6307,8 @@
                   "type": "codeSpan",
                   "text": "32"
                 },
-                " if not"
+                " if not",
+                " "
               ]
             ]
           }
@@ -5320,7 +6326,9 @@
             "title": "Summary",
             "content": [
               [
-                "Configures whether the column is resizable."
+                "Configures whether the column is resizable.",
+                " ",
+                " "
               ]
             ]
           },
@@ -5332,7 +6340,8 @@
                 {
                   "type": "codeSpan",
                   "text": "false"
-                }
+                },
+                " "
               ]
             ]
           }
@@ -5358,12 +6367,16 @@
             "title": "Summary",
             "content": [
               [
-                "Configures the width of the column. The value can be a number in pixels or a state setter/getter object of type ",
+                "Configures the width of the column. The value can be a number in pixels or",
+                " ",
+                "a state setter/getter object of type ",
                 {
                   "text": "WidthModel",
                   "href": "width-model"
                 },
-                "."
+                ".",
+                " ",
+                " "
               ]
             ]
           },
@@ -5375,7 +6388,8 @@
                 {
                   "type": "codeSpan",
                   "text": "100"
-                }
+                },
+                " "
               ]
             ]
           }
@@ -5392,7 +6406,12 @@
         "title": "Summary",
         "content": [
           [
-            "Type of the combined style model object for the pro edition of the table component."
+            "Type of the combined style model object for the pro edition of the table",
+            " ",
+            "component.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5424,7 +6443,10 @@
         "title": "Summary",
         "content": [
           [
-            "Style models specific the pro edition of the table component."
+            "Style models specific the pro edition of the table component.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5455,7 +6477,9 @@
         "title": "Summary",
         "content": [
           [
-            "Type of the callback function to respond to a reorder operation."
+            "Type of the callback function to respond to a reorder operation.",
+            " ",
+            " "
           ]
         ]
       }
@@ -5484,7 +6508,10 @@
         "title": "Summary",
         "content": [
           [
-            "Object that enables the row reordering feature."
+            "Object that enables the row reordering feature.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5507,7 +6534,8 @@
             "title": "Summary",
             "content": [
               [
-                "Callback function called when a reorder operation is performed via the UI."
+                "Callback function called when a reorder operation is performed via the UI.",
+                " "
               ]
             ]
           }
@@ -5550,7 +6578,11 @@
         "title": "Summary",
         "content": [
           [
-            "Utility function for implementing the reorder callback function for the row reordering feature."
+            "Utility function for implementing the reorder callback function for the",
+            " ",
+            "row reordering feature.",
+            " ",
+            " "
           ]
         ]
       },
@@ -5558,7 +6590,12 @@
         "title": "@returns",
         "content": [
           [
-            " A new array where row to move is inserted into the destination index."
+            " A new array where row to move is inserted into the destination",
+            " ",
+            "index.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5599,7 +6636,9 @@
               "text": "RowDef",
               "href": "row-def"
             },
-            "."
+            ".",
+            " ",
+            " "
           ]
         ]
       },
@@ -5614,7 +6653,9 @@
         ],
         "comment": [
           [
-            "the id of the row to move."
+            "the id of the row to move.",
+            " ",
+            " "
           ]
         ]
       },
@@ -5626,7 +6667,9 @@
         ],
         "comment": [
           [
-            "the destination index of the row to move."
+            "the destination index of the row to move.",
+            " ",
+            " "
           ]
         ]
       }
@@ -5644,7 +6687,10 @@
         "title": "Summary",
         "content": [
           [
-            "Style model properties specific to the row reordering feature."
+            "Style model properties specific to the row reordering feature.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5664,7 +6710,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the row above the drag destination."
+                "Classes for the row above the drag destination.",
+                " "
               ]
             ]
           }
@@ -5682,7 +6729,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the row being dragged."
+                "Classes for the row being dragged.",
+                " "
               ]
             ]
           }
@@ -5700,7 +6748,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the row above the row being dragged."
+                "Classes for the row above the row being dragged.",
+                " "
               ]
             ]
           }
@@ -5718,7 +6767,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the drag marker that follows the cursor while dragging."
+                "Classes for the drag marker that follows the cursor while dragging.",
+                " "
               ]
             ]
           }
@@ -5736,7 +6786,8 @@
             "title": "Summary",
             "content": [
               [
-                "Classes for the row below the drag destination."
+                "Classes for the row below the drag destination.",
+                " "
               ]
             ]
           }
@@ -5753,7 +6804,10 @@
         "title": "Summary",
         "content": [
           [
-            "Pro edition of the table component."
+            "Pro edition of the table component.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5783,7 +6837,10 @@
               "text": "TablePro",
               "href": "table-pro"
             },
-            "."
+            ".",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5817,7 +6874,10 @@
         "title": "Summary",
         "content": [
           [
-            "Props that are specific to the pro edition of the table component."
+            "Props that are specific to the pro edition of the table component.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5841,7 +6901,8 @@
             "title": "Summary",
             "content": [
               [
-                "Column definitions for the table."
+                "Column definitions for the table.",
+                " "
               ]
             ]
           }
@@ -5862,7 +6923,8 @@
             "title": "Summary",
             "content": [
               [
-                "Enables and configures the row reordering feature."
+                "Enables and configures the row reordering feature.",
+                " "
               ]
             ]
           }
@@ -5883,7 +6945,10 @@
             "title": "Summary",
             "content": [
               [
-                "Applies custom CSS styles for elements specific to the pro edition of the table."
+                "Applies custom CSS styles for elements specific to the pro edition of the",
+                " ",
+                "table.",
+                " "
               ]
             ]
           }
@@ -5903,12 +6968,19 @@
         "title": "Summary",
         "content": [
           [
-            "State object with getter and setter that represents the width of a column. Used as part of ",
+            "State object with getter and setter that represents the width of a column.",
+            " ",
+            "Used as part of ",
             {
               "text": "ProColDefSpecificFields",
               "href": "pro-col-def-specific-fields"
             },
-            " to specify the width of a column in a way that can be changed externally."
+            " to specify the width of a",
+            " ",
+            "column in a way that can be changed externally.",
+            " ",
+            " ",
+            " "
           ]
         ]
       }
@@ -5928,7 +7000,8 @@
             "title": "Summary",
             "content": [
               [
-                "Setter function to update the width value."
+                "Setter function to update the width value.",
+                " "
               ]
             ]
           }
@@ -5946,7 +7019,8 @@
             "title": "Summary",
             "content": [
               [
-                "The current width value stored by the object."
+                "The current width value stored by the object.",
+                " "
               ]
             ]
           }
