@@ -21,6 +21,7 @@ import {
   DocBlock,
   DocLinkTag,
   DocCodeSpan,
+  DocSoftBreak,
 } from "@microsoft/tsdoc";
 import type {
   Item,
@@ -174,9 +175,14 @@ function convertDocSection(section: DocSection): Token[][] {
         (node) =>
           node instanceof DocPlainText ||
           node instanceof DocLinkTag ||
-          node instanceof DocCodeSpan,
+          node instanceof DocCodeSpan ||
+          node instanceof DocSoftBreak,
       );
       return trimmedParagraphNodes.map((node) => {
+        if (node instanceof DocSoftBreak) {
+          return " ";
+        }
+
         if (node instanceof DocPlainText) {
           return node.text;
         }
