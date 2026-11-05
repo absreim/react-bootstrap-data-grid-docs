@@ -1,0 +1,47 @@
+---
+navLabel: Pagination
+order: 6
+---
+
+# Pagination
+
+The react-bootstrap-data-grid grid component implements pagination with the
+[Bootstrap pagination component](https://getbootstrap.com/docs/5.3/components/pagination/) styles.
+
+## Enabling
+
+Pagination is disabled by default and must be enabled in order to use the feature. Enabling is done by passing a value
+for the `pagination` prop of the [Grid](/docs/ref/grid) component.
+
+Refer to the documentation for the [GridPaginationModel](/docs/ref/grid-pagination-model) type for details on the
+configurable properties of `pagination` prop.
+
+## Controlled vs Uncontrolled
+
+Like several other features in react-bootstrap-data-grid, configuration can be done in _controlled_ or _uncontrolled_
+mode.
+
+Use __controlled__ mode to maximize fine-tuned control over the state from a parent component.
+
+```tsx
+const PaginationDemoGrid: FC = () => {
+  const [pageSizeIndex, setPageSizeIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  return (
+    <Grid
+      rows={rows}
+      cols={trinketColumns}
+      width="parent"
+      sortModel={{ type: "uncontrolled", initialSortColDef: null }}
+      pagination={{
+        type: "controlled",
+        pageSizeIndex: pageSizeIndex,
+        setPageSizeIndex,
+        currentPage,
+        setCurrentPage,
+      }}
+    />
+  );
+};
+```
