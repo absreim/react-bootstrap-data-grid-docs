@@ -3976,6 +3976,22 @@
                 " "
               ]
             ]
+          },
+          {
+            "title": "@deprecated",
+            "content": [
+              [
+                " ",
+                " ",
+                "This property has no effect under normal circumstances because",
+                " ",
+                "the enclosing nav element is using the block display type. It is kept",
+                " ",
+                "around only to avoid breaking existing code.",
+                " ",
+                " "
+              ]
+            ]
           }
         ]
       },

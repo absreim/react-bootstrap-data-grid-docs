@@ -234,6 +234,7 @@ function convertComment(comment: DocComment | undefined): CommentBlock[] {
   };
 
   const blocks = [summaryBlock];
+
   if (comment.remarksBlock) {
     const remarksBlock = convertDocBlock(comment.remarksBlock);
     blocks.push(remarksBlock);
@@ -247,6 +248,11 @@ function convertComment(comment: DocComment | undefined): CommentBlock[] {
   const defaultValueBlock = extractDefaultValueBlock(comment);
   if (defaultValueBlock) {
     blocks.push(defaultValueBlock);
+  }
+
+  if (comment.deprecatedBlock) {
+    const deprecatedBlock = convertDocBlock(comment.deprecatedBlock);
+    blocks.push(deprecatedBlock);
   }
 
   return blocks;
