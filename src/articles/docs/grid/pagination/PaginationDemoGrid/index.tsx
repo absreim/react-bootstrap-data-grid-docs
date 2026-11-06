@@ -1,6 +1,6 @@
 "use client";
 
-import Grid, { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/grid";
+import Grid, { ColDef, RowDef, Size } from "@absreim/react-bootstrap-data-grid/grid";
 import { Trinket } from "./types";
 import trinketData from "./trinkets.json";
 import { FC, ReactNode, useState } from "react";
@@ -139,6 +139,12 @@ const alignOptNameToLabel = Object.keys(alignOptions).reduce(
   {} as Record<string, string>,
 );
 
+const sizeOptionToLabel: Record<string, string> = {
+  small: "Small",
+  medium: "Medium",
+  large: "Large",
+};
+
 function getRadioGroup(
   legend: string,
   optionLabels: Record<string, string>,
@@ -174,6 +180,8 @@ const PaginationDemoGrid: FC = () => {
   const [horizAlign, setHorizAlign] = useState<string>("unset");
   const [mainSpacing, setMainSpacing] = useState<string>("unset");
   const [pageSpacing, setPageSpacing] = useState<string>("unset");
+  const [size, setSize] = useState<string>("medium");
+  const [showTextLabel, setShowTextLabel] = useState<string>("unset");
 
   return (
     <>
@@ -213,6 +221,20 @@ const PaginationDemoGrid: FC = () => {
           setPageSpacing,
           "pageSpacingSetting",
         )}
+        {getRadioGroup(
+          "Pagination Component Size",
+          sizeOptionToLabel,
+          size,
+          setSize,
+          "sizeSetting",
+        )}
+        {getRadioGroup(
+          "Show Text Label",
+          booleanOptNameToLabel,
+          showTextLabel,
+          setShowTextLabel,
+          "showTextLabelSetting",
+        )}
       </Form>
       <Grid
         rows={rows}
@@ -221,6 +243,9 @@ const PaginationDemoGrid: FC = () => {
         sortModel={{ type: "uncontrolled", initialSortColDef: null }}
         pagination={{
           type: "uncontrolled",
+          componentSize: size as Size,
+          showTextLabel:
+            booleanOptions[showTextLabel as BooleanOptionName].value,
           styleOptions: {
             aboveMainComponent:
               booleanOptions[aboveMain as BooleanOptionName].value,

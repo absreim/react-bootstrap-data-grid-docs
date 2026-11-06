@@ -3,6 +3,7 @@ navLabel: Installation
 order: 1
 ---
 
+import CommonStyleSheetTable from "./CommonStyleSheetTable";
 import PrereleaseNotice from "@/assets/alerts/PrereleaseNotice";
 import GridStyleSheetTable from "./GridStyleSheetTable";
 import TableStyleSheetTable from "./TableStyleSheetTable";
@@ -224,7 +225,16 @@ const nextConfig: NextConfig = {
 The react-bootstrap-data-grid project contains its own style sheets that need to be imported for its components to be
 styled correctly.
 
-### Grid Style Sheets
+_Common_ style sheets are needed for both _grid_ and _table_ components, while _grid specific_ and _table specific_
+style sheets are only needed if you are using the respective components.
+
+### Common Style Sheets
+
+Common style sheets are the same across Community and Pro editions.
+
+<CommonStyleSheetTable />
+
+### Grid Specific Style Sheets
 
 Style sheets for the [grid component](/docs/grid/introduction) are the same across Community and Pro editions.
 
@@ -234,7 +244,7 @@ Either the Sass or CSS file may be imported. The Sass version is required if one
 [customizing Bootstrap with Sass variables](https://getbootstrap.com/docs/5.3/customize/sass/)
 and want react-bootstrap-data-grid to adhere to the overrides.
 
-### Table Style Sheets
+### Table Specific Style Sheets
 
 Style sheets for the [table component](/docs/table/introduction) differ in file names between the Community and Pro
 editions.
@@ -246,22 +256,42 @@ editions.
 #### CSS
 
 Like with [imports for Bootstrap's stylesheets](#bootstrap-style-sheet-imports), CSS imports should be done directly at
-the top level React component. For example, for a Next.js project, the imports may look like the following at the top
-level _layout.tsx_ component:
+the top level React component.
+
+##### Community
+
+For example, for a Next.js project, the imports may look like the following at the top
+level _layout.tsx_ component for the community edition:
 
 ```tsx
-import "@absreim/react-bootstrap-data-grid/table.css";
+import "@absreim/react-bootstrap-data-grid/common.css";
 import "@absreim/react-bootstrap-data-grid/grid.css";
+import "@absreim/react-bootstrap-data-grid/table.css";
+```
+
+##### Pro
+
+For the pro edition, simply change up the import paths according to the tables above:
+
+```tsx
+import "@absreim/react-bootstrap-data-grid-pro/common.css";
+import "@absreim/react-bootstrap-data-grid-pro/grid.css";
+import "@absreim/react-bootstrap-data-grid-pro/table-pro.css";
 ```
 
 #### Sass
 
-Sass imports should be done in a separate Sass file that is then imported into the top level React component. For
-example, the following code snippet may exist in a separate _style.scss_ file in a Next.js project:
+Sass imports should be done in a separate Sass file that is then imported into the top level React component.
+
+##### Community
+
+For example, the following code snippet may exist in a separate _style.scss_ file in a Next.js project for the community
+edition:
 
 ```scss
-@import "@absreim/react-bootstrap-data-grid/table.scss";
+@import "@absreim/react-bootstrap-data-grid/common.scss";
 @import "@absreim/react-bootstrap-data-grid/grid.scss";
+@import "@absreim/react-bootstrap-data-grid/table.scss";
 ```
 
 The _grid.scss_ import must come after the imports for Bootstrap's stylesheets. For example:, the entire _style.scss_
@@ -301,7 +331,7 @@ file may look like the following:
 @import "~bootstrap/scss/utilities/api";
 
 // --- RBDG Grid ---
-
+@import "@absreim/react-bootstrap-data-grid/common.scss";
 @import "@absreim/react-bootstrap-data-grid/table.scss";
 @import "@absreim/react-bootstrap-data-grid/grid.scss";
 ```
@@ -311,6 +341,16 @@ Sass file is named _sytle.scss_ and is in the same directory as the top level Re
 
 ```tsx
 import "./style.scss";
+```
+
+##### Pro
+
+For the pro edition, the import paths are different, but the remaining aspects are the same:
+
+```scss
+@import "@absreim/react-bootstrap-data-grid-pro/common.scss";
+@import "@absreim/react-bootstrap-data-grid-pro/grid.scss";
+@import "@absreim/react-bootstrap-data-grid-pro/table-pro.scss";
 ```
 
 ## Conclusion

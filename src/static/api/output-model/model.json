@@ -3923,9 +3923,8 @@
                 " ",
                 {
                   "type": "codeSpan",
-                  "text": "undefined"
+                  "text": "\"Select page\""
                 },
-                " - no ARIA label",
                 " "
               ]
             ]
@@ -3976,6 +3975,22 @@
                 " "
               ]
             ]
+          },
+          {
+            "title": "@deprecated",
+            "content": [
+              [
+                " ",
+                " ",
+                "This property has no effect under normal circumstances because",
+                " ",
+                "the enclosing nav element is using the block display type. It is kept",
+                " ",
+                "around only to avoid breaking existing code.",
+                " ",
+                " "
+              ]
+            ]
           }
         ]
       },
@@ -4006,6 +4021,42 @@
                   "type": "codeSpan",
                   "text": "[10, 25, 100]"
                 },
+                " "
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "showTextLabel",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Configures whether to show a text label for the page size selector",
+                " ",
+                "dropdown.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - the text label is not displayed.",
                 " "
               ]
             ]

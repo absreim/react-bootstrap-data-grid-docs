@@ -11,6 +11,23 @@ the minor version number, and backwards-compatible bug fixes should increment th
 
 ## Change Log
 
+### Version 4.5.0
+
+November 11, 2026
+
+This release contains minor enhancements for the pagination feature for both the table and the grid.
+
+- The `pageSelectorJustifyContent` property in the [PaginationOptions interface](/docs/ref/pagination-options) is now
+deprecated. It is already doing nothing due to previous changes in the code base and is being left in to avoid breaking
+existing code. It will be removed in the next major release.
+- A new property, `showTextLabel`, was added to [PaginationOptions](/docs/ref/pagination-options). It enables a text
+label for the page size selector dropdown menu for the pagination component. To see this feature in action, refer to
+the [grid pagination code sample](/docs/grid/pagination#example).
+- To support the text label feature mentioned in the previous point, this version introduces a CSS and SCSS stylesheet
+that contains styles that are common to both the grid and table component. See the
+[relevant section of the installation documentation](/docs/overview/installation#react-bootstrap-data-grid-style-sheet-imports)
+for details on how to import these stylesheets.
+
 ### Version 4.4.0
 
 November 6, 2026
