@@ -6,6 +6,7 @@ import React from "react";
 import ${sampleFolderName} from "./${sampleFolderName}";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@absreim/react-bootstrap-data-grid/grid.css";
+import "@absreim/react-bootstrap-data-grid/common.css";
 
 ReactDOM.createRoot(document.querySelector("#app")).render(
   <React.StrictMode>
