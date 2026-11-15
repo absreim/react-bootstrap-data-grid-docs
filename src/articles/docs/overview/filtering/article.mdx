@@ -1,6 +1,6 @@
 ---
 navLabel: Filtering
-order: 4
+order: 5
 ---
 
 import ControlledFilteredTable from "./ControlledFilteredTable";
@@ -8,37 +8,40 @@ import UncontrolledFilteredTable from "./UncontrolledFilteredTable";
 
 # Filtering
 
-react-bootstrap-data-grid provides an interface to filter rows by specifying various criteria across one or more columns.
+react-bootstrap-data-grid provides an interface to filter rows by specifying various criteria across one or more
+columns. This feature is available on both the [Grid](/docs/ref/grid) and [Table](/docs/ref/table) components.
 
-Supplying the [filterModel](/docs/ref/table-specific-props) prop will enable filtering for the Grid, while omitting it
+Supplying the [filterModel](/docs/ref/main-component-shared-props) prop will enable filtering while omitting it
 will disable filtering.
 
-Currently, it is not possible to configure the grid to prevent the user from filtering on certain columns. You can
-set the initial state of the filter to disable filtering on some or all columns, but the user can re-enable them via the
-UI.
+<div className="alert alert-info" role="alert">
+    Currently, it is not possible to configure the feature to allow the user to only filter on specific columns. You can
+    set the initial state of the filter to disable filtering on some or all columns, but the user can re-enable them via
+    the UI.
+</div>
 
 ## Accessing the Interface
 
-For grids where filtering is enabled, the user can access the filtering interface via the appropriate button on the
-[toolbar](/docs/table/toolbar). The button has an `aria-label` of `Filtering` and is visually labeled by the
+For grids and tables where filtering is enabled, the user can access the filtering interface via the appropriate button
+on the [toolbar](/docs/overview/toolbar). The button has an `aria-label` of `Filtering` and is visually labeled by the
 [filter Bootstrap icon](https://icons.getbootstrap.com/icons/filter/).
 
 ## Controlled vs Uncontrolled
 
 Filtering can be enabled in either a __controlled__ or __uncontrolled__ manner, depending on type of
 [FilterModel](/docs/ref/filter-model) passed as
-[filterModel](/docs/ref/table-specific-props) prop to the [Table](/docs/ref/table) component. Pass an object of type
-[ControlledFilterModel](/docs/ref/controlled-filter-model) or
+[filterModel](/docs/ref/main-component-shared-props) prop to the [Table](/docs/ref/table) or [Grid](/docs/ref/grid)
+component. Pass an object of type [ControlledFilterModel](/docs/ref/controlled-filter-model) or
 [UncontrolledFilterModel](/docs/ref/uncontrolled-filter-model)
 to use __controlled__ or __uncontrolled__ mode, respectively.
 
-__Controlled__ mode allows the parent component full control over the state of filtering in the grid, but requires more
-code to set up.
+__Controlled__ mode allows the parent component full control over the state of filtering in the grid or table, but
+requires more code to set up.
 
-__Uncontrolled__ mode causes the [Table](/docs/ref/table) component itself to keep track of the state of filtering and
-this state is not
-available to parent component. The parent component may specify a starting state. If it does not, the
-[Table](/docs/ref/table) component
+__Uncontrolled__ mode causes the [Table](/docs/ref/table) or [Grid](/docs/ref/grid) component itself to keep track of
+the state of filtering and this state is not available to parent component. The parent component may specify a starting
+state. If it does not, the
+[Table](/docs/ref/table) or [Grid](/docs/ref/grid) component
 will generate an empty starting state with no filters initially applied.
 
 ## Filtering and Formatter Functions
@@ -49,18 +52,40 @@ for users to see the underlying unformatted data if formatters are applied.
 This issue may be addressed in the future by adding the functionality to let users filter on formatted strings and/or
 letting users see unformatted values.
 
-In the meantime, it is recommended that if you intend to use both filtering and formatters in the same grid, provide
-guidance as to how one can filter on the original data.
+In the meantime, it is recommended that _if you intend to use both filtering and formatters in the same grid, provide
+guidance to the user as to how one can filter on the original data._
 
-For example, you may have a formatter on a number column to
-display commas to separate groups of 3 digits. In that case, you may wish display a note to your users that when
-entering a number to filter on that column, the number displayed in the input will not have commas.
+For example, you may have a formatter on a number column to display commas to separate groups of 3 digits. The data may
+look like the following table:
+
+<table className="table">
+    <tbody>
+        <tr>
+            <td>950,000</td>
+        </tr>
+        <tr>
+            <td>1,000,000</td>
+        </tr>
+        <tr>
+            <td>1,100,000</td>
+        </tr>
+        <tr>
+            <td>1,200,000</td>
+        </tr>
+    </tbody>
+</table>
+
+In that case, you may wish display a note to your users that when entering a number to filter on that column, the number
+displayed in the input will not have commas. For example, to filter on values greater than or equal to _1,000,000_, the
+user would enter _1000000_ in the relevant text box of the filtering interface.
 
 ## Examples
 
+### Data Source
+
 Both examples use the sample data from the following file:
 
-##### tableData.ts
+#### tableData.ts
 
 ```ts
 import { ColDef, RowDef } from "@absreim/react-bootstrap-data-grid/table";

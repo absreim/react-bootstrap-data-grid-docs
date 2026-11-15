@@ -2618,6 +2618,21 @@
             "content": [
               [
                 "Function to set the color variant of body cell focus rings",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no variant will be specified.",
                 " "
               ]
             ]
@@ -2642,6 +2657,21 @@
                 "Function to set the color variant of body cells on a per-cell basis.",
                 " ",
                 "Overrides the row-wide setting when this function returns a non-null value.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no variant will be specified.",
                 " "
               ]
             ]
@@ -2666,6 +2696,21 @@
             "content": [
               [
                 "Function to set the color variant of body rows",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no variant will be specified.",
                 " "
               ]
             ]
@@ -2688,6 +2733,21 @@
             "content": [
               [
                 "The border setting of the grid",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no borders will be shown.",
                 " "
               ]
             ]
@@ -2707,6 +2767,23 @@
             "content": [
               [
                 "The border color variant of the grid",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - the default Bootstrap border color will be",
+                " ",
+                "used.",
                 " "
               ]
             ]
@@ -2726,6 +2803,21 @@
             "content": [
               [
                 "Toggles a horizontal divider between the grid header and body",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "false"
+                },
+                " - no divider will be shown.",
                 " "
               ]
             ]
@@ -2748,6 +2840,21 @@
             "content": [
               [
                 "Function to set the color variant of header cell focus rings",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no variant will be specified.",
                 " "
               ]
             ]
@@ -2772,6 +2879,21 @@
                 "Function to set the color variant of header cells. Overrides the row-wide",
                 " ",
                 "setting when this function returns a non-null value.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no variant will be specified.",
                 " "
               ]
             ]
@@ -2791,6 +2913,21 @@
             "content": [
               [
                 "Sets the color variant of the header row",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no variant will be specified.",
                 " "
               ]
             ]
@@ -2846,6 +2983,21 @@
             "content": [
               [
                 "Toggles hover styles for the grid",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no hover styles will be active.",
                 " "
               ]
             ]
@@ -2868,6 +3020,21 @@
             "content": [
               [
                 "Enables and configures pagination for the grid",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - pagination will be disabled.",
                 " "
               ]
             ]
@@ -2887,6 +3054,23 @@
             "content": [
               [
                 "Toggles a denser grid style",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "false"
+                },
+                " - the grid will have the default density of cells",
+                " ",
+                "that are used in Bootstrap tables.",
                 " "
               ]
             ]
@@ -2909,6 +3093,58 @@
             "content": [
               [
                 "The stripe setting of the grid",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no stripes will be present.",
+                " "
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "styleOptions",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "StyleOptions",
+            "href": "style-options"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Configures preset styles.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - default values for preset styles will be used.",
                 " "
               ]
             ]
@@ -2928,6 +3164,21 @@
             "content": [
               [
                 "The grid-wide color variant",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - no variant will be specified.",
                 " "
               ]
             ]
@@ -3148,6 +3399,40 @@
     "typeParams": [],
     "members": [
       {
+        "name": "allowExport",
+        "isOptional": true,
+        "definition": [
+          "boolean",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Enables exporting of data from the table.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "false"
+                },
+                " - Export button will not be displayed to the user.",
+                " "
+              ]
+            ]
+          }
+        ]
+      },
+      {
         "name": "cols",
         "isOptional": false,
         "definition": [
@@ -3164,6 +3449,45 @@
             "content": [
               [
                 "The column definitions of the table or grid.",
+                " "
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "filterModel",
+        "isOptional": true,
+        "definition": [
+          {
+            "text": "FilterModel",
+            "href": "filter-model"
+          },
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "The filter model of the table. Passing a truthy value enables the",
+                " ",
+                "filtering feature of the component.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "undefined"
+                },
+                " - Filtering will not be enabled.",
                 " "
               ]
             ]
@@ -4181,41 +4505,41 @@
             "title": "Summary",
             "content": [
               [
-                "Sets the amount of vertical spacing between the main grid or table",
-                " ",
-                "component and the pagination UI components. The number supplied to this",
-                " ",
-                "property will be used for the",
-                " ",
+                "Copy of the property of the same name in the ",
                 {
-                  "text": "Bootstrap gap utility",
-                  "href": "https://getbootstrap.com/docs/5.3/utilities/spacing/#gap"
+                  "text": "StyleOptions",
+                  "href": "style-options"
                 },
-                ".",
                 " ",
-                "Valid values depend on Bootstrap ",
+                "interface. The value of the ",
                 {
-                  "type": "codeSpan",
-                  "text": "$spacers"
+                  "text": "StyleOptions",
+                  "href": "style-options"
                 },
-                " Sass map. Be default, the valid",
+                " property takes",
                 " ",
-                "values range from 0 to 5.",
+                "precedence. This value is only used if the other value doesn't exist.",
                 " ",
                 " "
               ]
             ]
           },
           {
-            "title": "@defaultValue",
+            "title": "@deprecated",
             "content": [
               [
                 " ",
+                " ",
+                "Use the property in the ",
                 {
-                  "type": "codeSpan",
-                  "text": "2"
+                  "text": "StyleOptions",
+                  "href": "style-options"
                 },
-                "- the gap-2 Bootstrap utility class will be applied.",
+                " interface instead.",
+                " ",
+                "The property is only kept around for backwards compatibility and may be",
+                " ",
+                "removed in the next major release.",
                 " "
               ]
             ]
@@ -5480,6 +5804,88 @@
     ]
   },
   {
+    "type": "interface",
+    "name": "StyleOptions",
+    "definition": [
+      "export interface StyleOptions "
+    ],
+    "comment": [
+      {
+        "title": "Summary",
+        "content": [
+          [
+            "Object that contains preset style options for the ",
+            {
+              "text": "Grid",
+              "href": "grid"
+            },
+            " component.",
+            " ",
+            " ",
+            " "
+          ]
+        ]
+      }
+    ],
+    "extends": [],
+    "typeParams": [],
+    "members": [
+      {
+        "name": "mainComponentSpacing",
+        "isOptional": true,
+        "definition": [
+          "number",
+          ";"
+        ],
+        "comment": [
+          {
+            "title": "Summary",
+            "content": [
+              [
+                "Sets the amount of vertical spacing between the main grid component, the",
+                " ",
+                "toolbar, and pagination UI components. The number supplied to this",
+                " ",
+                "property will be used for the",
+                " ",
+                {
+                  "text": "Bootstrap gap utility",
+                  "href": "https://getbootstrap.com/docs/5.3/utilities/spacing/#gap"
+                },
+                ".",
+                " ",
+                "Valid values depend on Bootstrap ",
+                {
+                  "type": "codeSpan",
+                  "text": "$spacers"
+                },
+                " Sass map. Be default, the valid",
+                " ",
+                "values range from 0 to 5.",
+                " ",
+                " "
+              ]
+            ]
+          },
+          {
+            "title": "@defaultValue",
+            "content": [
+              [
+                " ",
+                {
+                  "type": "codeSpan",
+                  "text": "2"
+                },
+                "- the gap-2 Bootstrap utility class will be applied.",
+                " "
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "type": "variable",
     "name": "Table",
     "comment": [
@@ -5571,25 +5977,6 @@
     "typeParams": [],
     "members": [
       {
-        "name": "allowExport",
-        "isOptional": true,
-        "definition": [
-          "boolean",
-          ";"
-        ],
-        "comment": [
-          {
-            "title": "Summary",
-            "content": [
-              [
-                "Enables exporting of data from the table.",
-                " "
-              ]
-            ]
-          }
-        ]
-      },
-      {
         "name": "caption",
         "isOptional": true,
         "definition": [
@@ -5662,30 +6049,6 @@
                 "The edit model of the table. Passing a truthy value enables the",
                 " ",
                 "editing feature of the component.",
-                " "
-              ]
-            ]
-          }
-        ]
-      },
-      {
-        "name": "filterModel",
-        "isOptional": true,
-        "definition": [
-          {
-            "text": "FilterModel",
-            "href": "filter-model"
-          },
-          ";"
-        ],
-        "comment": [
-          {
-            "title": "Summary",
-            "content": [
-              [
-                "The filter model of the table. Passing a truthy value enables the",
-                " ",
-                "filtering feature of the component.",
                 " "
               ]
             ]

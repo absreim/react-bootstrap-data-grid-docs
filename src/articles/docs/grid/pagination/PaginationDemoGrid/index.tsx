@@ -7,6 +7,7 @@ import { FC, ReactNode, useState } from "react";
 import Form from "react-bootstrap/Form";
 
 // --- data to display ---
+// Data source: wiki.gg Darkest Dungeon Wiki
 
 const trinketColumns: ColDef[] = [
   { type: "string", name: "trinket", label: "Trinket", width: 200 },
