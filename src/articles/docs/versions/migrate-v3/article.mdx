@@ -20,7 +20,7 @@ explicitly referring to this type by name, simply rename each occurrence to `Pag
 
 ### Filtering UI Access Change
 
-Previously, there were two ways to access the [filtering](/docs/table/filtering) interface:
+Previously, there were two ways to access the [filtering](/docs/overview/filtering) interface:
 
 - A button labeled *Show Filter Options* that is by default located above the main table.
 - A button on the [toolbar](/docs/table/toolbar).
@@ -38,7 +38,8 @@ As mentioned in the previous section, previously, the `useToolbar` prop must be 
 component for the toolbar to appear. Now, the toolbar appears as long as one feature is enabled for the grid that
 requires the toolbar to access.
 
-These features are [filtering](/docs/table/filtering) and [export](/docs/table/export). Filtering is enabled by passing a value for
+These features are [filtering](/docs/overview/filtering) and [export](/docs/table/export). Filtering is enabled by
+passing a value for
 the `filterModel` prop to a `Grid` or `GridPro` component. Export is enabled by passing a `true` value for the
 `allowExport` prop.
 
@@ -51,7 +52,8 @@ prop.
 
 ### Submit and Cancel Buttons
 
-For both the [filtering](/docs/table/filtering) and [export](/docs/table/export) UIs, the *Submit* button now closes the interface.
+For both the [filtering](/docs/overview/filtering) and [export](/docs/table/export) UIs, the *Submit* button now closes
+the interface.
 Previously, the button left the interface open.
 
 Both interfaces now also have a *Cancel* button that closes the interface without making any changes.
@@ -197,7 +199,8 @@ All changes to the [Style Model](/docs/table/styling#stylemodel) occur in the `a
 ### Removed Properties
 
 The following properties have been removed. Both of the below properties belong to the original way of accessing the
-[filter options table](/docs/table/filtering). Since the [toolbar](/docs/table/toolbar) is now the only way of accessing
+[filter options table](/docs/overview/filtering). Since the [toolbar](/docs/table/toolbar) is now the only way of
+accessing
 the filter
 options table, the style model properties related to the original way are no longer applicable.
 
