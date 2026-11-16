@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor-model": "^7.33.11",
-    "@playwright/test": "^1.62.1",
+    "@playwright/test": "^1.65.1",
     "@types/mdx": "^2.0.14",
     "@types/node": "^20",
     "@types/react": "^19",
