@@ -1,7 +1,7 @@
 {
   "name": "react-bootstrap-data-grid-docs",
   "description": "Documentation site for react-bootstrap-data-grid",
-  "version": "4.5.0",
+  "version": "4.6.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
