@@ -41,19 +41,8 @@ const ToolbarIconsTable: FC = () => (
         <td>{filteringIcon}</td>
         <td>
           <p>
-            Opens the <Link href="/docs/filtering">row filtering</Link>{" "}
+            Opens the <Link href="/docs/overview/filtering">row filtering</Link>{" "}
             interface.
-          </p>
-          <p>
-            If the toolbar is not enabled for a grid but filtering is enabled,
-            the interface is still accessible via a separate button labelled
-            <i>Filter Options Table</i>. See the{" "}
-            <Link href="/docs/filtering">filtering</Link> documentation for live
-            examples of this button.
-          </p>
-          <p>
-            If the toolbar is enabled for a grid but filtering is disabled, this
-            button will not be displayed on the toolbar.
           </p>
         </td>
       </tr>
@@ -63,14 +52,6 @@ const ToolbarIconsTable: FC = () => (
         <td>
           <p>
             Opens the <Link href="/docs/export">export</Link> interface.
-          </p>
-          <p>
-            There is currently no way to access this interface other than
-            through the toolbar.
-          </p>
-          <p>
-            There is currently no way to remove access to this interface other
-            than by disabling the toolbar.
           </p>
         </td>
       </tr>

@@ -1,6 +1,6 @@
 ---
 navLabel: Export
-order: 8
+order: 6
 ---
 
 import SampleExportTable from "./SampleExportTable";
@@ -8,49 +8,49 @@ import SampleExportTableButton from "./SampleExportTableButton";
 
 # Export
 
-react-bootstrap-data-grid supports exporting of data in a table in JSON and CSV formats. The feature is enabled by
-by passing `true` as the [allowExport](/docs/ref/table-specific-props) prop of the
-[Table](/docs/ref/table) component.
+react-bootstrap-data-grid supports exporting of data in a table in JSON and CSV formats. The feature is enabled
+by passing `true` as the [allowExport](/docs/ref/main-component-shared-props) prop of the
+[Table](/docs/ref/table) or [Grid](/docs/ref/grid) component.
 
 ## Options
 
 ### Row Scope
 
-Depending on the features enabled in the table, the user can choose between three sets of rows to export:
+Depending on the features enabled in the table or grid, the user can choose between three sets of rows to export:
 
 <dl>
   <dt>All rows</dt>
   <dd>
-    All rows in the table as they are passed into <code>Table</code> component via
+    All rows in the table as they are passed into <code>Table</code> or <code>Grid</code> component via
     the <code>rows</code> prop.
   </dd>
   <dt>Filtered rows</dt>
   <dd>
     The subset of rows remaining after filters are applied. This option is only
-    available if filtering is enabled on the table.
+    available if filtering is enabled on the table or grid.
   </dd>
   <dt>Current page rows</dt>
   <dd>
     The subset of rows remaining after filters are applied and only in the
     current page. This option is only available if pagination is enabled on the
-    table.
+    table or grid.
   </dd>
 </dl>
 
 ### Formatting
 
 The user may choose whether to apply formatters defined in [cols](/docs/ref/main-component-shared-props) prop to the
-[Table](/docs/ref/table) component
+[Table](/docs/ref/table) component or [Grid](/docs/ref/grid)
 when exporting. If no
 formatters are defined in the [cols](/docs/ref/main-component-shared-props) prop, the option to apply formatters will
 be disabled in the UI.
 
-If no formatters are defined for `date` and `datetime` columns, or if the user chooses not to apply formatters, the
+If no formatters are defined for _date_ and _datetime_ columns, or if the user chooses not to apply formatters, the
 default formatters for these column types will be used. In particular, the default formatters will output the same
 format as the date and datetime strings used in the corresponding
 [date](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date) and
 [datetime-local](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local) input
-elements, respectively. For `date`, the format is `yyyy-mm-dd` while for `datetime` the format is `YYYY-MM-DDTHH:mm`.
+elements, respectively. For _date_, the format is _yyyy-mm-dd_ while for _datetime_ the format is _YYYY-MM-DDTHH:mm_.
 
 For number columns with no formatters defined, or if the user chooses not to apply formatters, for JSON exports the
 data for that column will remain a number without conversion to a string.

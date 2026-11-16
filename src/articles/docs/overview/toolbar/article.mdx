@@ -1,6 +1,6 @@
 ---
 navLabel: Toolbar
-order: 9
+order: 4
 ---
 
 import SampleToolbarTable from "./SampleToolbarTable";
@@ -10,7 +10,7 @@ import ToolbarIconsTable from "./ToolbarIconsTable";
 
 The toolbar is a `<div>` that contains buttons for accessing interfaces that take up a considerable amount of screen
 space and are therefore not always displayed. Currently, one can access the interfaces for
-[filtering rows](/docs/overview/filtering) and [exporting table contents](/docs/table/export) via the toolbar.
+[filtering rows](/docs/overview/filtering) and [exporting table contents](/docs/overview/export) via the toolbar.
 
 ## Live Demo
 
@@ -26,7 +26,7 @@ filtering button on the toolbar.)
 ## Getting Started
 
 The toolbar is shown if any toolbar tools are enabled. Tools can be enabled by setting props on the
-[Table](/docs/ref/table) component. These tools include:
+[Table](/docs/ref/table) or [Grid](/docs/ref/grid) component. These tools include:
 
 - The export feature, which can enabled by setting the [allowExport](/docs/ref/table-specific-props) prop to `true`.
 - The filtering feature, which can enabled by setting the [filterModel](/docs/ref/table-specific-props) prop to a
@@ -34,7 +34,7 @@ The toolbar is shown if any toolbar tools are enabled. Tools can be enabled by s
 
 ## Features
 
-The toolbar is design to provide access to multiple __features__ via icon buttons that show and hide the interface for
+The toolbar is design to provide access to multiple _features_ via icon buttons that show and hide the interface for
 each feature. The table below describes the features that are currently available.
 
 <ToolbarIconsTable />
@@ -57,8 +57,8 @@ pressing the <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd> keys.
 
 ### Accessing Features
 
-Once the user is focused on an button within a toolbar, they can use the keyboard key for pressing buttons, usually
-<kbd>Space</kbd> or <kbd>Enter</kbd>, to access to show the interface for that feature.
+Once the user is focused on a button within a toolbar, they can use the keyboard key for pressing buttons, usually
+<kbd>Space</kbd> or <kbd>Enter</kbd>, to access the interface for that feature.
 
 Once the interface for a feature is displayed, the user can access the form elements of the feature by pressing
 <kbd>Tab</kbd> (or <kbd>Shift + Tab</kbd> to go in the other direction) to cycle-through tab-accessible elements on
@@ -66,10 +66,11 @@ the page.
 
 To close the feature's interface with the keyboard, the user needs to either:
 
-- Focus on the button related to open interface and press the button again (usually with <kbd>Space</kbd> or <kbd>Enter</kbd>).
+- Focus on the button related to open interface and press the button again (usually with <kbd>Space</kbd> or
+<kbd>Enter</kbd>).
 - Focus on the button related to open interface, use the arrow keys to switch to a different button, and press that
-button. For example, opening up the __export__ interface while the __filtering__ interface is open will close the
-__filtering__ interface.
+button. For example, opening up the _export_ interface while the _filtering_ interface is open will close the
+_filtering_ interface.
 
 ### Visual Walkthrough
 
